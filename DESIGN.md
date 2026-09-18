@@ -6,112 +6,189 @@
 
 사용자가 결론, 입력 사실, 계산 근거, 외부 출처, 가정을 빠르게 구분할 수 있는 인터페이스 구성
 
+디자인 방향:
+
+`Liquid Glass × Financial Control Room × Retrofuturism`
+
+시각 효과보다 콘텐츠 구조, 확장성, 재사용성, 성능을 우선한다.
+
 ## 2. 기본 원칙
 
-- 결론 우선 배치
+- 결론과 중요한 숫자 우선 배치
 - 계산과 설명 시각적 분리
 - 사실과 가정 구분
 - 외부 출처 명시
 - 장식보다 정보 위계 우선
-- 결과 검증에 필요한 숫자와 계산식 노출
-- 모델 내부 구조보다 사용자 의사결정에 필요한 정보 우선
+- 실제 데이터 없는 Placeholder 영역 생성 금지
+- 페이지별 전용 구조보다 재사용 가능한 Layout 우선
+- 모션·Glass·Gradient 제거 후에도 정보 구조 유지
 
 ## 3. 기본 화면 구조
 
 ```text
 Header
-  ↓
-Question / Input
-  ↓
-Required Information
-  ↓
-Decision Result
-  ├── Conclusion
-  ├── Facts
-  ├── Calculations
-  ├── Options
-  ├── Risks
-  └── Sources
+├── Search / Ask
+└── Agent Status
+
+Sidebar
+├── Today
+├── Decisions
+├── Reports
+├── Sources
+└── Settings
+
+Workspace
+├── Question / Input
+├── Decision Status
+├── Decision Cards
+└── Detail / Inspector
 ```
 
-## 4. 입력 영역
+Decision 상태:
 
-- 자연어 질문 입력을 기본으로 사용
-- 필수 정보 누락 시 별도 입력 영역 노출
-- 숫자 입력은 단위와 통화 표시
-- 선택 가능한 값은 자유 입력보다 명시적 선택 우선
+```text
+Needs Input
+Researching
+Calculating
+Review
+Ready
+```
 
-## 5. 결과 영역
+## 4. Layout
 
-### Conclusion
+- CSS Grid / Flexbox 우선
+- 고정 높이 최소화
+- 장식 목적 외 Absolute Positioning 최소화
+- 카드와 콘텐츠 수 증가에도 구조 유지
+- 공통 `Grid`, `Stack`, `Panel`, `Card` 구조 재사용
+- 새로운 Decision Type 추가 시 기존 Layout 수정 최소화
 
-- 결과 카드 최상단 배치
-- 한 문단 이내 요약
-- 근거 없이 단정하는 표현 금지
+## 5. 입력과 결과
 
-### Facts
+### Input
 
+- 자연어 질문 입력 기본
+- 필수 정보 누락 시 필요한 입력만 추가 노출
+- 숫자는 단위와 통화 함께 표시
+
+### Result
+
+```text
+Conclusion
+Facts
+Calculations
+Options
+Risks
+Sources
+```
+
+- 계산식, 입력값, 계산 결과 함께 표시
 - 사용자 입력 사실과 외부 확인 사실 분리
-- 외부 사실은 출처 연결
-
-### Calculations
-
-- 계산식
-- 입력값
-- 계산 결과
-
-세 항목을 함께 표시
-
-### Options
-
 - 선택지별 비용과 조건 비교
-- 단순 색상만으로 우열 표현 금지
+- 가정은 별도 영역으로 구분
 
-### Assumptions
+## 6. Visual
 
-- 사실과 다른 시각적 영역으로 분리
-- 가정값이 결과에 영향을 주는 경우 명시
+### Liquid Glass
 
-### Sources
+사용:
 
-- 출처명
-- 조회 시각
-- 확인한 값
+- Navigation
+- Floating Control
+- Modal / Inspector
+- Active Decision Layer
 
-표시
+사용하지 않음:
 
-## 6. 상태 표현
+- 계산표
+- 긴 본문
+- 핵심 숫자 영역 전체
 
-### Success
+### Color
 
-처리와 검증이 정상 완료된 상태
+```text
+Deep Ink       Base
+Electric Blue  Agent / Research
+Acid Lime      Saving / Positive
+Hot Orange     Warning
+Violet         Jev
+Ice Cyan       MCP / Calculation
+```
 
-### Warning
+색상만으로 판단 결과를 표현하지 않는다.
 
-입력 누락, 가정 사용, 외부 정보 불확실 상태
+### Typography
 
-### Error
+- 중요한 금액과 수치를 가장 크게 표현
+- 계산 Trace는 Monospace 사용 가능
+- 과도한 대형 문구 남용 금지
 
-Tool 실패, 계산 실패, 검색 실패, 구조화 출력 실패 상태
+### Retrofuturism
 
-## 7. 반응형
+- Thin Grid
+- Technical Label
+- Monospace Number
+- 제한적인 Pixel / CRT 질감
 
-- 데스크톱과 모바일 모두 단일 컬럼 읽기 흐름 유지
-- 결과 카드의 핵심 수치는 화면 폭이 좁아져도 잘리지 않도록 처리
-- 표는 필요한 경우 가로 스크롤 허용
+레이아웃 자체를 레트로 UI로 만들지 않는다.
 
-## 8. 접근성
+## 7. Motion
 
+Motion은 상태 변화와 사용자 Action에만 사용한다.
+
+```text
+Researching → Calculating → Review → Ready
+```
+
+허용:
+
+- 상태 전환
+- Panel Open / Close
+- Navigation 이동
+- 데이터 갱신 피드백
+
+금지:
+
+- Video Hero
+- 의미 없는 Floating
+- 반복 Background Animation
+- 과도한 Hover Transform
+- 기능과 관계없는 Particle Effect
+
+`prefers-reduced-motion`을 지원한다.
+
+## 8. 반응형과 접근성
+
+- Desktop과 Mobile 모두 정보 우선순위 유지
+- Desktop 화면 단순 축소 금지
+- 핵심 수치 잘림 방지
+- 표는 필요 시 가로 스크롤
 - 색상만으로 상태 구분 금지
-- Form label 명시
-- Keyboard navigation 지원
+- Form Label 명시
+- Keyboard Navigation 지원
 - 충분한 명도 대비 유지
-- 결과 숫자와 단위 함께 표시
 
-## 9. 금지 사항
+## 9. 성능
+
+- Video Hero, 상시 WebGL, 불필요한 Three.js 사용 금지
+- 대형 이미지보다 SVG / CSS 표현 우선
+- 과도한 Backdrop Filter 금지
+- 화면 밖 Animation 실행 금지
+- 시각 효과보다 입력, 탐색, 상태 갱신 속도 우선
+
+## 10. 검증 기준
+
+- 카드가 3개에서 30개로 증가해도 구조가 유지되는가
+- 제목과 설명 길이가 늘어나도 깨지지 않는가
+- 새로운 Decision Type 추가 시 공통 Component 수정이 최소인가
+- Motion, Glass, Gradient를 제거해도 사용할 수 있는가
+- 구현되지 않은 기능을 UI가 암시하지 않는가
+
+## 11. 금지 사항
 
 - 기능 범위를 `DESIGN.md`에 정의하지 않는다.
 - 구현되지 않은 기능을 UI에 미리 배치하지 않는다.
-- 확인되지 않은 수치를 시각적으로 강조하지 않는다.
-- 결론보다 장식 요소가 먼저 보이도록 구성하지 않는다.
+- 특정 화면에만 맞춘 Layout을 만들지 않는다.
+- 콘텐츠 변경을 위해 Component 코드를 직접 수정하는 구조를 만들지 않는다.
 - 모델 confidence를 실제 성공 확률처럼 표시하지 않는다.
+- 성능보다 시각 효과를 우선하지 않는다.
