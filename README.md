@@ -49,7 +49,7 @@ flowchart TD
     Agent --> Result["Decision Result"]
 ```
 
-현재 Phase 2 상태: OpenAI baseline과 Jev `Choice` Intent 평가 완료. Jev production routing, MCP, Web Search, Calculation Tool 미구현.
+현재 Phase 4 상태: OpenAI baseline, Jev `Choice` Intent 평가, 결정론적 Calculation Tool, stdio MCP Server 완료. Jev production routing, Web Search, Decision Pack workflow 미구현.
 
 ## 계획 Decision Pack
 
@@ -72,7 +72,7 @@ flowchart TD
 | Phase 1 | Core Agent Baseline | 완료 |
 | Phase 2 | Jev Decision Layer Evaluation | 완료 |
 | Phase 3 | Calculation Tools | 완료 |
-| Phase 4 | MCP Server | 예정 |
+| Phase 4 | MCP Server | 완료 |
 | Phase 4.5 | Decision Workspace UI | 예정 |
 | Phase 5 | Current Information Research | 예정 |
 | Phase 6 | Decision Packs | 예정 |
@@ -132,6 +132,19 @@ OpenAI 기반 baseline을 고정 평가 데이터 17건으로 검증했습니다
 
 계산식, 중간값, 입력, 결과의 추적 가능 구조. 상세 내용은 [Phase 3 결과 문서](docs/results/phase3-calculation-tools.md)를 참조하세요.
 
+## Phase 4 검증 결과
+
+FastMCP 4.0.0 기반 stdio MCP Server와 독립 MCP Client 구현. Phase 3 Calculation Tool 6종 재사용.
+
+| 항목 | 결과 |
+| --- | --- |
+| MCP Tool | 할부, 대환, 사용당 비용, 연간 환산, TCO, 비용 비교 |
+| Transport | stdio |
+| Direct / MCP 결과 | 입력, 계산식, 중간값, 결과 일치 |
+| 전체 pytest | 35 passed |
+
+입력·출력 schema 검증과 오류 전달 검증. 상세 내용은 [Phase 4 결과 문서](docs/results/phase4-mcp-server.md)를 참조하세요.
+
 ## 기술 구성
 
 | 구분 | 기술 |
@@ -141,6 +154,7 @@ OpenAI 기반 baseline을 고정 평가 데이터 17건으로 검증했습니다
 | Agent | OpenAI Agents SDK |
 | LLM API | OpenAI Responses API |
 | Decision Model Evaluation | TypeSafe Jev (`typesafe-sdk`) |
+| MCP | FastMCP 4.0.0 |
 | Validation | Pydantic |
 | Test | pytest |
 | Frontend | HTML / CSS / JavaScript |
@@ -149,7 +163,6 @@ OpenAI 기반 baseline을 고정 평가 데이터 17건으로 검증했습니다
 
 | 구분 | 기술 |
 | --- | --- |
-| MCP | FastMCP |
 | HTTP | HTTPX |
 
 ## 실행
