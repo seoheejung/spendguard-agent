@@ -1,0 +1,18 @@
+:root { color-scheme: dark; font-family: Inter, system-ui, sans-serif; background: #07111f; color: #e7f3ff; }
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; background-image: linear-gradient(rgba(111, 181, 255, .05) 1px, transparent 1px), linear-gradient(90deg, rgba(111, 181, 255, .05) 1px, transparent 1px); background-size: 28px 28px; }
+.topbar { min-height: 64px; display: flex; justify-content: space-between; align-items: center; padding: 0 28px; border-bottom: 1px solid #29415e; background: rgba(9, 23, 41, .88); }
+.brand, nav a { color: #78c7ff; text-decoration: none; font-weight: 750; letter-spacing: .08em; }
+.topbar p, .eyebrow { margin: 0; color: #aabed3; font: 12px ui-monospace, monospace; }
+.shell { display: grid; grid-template-columns: 196px minmax(0, 1fr); min-height: calc(100vh - 64px); }
+nav { padding: 24px 14px; border-right: 1px solid #29415e; display: grid; align-content: start; gap: 7px; }
+nav a, nav span { padding: 10px 12px; border-radius: 7px; }
+nav span { color: #8da5bc; } nav .active { background: #153a5d; }
+main { width: min(100%, 1040px); padding: clamp(24px, 5vw, 64px); }
+.panel { border: 1px solid #34506e; border-radius: 12px; padding: clamp(20px, 4vw, 34px); background: #0b1b2d; box-shadow: 0 14px 35px rgba(0,0,0,.18); }
+h1 { margin: 8px 0 28px; font-size: clamp(28px, 5vw, 44px); line-height: 1.1; } h2 { margin-top: 0; }
+label { display: block; margin-bottom: 8px; font-weight: 650; } textarea { width: 100%; min-height: 130px; padding: 14px; resize: vertical; border: 1px solid #527494; border-radius: 7px; color: inherit; background: #06111d; font: inherit; }
+button { margin-top: 14px; padding: 11px 18px; border: 0; border-radius: 7px; color: #06111d; background: #bbf24d; font-weight: 800; cursor: pointer; } button:disabled { opacity: .6; cursor: wait; }
+.results { display: grid; gap: 16px; margin-top: 18px; }.conclusion h2 { color: #78c7ff; }.detail-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }.detail-grid .panel { padding: 20px; } li { overflow-wrap: anywhere; margin: 8px 0; }.error { margin-top: 18px; padding: 14px; border-left: 4px solid #ff8b3d; background: #371e19; color: #ffd9c3; }
+@media (max-width: 700px) { .topbar { padding: 0 16px; }.shell { grid-template-columns: 1fr; } nav { display: flex; overflow-x: auto; padding: 10px; border-right: 0; border-bottom: 1px solid #29415e; } nav a, nav span { white-space: nowrap; } main { padding: 26px 16px; }.detail-grid { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: no-preference) { .panel { transition: border-color .18s ease; } .panel:focus-within { border-color: #78c7ff; } }

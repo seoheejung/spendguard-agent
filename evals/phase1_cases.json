@@ -1,0 +1,19 @@
+[
+  {"id":"purchase-001","input":"189만원짜리 노트북을 사도 될지 고민 중이에요.","expected_intent":"purchase"},
+  {"id":"purchase-002","input":"중고 카메라와 새 카메라 중 무엇을 살지 비교하고 싶어요.","expected_intent":"purchase"},
+  {"id":"recurring-001","input":"월 8만원 통신비를 줄이고 싶어요.","expected_intent":"recurring_cost"},
+  {"id":"recurring-002","input":"스트리밍 구독료가 너무 많이 나가요.","expected_intent":"recurring_cost"},
+  {"id":"finance-001","input":"전세대출 이자가 올라서 월 부담을 확인하고 싶습니다.","expected_intent":"finance_cost"},
+  {"id":"finance-002","input":"대출을 갈아타면 비용이 줄어들까요?","expected_intent":"finance_cost"},
+  {"id":"ownership-001","input":"자동차를 유지하는 데 드는 비용을 정리하고 싶어요.","expected_intent":"ownership_cost"},
+  {"id":"ownership-002","input":"전기차를 사면 보유비가 얼마나 들지 궁금해요.","expected_intent":"ownership_cost"},
+  {"id":"quote-001","input":"인테리어 견적서가 적정한지 봐주세요.","expected_intent":"quote_audit"},
+  {"id":"quote-002","input":"휴대폰 수리 견적의 항목별 비용을 검토하고 싶습니다.","expected_intent":"quote_audit"},
+  {"id":"budget-001","input":"식비와 교통비를 줄여 월 예산을 맞추고 싶어요.","expected_intent":"budget_optimization"},
+  {"id":"budget-002","input":"최근 지출을 줄일 수 있는 예산 계획이 필요해요.","expected_intent":"budget_optimization"},
+  {"id":"ambiguous-001","input":"돈을 아끼고 싶어요.","expected_intent":"unknown"},
+  {"id":"ambiguous-002","input":"이게 좋은 선택일까요?","expected_intent":"unknown"},
+  {"id":"complete-001","input":"월 8만원인 휴대폰 요금제와 5만원 요금제 중 데이터 20GB 기준으로 비교하고 싶어요.","expected_intent":"recurring_cost"},
+  {"id":"missing-001","input":"대출 이자를 줄일 수 있나요?","expected_intent":"finance_cost"},
+  {"id":"out-of-scope-001","input":"오늘 서울 날씨가 어떤가요?","expected_intent":"unknown"}
+]

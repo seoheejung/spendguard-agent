@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SpendGuard</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/">SPENDGUARD</a>
+      <p id="agent-status" aria-live="polite">Agent status: ready</p>
+    </header>
+    <div class="shell">
+      <nav aria-label="Current workspace">
+        <a class="active" href="/">Today</a>
+        <span>Phase 1 / Core Agent</span>
+      </nav>
+      <main>
+        <section class="panel input-panel" aria-labelledby="question-heading">
+          <p class="eyebrow">ASK / INTAKE</p>
+          <h1 id="question-heading">지출 관련 질문을 입력하세요</h1>
+          <form id="analysis-form">
+            <label for="question">질문</label>
+            <textarea id="question" name="question" required maxlength="4000" placeholder="예: 월 8만원 통신비를 줄이고 싶어요."></textarea>
+            <button type="submit">분석 시작</button>
+          </form>
+        </section>
+        <section id="result" class="results" aria-live="polite" hidden>
+          <article class="panel conclusion">
+            <p class="eyebrow">DECISION STATUS</p>
+            <h2 id="intent">—</h2>
+            <p id="summary"></p>
+          </article>
+          <div class="detail-grid">
+            <article class="panel"><h2>확인된 사실</h2><ul id="known-facts"></ul></article>
+            <article class="panel"><h2>추가로 필요한 정보</h2><ul id="missing-fields"></ul></article>
+            <article class="panel"><h2>가정</h2><ul id="assumptions"></ul></article>
+          </div>
+        </section>
+        <p id="error" class="error" role="alert" hidden></p>
+      </main>
+    </div>
+    <script src="/static/app.js"></script>
+  </body>
+</html>

@@ -1,120 +1,60 @@
 # SpendGuard
 
-> Jev, OpenAI Agent, MCP를 활용해 구매·구독·비용 의사결정을 계산·비교·검증하는 프로젝트
+SpendGuard는 소비 관련 자연어 질문에서 의도와 확인된 사실, 추가로 필요한 정보를 구조화하는 AI 의사결정 지원 프로젝트입니다.
 
-## 개요
+## 현재 구현 상태
 
-SpendGuard는 구매·구독·계약·생활비와 관련된 질문을 분석하고, 필요한 정보 확인·정확한 계산·최신 정보 조사·선택지 비교를 거쳐 검증 가능한 판단 근거를 제공하는 AI 의사결정 프로젝트입니다.
+Phase 1 Core Agent Baseline이 구현되어 있습니다.
 
-역할을 분리합니다.
+- FastAPI 애플리케이션과 기본 웹 UI
+- OpenAI Agents SDK 기반 단일 Agent
+- Pydantic Structured Output: `intent`, `summary`, `known_facts`, `missing_fields`, `assumptions`
+- 7개 Intent: `purchase`, `recurring_cost`, `finance_cost`, `ownership_cost`, `quote_audit`, `budget_optimization`, `unknown`
+- Phase 2 비교용 고정 평가 데이터 17건
 
-- Jev: 정해진 선택지 안에서 수행하는 좁은 의미 판단과 routing
-- OpenAI Agent: 복합 추론, Tool orchestration, 사용자용 설명
-- MCP / Code: 계산, 정규화, 비교 같은 결정론적 처리
-- Web Search: 가격·정책·요금제처럼 변동 가능한 외부 사실 확인
+Jev, MCP, 계산 도구, Web Search, 사용자 인증, 데이터베이스는 구현하지 않았습니다.
 
-Jev는 Phase 2에서 Phase 1의 OpenAI baseline과 비교 검증한 뒤 적용 범위를 결정합니다.
+## Phase 상태
 
-## 해결하려는 문제
-
-- 소비 관련 질문에서 필요한 조건 누락
-- 할부·대출·TCO·연간 절감액 계산 오류 가능성
-- 가격·요금제·정책 등 변동 정보의 최신성 문제
-- 근거 없는 추천
-- 사실·가정·계산·모델 판단의 혼합
-- 모든 판단을 하나의 생성형 모델에 맡기는 구조
-
-## 계획 아키텍처
-
-```mermaid
-flowchart TD
-    User["User"] --> Workflow["SpendGuard Workflow"]
-
-    Workflow --> Jev["Jev Decision Layer"]
-    Workflow --> Agent["OpenAI Agent"]
-
-    Jev --> Routing["Typed Judgment / Routing"]
-    Routing --> Rules["Code-owned Rules"]
-
-    Agent --> Search["Web Search"]
-    Agent --> MCP["SpendGuard MCP"]
-
-    MCP --> Calc["Deterministic Calculation"]
-    Search --> Evidence["Current Evidence"]
-
-    Rules --> Verify["Verification"]
-    Calc --> Verify
-    Evidence --> Verify
-
-    Verify --> Agent
-    Agent --> Result["Decision Result"]
-```
-
-> 현재 Phase 0 상태에서는 위 아키텍처가 구현되어 있지 않습니다.
-
-## 계획 기술 스택
-
-| 구분 | 기술 |
-| --- | --- |
-| Language | Python 3.13 |
-| API | FastAPI |
-| Generative Agent | OpenAI Agents SDK |
-| LLM API | OpenAI Responses API |
-| Decision Model | TypeSafe Jev |
-| TypeSafe SDK | `typesafe-sdk` |
-| MCP | FastMCP |
-| HTTP | HTTPX |
-| Validation | Pydantic |
-| Test | pytest |
-| Frontend | HTML / CSS / JavaScript |
-
-## 프로젝트 구조
-
-```text
-spendguard-agent/
-├── .agents/
-│   └── skills/
-│       └── spendguard-phase-workflow/
-│           └── SKILL.md
-├── .project/
-│   └── plan.md
-├── docs/
-│   └── instructions/
-│       └── phase1-core-agent.md
-├── .env.example
-├── .gitignore
-├── AGENTS.md
-├── DESIGN.md
-└── README.md
-```
-
-미래 Phase용 소스 디렉터리와 결과 문서는 미리 생성하지 않습니다.
-
-## 개발 단계
-
-| Phase | 범위 | 상태 |
+| Phase | 상태 | 범위 |
 | --- | --- | --- |
-| Phase 0 | Repository Bootstrap | 완료 |
-| Phase 1 | Core Agent Baseline | 예정 |
-| Phase 2 | Jev Decision Layer Evaluation | 예정 |
-| Phase 3 | Calculation Tools | 예정 |
-| Phase 4 | MCP Server | 예정 |
-| Phase 5 | Current Information Research | 예정 |
-| Phase 6 | Decision Packs | 예정 |
-| Phase 7 | End-to-End Evaluation | 예정 |
+| Phase 1 | 완료 | Core Agent Baseline |
+| Phase 2 | 예정 | Jev Decision Layer Evaluation |
 
-## 현재 실행 상태
+## Phase 1 실제 평가
 
-아직 실행 가능한 애플리케이션이 없습니다.
+고정 평가 데이터 17건을 `OPENAI_MODEL`에 설정된 모델로 실행한 결과는 다음과 같습니다.
 
-Phase 1 구현과 실제 실행 검증이 끝난 뒤 실행 방법을 추가합니다.
+- Intent 정답: 16건
+- Intent 정확도: 94.12% (16/17)
+- 실패 케이스: `ambiguous-001` — expected `unknown`, actual `budget_optimization`
+- API 오류: 0건
+- pytest: 10 passed
+
+## 실행
+
+Python 3.13과 uv가 필요합니다.
+
+```powershell
+uv sync --all-groups
+$env:OPENAI_API_KEY = "..."
+$env:OPENAI_MODEL = "..."
+uv run uvicorn spendguard.main:app --reload
+```
+
+브라우저에서 `http://127.0.0.1:8000`을 열면 됩니다. API 키 또는 모델 설정이 없으면 `/api/analyze`는 설정 오류를 `503`으로 반환합니다.
+
+## 검증과 평가
+
+```powershell
+uv run pytest
+uv run python scripts/evaluate_phase1.py
+```
+
+평가 스크립트는 `evals/phase1_cases.json`의 고정 17건을 현재 설정된 OpenAI 모델로 실행하고 Intent 정확도와 실패 케이스를 JSON으로 출력합니다.
 
 ## 문서
 
-| 문서 | 역할 |
-| --- | --- |
-| `.project/plan.md` | 프로젝트 전체 기획 기준 |
-| `AGENTS.md` | 저장소 공통 작업 규칙 |
-| `DESIGN.md` | Web UI 디자인 기준 |
-| `docs/instructions/phase1-core-agent.md` | 현재 Phase 작업 범위와 완료 기준 |
-| `.agents/skills/spendguard-phase-workflow/SKILL.md` | Phase 작업 반복 절차 |
+- `.project/plan.md`: 프로젝트 계획
+- `docs/instructions/phase1-core-agent.md`: Phase 1 범위
+- `docs/results/phase1-core-agent.md`: 구현 및 검증 결과
