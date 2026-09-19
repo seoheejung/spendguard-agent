@@ -13,7 +13,7 @@ SpendGuard는 구매·구독·계약·생활비와 관련된 자연어 질문을
 - MCP / Code: 계산, 정규화, 비교 같은 결정론적 처리
 - Web Search: 가격·정책·요금제처럼 변동 가능한 외부 사실 확인
 
-Jev는 Phase 2에서 Phase 1 OpenAI baseline과 비교 평가한 뒤 적용 범위를 결정합니다.
+Jev는 Phase 2에서 Phase 1 OpenAI baseline과 비교 평가했으며, 현재 production routing에는 사용하지 않습니다.
 
 ## 해결하려는 문제
 
@@ -30,46 +30,48 @@ Jev는 Phase 2에서 Phase 1 OpenAI baseline과 비교 평가한 뒤 적용 범�
 flowchart TD
     User["User"] --> Workflow["SpendGuard Workflow"]
 
-    Workflow --> Jev["Jev Decision Layer"]
     Workflow --> Agent["OpenAI Agent"]
-
-    Jev --> Rules["Typed Judgment / Routing"]
-
     Agent --> Search["Web Search"]
-    Agent --> MCP["SpendGuard MCP"]
+    Agent --> Code["Code-owned Decision Pack Routing"]
 
+    Code --> MCP["SpendGuard MCP"]
     MCP --> Calc["Deterministic Calculation"]
+
     Search --> Evidence["Current Evidence"]
-
-    Rules --> Verify["Verification"]
-    Calc --> Verify
+    Calc --> Verify["Verification"]
     Evidence --> Verify
+    Code --> Verify
 
-    Verify --> Agent
-    Agent --> Result["Decision Result"]
+    Verify --> Result["Decision Result"]
+
+    Eval["Jev Choice Evaluation"] -. Phase 2 offline evaluation .-> Code
 ```
 
 현재 Phase 7까지 완료된 상태입니다.
 
 구현 완료:
 
-- OpenAI Agent baseline
-- Jev `Choice` Intent 평가
-- 결정론적 Calculation Tool 6종
+- OpenAI Agent
+- Code-owned Decision Pack routing
+- Calculation Tool 6종
 - FastMCP stdio Server / Client
-- Decision Workspace UI
-- Web Search 기반 최신 정보 조사
-- Researching 상태 및 Sources UI
-- Decision Pack workflow 6종
-- End-to-End 고정 평가 및 회귀 검증
+- Web Search
+- Decision Pack 6종
+- 초기 절약 시나리오 15종 Coverage
+- Decision Workspace
+- End-to-End Evaluation
 
-미구현:
+평가 완료:
+
+- Jev `Choice`
+
+의도적 미적용:
 
 - Jev production routing
 
-## 계획 Decision Pack
+## Decision Pack
 
-후속 Phase 구현 계획.
+SpendGuard는 아래 6개 Decision Pack을 지원합니다.
 
 | Pack | 처리 대상 |
 | --- | --- |
@@ -237,12 +239,6 @@ Decision Workspace는 하나의 자연어 질문에서 시작해 필요한 입�
 | Validation | Pydantic |
 | Test | pytest |
 | Frontend | HTML / CSS / JavaScript |
-
-후속 Phase 계획:
-
-| 구분 | 기술 |
-| --- | --- |
-| HTTP | HTTPX |
 
 ## 실행
 
