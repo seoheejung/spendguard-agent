@@ -21,6 +21,7 @@
         <p class="nav-label">WORKSPACE</p>
         <a class="nav-link active" href="#workspace">Ask</a>
         <a class="nav-link" href="#agent-result">Agent result</a>
+        <a class="nav-link" href="#sources">Sources</a>
         <a class="nav-link" href="#calculation-workspace">Calculations</a>
         <a class="nav-link" href="#calculation-result">Calculation / MCP result</a>
       </nav>
@@ -51,6 +52,18 @@
             <button class="quiet-button" type="button" data-inspect="agent">상세 보기</button>
           </div>
           <div id="agent-cards" class="card-grid"></div>
+        </section>
+
+        <section id="sources" class="result-section" aria-labelledby="sources-heading" hidden>
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">CURRENT INFORMATION / SOURCES</p>
+              <h2 id="sources-heading">외부 확인 사실</h2>
+            </div>
+            <p id="research-status" class="form-note" aria-live="polite"></p>
+          </div>
+          <p id="research-note" class="form-note"></p>
+          <div id="source-cards" class="card-grid"></div>
         </section>
 
         <section id="calculation-workspace" class="calculation-panel solid-panel" aria-labelledby="calculation-heading">

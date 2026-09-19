@@ -74,7 +74,7 @@ flowchart TD
 | Phase 3 | Calculation Tools | 완료 |
 | Phase 4 | MCP Server | 완료 |
 | Phase 4.5 | Decision Workspace UI | 완료 |
-| Phase 5 | Current Information Research | 예정 |
+| Phase 5 | Current Information Research | 완료 |
 | Phase 6 | Decision Packs | 예정 |
 | Phase 7 | End-to-End Evaluation | 예정 |
 
@@ -158,6 +158,20 @@ FastMCP 4.0.0 기반 stdio MCP Server와 독립 MCP Client 구현. Phase 3 Calcu
 | 전체 pytest | 41 passed |
 
 Web Search, Researching, Decision Pack workflow는 미구현 상태로 노출하지 않습니다. 상세 내용은 [Phase 4.5 결과 문서](docs/results/phase4.5-decision-workspace-ui.md)를 참조하세요.
+
+## Phase 5 검증 결과
+
+OpenAI Agents SDK `WebSearchTool`로 가격·요금제·정책·프로모션·사양·판매 조건처럼 변동 가능한 외부 사실만 조사합니다. 사용자 제공 값과 결정론적 계산은 검색하지 않습니다.
+
+| 항목 | 결과 |
+| --- | --- |
+| 출처 추적 | `value`, `source_name`, `source_url`, `retrieved_at` |
+| 공식 출처 | Agent가 공식 URL을 우선 선택하고 실제 Responses citation/source URL과 교차 검증 |
+| 오류/불확실성 | 검색 결과 없음, 공식 출처 미확인, 상충 정보, 최신성 확인 불가, Tool 오류 처리 |
+| Workspace | 실제 research 요청에서만 `Researching`, Sources에 링크·조회 시각 표시 |
+| 실제 외부 호출 | 공식 Apple Korea query로 Web Search 호출 및 source URL/retrieved_at 확인 |
+
+Phase 6 Decision Pack workflow는 포함하지 않습니다. 상세 내용은 [Phase 5 결과 문서](docs/results/phase5-current-information-research.md)를 참조하세요.
 
 ## 기술 구성
 

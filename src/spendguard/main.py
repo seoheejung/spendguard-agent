@@ -10,7 +10,13 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ValidationError
 
-from spendguard.agent import AgentConfigurationError, AgentExecutionError, OpenAIAnalyzer
+from spendguard.agent import (
+    AgentConfigurationError,
+    AgentExecutionError,
+    OpenAIAnalyzer,
+    ResearchExecutionError,
+    needs_current_information,
+)
 from spendguard.calculations import (
     AnnualizedExpenseInput,
     CalculationResult,
@@ -33,6 +39,7 @@ from spendguard.models import (
     CalculationExecutionResult,
     CalculationRequest,
     CalculationToolName,
+    ResearchNeed,
 )
 
 
@@ -82,8 +89,17 @@ async def analyze(payload: AnalyzeRequest, request: Request) -> AnalysisResult:
         return await analyzer.analyze(payload.question)
     except AgentConfigurationError as error:
         raise HTTPException(status_code=503, detail=str(error)) from error
+    except ResearchExecutionError as error:
+        raise HTTPException(status_code=502, detail=str(error)) from error
     except AgentExecutionError as error:
         raise HTTPException(status_code=502, detail=str(error)) from error
+
+
+@app.post("/api/research-needed", response_model=ResearchNeed)
+async def research_needed(payload: AnalyzeRequest) -> ResearchNeed:
+    """Expose the backend-owned Phase 5 search decision to the workspace."""
+
+    return ResearchNeed(needed=needs_current_information(payload.question))
 
 
 def run_calculation(payload: CalculationRequest) -> CalculationResult:

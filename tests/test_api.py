@@ -1,6 +1,6 @@
 from fastapi.testclient import TestClient
 
-from spendguard.agent import AgentExecutionError, OpenAIAnalyzer
+from spendguard.agent import AgentExecutionError, OpenAIAnalyzer, ResearchExecutionError
 from spendguard.main import app
 from spendguard.models import AnalysisResult
 
@@ -20,6 +20,11 @@ class StubAnalyzer:
 class FailingAnalyzer:
     async def analyze(self, question: str) -> AnalysisResult:
         raise AgentExecutionError("The agent could not analyze this question.")
+
+
+class FailingResearchAnalyzer:
+    async def analyze(self, question: str) -> AnalysisResult:
+        raise ResearchExecutionError("Current information research could not be completed.")
 
 
 def test_analyze_returns_structured_output() -> None:
@@ -45,6 +50,26 @@ def test_analyze_returns_agent_error() -> None:
         response = client.post("/api/analyze", json={"question": "질문"})
 
     assert response.status_code == 502
+
+
+def test_analyze_returns_research_tool_error() -> None:
+    with TestClient(app) as client:
+        app.state.analyzer = FailingResearchAnalyzer()
+        response = client.post("/api/analyze", json={"question": "현재 가격"})
+
+    assert response.status_code == 502
+    assert response.json()["detail"] == "Current information research could not be completed."
+
+
+def test_research_needed_keeps_calculations_and_user_values_offline() -> None:
+    with TestClient(app) as client:
+        current_price = client.post("/api/research-needed", json={"question": "현재 아이폰 가격"})
+        calculation = client.post(
+            "/api/research-needed", json={"question": "100만원을 24개월 할부로 계산해줘"}
+        )
+
+    assert current_price.json() == {"needed": True}
+    assert calculation.json() == {"needed": False}
 
 
 def test_analyze_returns_configuration_error_without_openai_settings(

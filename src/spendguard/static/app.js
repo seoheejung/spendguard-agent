@@ -83,6 +83,37 @@ function renderAgentResult(result) {
   document.querySelector("#agent-result").hidden = false;
 }
 
+function renderSources(result) {
+  const section = document.querySelector("#sources");
+  const cards = document.querySelector("#source-cards");
+  cards.replaceChildren();
+  if (!result.research || !result.research.needed) {
+    section.hidden = true;
+    return;
+  }
+
+  document.querySelector("#research-status").textContent = result.research.status;
+  document.querySelector("#research-note").textContent = result.research.note;
+  for (const fact of result.external_facts) {
+    const card = document.createElement("article");
+    card.className = "result-card solid-panel";
+    const value = document.createElement("p");
+    value.textContent = fact.value;
+    const source = document.createElement("a");
+    source.href = fact.source_url;
+    source.target = "_blank";
+    source.rel = "noreferrer";
+    source.textContent = fact.source_name;
+    const retrieved = document.createElement("p");
+    retrieved.className = "form-note";
+    retrieved.textContent = `Retrieved: ${fact.retrieved_at}`;
+    card.append(Object.assign(document.createElement("h3"), { textContent: "확인 사실" }), value, source, retrieved);
+    cards.append(card);
+  }
+  if (!result.external_facts.length) cards.append(listCard("확인 사실", ["확정 가능한 외부 사실이 없습니다."]));
+  section.hidden = false;
+}
+
 function valueRows(values) {
   const list = document.createElement("dl");
   list.className = "value-list";
@@ -183,12 +214,21 @@ form.addEventListener("submit", async (event) => {
   setDecisionStatus("Needs Input");
   setError("");
   document.querySelector("#agent-result").hidden = true;
+  document.querySelector("#sources").hidden = true;
   try {
+    const preflight = await fetch("/api/research-needed", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question: question.value }) });
+    if (!preflight.ok) throw new Error("Research 필요 여부를 확인하지 못했습니다.");
+    const researchNeed = await preflight.json();
+    if (researchNeed.needed) {
+      agentStatus.textContent = "Agent researching";
+      setDecisionStatus("Researching");
+    }
     const response = await fetch("/api/analyze", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question: question.value }) });
     const body = await response.json();
     if (!response.ok) throw new Error(body.detail || "Agent 분석 요청에 실패했습니다.");
     state.agent = body;
     renderAgentResult(body);
+    renderSources(body);
     setDecisionStatus("Review");
   } catch (cause) {
     setError(cause.message);
