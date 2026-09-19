@@ -26,6 +26,8 @@
 | Tool Error Handling | 100% | MCP 오류 1 / 1이 `tool_error`로 처리 |
 | End-to-End Success | 100% | 20 / 20 expected Pack, status, schema, 근거 규칙 충족 |
 
+Source Coverage는 Phase 7의 외부 검색 대상 fixture 1건 기준 1 / 1(100%)이다. 전체 가능한 외부 정보 유형에 대한 일반화된 100% coverage를 의미하지 않는다.
+
 9개 계산 case는 기존 6개 Tool을 모두 사용했다. 각 MCP 결과의 `inputs`, `formula`, `intermediate`, `result`가 Phase 3 direct calculation과 일치하는지 확인했다. 계산 정확도는 9 / 9이며, Phase 4 MCP 독립 테스트의 6개 Tool direct/MCP 비교도 기존 회귀 테스트로 유지된다.
 
 로컬 측정의 전체 latency는 15,549.17ms였다. stdio MCP를 실제 호출한 9개 정상 계산 case는 약 1,684.73~1,926.56ms/case였고, 계산을 실행하지 않는 Pack/fallback은 0.01~0.03ms 수준이었다. 이 값은 로컬 프로세스 시작 비용을 포함하므로 외부 모델 latency와 직접 비교하지 않는다.
