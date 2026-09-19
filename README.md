@@ -49,7 +49,7 @@ flowchart TD
     Agent --> Result["Decision Result"]
 ```
 
-현재 Phase 6까지 완료된 상태입니다.
+현재 Phase 7까지 완료된 상태입니다.
 
 구현 완료:
 
@@ -61,11 +61,11 @@ flowchart TD
 - Web Search 기반 최신 정보 조사
 - Researching 상태 및 Sources UI
 - Decision Pack workflow 6종
+- End-to-End 고정 평가 및 회귀 검증
 
 미구현:
 
 - Jev production routing
-- End-to-End Evaluation
 
 ## 계획 Decision Pack
 
@@ -92,7 +92,7 @@ flowchart TD
 | Phase 4.5 | Decision Workspace UI | 완료 |
 | Phase 5 | Current Information Research | 완료 |
 | Phase 6 | Decision Packs | 완료 |
-| Phase 7 | End-to-End Evaluation | 예정 |
+| Phase 7 | End-to-End Evaluation | 완료 |
 
 ## 전체 흐름
 ```
@@ -203,6 +203,22 @@ Phase 6 Decision Pack workflow는 포함하지 않습니다. 상세 내용은 [P
 | 초기 절약 시나리오 | 15종 모두 Intent·필수 입력·검색·계산 조건으로 coverage 검증 |
 
 자동 구매·계약·구독 해지, 금융 계정 연동, 가격 예측은 포함하지 않습니다. 상세 내용은 [Phase 6 결과 문서](docs/results/phase6-decision-packs.md)를 참조하세요.
+
+## Phase 7 검증 결과
+
+`phase7-v1` 고정 평가 데이터 21건(Decision Pack workflow 20건, Web Search 오류 API 1건)을 첫 실행 전에 고정해 평가했습니다. 기존 `ambiguous-001`과 expected intent는 유지했습니다.
+
+| 항목 | 결과 |
+| --- | --- |
+| Code-owned Pack routing | 20 / 20 (100%) — 고정 structured output 이후 workflow routing |
+| Calculation Accuracy | 9 / 9 (100%), 기존 6개 Tool의 Direct/MCP 결과 일치 |
+| Required Data Accuracy | 20 / 20 (100%) |
+| Source Coverage / Unsupported Fact | 1 / 1 trace (100%) / 0건 |
+| 오류 처리 | MCP 오류 1 / 1 `tool_error`, Web Search 오류 API 502 |
+| End-to-End Success | 20 / 20 (100%) |
+| 실제 외부 호출 | OpenAI Web Search + MCP 1회, 공식 Apple URL·retrieved_at 확인 |
+
+Jev는 production routing에 사용하지 않습니다. Phase 2의 Jev 17-case 실측(16 / 17, `ambiguous-001` confidence 0.99 오분류)과 위 workflow 평가를 같은 모델 정확도로 합산하지 않았습니다. OpenAI Agent 결과 경계에서 usage와 정확한 Web Search tool-call 수가 확인되지 않아 Phase 7 비용을 추정하지 않았습니다. 상세 내용은 [Phase 7 결과 문서](docs/results/phase7-end-to-end-evaluation.md)를 참조하세요.
 
 ## 기술 구성
 

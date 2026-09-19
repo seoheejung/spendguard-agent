@@ -1,0 +1,157 @@
+{
+  "dataset_version": "phase7-v1",
+  "frozen_at": "2026-09-19",
+  "purpose": "Deterministic Decision Pack workflow evaluation. Agent outputs are fixed fixtures; they do not measure OpenAI model inference.",
+  "cases": [
+    {
+      "id": "purchase-ready-001",
+      "question": "Compare two laptop purchase options.",
+      "intent": "purchase",
+      "data": {"target": "laptop", "purpose": "study", "price": "100", "options": [{"name": "standard", "total_cost": "100"}, {"name": "discount", "total_cost": "80"}]},
+      "expected": {"pack": "purchase", "status": "ready", "missing_fields": [], "calculation": {"tool": "compare_costs", "result": {"lowest_cost_option": "discount", "lowest_total_cost": "80.00", "currency": "KRW", "difference_from_standard": "20.00", "difference_from_discount": "0.00"}}}
+    },
+    {
+      "id": "purchase-research-001",
+      "question": "What is the current official iPhone price?",
+      "intent": "purchase",
+      "research": "completed",
+      "data": {"target": "phone", "purpose": "work", "price": "100", "options": [{"name": "official", "total_cost": "100"}, {"name": "alternative", "total_cost": "90"}]},
+      "expected": {"pack": "purchase", "status": "ready", "missing_fields": [], "source_required": true, "calculation": {"tool": "compare_costs", "result": {"lowest_cost_option": "alternative", "lowest_total_cost": "90.00", "currency": "KRW", "difference_from_official": "10.00", "difference_from_alternative": "0.00"}}}
+    },
+    {
+      "id": "purchase-usage-ready-001",
+      "question": "Calculate the unit cost for a purchase.",
+      "intent": "purchase",
+      "data": {"target": "coffee capsules", "purpose": "home use", "price": "10", "total_cost": "10", "units": "3"},
+      "expected": {"pack": "purchase", "status": "ready", "missing_fields": [], "calculation": {"tool": "calculate_usage_cost", "result": {"cost_per_unit": "3.33", "currency": "KRW"}}}
+    },
+    {
+      "id": "recurring-ready-001",
+      "question": "Annualize this subscription cost.",
+      "intent": "recurring_cost",
+      "data": {"item": "subscription", "current_cost": "10", "period_months": "1"},
+      "expected": {"pack": "recurring_cost", "status": "ready", "missing_fields": [], "calculation": {"tool": "annualize_expense", "result": {"annual_amount": "120.00", "currency": "KRW"}}}
+    },
+    {
+      "id": "finance-installment-ready-001",
+      "question": "Calculate an installment cost.",
+      "intent": "finance_cost",
+      "data": {"amount": "1200", "term_months": 12, "rate_or_comparison": "installment", "principal": "1200", "annual_interest_rate_pct": "0"},
+      "expected": {"pack": "finance_cost", "status": "ready", "missing_fields": [], "calculation": {"tool": "calculate_installment", "result": {"monthly_payment": "100.00", "total_payment": "1200.00", "total_interest": "0.00", "currency": "KRW"}}}
+    },
+    {
+      "id": "finance-refinance-ready-001",
+      "question": "Compare refinancing costs.",
+      "intent": "finance_cost",
+      "data": {"amount": "1200", "term_months": 12, "rate_or_comparison": "refinance", "remaining_principal": "1200", "current_annual_interest_rate_pct": "0", "current_remaining_months": 12, "new_annual_interest_rate_pct": "0", "new_term_months": 12, "refinancing_fee": "10"},
+      "expected": {"pack": "finance_cost", "status": "ready", "missing_fields": [], "calculation": {"tool": "calculate_refinance", "result": {"new_remaining_total": "1210.00", "savings": "-10.00", "currency": "KRW"}}}
+    },
+    {
+      "id": "ownership-ready-001",
+      "question": "Calculate vehicle ownership cost.",
+      "intent": "ownership_cost",
+      "data": {"target": "vehicle", "ownership_months": 12, "purchase_cost": "1000", "monthly_ownership_cost": "100", "additional_cost": "50"},
+      "expected": {"pack": "ownership_cost", "status": "ready", "missing_fields": [], "calculation": {"tool": "calculate_tco", "result": {"tco": "2250.00", "currency": "KRW"}}}
+    },
+    {
+      "id": "quote-ready-001",
+      "question": "Compare a repair quote.",
+      "intent": "quote_audit",
+      "data": {"quote_items": [{"name": "repair"}], "options": [{"name": "quote", "total_cost": "120"}, {"name": "market", "total_cost": "100"}]},
+      "expected": {"pack": "quote_audit", "status": "ready", "missing_fields": [], "calculation": {"tool": "compare_costs", "result": {"lowest_cost_option": "market", "lowest_total_cost": "100.00", "currency": "KRW", "difference_from_quote": "20.00", "difference_from_market": "0.00"}}}
+    },
+    {
+      "id": "budget-ready-001",
+      "question": "Annualize a recurring budget expense.",
+      "intent": "budget_optimization",
+      "data": {"budget": "500", "amount": "20", "period_months": "1"},
+      "expected": {"pack": "budget_optimization", "status": "ready", "missing_fields": [], "calculation": {"tool": "annualize_expense", "result": {"annual_amount": "240.00", "currency": "KRW"}}}
+    },
+    {
+      "id": "budget-no-calculation-001",
+      "question": "Review my fixed monthly budget.",
+      "intent": "budget_optimization",
+      "data": {"budget": "500"},
+      "expected": {"pack": "budget_optimization", "status": "ready", "missing_fields": []}
+    },
+    {
+      "id": "unknown-001",
+      "question": "Tell me what to do.",
+      "intent": "unknown",
+      "data": {},
+      "expected": {"pack": null, "status": "needs_input", "missing_fields": ["decision pack context"]}
+    },
+    {
+      "id": "ambiguous-001",
+      "question": "I want to save money.",
+      "intent": "unknown",
+      "data": {},
+      "expected": {"pack": null, "status": "needs_input", "missing_fields": ["decision pack context"]}
+    },
+    {
+      "id": "purchase-missing-001",
+      "question": "Should I buy it?",
+      "intent": "purchase",
+      "data": {},
+      "expected": {"pack": "purchase", "status": "needs_input", "missing_fields": ["target", "purpose", "price or price_confirmation_needed"]}
+    },
+    {
+      "id": "recurring-missing-001",
+      "question": "Reduce my subscription.",
+      "intent": "recurring_cost",
+      "data": {},
+      "expected": {"pack": "recurring_cost", "status": "needs_input", "missing_fields": ["item", "current_cost"]}
+    },
+    {
+      "id": "finance-missing-001",
+      "question": "Reduce loan interest.",
+      "intent": "finance_cost",
+      "data": {},
+      "expected": {"pack": "finance_cost", "status": "needs_input", "missing_fields": ["amount", "term_months", "rate_or_comparison"]}
+    },
+    {
+      "id": "ownership-missing-001",
+      "question": "What does a car cost to own?",
+      "intent": "ownership_cost",
+      "data": {},
+      "expected": {"pack": "ownership_cost", "status": "needs_input", "missing_fields": ["target", "ownership_months"]}
+    },
+    {
+      "id": "quote-missing-001",
+      "question": "Review this quote.",
+      "intent": "quote_audit",
+      "data": {},
+      "expected": {"pack": "quote_audit", "status": "needs_input", "missing_fields": ["quote_items"]}
+    },
+    {
+      "id": "budget-missing-001",
+      "question": "Optimize my budget.",
+      "intent": "budget_optimization",
+      "data": {},
+      "expected": {"pack": "budget_optimization", "status": "needs_input", "missing_fields": ["budget or expenses"]}
+    },
+    {
+      "id": "research-no-results-001",
+      "question": "Find the current official price, if available.",
+      "intent": "purchase",
+      "research": "no_results",
+      "data": {"target": "phone", "purpose": "work", "price": "100"},
+      "expected": {"pack": "purchase", "status": "ready", "missing_fields": []}
+    },
+    {
+      "id": "mcp-error-001",
+      "question": "Calculate a loan cost when MCP fails.",
+      "intent": "finance_cost",
+      "mcp_error": true,
+      "data": {"amount": "1200", "term_months": 12, "rate_or_comparison": "installment", "principal": "1200", "annual_interest_rate_pct": "0"},
+      "expected": {"pack": "finance_cost", "status": "tool_error", "missing_fields": []}
+    },
+    {
+      "id": "web-search-error-001",
+      "question": "What is the current official price?",
+      "api_error": "research",
+      "data": {"target": "phone", "purpose": "work", "price": "100"},
+      "expected": {"http_status": 502, "detail": "Current information research could not be completed."}
+    }
+  ]
+}
