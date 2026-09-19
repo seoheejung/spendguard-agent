@@ -42,10 +42,18 @@
 | --- | --- |
 | Input tokens | 8,981 |
 | Output tokens | 1,319 |
+| Total tokens | 10,300 |
+| Requests | 17 |
 | Usage 완전성 | 17건 전체 수집 |
-| 비용 | 미계산 |
+| 계산 기준 비용 | $0.000377202 |
+| Dashboard 표시 비용 | $0.0004 |
+| Output token 비용 | 무료 |
 
-공식 가격 검증 불가 상태. 비용 추정 미수행.
+Jev input 가격: $0.042 / 1M tokens. Output token 가격: 무료.
+
+`8,981 / 1,000,000 × $0.042 = $0.000377202` 계산 기준 비용. TypeSafe Dashboard Spend `$0.0004` 표시값과 일치.
+
+공식 출처: [TypeSafe AI](https://typesafe.ai/), [Introducing System One Models & Jev](https://typesafe.ai/blog/introducing-system-one-models-and-jev).
 
 ## Phase 1 OpenAI baseline 비교
 
@@ -59,7 +67,7 @@
 | Mean Latency | 미측정 | 259.25ms |
 | p50 Latency | 미측정 | 238.50ms |
 | Usage | 미측정 | Input 8,981 / Output 1,319 |
-| Cost | 미확인 | 미계산 |
+| Cost | 미확인 | 계산 기준 $0.000377202 / Dashboard $0.0004 |
 
 동일 17개 고정 케이스 기준 정확도와 API 오류 비교 가능. Phase 1 지연 시간, usage, 비용 미수집 상태에 따른 해당 항목 직접 비교 불가.
 
