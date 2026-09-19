@@ -71,7 +71,7 @@ flowchart TD
 | Phase 0 | Repository Bootstrap | 완료 |
 | Phase 1 | Core Agent Baseline | 완료 |
 | Phase 2 | Jev Decision Layer Evaluation | 완료 |
-| Phase 3 | Calculation Tools | 예정 |
+| Phase 3 | Calculation Tools | 완료 |
 | Phase 4 | MCP Server | 예정 |
 | Phase 4.5 | Decision Workspace UI | 예정 |
 | Phase 5 | Current Information Research | 예정 |
@@ -119,6 +119,18 @@ OpenAI 기반 baseline을 고정 평가 데이터 17건으로 검증했습니다
 | 비용 | 미계산 |
 
 실패 케이스는 `ambiguous-001`이며, expected intent는 `unknown`, actual intent는 `budget_optimization`입니다. 상세 비교와 비용 미계산 근거는 [Phase 2 결과 문서](docs/results/phase2-jev-decision-layer.md)를 참조하세요.
+
+## Phase 3 검증 결과
+
+결정론적 비용 계산 Tool 6종 구현. 외부 API와 모델 호출 없는 로컬 계산.
+
+| 항목 | 결과 |
+| --- | --- |
+| Calculation Tool | 할부, 대환, 사용당 비용, 연간 환산, TCO, 비용 비교 |
+| 반올림 | `Decimal`, 소수점 둘째 자리, `ROUND_HALF_UP` |
+| 전체 pytest | 26 passed |
+
+계산식, 중간값, 입력, 결과의 추적 가능 구조. 상세 내용은 [Phase 3 결과 문서](docs/results/phase3-calculation-tools.md)를 참조하세요.
 
 ## 기술 구성
 
