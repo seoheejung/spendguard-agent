@@ -49,7 +49,7 @@ flowchart TD
     Agent --> Result["Decision Result"]
 ```
 
-현재 Phase 1에서는 OpenAI Agent 기반 baseline만 구현되어 있으며, Jev, MCP, Web Search, Calculation Tool은 아직 구현되지 않았습니다.
+현재 Phase 2 상태: OpenAI baseline과 Jev `Choice` Intent 평가 완료. Jev production routing, MCP, Web Search, Calculation Tool 미구현.
 
 ## 계획 Decision Pack
 
@@ -70,7 +70,7 @@ flowchart TD
 | --- | --- | --- |
 | Phase 0 | Repository Bootstrap | 완료 |
 | Phase 1 | Core Agent Baseline | 완료 |
-| Phase 2 | Jev Decision Layer Evaluation | 예정 |
+| Phase 2 | Jev Decision Layer Evaluation | 완료 |
 | Phase 3 | Calculation Tools | 예정 |
 | Phase 4 | MCP Server | 예정 |
 | Phase 5 | Current Information Research | 예정 |
@@ -91,6 +91,22 @@ OpenAI 기반 baseline을 고정 평가 데이터 17건으로 검증했습니다
 
 실패 케이스는 `ambiguous-001`이며, expected intent는 `unknown`, actual intent는 `budget_optimization`입니다. 상세 구현 및 평가 결과는 [Phase 1 결과 문서](docs/results/phase1-core-agent.md)를 참조하세요.
 
+## Phase 2 검증 결과
+
+동일 고정 평가 데이터 17건 기반 Jev `Choice` Intent 분류 검증. Jev production routing과 confidence threshold 미적용 상태.
+
+| 항목 | 결과 |
+| --- | --- |
+| Intent 정답 | 16 |
+| Intent 정확도 | 94.12% |
+| 평균 지연 시간 | 259.25ms |
+| p50 지연 시간 | 238.50ms |
+| API 오류 | 0 |
+| Usage | Input 8,981 / Output 1,319 |
+| 비용 | 미계산 |
+
+실패 케이스는 `ambiguous-001`이며, expected intent는 `unknown`, actual intent는 `budget_optimization`입니다. 상세 비교와 비용 미계산 근거는 [Phase 2 결과 문서](docs/results/phase2-jev-decision-layer.md)를 참조하세요.
+
 ## 기술 구성
 
 | 구분 | 기술 |
@@ -99,6 +115,7 @@ OpenAI 기반 baseline을 고정 평가 데이터 17건으로 검증했습니다
 | API | FastAPI |
 | Agent | OpenAI Agents SDK |
 | LLM API | OpenAI Responses API |
+| Decision Model Evaluation | TypeSafe Jev (`typesafe-sdk`) |
 | Validation | Pydantic |
 | Test | pytest |
 | Frontend | HTML / CSS / JavaScript |
@@ -107,7 +124,6 @@ OpenAI 기반 baseline을 고정 평가 데이터 17건으로 검증했습니다
 
 | 구분 | 기술 |
 | --- | --- |
-| Decision Model | TypeSafe Jev |
 | MCP | FastMCP |
 | HTTP | HTTPX |
 
@@ -125,6 +141,7 @@ uv run uvicorn spendguard.main:app --reload
 ```text
 OPENAI_API_KEY=
 OPENAI_MODEL=
+TYPESAFE_API_KEY=
 ```
 
 브라우저에서 `http://127.0.0.1:8000`을 엽니다. API 키 또는 모델 설정이 없으면 `/api/analyze`는 설정 오류를 `503`으로 반환합니다.
