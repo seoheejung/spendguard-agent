@@ -8,7 +8,7 @@ SpendGuard는 구매·구독·계약·생활비와 관련된 자연어 질문을
 
 역할을 분리합니다.
 
-- Jev: 좁고 닫힌 선택지의 판단과 routing
+- Jev: 좁고 닫힌 선택지의 typed judgment 평가 및 향후 routing 후보
 - OpenAI Agent: 복합 추론, Tool orchestration, 사용자용 설명
 - MCP / Code: 계산, 정규화, 비교 같은 결정론적 처리
 - Web Search: 가격·정책·요금제처럼 변동 가능한 외부 사실 확인
@@ -49,7 +49,23 @@ flowchart TD
     Agent --> Result["Decision Result"]
 ```
 
-현재 Phase 4.5 상태: OpenAI baseline, Jev `Choice` Intent 평가, 결정론적 Calculation Tool, stdio MCP Server, Decision Workspace UI 완료. Jev production routing, Web Search, Decision Pack workflow 미구현.
+현재 Phase 5까지 완료된 상태입니다.
+
+구현 완료:
+
+- OpenAI Agent baseline
+- Jev `Choice` Intent 평가
+- 결정론적 Calculation Tool 6종
+- FastMCP stdio Server / Client
+- Decision Workspace UI
+- Web Search 기반 최신 정보 조사
+- Researching 상태 및 Sources UI
+
+미구현:
+
+- Jev production routing
+- Decision Pack workflow
+- End-to-End Evaluation
 
 ## 계획 Decision Pack
 
@@ -116,9 +132,9 @@ OpenAI 기반 baseline을 고정 평가 데이터 17건으로 검증했습니다
 | p50 지연 시간 | 238.50ms |
 | API 오류 | 0 |
 | Usage | Input 8,981 / Output 1,319 |
-| 비용 | 미계산 |
+| 비용 | 계산 기준 $0.000377202 / Dashboard $0.0004 |
 
-실패 케이스는 `ambiguous-001`이며, expected intent는 `unknown`, actual intent는 `budget_optimization`입니다. 상세 비교와 비용 미계산 근거는 [Phase 2 결과 문서](docs/results/phase2-jev-decision-layer.md)를 참조하세요.
+실패 케이스는 `ambiguous-001`이며, expected intent는 `unknown`, actual intent는 `budget_optimization`입니다. 상세 비교와 usage 비용은 [Phase 2 결과 문서](docs/results/phase2-jev-decision-layer.md)를 참조하세요.
 
 ## Phase 3 검증 결과
 
@@ -157,7 +173,7 @@ FastMCP 4.0.0 기반 stdio MCP Server와 독립 MCP Client 구현. Phase 3 Calcu
 | 반응형 | Desktop 1440px, Mobile 500px 검증 |
 | 전체 pytest | 41 passed |
 
-Web Search, Researching, Decision Pack workflow는 미구현 상태로 노출하지 않습니다. 상세 내용은 [Phase 4.5 결과 문서](docs/results/phase4.5-decision-workspace-ui.md)를 참조하세요.
+Phase 4.5 완료 시점에는 Web Search, Researching, Decision Pack workflow를 구현하거나 노출하지 않았습니다. 상세 내용은 [Phase 4.5 결과 문서](docs/results/phase4.5-decision-workspace-ui.md)를 참조하세요.
 
 ## Phase 5 검증 결과
 

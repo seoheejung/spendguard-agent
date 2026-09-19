@@ -11,7 +11,7 @@
 
 ## 공식 문서 확인
 
-- OpenAI 공식 [Web search guide](https://developers.openai.com/api/docs/guides/tools-web-search)를 확인했다. 이 문서의 Responses `web_search` 도구, `web_search_call`, URL citation 형식을 기준으로 구현했다.
+- OpenAI 공식 [OpenAI Web Search guide](https://developers.openai.com/api/docs/guides/tools-web-search)를 확인했다. 이 문서의 Responses `web_search` 도구, `web_search_call`, URL citation 형식을 기준으로 구현했다.
 
 ## 로컬 단위/API/UI 검증
 
