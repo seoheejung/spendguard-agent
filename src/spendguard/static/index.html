@@ -3,43 +3,110 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SpendGuard</title>
+    <title>SpendGuard Decision Workspace</title>
     <link rel="stylesheet" href="/static/styles.css" />
   </head>
   <body>
-    <header class="topbar">
-      <a class="brand" href="/">SPENDGUARD</a>
-      <p id="agent-status" aria-live="polite">Agent status: ready</p>
+    <a class="skip-link" href="#workspace">작업 영역으로 건너뛰기</a>
+    <header class="app-header">
+      <a class="brand" href="/">SPENDGUARD <span>DECISION WORKSPACE</span></a>
+      <div class="agent-status" aria-live="polite">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span id="agent-status">Agent ready</span>
+      </div>
     </header>
-    <div class="shell">
-      <nav aria-label="Current workspace">
-        <a class="active" href="/">Today</a>
-        <span>Phase 1 / Core Agent</span>
+
+    <div class="app-shell">
+      <nav class="sidebar" aria-label="Decision Workspace 탐색">
+        <p class="nav-label">WORKSPACE</p>
+        <a class="nav-link active" href="#workspace">Ask</a>
+        <a class="nav-link" href="#agent-result">Agent result</a>
+        <a class="nav-link" href="#calculation-workspace">Calculations</a>
+        <a class="nav-link" href="#calculation-result">Calculation / MCP result</a>
       </nav>
-      <main>
-        <section class="panel input-panel" aria-labelledby="question-heading">
-          <p class="eyebrow">ASK / INTAKE</p>
-          <h1 id="question-heading">지출 관련 질문을 입력하세요</h1>
+
+      <main id="workspace" class="workspace" tabindex="-1">
+        <section class="question-panel solid-panel" aria-labelledby="question-heading">
+          <div class="section-heading">
+            <p class="eyebrow">ASK / INTAKE</p>
+            <p id="decision-status" class="decision-status" aria-live="polite">Needs Input</p>
+          </div>
+          <h1 id="question-heading">지출 관련 질문을 분석합니다.</h1>
           <form id="analysis-form">
             <label for="question">질문</label>
-            <textarea id="question" name="question" required maxlength="4000" placeholder="예: 월 8만원 통신비를 줄이고 싶어요."></textarea>
-            <button type="submit">분석 시작</button>
+            <textarea id="question" name="question" required maxlength="4000" placeholder="월 8만 원 통신비를 줄이고 싶어요."></textarea>
+            <div class="form-footer">
+              <p class="form-note">OpenAI Agent structured output</p>
+              <button type="submit">Agent 분석</button>
+            </div>
           </form>
         </section>
-        <section id="result" class="results" aria-live="polite" hidden>
-          <article class="panel conclusion">
-            <p class="eyebrow">DECISION STATUS</p>
-            <h2 id="intent">—</h2>
-            <p id="summary"></p>
-          </article>
-          <div class="detail-grid">
-            <article class="panel"><h2>확인된 사실</h2><ul id="known-facts"></ul></article>
-            <article class="panel"><h2>추가로 필요한 정보</h2><ul id="missing-fields"></ul></article>
-            <article class="panel"><h2>가정</h2><ul id="assumptions"></ul></article>
+
+        <section id="agent-result" class="result-section" aria-labelledby="agent-result-heading" hidden>
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">AGENT RESULT</p>
+              <h2 id="agent-result-heading">분석 결과</h2>
+            </div>
+            <button class="quiet-button" type="button" data-inspect="agent">상세 보기</button>
           </div>
+          <div id="agent-cards" class="card-grid"></div>
         </section>
+
+        <section id="calculation-workspace" class="calculation-panel solid-panel" aria-labelledby="calculation-heading">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">CALCULATION / MCP</p>
+              <h2 id="calculation-heading">결정론적 계산</h2>
+            </div>
+            <p class="form-note">Phase 3 / Phase 4</p>
+          </div>
+          <form id="calculation-form">
+            <div class="control-grid">
+              <div>
+                <label for="calculation-tool">Calculation Tool</label>
+                <select id="calculation-tool" name="tool"></select>
+              </div>
+              <div>
+                <label for="execution-mode">실행 경계</label>
+                <select id="execution-mode" name="execution">
+                  <option value="direct">Direct Function</option>
+                  <option value="mcp">MCP Tool</option>
+                </select>
+              </div>
+            </div>
+            <div id="calculation-fields" class="calculation-fields"></div>
+            <div class="form-footer">
+              <p id="calculation-hint" class="form-note"></p>
+              <button type="submit">계산 실행</button>
+            </div>
+          </form>
+        </section>
+
+        <section id="calculation-result" class="result-section" aria-labelledby="calculation-result-heading" hidden>
+          <div class="section-heading">
+            <div>
+              <p id="calculation-result-label" class="eyebrow">CALCULATION RESULT</p>
+              <h2 id="calculation-result-heading">계산 결과</h2>
+            </div>
+            <button class="quiet-button" type="button" data-inspect="calculation">상세 보기</button>
+          </div>
+          <div id="calculation-cards" class="card-grid"></div>
+        </section>
+
         <p id="error" class="error" role="alert" hidden></p>
       </main>
+
+      <aside id="inspector" class="inspector" aria-labelledby="inspector-heading" hidden>
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">DETAIL / INSPECTOR</p>
+            <h2 id="inspector-heading">상세 결과</h2>
+          </div>
+          <button id="close-inspector" class="icon-button" type="button" aria-label="상세 결과 닫기">×</button>
+        </div>
+        <div id="inspector-content"></div>
+      </aside>
     </div>
     <script src="/static/app.js"></script>
   </body>

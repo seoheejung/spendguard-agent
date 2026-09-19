@@ -1,8 +1,10 @@
-"""Phase 1 request and response schemas."""
+"""SpendGuard API request and response schemas."""
 
-from typing import Literal
+from typing import Any, Literal
 
 from pydantic import BaseModel, Field
+
+from spendguard.calculations import CalculationResult
 
 
 Intent = Literal[
@@ -30,3 +32,28 @@ class AnalyzeRequest(BaseModel):
     """Natural-language question submitted from the UI."""
 
     question: str = Field(min_length=1, max_length=4_000)
+
+
+CalculationToolName = Literal[
+    "calculate_installment",
+    "calculate_refinance",
+    "calculate_usage_cost",
+    "annualize_expense",
+    "calculate_tco",
+    "compare_costs",
+]
+
+
+class CalculationRequest(BaseModel):
+    """Existing calculation-tool request."""
+
+    tool: CalculationToolName
+    data: dict[str, Any]
+
+
+class CalculationExecutionResult(BaseModel):
+    """Calculation result with execution boundary."""
+
+    tool: CalculationToolName
+    execution: Literal["direct", "mcp"]
+    calculation: CalculationResult

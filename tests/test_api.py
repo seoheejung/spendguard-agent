@@ -59,3 +59,54 @@ def test_analyze_returns_configuration_error_without_openai_settings(
 
     assert response.status_code == 503
     assert response.json()["detail"] == "OPENAI_MODEL is required."
+
+
+def test_direct_calculation_returns_phase_three_result() -> None:
+    with TestClient(app) as client:
+        response = client.post(
+            "/api/calculations/direct",
+            json={
+                "tool": "calculate_usage_cost",
+                "data": {"total_cost": "10", "units": "3", "currency": "USD"},
+            },
+        )
+
+    assert response.status_code == 200
+    assert response.json() == {
+        "tool": "calculate_usage_cost",
+        "execution": "direct",
+        "calculation": {
+            "inputs": {"total_cost": "10", "units": "3", "currency": "USD"},
+            "formula": "cost_per_unit = total_cost / units",
+            "intermediate": {"units": "3"},
+            "result": {"cost_per_unit": "3.33", "currency": "USD"},
+        },
+    }
+
+
+def test_mcp_calculation_returns_phase_four_result() -> None:
+    with TestClient(app) as client:
+        response = client.post(
+            "/api/calculations/mcp",
+            json={
+                "tool": "calculate_usage_cost",
+                "data": {"total_cost": "10", "units": "3", "currency": "USD"},
+            },
+        )
+
+    assert response.status_code == 200
+    assert response.json()["execution"] == "mcp"
+    assert response.json()["calculation"]["result"] == {"cost_per_unit": "3.33", "currency": "USD"}
+
+
+def test_calculation_returns_validation_error() -> None:
+    with TestClient(app) as client:
+        response = client.post(
+            "/api/calculations/direct",
+            json={
+                "tool": "calculate_usage_cost",
+                "data": {"total_cost": "10", "units": "0", "currency": "USD"},
+            },
+        )
+
+    assert response.status_code == 422
