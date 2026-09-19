@@ -73,9 +73,22 @@ flowchart TD
 | Phase 2 | Jev Decision Layer Evaluation | 완료 |
 | Phase 3 | Calculation Tools | 예정 |
 | Phase 4 | MCP Server | 예정 |
+| Phase 4.5 | Decision Workspace UI | 예정 |
 | Phase 5 | Current Information Research | 예정 |
 | Phase 6 | Decision Packs | 예정 |
 | Phase 7 | End-to-End Evaluation | 예정 |
+
+## 전체 흐름
+```
+Agent baseline
+→ Jev 판단 비교
+→ 결정론적 계산
+→ MCP 연결
+→ 실제 화면 구성
+→ 최신 정보 조사
+→ Decision Pack 확장
+→ 전체 평가
+```
 
 ## Phase 1 검증 결과
 

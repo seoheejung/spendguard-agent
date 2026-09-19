@@ -305,6 +305,40 @@ Jev의 내부 판단 결과는 사용자 결론 자체가 아니라 workflow 근
 - Agent에서 MCP 호출
 - 기존 Function Tool과 MCP 결과 비교
 
+### Phase 4.5. Decision Workspace UI
+
+목표:
+
+- Phase 1~4에서 구현한 기능을 실제 SpendGuard 화면으로 연결
+
+구현:
+
+- Decision Workspace 기본 Layout
+- Sidebar Navigation
+- Search / Ask
+- Agent Status
+- Decision 상태 표현
+- Agent 결과 표시
+- Calculation / MCP 결과 표시
+- Detail / Inspector
+- Responsive / Accessibility
+
+원칙:
+
+- `DESIGN.md` 기준 준수
+- 실제 구현된 기능과 데이터만 표시
+- 구현되지 않은 기능의 Placeholder 생성 금지
+- 재사용 가능한 Layout과 Component 우선
+- Motion은 상태 변화와 사용자 Action에만 사용
+- 성능보다 시각 효과를 우선하지 않음
+
+제외:
+
+- Web Search
+- `Researching` 실제 동작
+- Decision Pack workflow
+- 새로운 계산 기능
+
 ### Phase 5. Current Information Research
 
 목표:
@@ -400,6 +434,8 @@ Jev, Code, MCP, Agent 중 어느 계층이 각 판단을 담당하는지 명시�
 - 최신 데이터 조사
 - 선택지 비교
 - 근거 표시
+- 실제 기능과 연결된 Decision Workspace
+- 재사용 가능한 UI 구조와 Responsive 대응
 
 ### 품질
 
