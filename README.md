@@ -1,35 +1,115 @@
 # SpendGuard
 
-SpendGuard는 소비 관련 자연어 질문에서 의도와 확인된 사실, 추가로 필요한 정보를 구조화하는 AI 의사결정 지원 프로젝트입니다.
+> Jev, OpenAI Agent, MCP를 활용해 구매·구독·비용 의사결정을 계산·비교·검증하는 프로젝트
 
-## 현재 구현 상태
+## 개요
 
-Phase 1 Core Agent Baseline이 구현되어 있습니다.
+SpendGuard는 구매·구독·계약·생활비와 관련된 자연어 질문을 분석하고, 필요한 정보 확인, 의미 판단, 결정론적 계산, 최신 정보 조사, 선택지 비교를 거쳐 검증 가능한 판단 근거를 제공하는 AI 의사결정 지원 프로젝트입니다.
 
-- FastAPI 애플리케이션과 기본 웹 UI
-- OpenAI Agents SDK 기반 단일 Agent
-- Pydantic Structured Output: `intent`, `summary`, `known_facts`, `missing_fields`, `assumptions`
-- 7개 Intent: `purchase`, `recurring_cost`, `finance_cost`, `ownership_cost`, `quote_audit`, `budget_optimization`, `unknown`
-- Phase 2 비교용 고정 평가 데이터 17건
+역할을 분리합니다.
 
-Jev, MCP, 계산 도구, Web Search, 사용자 인증, 데이터베이스는 구현하지 않았습니다.
+- Jev: 좁고 닫힌 선택지의 판단과 routing
+- OpenAI Agent: 복합 추론, Tool orchestration, 사용자용 설명
+- MCP / Code: 계산, 정규화, 비교 같은 결정론적 처리
+- Web Search: 가격·정책·요금제처럼 변동 가능한 외부 사실 확인
 
-## Phase 상태
+Jev는 Phase 2에서 Phase 1 OpenAI baseline과 비교 평가한 뒤 적용 범위를 결정합니다.
 
-| Phase | 상태 | 범위 |
+## 해결하려는 문제
+
+- 소비 관련 질문에서 필요한 조건 누락
+- 할부·대출·TCO·연간 절감액 계산 오류 가능성
+- 가격·요금제·정책 등 변동 정보의 최신성 문제
+- 근거 없는 추천
+- 사실·가정·계산·모델 판단의 혼합
+- 모든 판단을 하나의 생성형 모델에 맡기는 구조
+
+## 핵심 구조
+
+```mermaid
+flowchart TD
+    User["User"] --> Workflow["SpendGuard Workflow"]
+
+    Workflow --> Jev["Jev Decision Layer"]
+    Workflow --> Agent["OpenAI Agent"]
+
+    Jev --> Rules["Typed Judgment / Routing"]
+
+    Agent --> Search["Web Search"]
+    Agent --> MCP["SpendGuard MCP"]
+
+    MCP --> Calc["Deterministic Calculation"]
+    Search --> Evidence["Current Evidence"]
+
+    Rules --> Verify["Verification"]
+    Calc --> Verify
+    Evidence --> Verify
+
+    Verify --> Agent
+    Agent --> Result["Decision Result"]
+```
+
+현재 Phase 1에서는 OpenAI Agent 기반 baseline만 구현되어 있으며, Jev, MCP, Web Search, Calculation Tool은 아직 구현되지 않았습니다.
+
+## 계획 Decision Pack
+
+후속 Phase 구현 계획.
+
+| Pack | 처리 대상 |
+| --- | --- |
+| Purchase | 제품 구매, 중고, 대체재, 구매 시점 |
+| Recurring Cost | 구독, 통신비, 반복 지출 |
+| Finance Cost | 할부, 대출 변경 |
+| Ownership Cost | 자동차 등 장기 보유 비용 |
+| Quote Audit | 견적서, 계약 비용 |
+| Budget Optimization | 장보기, 여행, 최근 지출 |
+
+## 개발 단계
+
+| Phase | 범위 | 상태 |
 | --- | --- | --- |
-| Phase 1 | 완료 | Core Agent Baseline |
-| Phase 2 | 예정 | Jev Decision Layer Evaluation |
+| Phase 0 | Repository Bootstrap | 완료 |
+| Phase 1 | Core Agent Baseline | 완료 |
+| Phase 2 | Jev Decision Layer Evaluation | 예정 |
+| Phase 3 | Calculation Tools | 예정 |
+| Phase 4 | MCP Server | 예정 |
+| Phase 5 | Current Information Research | 예정 |
+| Phase 6 | Decision Packs | 예정 |
+| Phase 7 | End-to-End Evaluation | 예정 |
 
-## Phase 1 실제 평가
+## Phase 1 검증 결과
 
-고정 평가 데이터 17건을 `OPENAI_MODEL`에 설정된 모델로 실행한 결과는 다음과 같습니다.
+OpenAI 기반 baseline을 고정 평가 데이터 17건으로 검증했습니다.
 
-- Intent 정답: 16건
-- Intent 정확도: 94.12% (16/17)
-- 실패 케이스: `ambiguous-001` — expected `unknown`, actual `budget_optimization`
-- API 오류: 0건
-- pytest: 10 passed
+| 항목 | 결과 |
+| --- | --- |
+| 평가 케이스 | 17 |
+| Intent 정답 | 16 |
+| Intent 정확도 | 94.12% |
+| API 오류 | 0 |
+| pytest | 10 passed |
+
+실패 케이스는 `ambiguous-001`이며, expected intent는 `unknown`, actual intent는 `budget_optimization`입니다. 상세 구현 및 평가 결과는 [Phase 1 결과 문서](docs/results/phase1-core-agent.md)를 참조하세요.
+
+## 기술 구성
+
+| 구분 | 기술 |
+| --- | --- |
+| Language | Python 3.13 |
+| API | FastAPI |
+| Agent | OpenAI Agents SDK |
+| LLM API | OpenAI Responses API |
+| Validation | Pydantic |
+| Test | pytest |
+| Frontend | HTML / CSS / JavaScript |
+
+후속 Phase 계획:
+
+| 구분 | 기술 |
+| --- | --- |
+| Decision Model | TypeSafe Jev |
+| MCP | FastMCP |
+| HTTP | HTTPX |
 
 ## 실행
 
@@ -37,24 +117,53 @@ Python 3.13과 uv가 필요합니다.
 
 ```powershell
 uv sync --all-groups
-$env:OPENAI_API_KEY = "..."
-$env:OPENAI_MODEL = "..."
 uv run uvicorn spendguard.main:app --reload
 ```
 
-브라우저에서 `http://127.0.0.1:8000`을 열면 됩니다. API 키 또는 모델 설정이 없으면 `/api/analyze`는 설정 오류를 `503`으로 반환합니다.
+프로젝트 루트 `.env`에 다음 변수를 설정합니다.
 
-## 검증과 평가
+```text
+OPENAI_API_KEY=
+OPENAI_MODEL=
+```
+
+브라우저에서 `http://127.0.0.1:8000`을 엽니다. API 키 또는 모델 설정이 없으면 `/api/analyze`는 설정 오류를 `503`으로 반환합니다.
+
+## 검증
 
 ```powershell
 uv run pytest
 uv run python scripts/evaluate_phase1.py
 ```
 
-평가 스크립트는 `evals/phase1_cases.json`의 고정 17건을 현재 설정된 OpenAI 모델로 실행하고 Intent 정확도와 실패 케이스를 JSON으로 출력합니다.
+평가 스크립트는 `evals/phase1_cases.json`의 고정 평가 데이터를 사용합니다.
+
+## 프로젝트 구조
+
+```text
+spendguard-agent/
+├── .agents/
+├── .project/
+├── docs/
+│   ├── instructions/
+│   └── results/
+├── evals/
+├── scripts/
+├── src/
+├── tests/
+├── AGENTS.md
+├── DESIGN.md
+├── README.md
+├── pyproject.toml
+└── uv.lock
+```
 
 ## 문서
 
-- `.project/plan.md`: 프로젝트 계획
-- `docs/instructions/phase1-core-agent.md`: Phase 1 범위
-- `docs/results/phase1-core-agent.md`: 구현 및 검증 결과
+| 문서 | 역할 |
+| --- | --- |
+| `.project/plan.md` | 프로젝트 전체 기획 기준 |
+| `AGENTS.md` | 저장소 공통 작업 규칙 |
+| `DESIGN.md` | Web UI 디자인 기준 |
+| `docs/instructions/` | Phase별 작업 범위와 완료 기준 |
+| `docs/results/` | 실제 구현·검증 결과 |
