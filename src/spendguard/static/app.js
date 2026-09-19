@@ -31,7 +31,7 @@ const toolDefinitions = {
   },
 };
 
-const state = { agent: null, calculation: null };
+const state = { agent: null, calculation: null, decision: null };
 const form = document.querySelector("#analysis-form");
 const question = document.querySelector("#question");
 const agentStatus = document.querySelector("#agent-status");
@@ -43,6 +43,9 @@ const calculationFields = document.querySelector("#calculation-fields");
 const calculationHint = document.querySelector("#calculation-hint");
 const inspector = document.querySelector("#inspector");
 const inspectorContent = document.querySelector("#inspector-content");
+const decisionForm = document.querySelector("#decision-form");
+const decisionQuestion = document.querySelector("#decision-question");
+const decisionData = document.querySelector("#decision-data");
 
 function setDecisionStatus(value) {
   decisionStatus.textContent = value;
@@ -146,6 +149,38 @@ function renderCalculationResult(result) {
   cards.append(resultCard, formulaCard, intermediateCard);
   document.querySelector("#calculation-result-label").textContent = `${result.execution.toUpperCase()} RESULT / ${result.tool}`;
   document.querySelector("#calculation-result").hidden = false;
+}
+
+function renderDecisionResult(result) {
+  const cards = document.querySelector("#decision-cards");
+  cards.replaceChildren();
+  const conclusion = document.createElement("article");
+  conclusion.className = "result-card solid-panel conclusion-card";
+  conclusion.append(
+    Object.assign(document.createElement("p"), { className: "eyebrow", textContent: result.status }),
+    Object.assign(document.createElement("h3"), { textContent: result.pack || "unknown" }),
+    Object.assign(document.createElement("p"), { textContent: result.conclusion }),
+  );
+  cards.append(conclusion, listCard("Facts", result.facts), listCard("Assumptions", result.assumptions), listCard("Required data", result.missing_fields), listCard("Options", result.options), listCard("Risks", result.risks), listCard("Next actions", result.next_actions));
+  for (const calculation of result.calculations) {
+    const card = document.createElement("article");
+    card.className = "result-card solid-panel";
+    card.append(Object.assign(document.createElement("h3"), { textContent: `MCP / ${calculation.tool}` }), valueRows(calculation.calculation.result));
+    cards.append(card);
+  }
+  for (const source of result.sources) {
+    const card = document.createElement("article");
+    card.className = "result-card solid-panel";
+    const link = document.createElement("a");
+    link.href = source.source_url;
+    link.target = "_blank";
+    link.rel = "noreferrer";
+    link.textContent = source.source_name;
+    card.append(Object.assign(document.createElement("h3"), { textContent: "Source" }), Object.assign(document.createElement("p"), { textContent: source.value }), link, Object.assign(document.createElement("p"), { className: "form-note", textContent: `Retrieved: ${source.retrieved_at}` }));
+    cards.append(card);
+  }
+  document.querySelector("#decision-result-label").textContent = `DECISION PACK / ${result.pack || "UNKNOWN"}`;
+  document.querySelector("#decision-result").hidden = false;
 }
 
 function renderToolFields() {
@@ -260,6 +295,36 @@ calculationForm.addEventListener("submit", async (event) => {
     setError(cause instanceof SyntaxError ? "선택지 목록 JSON 형식을 확인하세요." : cause.message);
     setDecisionStatus("Needs Input");
   } finally {
+    button.disabled = false;
+  }
+});
+
+decisionForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const button = decisionForm.querySelector("button");
+  button.disabled = true;
+  setError("");
+  document.querySelector("#decision-result").hidden = true;
+  agentStatus.textContent = "Agent analyzing";
+  try {
+    const preflight = await fetch("/api/research-needed", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question: decisionQuestion.value }) });
+    if (!preflight.ok) throw new Error("Research 필요 여부를 확인하지 못했습니다.");
+    if ((await preflight.json()).needed) {
+      agentStatus.textContent = "Agent researching";
+      setDecisionStatus("Researching");
+    }
+    const response = await fetch("/api/decisions", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question: decisionQuestion.value, data: JSON.parse(decisionData.value || "{}") }) });
+    const body = await response.json();
+    if (!response.ok) throw new Error(body.detail || "Decision Pack 요청에 실패했습니다.");
+    state.decision = body;
+    renderDecisionResult(body);
+    setDecisionStatus(body.status === "ready" ? "Ready" : body.status === "needs_input" ? "Needs Input" : "Review");
+  } catch (cause) {
+    setError(cause instanceof SyntaxError ? "입력 JSON 형식을 확인하세요." : cause.message);
+    setDecisionStatus("Needs Input");
+    agentStatus.textContent = "Agent unavailable";
+  } finally {
+    if (agentStatus.textContent !== "Agent unavailable") agentStatus.textContent = "Agent ready";
     button.disabled = false;
   }
 });

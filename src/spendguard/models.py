@@ -123,3 +123,37 @@ class CalculationExecutionResult(BaseModel):
     tool: CalculationToolName
     execution: Literal["direct", "mcp"]
     calculation: CalculationResult
+
+
+DecisionPackName = Literal[
+    "purchase",
+    "recurring_cost",
+    "finance_cost",
+    "ownership_cost",
+    "quote_audit",
+    "budget_optimization",
+]
+DecisionStatus = Literal["needs_input", "ready", "tool_error"]
+
+
+class DecisionRequest(BaseModel):
+    """Input to a Phase 6 decision-pack workflow."""
+
+    question: str = Field(min_length=1, max_length=4_000)
+    data: dict[str, Any] = Field(default_factory=dict)
+
+
+class DecisionPackResult(BaseModel):
+    """Traceable result from a code-routed decision pack."""
+
+    pack: DecisionPackName | None
+    status: DecisionStatus
+    conclusion: str = Field(min_length=1)
+    facts: list[str] = Field(default_factory=list)
+    assumptions: list[str] = Field(default_factory=list)
+    missing_fields: list[str] = Field(default_factory=list)
+    calculations: list[CalculationExecutionResult] = Field(default_factory=list)
+    options: list[str] = Field(default_factory=list)
+    risks: list[str] = Field(default_factory=list)
+    next_actions: list[str] = Field(default_factory=list)
+    sources: list[ExternalFact] = Field(default_factory=list)

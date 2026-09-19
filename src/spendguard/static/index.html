@@ -22,6 +22,7 @@
         <a class="nav-link active" href="#workspace">Ask</a>
         <a class="nav-link" href="#agent-result">Agent result</a>
         <a class="nav-link" href="#sources">Sources</a>
+        <a class="nav-link" href="#decision-workspace">Decision Pack</a>
         <a class="nav-link" href="#calculation-workspace">Calculations</a>
         <a class="nav-link" href="#calculation-result">Calculation / MCP result</a>
       </nav>
@@ -64,6 +65,36 @@
           </div>
           <p id="research-note" class="form-note"></p>
           <div id="source-cards" class="card-grid"></div>
+        </section>
+
+        <section id="decision-workspace" class="question-panel solid-panel" aria-labelledby="decision-heading">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">DECISION PACK / PHASE 6</p>
+              <h2 id="decision-heading">의사결정 검토</h2>
+            </div>
+            <p class="form-note">필수 입력은 Pack 판단 후 코드가 확인합니다.</p>
+          </div>
+          <form id="decision-form">
+            <label for="decision-question">질문</label>
+            <textarea id="decision-question" name="question" required maxlength="4000"></textarea>
+            <label for="decision-data">확인 가능한 입력 (JSON)</label>
+            <textarea id="decision-data" name="data" placeholder='{"item":"mobile plan","current_cost":"80000","period_months":"1"}'>{}</textarea>
+            <div class="form-footer">
+              <p class="form-note">Agent, Web Search, 기존 MCP Calculation Tool 재사용</p>
+              <button type="submit">Decision Pack 실행</button>
+            </div>
+          </form>
+        </section>
+
+        <section id="decision-result" class="result-section" aria-labelledby="decision-result-heading" hidden>
+          <div class="section-heading">
+            <div>
+              <p id="decision-result-label" class="eyebrow">DECISION PACK RESULT</p>
+              <h2 id="decision-result-heading">의사결정 결과</h2>
+            </div>
+          </div>
+          <div id="decision-cards" class="card-grid"></div>
         </section>
 
         <section id="calculation-workspace" class="calculation-panel solid-panel" aria-labelledby="calculation-heading">

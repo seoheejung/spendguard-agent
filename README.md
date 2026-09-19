@@ -49,7 +49,7 @@ flowchart TD
     Agent --> Result["Decision Result"]
 ```
 
-현재 Phase 5까지 완료된 상태입니다.
+현재 Phase 6까지 완료된 상태입니다.
 
 구현 완료:
 
@@ -60,11 +60,11 @@ flowchart TD
 - Decision Workspace UI
 - Web Search 기반 최신 정보 조사
 - Researching 상태 및 Sources UI
+- Decision Pack workflow 6종
 
 미구현:
 
 - Jev production routing
-- Decision Pack workflow
 - End-to-End Evaluation
 
 ## 계획 Decision Pack
@@ -91,7 +91,7 @@ flowchart TD
 | Phase 4 | MCP Server | 완료 |
 | Phase 4.5 | Decision Workspace UI | 완료 |
 | Phase 5 | Current Information Research | 완료 |
-| Phase 6 | Decision Packs | 예정 |
+| Phase 6 | Decision Packs | 완료 |
 | Phase 7 | End-to-End Evaluation | 예정 |
 
 ## 전체 흐름
@@ -188,6 +188,21 @@ OpenAI Agents SDK `WebSearchTool`로 가격·요금제·정책·프로모션·�
 | 실제 외부 호출 | 공식 Apple Korea query로 Web Search 호출 및 source URL/retrieved_at 확인 |
 
 Phase 6 Decision Pack workflow는 포함하지 않습니다. 상세 내용은 [Phase 5 결과 문서](docs/results/phase5-current-information-research.md)를 참조하세요.
+
+## Phase 6 검증 결과
+
+6개 Decision Pack은 Agent의 structured intent를 코드 정책으로 Pack에 연결하고, Pack별 필수 입력을 확인한 뒤 필요한 경우 기존 stdio MCP Calculation Tool과 Phase 5 Web Search 결과를 재사용합니다. Jev는 Phase 2 평가 결과 때문에 production routing에 사용하지 않습니다.
+
+| 항목 | 결과 |
+| --- | --- |
+| Decision Pack | Purchase, Recurring Cost, Finance Cost, Ownership Cost, Quote Audit, Budget Optimization |
+| 필수 입력 | 코드 소유 Required Data 검사 및 `needs_input` fallback |
+| 계산 | 기존 MCP 6개 Tool 재사용, Tool 오류 시 확정 결론 생성 안 함 |
+| 외부 사실 | Phase 5 source 구조를 Sources와 Decision Result에 분리 표시 |
+| Workspace | 공통 Decision Pack form 및 데이터 기반 결과 Card |
+| 초기 절약 시나리오 | 15종 모두 Intent·필수 입력·검색·계산 조건으로 coverage 검증 |
+
+자동 구매·계약·구독 해지, 금융 계정 연동, 가격 예측은 포함하지 않습니다. 상세 내용은 [Phase 6 결과 문서](docs/results/phase6-decision-packs.md)를 참조하세요.
 
 ## 기술 구성
 

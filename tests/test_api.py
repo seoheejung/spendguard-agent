@@ -72,6 +72,25 @@ def test_research_needed_keeps_calculations_and_user_values_offline() -> None:
     assert calculation.json() == {"needed": False}
 
 
+def test_decision_pack_endpoint_reuses_mcp_calculation() -> None:
+    with TestClient(app) as client:
+        app.state.analyzer = StubAnalyzer()
+        response = client.post(
+            "/api/decisions",
+            json={
+                "question": "월 8만원 통신비를 줄이고 싶어요.",
+                "data": {"item": "mobile plan", "current_cost": "80", "period_months": "1"},
+            },
+        )
+
+    assert response.status_code == 200
+    body = response.json()
+    assert body["pack"] == "recurring_cost"
+    assert body["status"] == "ready"
+    assert body["calculations"][0]["execution"] == "mcp"
+    assert body["calculations"][0]["tool"] == "annualize_expense"
+
+
 def test_analyze_returns_configuration_error_without_openai_settings(
     monkeypatch,
 ) -> None:

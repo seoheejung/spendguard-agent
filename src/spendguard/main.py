@@ -1,4 +1,4 @@
-"""FastAPI application for the SpendGuard Phase 1 baseline."""
+"""FastAPI application for SpendGuard decision workflows."""
 
 from contextlib import asynccontextmanager
 from pathlib import Path
@@ -32,6 +32,7 @@ from spendguard.calculations import (
     calculate_usage_cost,
     compare_costs,
 )
+from spendguard.decision_packs import build_decision_pack
 from spendguard.mcp_client import call_calculation_tool
 from spendguard.models import (
     AnalysisResult,
@@ -39,6 +40,8 @@ from spendguard.models import (
     CalculationExecutionResult,
     CalculationRequest,
     CalculationToolName,
+    DecisionPackResult,
+    DecisionRequest,
     ResearchNeed,
 )
 
@@ -100,6 +103,22 @@ async def research_needed(payload: AnalyzeRequest) -> ResearchNeed:
     """Expose the backend-owned Phase 5 search decision to the workspace."""
 
     return ResearchNeed(needed=needs_current_information(payload.question))
+
+
+@app.post("/api/decisions", response_model=DecisionPackResult)
+async def decide(payload: DecisionRequest, request: Request) -> DecisionPackResult:
+    """Run a Phase 6 pack using the existing agent, research, and MCP boundaries."""
+
+    analyzer: Analyzer = request.app.state.analyzer
+    try:
+        analysis = await analyzer.analyze(payload.question)
+        return await build_decision_pack(analysis, payload.data)
+    except AgentConfigurationError as error:
+        raise HTTPException(status_code=503, detail=str(error)) from error
+    except ResearchExecutionError as error:
+        raise HTTPException(status_code=502, detail=str(error)) from error
+    except AgentExecutionError as error:
+        raise HTTPException(status_code=502, detail=str(error)) from error
 
 
 def run_calculation(payload: CalculationRequest) -> CalculationResult:
