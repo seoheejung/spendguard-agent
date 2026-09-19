@@ -220,6 +220,10 @@ Phase 6 Decision Pack workflow는 포함하지 않습니다. 상세 내용은 [P
 
 Jev는 production routing에 사용하지 않습니다. Phase 2의 Jev 17-case 실측(16 / 17, `ambiguous-001` confidence 0.99 오분류)과 위 workflow 평가를 같은 모델 정확도로 합산하지 않았습니다. OpenAI Agent 결과 경계에서 usage와 정확한 Web Search tool-call 수가 확인되지 않아 Phase 7 비용을 추정하지 않았습니다. 상세 내용은 [Phase 7 결과 문서](docs/results/phase7-end-to-end-evaluation.md)를 참조하세요.
 
+## Decision Workspace UX
+
+Decision Workspace는 하나의 자연어 질문에서 시작해 필요한 입력만 추가로 받고, 결과를 먼저 보여준 뒤 Facts·Calculations·Sources·Assumptions는 Inspector에서 추적할 수 있게 구성했습니다. 상세 내용은 [UX Refinement 결과 문서](docs/results/chapter-decision-workspace-ux-refinement.md)를 참조하세요.
+
 ## 기술 구성
 
 | 구분 | 기술 |

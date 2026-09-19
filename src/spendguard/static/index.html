@@ -10,79 +10,58 @@
     <a class="skip-link" href="#workspace">작업 영역으로 건너뛰기</a>
     <header class="app-header">
       <a class="brand" href="/">SPENDGUARD <span>DECISION WORKSPACE</span></a>
-      <div class="agent-status" aria-live="polite">
-        <span class="status-dot" aria-hidden="true"></span>
-        <span id="agent-status">Agent ready</span>
-      </div>
+      <p id="decision-status" class="decision-status" aria-live="polite">Ready to help</p>
     </header>
 
     <div class="app-shell">
       <nav class="sidebar" aria-label="Decision Workspace 탐색">
-        <p class="nav-label">WORKSPACE</p>
-        <a class="nav-link active" href="#workspace">Ask</a>
-        <a class="nav-link" href="#agent-result">Agent result</a>
-        <a class="nav-link" href="#sources">Sources</a>
-        <a class="nav-link" href="#decision-workspace">Decision Pack</a>
-        <a class="nav-link" href="#calculation-workspace">Calculations</a>
-        <a class="nav-link" href="#calculation-result">Calculation / MCP result</a>
+        <a class="new-decision" href="#question-panel" data-new-decision>New decision</a>
+        <p class="nav-label">DECISION TYPES</p>
+        <button class="nav-link" type="button" data-template="I am deciding whether to buy something.">Purchase</button>
+        <button class="nav-link" type="button" data-template="I want to reduce a recurring cost.">Recurring cost</button>
+        <button class="nav-link" type="button" data-template="I want to compare financing costs.">Finance cost</button>
+        <button class="nav-link" type="button" data-template="I want to understand the cost of owning something.">Ownership cost</button>
+        <button class="nav-link" type="button" data-template="I want to review a quote.">Quote review</button>
+        <button class="nav-link" type="button" data-template="I want to optimize my budget.">Budget</button>
       </nav>
 
       <main id="workspace" class="workspace" tabindex="-1">
-        <section class="question-panel solid-panel" aria-labelledby="question-heading">
-          <div class="section-heading">
-            <p class="eyebrow">ASK / INTAKE</p>
-            <p id="decision-status" class="decision-status" aria-live="polite">Needs Input</p>
-          </div>
-          <h1 id="question-heading">지출 관련 질문을 분석합니다.</h1>
-          <form id="analysis-form">
+        <section id="question-panel" class="question-panel solid-panel" aria-labelledby="question-heading">
+          <p class="eyebrow">NEW DECISION</p>
+          <h1 id="question-heading">무엇을 결정하고 싶으신가요?</h1>
+          <p class="section-intro">가격, 반복 지출, 견적, 예산처럼 망설이는 선택을 편하게 적어주세요.</p>
+          <form id="decision-form">
             <label for="question">질문</label>
-            <textarea id="question" name="question" required maxlength="4000" placeholder="월 8만 원 통신비를 줄이고 싶어요."></textarea>
+            <textarea id="question" name="question" required maxlength="4000" placeholder="예: 월 통신비를 줄이고 싶어요."></textarea>
             <div class="form-footer">
-              <p class="form-note">OpenAI Agent structured output</p>
-              <button type="submit">Agent 분석</button>
+              <p class="form-note">필요한 정보만 이어서 물어볼게요.</p>
+              <button type="submit">결정 시작하기</button>
             </div>
           </form>
         </section>
 
-        <section id="agent-result" class="result-section" aria-labelledby="agent-result-heading" hidden>
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">AGENT RESULT</p>
-              <h2 id="agent-result-heading">분석 결과</h2>
-            </div>
-            <button class="quiet-button" type="button" data-inspect="agent">상세 보기</button>
-          </div>
-          <div id="agent-cards" class="card-grid"></div>
+        <section id="decision-progress" class="progress-panel" aria-label="Decision progress" hidden>
+          <ol>
+            <li data-progress="request">요청 확인</li>
+            <li data-progress="details">정보 확인</li>
+            <li data-progress="work">근거 확인</li>
+            <li data-progress="result">결과 준비</li>
+          </ol>
         </section>
 
-        <section id="sources" class="result-section" aria-labelledby="sources-heading" hidden>
+        <section id="required-data" class="required-data solid-panel" aria-labelledby="required-data-heading" hidden>
           <div class="section-heading">
             <div>
-              <p class="eyebrow">CURRENT INFORMATION / SOURCES</p>
-              <h2 id="sources-heading">외부 확인 사실</h2>
+              <p class="eyebrow">A FEW DETAILS</p>
+              <h2 id="required-data-heading">결정에 필요한 정보를 알려주세요</h2>
             </div>
-            <p id="research-status" class="form-note" aria-live="polite"></p>
           </div>
-          <p id="research-note" class="form-note"></p>
-          <div id="source-cards" class="card-grid"></div>
-        </section>
-
-        <section id="decision-workspace" class="question-panel solid-panel" aria-labelledby="decision-heading">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">DECISION PACK / PHASE 6</p>
-              <h2 id="decision-heading">의사결정 검토</h2>
-            </div>
-            <p class="form-note">필수 입력은 Pack 판단 후 코드가 확인합니다.</p>
-          </div>
-          <form id="decision-form">
-            <label for="decision-question">질문</label>
-            <textarea id="decision-question" name="question" required maxlength="4000"></textarea>
-            <label for="decision-data">확인 가능한 입력 (JSON)</label>
-            <textarea id="decision-data" name="data" placeholder='{"item":"mobile plan","current_cost":"80000","period_months":"1"}'>{}</textarea>
+          <p id="required-data-note" class="section-intro"></p>
+          <form id="required-data-form">
+            <div id="required-data-fields" class="required-data-fields"></div>
             <div class="form-footer">
-              <p class="form-note">Agent, Web Search, 기존 MCP Calculation Tool 재사용</p>
-              <button type="submit">Decision Pack 실행</button>
+              <p class="form-note">입력한 내용은 이 결정의 근거로만 사용됩니다.</p>
+              <button type="submit">결과 확인하기</button>
             </div>
           </form>
         </section>
@@ -90,52 +69,12 @@
         <section id="decision-result" class="result-section" aria-labelledby="decision-result-heading" hidden>
           <div class="section-heading">
             <div>
-              <p id="decision-result-label" class="eyebrow">DECISION PACK RESULT</p>
-              <h2 id="decision-result-heading">의사결정 결과</h2>
+              <p class="eyebrow">YOUR DECISION</p>
+              <h2 id="decision-result-heading">결정 결과</h2>
             </div>
+            <button class="quiet-button" type="button" data-inspect>근거와 출처 보기</button>
           </div>
-          <div id="decision-cards" class="card-grid"></div>
-        </section>
-
-        <section id="calculation-workspace" class="calculation-panel solid-panel" aria-labelledby="calculation-heading">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">CALCULATION / MCP</p>
-              <h2 id="calculation-heading">결정론적 계산</h2>
-            </div>
-            <p class="form-note">Phase 3 / Phase 4</p>
-          </div>
-          <form id="calculation-form">
-            <div class="control-grid">
-              <div>
-                <label for="calculation-tool">Calculation Tool</label>
-                <select id="calculation-tool" name="tool"></select>
-              </div>
-              <div>
-                <label for="execution-mode">실행 경계</label>
-                <select id="execution-mode" name="execution">
-                  <option value="direct">Direct Function</option>
-                  <option value="mcp">MCP Tool</option>
-                </select>
-              </div>
-            </div>
-            <div id="calculation-fields" class="calculation-fields"></div>
-            <div class="form-footer">
-              <p id="calculation-hint" class="form-note"></p>
-              <button type="submit">계산 실행</button>
-            </div>
-          </form>
-        </section>
-
-        <section id="calculation-result" class="result-section" aria-labelledby="calculation-result-heading" hidden>
-          <div class="section-heading">
-            <div>
-              <p id="calculation-result-label" class="eyebrow">CALCULATION RESULT</p>
-              <h2 id="calculation-result-heading">계산 결과</h2>
-            </div>
-            <button class="quiet-button" type="button" data-inspect="calculation">상세 보기</button>
-          </div>
-          <div id="calculation-cards" class="card-grid"></div>
+          <div id="decision-cards" class="decision-cards"></div>
         </section>
 
         <p id="error" class="error" role="alert" hidden></p>
@@ -144,8 +83,8 @@
       <aside id="inspector" class="inspector" aria-labelledby="inspector-heading" hidden>
         <div class="section-heading">
           <div>
-            <p class="eyebrow">DETAIL / INSPECTOR</p>
-            <h2 id="inspector-heading">상세 결과</h2>
+            <p class="eyebrow">DECISION DETAILS</p>
+            <h2 id="inspector-heading">근거와 출처</h2>
           </div>
           <button id="close-inspector" class="icon-button" type="button" aria-label="상세 결과 닫기">×</button>
         </div>

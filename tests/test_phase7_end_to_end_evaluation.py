@@ -87,7 +87,7 @@ def test_phase_seven_workspace_contract_remains_available() -> None:
     page = (static_dir / "index.html").read_text(encoding="utf-8")
     script = (static_dir / "app.js").read_text(encoding="utf-8")
 
-    for required in ("decision-form", "decision-result", "sources", "skip-link"):
+    for required in ("decision-form", "required-data-form", "decision-result", "inspector", "skip-link"):
         assert required in page
-    for required in ("Researching", "renderDecisionResult", "source_url", "retrieved_at"):
+    for required in ("Researching", "renderDecisionResult", "renderRequiredData", "source_url", "retrieved_at"):
         assert required in script
