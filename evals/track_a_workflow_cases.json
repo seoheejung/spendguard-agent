@@ -1,0 +1,29 @@
+{
+  "dataset_version": "track-a-workflow-v1",
+  "cases": [
+    {
+      "id":"e2e-purchase-missing-01",
+      "question":"Compare two laptop options for everyday university work and tell me which is the better value.",
+      "data":{},
+      "expected_intent":"purchase",
+      "expected_status":"needs_input",
+      "expected_source":false
+    },
+    {
+      "id":"e2e-current-plan-01",
+      "question":"What is the current official monthly price of the basic home internet plan in South Korea?",
+      "data":{"item":"home internet plan","current_cost":"unknown"},
+      "expected_intent":"recurring_cost",
+      "expected_status":"ready",
+      "expected_source":true
+    },
+    {
+      "id":"e2e-finance-calc-01",
+      "question":"Calculate the monthly payment for 1,200,000 KRW over 12 months at 0% annual interest.",
+      "data":{"amount":1200000,"term_months":12,"rate_or_comparison":0,"options":[{"name":"installment","amount":1200000}]},
+      "expected_intent":"finance_cost",
+      "expected_status":"ready",
+      "expected_source":false
+    }
+  ]
+}

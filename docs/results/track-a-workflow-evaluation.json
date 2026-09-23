@@ -1,0 +1,210 @@
+{
+  "dataset_version": "track-a-workflow-v1",
+  "fixture_sha256": "e66ed149212b366aa80ecb4fa64ba8cbe856001b3146621b2f64f7020a003613",
+  "model": "gpt-5.6-luna",
+  "measured_at": "2026-09-23T14:09:02.103424+00:00",
+  "total_elapsed_ms": 90135.31369999987,
+  "summary": {
+    "baseline": {
+      "agent_calls": 3,
+      "agent_latency_ms": 27809.286300000167,
+      "end_to_end_latency_ms": 27816.04440000001,
+      "input_tokens": 22466,
+      "cached_input_tokens": 0,
+      "output_tokens": 1734,
+      "web_search_calls": 2,
+      "source_coverage": 0.0,
+      "unsupported_fact_count": 0,
+      "model_cost_usd": 0.006574,
+      "web_search_cost_usd": 2e-05,
+      "total_openai_cost_usd": 0.006594,
+      "model_cost_status": "official_public_price"
+    },
+    "experimental": {
+      "agent_calls": 6,
+      "agent_latency_ms": 58479.69879999959,
+      "end_to_end_latency_ms": 62270.102800000124,
+      "input_tokens": 38997,
+      "cached_input_tokens": 0,
+      "output_tokens": 4134,
+      "web_search_calls": 3,
+      "source_coverage": 0.0,
+      "unsupported_fact_count": 0,
+      "model_cost_usd": 0.012760200000000001,
+      "web_search_cost_usd": 2.9999999999999997e-05,
+      "total_openai_cost_usd": 0.012790200000000002,
+      "model_cost_status": "official_public_price"
+    },
+    "agent_calls_reduced": -3,
+    "agent_input_tokens_reduced": -16531,
+    "jev": {
+      "calls": 9,
+      "input_tokens": 3809,
+      "output_tokens": 198,
+      "latency_ms": 3779.412699999966,
+      "cost_usd": 0.00015997800000000002
+    },
+    "end_to_end_success": {
+      "baseline": 2,
+      "experimental": 2,
+      "total": 3
+    },
+    "optimized_candidate": {
+      "equivalent_to": "baseline",
+      "separately_executed": false,
+      "jev_calls": 0,
+      "basis": "The selected Code-owned judgments already use this unchanged production path."
+    }
+  },
+  "outcomes": [
+    {
+      "id": "e2e-purchase-missing-01",
+      "expected_intent": "purchase",
+      "expected_status": "needs_input",
+      "expected_source": false,
+      "baseline": {
+        "calls": 1,
+        "latency_ms": 5469.647600000144,
+        "input_tokens": 786,
+        "cached_input_tokens": 0,
+        "output_tokens": 295,
+        "web_search_calls": 0,
+        "end_to_end_latency_ms": 5472.38040000002,
+        "intent": "purchase",
+        "status": "needs_input",
+        "source_count": 0,
+        "unsupported_fact_count": 0
+      },
+      "experimental": {
+        "calls": 2,
+        "latency_ms": 17872.421899999834,
+        "input_tokens": 10306,
+        "cached_input_tokens": 0,
+        "output_tokens": 1126,
+        "web_search_calls": 1,
+        "end_to_end_latency_ms": 18970.505900000033,
+        "intent": "purchase",
+        "status": "needs_input",
+        "source_count": 0,
+        "unsupported_fact_count": 0,
+        "jev": {
+          "additional_information": "yes",
+          "current_information_search": "yes",
+          "search_result_relevance": [],
+          "decision_result_review": "yes",
+          "review_agent_called": true,
+          "usage": {
+            "calls": 3,
+            "input_tokens": 1195,
+            "output_tokens": 66,
+            "latency_ms": 1095.2658000001065,
+            "cost_usd": 5.0190000000000006e-05
+          }
+        }
+      },
+      "baseline_success": true,
+      "experimental_success": true
+    },
+    {
+      "id": "e2e-current-plan-01",
+      "expected_intent": "recurring_cost",
+      "expected_status": "ready",
+      "expected_source": true,
+      "baseline": {
+        "calls": 1,
+        "latency_ms": 16936.30260000009,
+        "input_tokens": 20887,
+        "cached_input_tokens": 0,
+        "output_tokens": 1149,
+        "web_search_calls": 2,
+        "end_to_end_latency_ms": 16938.552099999924,
+        "intent": "recurring_cost",
+        "status": "ready",
+        "source_count": 0,
+        "unsupported_fact_count": 0
+      },
+      "experimental": {
+        "calls": 2,
+        "latency_ms": 27216.93489999984,
+        "input_tokens": 26970,
+        "cached_input_tokens": 0,
+        "output_tokens": 2106,
+        "web_search_calls": 2,
+        "end_to_end_latency_ms": 28648.856600000043,
+        "intent": "recurring_cost",
+        "status": "ready",
+        "source_count": 0,
+        "unsupported_fact_count": 0,
+        "jev": {
+          "additional_information": "yes",
+          "current_information_search": "yes",
+          "search_result_relevance": [],
+          "decision_result_review": "yes",
+          "review_agent_called": true,
+          "usage": {
+            "calls": 3,
+            "input_tokens": 1268,
+            "output_tokens": 66,
+            "latency_ms": 1426.8790999997236,
+            "cost_usd": 5.3256000000000006e-05
+          }
+        }
+      },
+      "baseline_success": false,
+      "experimental_success": false
+    },
+    {
+      "id": "e2e-finance-calc-01",
+      "expected_intent": "finance_cost",
+      "expected_status": "ready",
+      "expected_source": false,
+      "baseline": {
+        "calls": 1,
+        "latency_ms": 5403.336099999933,
+        "input_tokens": 793,
+        "cached_input_tokens": 0,
+        "output_tokens": 290,
+        "web_search_calls": 0,
+        "end_to_end_latency_ms": 5405.111900000065,
+        "intent": "finance_cost",
+        "status": "ready",
+        "source_count": 0,
+        "unsupported_fact_count": 0
+      },
+      "experimental": {
+        "calls": 2,
+        "latency_ms": 13390.341999999919,
+        "input_tokens": 1721,
+        "cached_input_tokens": 0,
+        "output_tokens": 902,
+        "web_search_calls": 0,
+        "end_to_end_latency_ms": 14650.740300000052,
+        "intent": "finance_cost",
+        "status": "ready",
+        "source_count": 0,
+        "unsupported_fact_count": 0,
+        "jev": {
+          "additional_information": "no",
+          "current_information_search": "no",
+          "search_result_relevance": [],
+          "decision_result_review": "yes",
+          "review_agent_called": true,
+          "usage": {
+            "calls": 3,
+            "input_tokens": 1346,
+            "output_tokens": 66,
+            "latency_ms": 1257.267800000136,
+            "cost_usd": 5.6532e-05
+          }
+        }
+      },
+      "baseline_success": true,
+      "experimental_success": true
+    }
+  ],
+  "openai_price_source": "https://developers.openai.com/api/docs/models/gpt-5.6-luna",
+  "openai_price_checked": "2026-09-23",
+  "openai_web_search_price_source": "https://developers.openai.com/api/docs/pricing",
+  "openai_cost_note": "Includes model tokens and Web Search calls; any other tools are reported separately.",
+  "code_search_decision": "needs_current_information(question) remains the active production decision in both paths."
+}

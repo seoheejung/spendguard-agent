@@ -1,5 +1,10 @@
 # SpendGuard
 
+### Post-v1 Jev Track A (2026-09-23)
+
+Track A live evaluation scored 11/12 isolated judgments. The paired experimental E2E path reached 2/3 success,
+with 6 Agent calls versus 3 for baseline and 0/1 source coverage on both paths. [Track A results](docs/results/track-a-jev-decision-prototyping.md)
+
 > Jev, OpenAI Agent, MCP를 활용해 구매·구독·비용 의사결정을 계산·비교·검증하는 프로젝트
 
 ## 개요

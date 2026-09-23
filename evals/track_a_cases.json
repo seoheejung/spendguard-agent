@@ -1,0 +1,17 @@
+{
+  "dataset_version": "track-a-v1",
+  "cases": [
+    {"id":"additional-yes-01","judgment_id":"additional_information","state":{"request":"Compare two laptops for my use.","known_details":"No use case, budget, or candidate models are supplied."},"expected":"yes"},
+    {"id":"additional-no-01","judgment_id":"additional_information","state":{"request":"Calculate the monthly total.","known_details":"The user supplied all amounts, dates, and the calculation rule."},"expected":"no"},
+    {"id":"additional-yes-02","judgment_id":"additional_information","state":{"request":"Should I accept this repair quote?","known_details":"The quote amount is supplied, but the described repair and vehicle are not."},"expected":"yes"},
+    {"id":"current-search-yes-01","judgment_id":"current_information_search","state":{"request":"What is the current monthly plan price?","known_details":"No current price or source is supplied."},"expected":"yes"},
+    {"id":"current-search-no-01","judgment_id":"current_information_search","state":{"request":"Calculate total interest from these supplied values.","known_details":"All loan inputs and the calculation request are supplied."},"expected":"no"},
+    {"id":"current-search-no-02","judgment_id":"current_information_search","state":{"request":"Compare these two options using the prices I pasted.","known_details":"Both current prices and conditions are supplied by the user."},"expected":"no"},
+    {"id":"relevance-yes-01","judgment_id":"search_result_relevance","state":{"query":"Current official annual fee for Plan A","result":{"title":"Plan A fees","snippet":"The official provider page lists the current annual fee and effective date.","source":"official provider"}},"expected":"relevant"},
+    {"id":"relevance-no-01","judgment_id":"search_result_relevance","state":{"query":"Current official annual fee for Plan A","result":{"title":"Weekend recipes","snippet":"A collection of pasta recipes.","source":"personal blog"}},"expected":"not_relevant"},
+    {"id":"relevance-unknown-01","judgment_id":"search_result_relevance","state":{"query":"Current official annual fee for Plan A","result":{"title":"Plan A discussion","snippet":"A forum post from an unknown date says fees may change.","source":"forum"}},"expected":"unknown"},
+    {"id":"review-yes-01","judgment_id":"decision_result_review","state":{"result":{"conclusion":"Option A is cheaper by 30,000 KRW.","evidence":"Option A 100,000 KRW; Option B 70,000 KRW.","calculation":"100000 - 70000 = 30000"},"constraints":"Claims must agree with the evidence and calculation."},"expected":"yes"},
+    {"id":"review-no-01","judgment_id":"decision_result_review","state":{"result":{"conclusion":"Option A is cheaper by 30,000 KRW.","evidence":"Option A 70,000 KRW; Option B 100,000 KRW.","calculation":"100000 - 70000 = 30000"},"constraints":"Claims must agree with the evidence and calculation."},"expected":"no"},
+    {"id":"review-yes-02","judgment_id":"decision_result_review","state":{"result":{"conclusion":"The plan currently costs 8,000 KRW.","evidence":"No source or retrieval date is attached to the price."},"constraints":"Current prices need traceable evidence."},"expected":"yes"}
+  ]
+}
