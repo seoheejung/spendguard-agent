@@ -3,93 +3,123 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SpendGuard Decision Workspace</title>
+    <title>SpendGuard | 소비 결정 도우미</title>
     <link rel="stylesheet" href="/static/styles.css" />
   </head>
   <body>
-    <a class="skip-link" href="#workspace">작업 영역으로 건너뛰기</a>
-    <header class="app-header">
-      <a class="brand" href="/">SPENDGUARD <span>DECISION WORKSPACE</span></a>
-      <p id="decision-status" class="decision-status" aria-live="polite">Ready to help</p>
+    <a class="skip-link" href="#workspace">결정 도우미로 건너뛰기</a>
+
+    <header class="site-header">
+      <div class="topbar">
+        <a class="brand" href="/" aria-label="SpendGuard 홈">
+          <span class="brand-mark" aria-hidden="true">S</span>
+          <span>SpendGuard</span>
+        </a>
+        <p class="brand-promise">비교하고 계산해, 더 나은 선택을</p>
+        <div class="topbar-actions">
+          <p id="decision-status" class="decision-status" data-status="ready" aria-live="polite">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span class="status-label">준비됨</span>
+          </p>
+          <a class="new-decision" href="#question" data-new-decision>새 질문</a>
+        </div>
+      </div>
     </header>
 
-    <div class="app-shell">
-      <nav class="sidebar" aria-label="Decision Workspace 탐색">
-        <a class="new-decision" href="#question-panel" data-new-decision>New decision</a>
-        <p class="nav-label">DECISION TYPES</p>
-        <button class="nav-link" type="button" data-template="I am deciding whether to buy something.">Purchase</button>
-        <button class="nav-link" type="button" data-template="I want to reduce a recurring cost.">Recurring cost</button>
-        <button class="nav-link" type="button" data-template="I want to compare financing costs.">Finance cost</button>
-        <button class="nav-link" type="button" data-template="I want to understand the cost of owning something.">Ownership cost</button>
-        <button class="nav-link" type="button" data-template="I want to review a quote.">Quote review</button>
-        <button class="nav-link" type="button" data-template="I want to optimize my budget.">Budget</button>
-      </nav>
-
-      <main id="workspace" class="workspace" tabindex="-1">
-        <section id="question-panel" class="question-panel solid-panel" aria-labelledby="question-heading">
-          <p class="eyebrow">NEW DECISION</p>
-          <h1 id="question-heading">무엇을 결정하고 싶으신가요?</h1>
-          <p class="section-intro">가격, 반복 지출, 견적, 예산처럼 망설이는 선택을 편하게 적어주세요.</p>
-          <form id="decision-form">
-            <label for="question">질문</label>
-            <textarea id="question" name="question" required maxlength="4000" placeholder="예: 월 통신비를 줄이고 싶어요."></textarea>
-            <div class="form-footer">
-              <p class="form-note">필요한 정보만 이어서 물어볼게요.</p>
-              <button type="submit">결정 시작하기</button>
-            </div>
-          </form>
-        </section>
-
-        <section id="decision-progress" class="progress-panel" aria-label="Decision progress" hidden>
-          <ol>
-            <li data-progress="request">요청 확인</li>
-            <li data-progress="details">정보 확인</li>
-            <li data-progress="work">근거 확인</li>
-            <li data-progress="result">결과 준비</li>
-          </ol>
-        </section>
-
-        <section id="required-data" class="required-data solid-panel" aria-labelledby="required-data-heading" hidden>
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">A FEW DETAILS</p>
-              <h2 id="required-data-heading">결정에 필요한 정보를 알려주세요</h2>
-            </div>
-          </div>
-          <p id="required-data-note" class="section-intro"></p>
-          <form id="required-data-form">
-            <div id="required-data-fields" class="required-data-fields"></div>
-            <div class="form-footer">
-              <p class="form-note">입력한 내용은 이 결정의 근거로만 사용됩니다.</p>
-              <button type="submit">결과 확인하기</button>
-            </div>
-          </form>
-        </section>
-
-        <section id="decision-result" class="result-section" aria-labelledby="decision-result-heading" hidden>
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">YOUR DECISION</p>
-              <h2 id="decision-result-heading">결정 결과</h2>
-            </div>
-            <button class="quiet-button" type="button" data-inspect>근거와 출처 보기</button>
-          </div>
-          <div id="decision-cards" class="decision-cards"></div>
-        </section>
-
-        <p id="error" class="error" role="alert" hidden></p>
-      </main>
-
-      <aside id="inspector" class="inspector" aria-labelledby="inspector-heading" hidden>
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">DECISION DETAILS</p>
-            <h2 id="inspector-heading">근거와 출처</h2>
-          </div>
-          <button id="close-inspector" class="icon-button" type="button" aria-label="상세 결과 닫기">×</button>
+    <main id="workspace" class="workspace" tabindex="-1">
+      <section id="question-panel" class="question-panel" aria-labelledby="question-heading">
+        <div class="question-copy">
+          <p class="eyebrow">돈 쓰기 전에</p>
+          <h1 id="question-heading">지출 전, 비교하고 계산해보세요.</h1>
+          <p class="section-intro">가격·조건·총비용을 비교해 선택에 필요한 근거를 보여드립니다.</p>
         </div>
-        <div id="inspector-content"></div>
-      </aside>
+        <form id="decision-form" class="decision-form">
+          <label class="sr-only" for="question">무엇을 비교하고 계산할까요?</label>
+          <div class="question-composer">
+            <span class="composer-icon" aria-hidden="true">⌕</span>
+            <textarea id="question" name="question" required maxlength="4000" rows="3" placeholder="예: 노트북을 지금 사도 될지, 더 저렴하게 살 수 있는지 비교해줘"></textarea>
+            <button type="submit">
+              <span>비교하고 계산하기</span>
+              <span class="button-arrow" aria-hidden="true">→</span>
+            </button>
+          </div>
+          <p class="form-note">질문 하나로 시작하면 필요한 정보만 이어서 확인해요.</p>
+          <div id="template-guidance" class="template-guidance" aria-live="polite" hidden></div>
+        </form>
+      </section>
+
+      <section class="scenario-section" aria-labelledby="scenario-heading">
+        <div class="section-heading scenario-heading">
+          <div>
+            <p class="eyebrow">바로 시작하기</p>
+            <h2 id="scenario-heading">어떤 소비를 고민하고 있나요?</h2>
+          </div>
+          <p class="section-intro">상황을 고르면 원문 템플릿을 바로 수정할 수 있어요.</p>
+        </div>
+        <div id="scenario-groups" class="scenario-groups"></div>
+      </section>
+
+      <section class="clarity-strip" aria-label="SpendGuard가 돕는 방식">
+        <span>가격만 보지 않고</span>
+        <strong>조건 · 혜택 · 총비용</strong>
+        <span>까지 함께 판단합니다.</span>
+      </section>
+
+      <div class="workspace-body">
+        <div class="decision-column">
+          <section id="required-data" class="required-data" aria-labelledby="required-data-heading" hidden>
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">정보 확인</p>
+                <h2 id="required-data-heading">판단에 필요한 정보만 알려주세요</h2>
+              </div>
+              <span class="section-count">필요한 항목만 표시</span>
+            </div>
+            <p id="required-data-note" class="section-intro"></p>
+            <form id="required-data-form">
+              <div id="required-data-fields" class="required-data-fields"></div>
+              <div class="form-footer">
+                <p class="form-note">입력한 내용은 이번 판단의 근거로만 사용됩니다.</p>
+                <button type="submit">계속 분석하기 <span aria-hidden="true">→</span></button>
+              </div>
+            </form>
+          </section>
+
+          <section id="decision-result" class="result-section" aria-labelledby="decision-result-heading" hidden>
+            <div class="section-heading result-heading">
+              <div>
+                <p class="eyebrow">판단 결과</p>
+                <h2 id="decision-result-heading">결론부터 확인하세요</h2>
+              </div>
+              <button class="quiet-button" type="button" data-inspect>
+                판단 근거 보기
+              </button>
+            </div>
+            <div id="decision-cards" class="decision-cards"></div>
+          </section>
+
+          <p id="error" class="error" role="alert" hidden></p>
+        </div>
+
+        <aside id="inspector" class="inspector" aria-labelledby="inspector-heading" hidden>
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">판단 근거</p>
+              <h2 id="inspector-heading">왜 이런 결론인가요?</h2>
+            </div>
+            <button id="close-inspector" class="icon-button" type="button" aria-label="판단 근거 닫기">×</button>
+          </div>
+          <p class="inspector-intro">확인한 사실, 계산, 출처를 나눠서 볼 수 있어요.</p>
+          <div id="inspector-content"></div>
+        </aside>
+      </div>
+    </main>
+    <div id="processing-blocker" class="processing-blocker" role="status" aria-live="polite" hidden>
+      <div class="processing-card">
+        <strong id="processing-message">요청을 확인하고 있어요</strong>
+        <p>잠시만요. 화면은 완료될 때까지 잠겨 있어요.</p>
+        <span class="processing-track" aria-hidden="true"><span></span></span>
+      </div>
     </div>
     <script src="/static/app.js"></script>
   </body>

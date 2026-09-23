@@ -89,5 +89,5 @@ def test_phase_seven_workspace_contract_remains_available() -> None:
 
     for required in ("decision-form", "required-data-form", "decision-result", "inspector", "skip-link"):
         assert required in page
-    for required in ("Researching", "renderDecisionResult", "renderRequiredData", "source_url", "retrieved_at"):
+    for required in ("정보 조사 중", "renderDecisionResult", "renderRequiredData", "source_url", "retrieved_at"):
         assert required in script

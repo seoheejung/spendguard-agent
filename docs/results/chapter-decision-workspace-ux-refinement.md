@@ -1,57 +1,51 @@
-# Decision Workspace UX Refinement Chapter 결과
+# Consumer Decision UI Reimagining 결과
 
-## 변경 전 UX 문제
+## 구현 방향
 
-- Ask와 Decision Pack에 질문 입력이 각각 있어 같은 질문을 두 번 입력해야 했다.
-- JSON 입력, Direct Function/MCP 선택, Tool 이름, Agent structured output 같은 구현 용어가 기본 화면에 노출됐다.
-- 계산 조작 화면이 결정 workflow보다 먼저 보이고, 결과보다 입력 Form이 화면을 차지했다.
-- Sources, assumptions, calculation trace가 사용자 결과와 분리된 개발자용 화면 구조였다.
+기존 관리형 화면 구조를 유지하지 않고, SpendGuard를 “돈 쓰기 전에 비교하고 계산하는 소비 판단 도구”로 다시 구성했다.
 
-## 변경한 화면 구조
+- 상단에는 제품명, 현재 상태, 새 질문만 남겼다.
+- 첫 화면은 단일 질문 입력과 실제 소비 상황으로 시작한다.
+- 시나리오는 `사기 전에`, `매달 새는 돈`, `큰돈 계산`, `생활비 줄이기`, `계약하기 전에`의 다섯 묶음으로 정리했다.
+- 카드에는 홍보 문구 대신 필요한 입력값을 표시하고, 통일된 stroke SVG 아이콘을 사용했다.
+- 결과는 결론, 핵심 숫자, 선택지, 주의할 점, 다음 할 일을 우선 표시한다.
+- 사실, 계산, 출처, 가정, 기술 상세는 Inspector로 분리했다.
 
-`DESIGN.md`는 변경하지 않았다. Workspace는 아래 사용자 흐름으로 재구성했다.
+## 편집 가능한 원문 템플릿
 
-```text
-Question → Required Data → Research / Calculation → Decision Result → Inspector
-```
+15개 소비 시나리오를 `scenarioDefinitions`에 보관한다. 카드가 선택되면 해당 템플릿을 질문 칸에 넣고 첫 번째 대괄호 입력값을 선택한다. 업로드 기능이 없는 현재 입력 방식에 맞춰 구독·보험·카드 소비내역·견적·연간 지출 템플릿은 “아래에 붙여넣을게”로 명시한다.
 
-- Header: 현재 decision 상태만 표시한다.
-- Sidebar: New decision과 6개 Decision Type 질문 템플릿만 제공한다. 템플릿은 질문 입력을 돕고 routing을 강제하지 않는다.
-- Workspace: 하나의 자연어 질문 Form, 진행 상태, 조건부 Required Data Form, Decision Result 순서다.
-- Inspector: 결과가 있을 때 Facts, Calculations, Sources, Assumptions와 접힌 Technical details를 표시한다.
+- `Tab`으로 다음 대괄호 입력값으로 이동한다.
+- 구독 목록·견적서·지출 내역처럼 붙여넣기가 필요한 템플릿에는 바로 사용할 수 있는 안내를 함께 표시한다.
+- 이미 작성 중인 질문은 카드 선택으로 덮어쓰지 않는다. 필요한 경우에만 “템플릿으로 바꾸기”를 사용한다.
+- 첫 화면의 예시 문구도 15개 원문 중 하나를 날짜 기준으로 보여 주며, 임의로 재작성하지 않는다.
+- `needs_input`은 결과가 아닌 보완 단계로 처리한다. 필요한 입력 폼만 표시하며, 응답의 내부 결론·위험·다음 할 일 문구는 결과 카드에 노출하지 않는다.
+- 요청·조사·보완 처리 중에는 두 CTA를 모두 비활성화해 중복 요청을 막는다.
 
-기본 화면에서 OpenAI Agent output, Direct Function/MCP 선택, Tool 이름, Phase 번호, raw JSON, backend endpoint는 제거했다. Tool 이름과 formula는 Inspector의 접힌 Technical details에서만 확인할 수 있다.
+## 선택한 시안
 
-## 단일 입력과 Required Data UX
+이미지 생성기로 만든 [Consumer Decision Rail 시안](../designs/decision-workspace-concepts/concept-d-consumer-decision-rail.png)을 선택했다. 단일 질문 입력, 실제 소비 시나리오, 결과 근거를 한 흐름으로 연결하면서도 가짜 지표나 구현되지 않은 기능을 화면에 추가하지 않는 방향이기 때문이다.
 
-질문은 하나의 `#question` textarea에서만 입력한다. UI는 기존 `/api/decisions`의 첫 결과를 그대로 사용하고, `needs_input`의 code-owned `missing_fields`만 읽어 추가 Form을 동적으로 만든다. 사용자는 JSON을 작성하지 않으며, UI가 입력값을 기존 payload 형식으로 구성해 같은 질문으로 다시 요청한다.
+## 유지한 동작 범위
 
-기존 `/api/research-needed`는 Researching 상태 표시에 계속 사용하고, `/api/decisions`는 기존 Agent, Web Search, Decision Pack, stdio MCP workflow를 그대로 실행한다. 새 API나 business logic은 추가하지 않았다.
-
-## Decision Result와 Inspector
-
-기본 결과 카드의 우선순위는 Conclusion, Key Numbers, Options, Risks, Next Actions다. 계산값이 있을 때만 Key Numbers를 표시하며, 근거 없는 절약 수치나 가격을 생성하지 않는다.
-
-Inspector는 다음 trace를 유지한다.
-
-- Facts: 기존 facts와 사용자가 추가한 Required Data
-- Calculations: 사용자 친화적인 계산 이름과 결과
-- Sources: 확인 사실, 출처명, 링크, 조회 시각
-- Assumptions
-- Technical details: Pack 식별자, Tool 이름, formula trace
+- 기존 `/api/research-needed`, `/api/decisions` 요청과 payload
+- 기존 Agent, Decision Pack, Web Search, MCP, Calculation workflow
+- `missing_fields` 기반의 동적 추가 입력
+- 실제 계산 결과가 있을 때만 핵심 숫자를 표시하는 규칙
 
 ## 검증
 
 - `node --check src/spendguard/static/app.js` 성공
-- Workspace/Decision Pack/Phase 7 관련 테스트: 44 passed
-- Desktop 1440×1100 로컬 화면 확인: 단일 질문 Form, 6개 템플릿, 결과 우선 구조를 확인했다.
-- Mobile 500×844 로컬 화면 확인: 단일 열 Workspace, 가로 스크롤 템플릿, 질문 Form 우선 구조를 확인했다.
-- UI contract 테스트는 단일 textarea, JSON/Direct/MCP 기본 UI 제거, dynamic required fields, Inspector trace, responsive/reduced-motion 기준을 검증한다.
-- 기존 `tests/test_decision_packs.py`의 6개 Pack 및 초기 절약 시나리오 15종 coverage가 통과했다.
-- 기존 `tests/test_phase7_end_to_end_evaluation.py`의 고정 평가 데이터와 expected 결과를 수정하지 않고 UI contract만 새 구조로 갱신했다.
+- `uv run pytest tests/test_workspace_ui.py -q`: 5 passed
+- 1440×1100, 1280×1100, 1024×1000, 390×844, 320×720에서 초기 화면을 확인했다.
+- 모든 폭에서 `document.documentElement.scrollWidth`가 viewport 폭을 넘지 않았다.
+- 15개 카드와 5개 그룹이 렌더링되는 것을 확인했다.
+- 할부 vs 일시불 카드에서 첫 `[가격]`이 자동 선택되고, `Tab` 후 `[금리]`이 선택되는 것을 확인했다.
+- `needs_input` 응답에서 필요한 입력 폼만 보이고 결과 영역은 숨겨지는 것을 브라우저에서 확인했다.
+- 진행 중 CTA 비활성화와 96px 질문 입력 영역 높이를 브라우저에서 확인했다.
+- 빠른 두 번 submit에도 사전 확인 1회와 결정 요청 1회만 발생하며, 진행 중에는 전체 화면 차단 레이어와 `inert`가 활성화되는 것을 브라우저에서 확인했다.
+- 캡처: [시안 및 viewport 기록](../designs/decision-workspace-concepts/README.md)
 
-## 범위와 미완료 사항
+## 제한 사항
 
-- Agent, Jev, Web Search, MCP, Calculation Tool, Decision Pack business logic과 backend API 계약은 변경하지 않았다.
-- 새 Decision Pack, Calculation Tool, 외부 서비스, History, Reports, 계정 기능은 추가하지 않았다.
-- Technical details는 Inspector에서만 제공하며, 기본 화면에 개발자용 통합 콘솔을 다시 노출하지 않았다.
+- 결과 상태의 실데이터 검증은 기존 API 응답 계약에 의존한다. 검증용 가짜 소비 데이터는 제품 화면이나 저장소에 추가하지 않았다.
