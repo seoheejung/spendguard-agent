@@ -261,10 +261,10 @@ Jev를 사용하는 경우 필요한 TypeSafe 설정만 별도로 유지합니�
 ## 2026-09-24 실측 상태
 
 - 실제 `/api/decisions` 15개 sparse 평가: baseline 8/15, Jev 10/15 criterion 통과. baseline 자동차 1건은 과거 비정상 종료이며 원인은 보존된 stderr가 없어 `unknown`입니다. 이후 Jev 평가의 자동차 요청은 답변까지 도달했습니다.
-- 공통 조사·비교 지침 수정 후 카드 혜택과 가격 협상에서 실제 Search가 수행됐습니다. 수정 전 전체 평가와 수정 후 관련 4건 재검증은 별도 파일로 보존합니다.
+- 공통 조사·비교 지침 수정 후 카드 혜택과 가격 협상에서 실제 Search가 수행됐습니다. 수정 전 전체 평가와 수정 후 관련 4건 재검증은 최종 결과 문서에 구분해 요약했습니다.
 - Jev는 지정된 네 후보에서만 호출됐고 네 결과 모두 `unknown`이었습니다. 총 실행 시간은 baseline 675.4초, Jev 758.7초였으며 Jev 도입 이득은 입증되지 않아 기본 UI는 baseline입니다.
 - 실제 브라우저에서 질문 제출 후 단일 답변 카드 렌더링을 확인했습니다. 사용자 화면에는 실행 trace가 나오지 않습니다.
-- 원시 trace, 수동 검토, criterion 점수와 제약은 [현재 런타임 결과](docs/results/chapter-b-codex-runtime-mvp.md)에 기록했습니다. 과거 Agents/Responses 결과는 아래의 역사 기록입니다.
+- 실측 지표, 사례별 판정, 수동 검토 결론과 제약은 [현재 런타임 결과](docs/results/chapter-b-codex-runtime-mvp.md)에 기록했습니다. 실행 중 생성된 원시 JSON/JSONL은 Git에 보존하지 않습니다. 과거 Agents/Responses 결과는 아래의 역사 기록입니다.
 
 ## 기존 이력
 

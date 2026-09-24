@@ -1,18 +1,39 @@
+# Environment
 .env
+.env.*
+!.env.example
+
+# Python
 .venv/
 __pycache__/
 *.py[cod]
-
 .pytest_cache/
-.ruff_cache/
 .mypy_cache/
-
+.ruff_cache/
+.coverage
+htmlcov/
 dist/
 build/
 *.egg-info/
 
+# Node
+node_modules/
+
+# IDE / OS
 .vscode/
 .idea/
-
 .DS_Store
 Thumbs.db
+
+# Logs
+*.log
+
+# Local temporary diagnostics
+/.tmp-*
+/tmp/
+
+# Runtime evaluation artifacts
+/docs/results/chapter-b-codex-*.json
+/docs/results/chapter-b-codex-*.jsonl
+/docs/results/chapter-b-chatgpt-only-baseline-*.json
+/docs/results/chapter-b-chatgpt-only-baseline-*.jsonl
