@@ -21,7 +21,7 @@ SpendGuard Web
 → 자연스러운 최종 답변
 ```
 
-현재 구현은 OpenAI Platform API를 제품 런타임에서 직접 호출하지 않습니다.
+현재 전환 목표에서는 OpenAI Platform API를 제품 런타임에 사용하지 않습니다.
 
 - `OPENAI_API_KEY` 미사용
 - `OPENAI_MODEL` 미사용
@@ -85,7 +85,7 @@ SpendGuard Web
 
 - 사용자 질문 해석
 - 복합 비교와 추론
-- Search / MCP 사용 판단. Jev 후보는 평가 요청에서만 명시적으로 선택
+- Search / MCP / Jev 사용 판단
 - 결과 통합
 - 최종 사용자 답변 생성
 
@@ -125,8 +125,6 @@ SpendGuard가 `codex login`, OAuth, 브라우저 로그인을 실행하지 않�
 - `annualize_expense`
 - `calculate_tco`
 - `compare_costs`
-- `calculate_repeated_cost` (단가 × 수량)
-- `sum_costs` (항목 합계와 예산 잔액)
 
 계산 결과를 LLM이 임의로 다시 계산하거나 변경하지 않습니다.
 
@@ -166,7 +164,7 @@ jev
 
 Jev 모드에서도 최종 답변은 Codex가 생성합니다.
 
-Jev의 판단은 Codex 입력에 전달하고 동일 분류를 반복하지 않도록 지시합니다. 이번 sparse 평가의 네 판단은 모두 정보 부족을 뜻하는 `unknown`이어서 생산 경로 적용 이득은 확인되지 않았습니다.
+Jev가 담당한 판단을 Codex가 다시 반복하지 않도록 구성합니다.
 
 측정:
 
@@ -237,10 +235,8 @@ Jev 후보
 Python 3.13과 `uv`를 사용합니다.
 
 ```powershell
-codex.cmd login status
-codex.cmd exec "Reply with only: OK"
 uv sync --all-groups
-uv run uvicorn spendguard.main:app --host 127.0.0.1 --port 8000
+uv run uvicorn spendguard.main:app --reload
 ```
 
 브라우저:
@@ -249,7 +245,7 @@ uv run uvicorn spendguard.main:app --host 127.0.0.1 --port 8000
 http://127.0.0.1:8000
 ```
 
-현재 런타임에서는 `.env`와 `.env.example`에서 아래 변수를 사용하지 않습니다.
+목표 런타임에서는 `.env`와 `.env.example`에서 아래 변수를 사용하지 않습니다.
 
 ```text
 OPENAI_API_KEY
@@ -257,14 +253,6 @@ OPENAI_MODEL
 ```
 
 Jev를 사용하는 경우 필요한 TypeSafe 설정만 별도로 유지합니다.
-
-## 2026-09-24 실측 상태
-
-- 실제 `/api/decisions` 15개 sparse 평가: baseline 8/15, Jev 10/15 criterion 통과. baseline 자동차 1건은 과거 비정상 종료이며 원인은 보존된 stderr가 없어 `unknown`입니다. 이후 Jev 평가의 자동차 요청은 답변까지 도달했습니다.
-- 공통 조사·비교 지침 수정 후 카드 혜택과 가격 협상에서 실제 Search가 수행됐습니다. 수정 전 전체 평가와 수정 후 관련 4건 재검증은 최종 결과 문서에 구분해 요약했습니다.
-- Jev는 지정된 네 후보에서만 호출됐고 네 결과 모두 `unknown`이었습니다. 총 실행 시간은 baseline 675.4초, Jev 758.7초였으며 Jev 도입 이득은 입증되지 않아 기본 UI는 baseline입니다.
-- 실제 브라우저에서 질문 제출 후 단일 답변 카드 렌더링을 확인했습니다. 사용자 화면에는 실행 trace가 나오지 않습니다.
-- 실측 지표, 사례별 판정, 수동 검토 결론과 제약은 [현재 런타임 결과](docs/results/chapter-b-codex-runtime-mvp.md)에 기록했습니다. 실행 중 생성된 원시 JSON/JSONL은 Git에 보존하지 않습니다. 과거 Agents/Responses 결과는 아래의 역사 기록입니다.
 
 ## 기존 이력
 
