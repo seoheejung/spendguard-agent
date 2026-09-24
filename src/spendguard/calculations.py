@@ -1,8 +1,9 @@
 """Deterministic Phase 3 cost calculations."""
 
 from decimal import Decimal, ROUND_HALF_UP
+from typing import Annotated
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, WithJsonSchema
 
 
 MONEY_QUANTUM = Decimal("0.01")
@@ -52,6 +53,28 @@ class UsageCostInput(BaseModel):
     currency: str = Field(min_length=1)
 
 
+class RepeatedCostInput(BaseModel):
+    """Unit price and quantity input."""
+
+    unit_cost: Decimal = Field(ge=0)
+    quantity: Decimal = Field(ge=0)
+    unit: str = Field(min_length=1)
+    currency: str = Field(min_length=1)
+
+
+class CostLine(BaseModel):
+    name: str = Field(min_length=1)
+    amount: Decimal = Field(ge=0)
+
+
+class SumCostsInput(BaseModel):
+    """Several cost lines and an optional budget."""
+
+    items: list[CostLine] = Field(min_length=1)
+    budget: Decimal | None = Field(default=None, ge=0)
+    currency: str = Field(min_length=1)
+
+
 class AnnualizedExpenseInput(BaseModel):
     """Period-expense annualization input."""
 
@@ -74,7 +97,9 @@ class CostOption(BaseModel):
     """Comparable option cost."""
 
     name: str = Field(min_length=1)
-    total_cost: Decimal = Field(ge=0)
+    total_cost: Annotated[
+        Decimal, WithJsonSchema({"type": "number"}, mode="validation")
+    ] = Field(ge=0)
 
 
 class CostComparisonInput(BaseModel):
@@ -163,6 +188,33 @@ def calculate_usage_cost(data: UsageCostInput) -> CalculationResult:
         formula="cost_per_unit = total_cost / units",
         intermediate={"units": data.units},
         result={"cost_per_unit": cost_per_unit, "currency": data.currency},
+    )
+
+
+def calculate_repeated_cost(data: RepeatedCostInput) -> CalculationResult:
+    """Total cost for a quantity of identical units."""
+
+    total = _money(data.unit_cost * data.quantity)
+    return CalculationResult(
+        inputs=data.model_dump(),
+        formula="total_cost = unit_cost * quantity",
+        intermediate={"quantity": data.quantity},
+        result={"total_cost": total, "currency": data.currency},
+    )
+
+
+def sum_costs(data: SumCostsInput) -> CalculationResult:
+    """One-pass cost total and remaining budget."""
+
+    total = _money(sum((item.amount for item in data.items), Decimal("0")))
+    result: dict[str, Decimal | str] = {"total_cost": total, "currency": data.currency}
+    if data.budget is not None:
+        result["budget_remaining"] = _money(data.budget - total)
+    return CalculationResult(
+        inputs=data.model_dump(),
+        formula="total_cost = sum(item.amount); budget_remaining = budget - total_cost",
+        intermediate={item.name: item.amount for item in data.items},
+        result=result,
     )
 
 

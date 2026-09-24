@@ -1,0 +1,180 @@
+{
+  "dataset_version": "chapter-b-sparse-v1",
+  "fixture_sha256": "a55ef56b9f2e5a67e671f9b1cb70c36d94251b9b537f6dbafc1b10cc325a3f24",
+  "status": "observations_scored",
+  "summary": {
+    "cases": 15,
+    "pass": 3,
+    "fail": 12,
+    "not_run": 0
+  },
+  "results": [
+    {
+      "case_id": "price-comparison-001",
+      "scenario": "최저가 비교",
+      "outcome": "fail",
+      "reasons": [
+        "missing:current_offers",
+        "missing:price_difference",
+        "mcp_call_mismatch"
+      ]
+    },
+    {
+      "case_id": "subscription-audit-001",
+      "scenario": "구독료 다이어트",
+      "outcome": "fail",
+      "reasons": [
+        "missing:overlap"
+      ]
+    },
+    {
+      "case_id": "mobile-plan-001",
+      "scenario": "통신비 점검",
+      "outcome": "fail",
+      "reasons": [
+        "missing:current_plans",
+        "missing:savings"
+      ]
+    },
+    {
+      "case_id": "insurance-overlap-001",
+      "scenario": "보험 중복 찾기",
+      "outcome": "fail",
+      "reasons": [
+        "missing:public_rule",
+        "search_call_mismatch"
+      ]
+    },
+    {
+      "case_id": "card-benefits-001",
+      "scenario": "카드 혜택 최적화",
+      "outcome": "fail",
+      "reasons": [
+        "status:error",
+        "missing:current_benefits",
+        "missing:net_benefit",
+        "search_call_mismatch"
+      ]
+    },
+    {
+      "case_id": "impulse-purchase-001",
+      "scenario": "충동구매 방지",
+      "outcome": "fail",
+      "reasons": [
+        "missing:alternatives"
+      ]
+    },
+    {
+      "case_id": "grocery-budget-001",
+      "scenario": "장보기 예산 절감",
+      "outcome": "fail",
+      "reasons": [
+        "missing:shopping_plan",
+        "missing:budget_total",
+        "search_call_mismatch",
+        "mcp_call_mismatch"
+      ]
+    },
+    {
+      "case_id": "travel-budget-001",
+      "scenario": "여행비 최적화",
+      "outcome": "pass",
+      "reasons": []
+    },
+    {
+      "case_id": "car-ownership-001",
+      "scenario": "자동차 유지비 계산",
+      "outcome": "fail",
+      "reasons": [
+        "missing:cost_components",
+        "missing:five_year_tco",
+        "search_call_mismatch",
+        "mcp_call_mismatch"
+      ]
+    },
+    {
+      "case_id": "installment-001",
+      "scenario": "할부 vs 일시불",
+      "outcome": "pass",
+      "reasons": []
+    },
+    {
+      "case_id": "refinance-001",
+      "scenario": "대출 갈아타기 계산",
+      "outcome": "pass",
+      "reasons": []
+    },
+    {
+      "case_id": "quote-audit-001",
+      "scenario": "견적서 바가지 체크",
+      "outcome": "fail",
+      "reasons": [
+        "search_call_mismatch"
+      ]
+    },
+    {
+      "case_id": "price-negotiation-001",
+      "scenario": "가격 협상 준비",
+      "outcome": "fail",
+      "reasons": [
+        "search_call_mismatch"
+      ]
+    },
+    {
+      "case_id": "annual-leaks-001",
+      "scenario": "연간 새는 돈 찾기",
+      "outcome": "fail",
+      "reasons": [
+        "missing:saving_scenarios",
+        "mcp_call_mismatch"
+      ]
+    },
+    {
+      "case_id": "purchase-review-001",
+      "scenario": "구매 전 최종 심사",
+      "outcome": "fail",
+      "reasons": [
+        "mcp_call_mismatch"
+      ]
+    }
+  ],
+  "review_notes": {
+    "price-comparison-001": [
+      "Search produced no usable cited comparison offer; no MCP comparison or price difference."
+    ],
+    "subscription-audit-001": [
+      "No direct comparison of Netflix and Disney+ content overlap or distinct value."
+    ],
+    "mobile-plan-001": [
+      "Cited Moyoplan listing did not expose the asserted 8,500 KRW and 5,500 KRW offers on review; savings tied to those offers are unverified.",
+      "MCP only annualized the current 80,000 KRW bill; alternative savings were calculated in the narrative."
+    ],
+    "insurance-overlap-001": [
+      "No sourced public rule for overlapping indemnity insurance; Search was skipped."
+    ],
+    "card-benefits-001": [
+      "MCP annualize_expense rejected the extracted approximate amount; status tool_error and no final benefit comparison."
+    ],
+    "impulse-purchase-001": [
+      "Answer calls monetary gain of 0 KRW confirmed without evidence; cost/utility comparison is therefore not fully supported."
+    ],
+    "grocery-budget-001": [
+      "Only category priorities and a budget allocation were given; no concrete shopping list, meals, item prices, or remaining budget."
+    ],
+    "car-ownership-001": [
+      "No sourced or explicitly assumed component amounts and no five-year total or monthly average."
+    ],
+    "quote-audit-001": [
+      "Search was skipped despite the fixture's current market context requirement."
+    ],
+    "price-negotiation-001": [
+      "Search was skipped despite the fixture's current installation-cost context requirement."
+    ],
+    "annual-leaks-001": [
+      "Savings scenarios omit uncertainty about satisfaction impact; MCP was not used for annualization."
+    ],
+    "purchase-review-001": [
+      "Search produced no usable cited city fare comparisons; MCP was not used."
+    ]
+  }
+}

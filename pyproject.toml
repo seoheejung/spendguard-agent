@@ -1,7 +1,7 @@
 [project]
 name = "spendguard"
 version = "0.1.0"
-description = "Phase 1 core-agent baseline for SpendGuard"
+description = "SpendGuard consumer decisions with authenticated Codex and deterministic MCP tools"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [

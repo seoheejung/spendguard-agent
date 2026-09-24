@@ -29,6 +29,8 @@ EXPECTED_TOOLS = {
     "calculate_installment",
     "calculate_refinance",
     "calculate_usage_cost",
+    "calculate_repeated_cost",
+    "sum_costs",
     "annualize_expense",
     "calculate_tco",
     "compare_costs",

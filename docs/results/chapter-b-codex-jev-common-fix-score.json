@@ -1,0 +1,288 @@
+{
+  "dataset_version": "chapter-b-sparse-v1",
+  "fixture_sha256": "a55ef56b9f2e5a67e671f9b1cb70c36d94251b9b537f6dbafc1b10cc325a3f24",
+  "mode": "jev",
+  "summary": {
+    "cases": 15,
+    "pass": 3,
+    "fail": 1,
+    "unreviewed": 0,
+    "not_run": 11,
+    "search_calls": 6,
+    "mcp_calls": 11,
+    "jev_calls": 1,
+    "codex_runs": 4,
+    "median_e2e_latency_ms": 48660.5,
+    "total_e2e_latency_ms": 261240,
+    "timeouts": 0,
+    "errors": 0,
+    "retries": 0,
+    "jev_judgments_reviewed": 1,
+    "jev_judgments_correct": 1
+  },
+  "results": [
+    {
+      "case_id": "price-comparison-001",
+      "scenario": "최저가 비교",
+      "outcome": "pass",
+      "reasons": [],
+      "metrics": {
+        "e2e_latency_ms": 64551,
+        "codex_runs": 1,
+        "search_calls": 2,
+        "mcp_calls": 2,
+        "mcp_failures": 0,
+        "jev_calls": 0,
+        "jev_judgment": null,
+        "attempts": 1,
+        "timeout": false,
+        "error": null,
+        "search_trace": [
+          {
+            "at_ms": 13869,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "맥북 에어 M5 16GB 512GB 가격 2026 한국 판매",
+              "site:apple.com/kr/shop MacBook Air M5 16GB 512GB 가격",
+              "맥북 에어 M5 13 16GB 512GB 최저가 다나와 네이버 2026"
+            ],
+            "result_count": 25
+          },
+          {
+            "at_ms": 24331,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "\"맥북에어13 M5\" \"16GB\" \"512GB\" \"원\"",
+              "\"맥북 에어 13 M5\" \"16GB\" \"512GB\" \"쿠팡\" 가격",
+              "\"MacBook Air\" \"M5\" \"16GB\" \"512GB\" \"1,6\" 원",
+              "site:apple.com/kr/shop/buy-mac/macbook-air/13-모델 \"₩\" \"16GB\" \"512GB\""
+            ],
+            "result_count": 15
+          },
+          {
+            "at_ms": 30263,
+            "type": "web_search",
+            "action": "other",
+            "queries": [],
+            "result_count": 5
+          },
+          {
+            "at_ms": 35031,
+            "type": "web_search",
+            "action": "find_in_page",
+            "queries": [],
+            "result_count": 3
+          }
+        ]
+      },
+      "quality_note": "Reviewed against the unchanged fixture and observed answer.",
+      "jev_judgment_correct": null
+    },
+    {
+      "case_id": "subscription-audit-001",
+      "scenario": "구독료 다이어트",
+      "outcome": "fail",
+      "reasons": [
+        "missing:overlap"
+      ],
+      "metrics": {
+        "e2e_latency_ms": 15132,
+        "codex_runs": 1,
+        "search_calls": 0,
+        "mcp_calls": 0,
+        "mcp_failures": 0,
+        "jev_calls": 1,
+        "jev_judgment": {
+          "candidate": "subscription_audit",
+          "item": "디즈니플러스 구독",
+          "choice": "unknown",
+          "confidence": 0.96,
+          "latency_ms": 650
+        },
+        "attempts": 1,
+        "timeout": false,
+        "error": null,
+        "search_trace": []
+      },
+      "quality_note": "Only says catalogues differ; no service-specific value comparison.",
+      "jev_judgment_correct": true
+    },
+    {
+      "case_id": "mobile-plan-001",
+      "outcome": "not_run"
+    },
+    {
+      "case_id": "insurance-overlap-001",
+      "outcome": "not_run"
+    },
+    {
+      "case_id": "card-benefits-001",
+      "scenario": "카드 혜택 최적화",
+      "outcome": "pass",
+      "reasons": [],
+      "metrics": {
+        "e2e_latency_ms": 148787,
+        "codex_runs": 1,
+        "search_calls": 3,
+        "mcp_calls": 9,
+        "mcp_failures": 1,
+        "jev_calls": 0,
+        "jev_judgment": null,
+        "attempts": 1,
+        "timeout": false,
+        "error": null,
+        "search_trace": [
+          {
+            "at_ms": 16209,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "site:card.kbcard.com 배달앱 할인 카드 배달의민족 요기요 월 할인한도 연회비",
+              "site:shinhancard.com 배달의민족 요기요 쿠팡이츠 할인 월 한도 카드 연회비",
+              "site:hyundaicard.com 배달앱 할인 카드 배민 쿠팡이츠 한도 연회비 2026",
+              "site:samsungcard.com 배달앱 할인 카드 배달의민족 쿠팡이츠 월 한도"
+            ],
+            "result_count": 18
+          },
+          {
+            "at_ms": 20627,
+            "type": "web_search",
+            "action": "other",
+            "queries": [],
+            "result_count": 4
+          },
+          {
+            "at_ms": 29619,
+            "type": "web_search",
+            "action": "find_in_page",
+            "queries": [],
+            "result_count": 3
+          },
+          {
+            "at_ms": 36571,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "배민 신한카드 밥친구 연회비 2026 신한카드",
+              "site:hyundaicard.com \"배민 한그릇카드\" \"3%\" \"30만원\"",
+              "site:hyundaicard.com \"배민 한그릇카드\" \"전월\" \"3%\""
+            ],
+            "result_count": 21
+          },
+          {
+            "at_ms": 51628,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "site:shinhancard.com \"배달앱\" \"10%\" \"월\" \"배달의민족\" \"쿠팡이츠\" 카드",
+              "site:kbcard.com 배달의민족 쿠팡이츠 요기요 할인 카드 연회비 월 한도",
+              "site:hanacard.co.kr 배달앱 배달의민족 요기요 쿠팡이츠 할인 2026 카드"
+            ],
+            "result_count": 17
+          },
+          {
+            "at_ms": 68151,
+            "type": "web_search",
+            "action": "find_in_page",
+            "queries": [],
+            "result_count": 6
+          },
+          {
+            "at_ms": 103516,
+            "type": "web_search",
+            "action": "other",
+            "queries": [],
+            "result_count": 2
+          }
+        ]
+      },
+      "quality_note": "Reviewed against the unchanged fixture and observed answer.",
+      "jev_judgment_correct": null
+    },
+    {
+      "case_id": "impulse-purchase-001",
+      "outcome": "not_run"
+    },
+    {
+      "case_id": "grocery-budget-001",
+      "outcome": "not_run"
+    },
+    {
+      "case_id": "travel-budget-001",
+      "outcome": "not_run"
+    },
+    {
+      "case_id": "car-ownership-001",
+      "outcome": "not_run"
+    },
+    {
+      "case_id": "installment-001",
+      "outcome": "not_run"
+    },
+    {
+      "case_id": "refinance-001",
+      "outcome": "not_run"
+    },
+    {
+      "case_id": "quote-audit-001",
+      "outcome": "not_run"
+    },
+    {
+      "case_id": "price-negotiation-001",
+      "scenario": "가격 협상 준비",
+      "outcome": "pass",
+      "reasons": [],
+      "metrics": {
+        "e2e_latency_ms": 32770,
+        "codex_runs": 1,
+        "search_calls": 1,
+        "mcp_calls": 0,
+        "mcp_failures": 0,
+        "jev_calls": 0,
+        "jev_judgment": null,
+        "attempts": 1,
+        "timeout": false,
+        "error": null,
+        "search_trace": [
+          {
+            "at_ms": 11338,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "에어컨 설치비 기본 설치 추가 배관 철거 비용 2026 벽걸이 스탠드 공식",
+              "삼성전자 에어컨 설치비 기본 설치 추가 비용 배관 미터 가격",
+              "LG전자 에어컨 설치 추가 비용 배관 설치비 안내"
+            ],
+            "result_count": 19
+          },
+          {
+            "at_ms": 16164,
+            "type": "web_search",
+            "action": "other",
+            "queries": [],
+            "result_count": 3
+          },
+          {
+            "at_ms": 22245,
+            "type": "web_search",
+            "action": "find_in_page",
+            "queries": [],
+            "result_count": 3
+          }
+        ]
+      },
+      "quality_note": "Reviewed against the unchanged fixture and observed answer.",
+      "jev_judgment_correct": null
+    },
+    {
+      "case_id": "annual-leaks-001",
+      "outcome": "not_run"
+    },
+    {
+      "case_id": "purchase-review-001",
+      "outcome": "not_run"
+    }
+  ]
+}

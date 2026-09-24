@@ -1,8 +1,8 @@
-"""FastAPI application for SpendGuard decision workflows."""
+"""FastAPI application for SpendGuard decisions and deterministic tools."""
 
 from contextlib import asynccontextmanager
 from pathlib import Path
-from typing import Callable, Protocol
+from typing import Callable, Literal
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.encoders import jsonable_encoder
@@ -10,46 +10,42 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ValidationError
 
-from spendguard.agent import (
-    AgentConfigurationError,
-    AgentExecutionError,
-    OpenAIAnalyzer,
-    ResearchExecutionError,
-    needs_current_information,
-)
+from spendguard.codex_runtime import CodexRunner, CodexRuntimeError
 from spendguard.calculations import (
     AnnualizedExpenseInput,
     CalculationResult,
     CostComparisonInput,
     InstallmentInput,
     RefinanceInput,
+    RepeatedCostInput,
+    SumCostsInput,
     TcoInput,
     UsageCostInput,
     annualize_expense,
     calculate_installment,
     calculate_refinance,
+    calculate_repeated_cost,
     calculate_tco,
     calculate_usage_cost,
     compare_costs,
+    sum_costs,
 )
-from spendguard.decision_packs import build_decision_pack
+from spendguard.jev_judgments import JUDGMENTS, JevError, judge_candidate
 from spendguard.mcp_client import call_calculation_tool
-from spendguard.models import (
-    AnalysisResult,
-    AnalyzeRequest,
-    CalculationExecutionResult,
-    CalculationRequest,
-    CalculationToolName,
-    DecisionPackResult,
-    DecisionRequest,
-    ResearchNeed,
-)
+from spendguard.models import CalculationExecutionResult, CalculationRequest, CalculationToolName
 
 
-class Analyzer(Protocol):
-    """Minimal analyzer interface for the API boundary."""
+class DecisionRequest(BaseModel):
+    question: str
+    mode: Literal["baseline", "jev"] = "baseline"
+    jev_candidate: Literal["subscription_audit", "quote_audit", "annual_leaks", "purchase_review"] | None = None
+    candidate_text: str | None = None
 
-    async def analyze(self, question: str) -> AnalysisResult: ...
+
+class DecisionResponse(BaseModel):
+    status: Literal["ready"] = "ready"
+    answer: str
+    metadata: dict
 
 
 STATIC_DIR = Path(__file__).parent / "static"
@@ -60,6 +56,8 @@ CALCULATION_TOOLS: dict[CalculationToolName, tuple[type[BaseModel], Calculator]]
     "calculate_installment": (InstallmentInput, calculate_installment),
     "calculate_refinance": (RefinanceInput, calculate_refinance),
     "calculate_usage_cost": (UsageCostInput, calculate_usage_cost),
+    "calculate_repeated_cost": (RepeatedCostInput, calculate_repeated_cost),
+    "sum_costs": (SumCostsInput, sum_costs),
     "annualize_expense": (AnnualizedExpenseInput, annualize_expense),
     "calculate_tco": (TcoInput, calculate_tco),
     "compare_costs": (CostComparisonInput, compare_costs),
@@ -68,7 +66,9 @@ CALCULATION_TOOLS: dict[CalculationToolName, tuple[type[BaseModel], Calculator]]
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    app.state.analyzer = OpenAIAnalyzer()
+    runner = CodexRunner()
+    await runner.check_authentication()
+    app.state.codex_runner = runner
     yield
 
 
@@ -78,46 +78,45 @@ app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
 
 @app.get("/", include_in_schema=False)
 async def index() -> FileResponse:
-    """Serve the Phase 1 UI."""
+    """Serve the SpendGuard UI."""
 
-    return FileResponse(STATIC_DIR / "index.html")
+    return FileResponse(STATIC_DIR / "index.html", headers={"Cache-Control": "no-store"})
 
 
-@app.post("/api/analyze", response_model=AnalysisResult)
-async def analyze(payload: AnalyzeRequest, request: Request) -> AnalysisResult:
-    """Analyze a natural-language question with the configured single agent."""
+@app.post("/api/decisions", response_model=DecisionResponse)
+async def decide(payload: DecisionRequest, request: Request) -> DecisionResponse:
+    """Answer a question in one isolated Codex turn."""
 
-    analyzer: Analyzer = request.app.state.analyzer
+    if not payload.question.strip():
+        raise HTTPException(status_code=422, detail="Question is required.")
+    if payload.jev_candidate and payload.jev_candidate not in JUDGMENTS:
+        raise HTTPException(status_code=422, detail="Unknown Jev candidate.")
     try:
-        return await analyzer.analyze(payload.question)
-    except AgentConfigurationError as error:
-        raise HTTPException(status_code=503, detail=str(error)) from error
-    except ResearchExecutionError as error:
+        jev = None
+        if payload.mode == "jev" and payload.jev_candidate:
+            jev = await judge_candidate(
+                payload.jev_candidate, payload.question, payload.candidate_text or payload.question
+            )
+        result = await request.app.state.codex_runner.run(
+            payload.question,
+            jev_context=jev.as_prompt() if jev else "",
+        )
+        return DecisionResponse(
+            answer=result.answer,
+            metadata={
+                "mode": payload.mode,
+                "latency_ms": result.latency_ms + (jev.latency_ms if jev else 0),
+                "codex_runs": result.codex_runs,
+                "search_calls": result.search_calls,
+                "search_sources": result.search_sources,
+                "mcp_calls": result.mcp_calls,
+                "jev_calls": 1 if jev else 0,
+                "jev_judgment": jev.as_metadata() if jev else None,
+            },
+        )
+    except JevError as error:
         raise HTTPException(status_code=502, detail=str(error)) from error
-    except AgentExecutionError as error:
-        raise HTTPException(status_code=502, detail=str(error)) from error
-
-
-@app.post("/api/research-needed", response_model=ResearchNeed)
-async def research_needed(payload: AnalyzeRequest) -> ResearchNeed:
-    """Expose the backend-owned Phase 5 search decision to the workspace."""
-
-    return ResearchNeed(needed=needs_current_information(payload.question))
-
-
-@app.post("/api/decisions", response_model=DecisionPackResult)
-async def decide(payload: DecisionRequest, request: Request) -> DecisionPackResult:
-    """Run a Phase 6 pack using the existing agent, research, and MCP boundaries."""
-
-    analyzer: Analyzer = request.app.state.analyzer
-    try:
-        analysis = await analyzer.analyze(payload.question)
-        return await build_decision_pack(analysis, payload.data)
-    except AgentConfigurationError as error:
-        raise HTTPException(status_code=503, detail=str(error)) from error
-    except ResearchExecutionError as error:
-        raise HTTPException(status_code=502, detail=str(error)) from error
-    except AgentExecutionError as error:
+    except CodexRuntimeError as error:
         raise HTTPException(status_code=502, detail=str(error)) from error
 
 

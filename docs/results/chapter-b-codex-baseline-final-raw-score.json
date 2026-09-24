@@ -1,0 +1,668 @@
+{
+  "dataset_version": "chapter-b-sparse-v1",
+  "fixture_sha256": "a55ef56b9f2e5a67e671f9b1cb70c36d94251b9b537f6dbafc1b10cc325a3f24",
+  "mode": "baseline",
+  "summary": {
+    "cases": 15,
+    "pass": 8,
+    "fail": 7,
+    "unreviewed": 0,
+    "not_run": 0,
+    "search_calls": 15,
+    "mcp_calls": 15,
+    "jev_calls": 0,
+    "codex_runs": 15,
+    "median_e2e_latency_ms": 41810,
+    "total_e2e_latency_ms": 675355,
+    "timeouts": 0,
+    "errors": 1,
+    "retries": 0,
+    "jev_judgments_reviewed": 0,
+    "jev_judgments_correct": 0
+  },
+  "results": [
+    {
+      "case_id": "price-comparison-001",
+      "scenario": "최저가 비교",
+      "outcome": "pass",
+      "reasons": [],
+      "metrics": {
+        "e2e_latency_ms": 67120,
+        "codex_runs": 1,
+        "search_calls": 2,
+        "mcp_calls": 2,
+        "mcp_failures": 0,
+        "jev_calls": 0,
+        "jev_judgment": null,
+        "attempts": 1,
+        "timeout": false,
+        "error": null,
+        "search_trace": [
+          {
+            "at_ms": 11886,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "맥북 에어 M5 16GB 512GB 13인치 가격 2026 판매",
+              "맥북 에어 M5 16GB 512GB 15인치 가격 2026 판매",
+              "site:apple.com/kr/shop 맥북 에어 M5 16GB 512GB 가격"
+            ],
+            "result_count": 23
+          },
+          {
+            "at_ms": 18024,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "맥북에어13 M5 16GB 512GB 가격 다나와 2026",
+              "맥북에어 M5 13 16 512 쿠팡 가격 2026",
+              "맥북에어 M5 13 16 512 네이버 쇼핑 1690000 2026",
+              "맥북에어 15 M5 16 512 최저가 2026"
+            ],
+            "result_count": 30
+          },
+          {
+            "at_ms": 23099,
+            "type": "web_search",
+            "action": "other",
+            "queries": [],
+            "result_count": 5
+          },
+          {
+            "at_ms": 28951,
+            "type": "web_search",
+            "action": "other",
+            "queries": [],
+            "result_count": 3
+          }
+        ]
+      },
+      "quality_note": "Reviewed against the unchanged fixture and observed answer.",
+      "jev_judgment_correct": null
+    },
+    {
+      "case_id": "subscription-audit-001",
+      "scenario": "구독료 다이어트",
+      "outcome": "fail",
+      "reasons": [
+        "missing:overlap"
+      ],
+      "metrics": {
+        "e2e_latency_ms": 12085,
+        "codex_runs": 1,
+        "search_calls": 0,
+        "mcp_calls": 0,
+        "mcp_failures": 0,
+        "jev_calls": 0,
+        "jev_judgment": null,
+        "attempts": 1,
+        "timeout": false,
+        "error": null,
+        "search_trace": []
+      },
+      "quality_note": "Distinct value of each service was not compared.",
+      "jev_judgment_correct": null
+    },
+    {
+      "case_id": "mobile-plan-001",
+      "scenario": "통신비 점검",
+      "outcome": "pass",
+      "reasons": [],
+      "metrics": {
+        "e2e_latency_ms": 64945,
+        "codex_runs": 1,
+        "search_calls": 1,
+        "mcp_calls": 4,
+        "mcp_failures": 0,
+        "jev_calls": 0,
+        "jev_judgment": null,
+        "attempts": 1,
+        "timeout": false,
+        "error": null,
+        "search_trace": [
+          {
+            "at_ms": 13683,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "site:ktmmobile.com 요금제 10GB 월 2026 10GB 알뜰폰",
+              "site:sk7mobile.com 10GB 요금제 월 통화",
+              "site:kt.com 5G 다이렉트 10GB 요금제 월 2026"
+            ],
+            "result_count": 17
+          },
+          {
+            "at_ms": 19501,
+            "type": "web_search",
+            "action": "find_in_page",
+            "queries": [],
+            "result_count": 5
+          },
+          {
+            "at_ms": 24535,
+            "type": "web_search",
+            "action": "other",
+            "queries": [],
+            "result_count": 1
+          }
+        ]
+      },
+      "quality_note": "Reviewed against the unchanged fixture and observed answer.",
+      "jev_judgment_correct": null
+    },
+    {
+      "case_id": "insurance-overlap-001",
+      "scenario": "보험 중복 찾기",
+      "outcome": "pass",
+      "reasons": [],
+      "metrics": {
+        "e2e_latency_ms": 32385,
+        "codex_runs": 1,
+        "search_calls": 2,
+        "mcp_calls": 0,
+        "mcp_failures": 0,
+        "jev_calls": 0,
+        "jev_judgment": null,
+        "attempts": 1,
+        "timeout": false,
+        "error": null,
+        "search_trace": [
+          {
+            "at_ms": 13196,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "site:fsc.go.kr 실손보험 중복가입 비례보상 개인 단체 중지 재개 제도 2024 2025",
+              "site:fss.or.kr 실손의료보험 중복가입 비례보상 두개 유지 개인 단체 실손 중지",
+              "site:knia.or.kr 실손의료보험 중복가입 비례보상 자기부담금 두 개"
+            ],
+            "result_count": 18
+          },
+          {
+            "at_ms": 20738,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "site:fsc.go.kr 실손의료보험 중복가입 자기부담금 보상 두개 개인실손 해지",
+              "site:knia.or.kr 실손보험 중복가입 자기부담금 보상 비례 보상 두 상품",
+              "site:fss.or.kr 실손보험 중복가입 보험조회 내보험찾아줌 실손의료비 특약 해지 주계약"
+            ],
+            "result_count": 16
+          }
+        ]
+      },
+      "quality_note": "Reviewed against the unchanged fixture and observed answer.",
+      "jev_judgment_correct": null
+    },
+    {
+      "case_id": "card-benefits-001",
+      "scenario": "카드 혜택 최적화",
+      "outcome": "fail",
+      "reasons": [
+        "missing:current_benefits",
+        "missing:net_benefit",
+        "search_call_mismatch",
+        "mcp_call_mismatch"
+      ],
+      "metrics": {
+        "e2e_latency_ms": 15861,
+        "codex_runs": 1,
+        "search_calls": 0,
+        "mcp_calls": 0,
+        "mcp_failures": 0,
+        "jev_calls": 0,
+        "jev_judgment": null,
+        "attempts": 1,
+        "timeout": false,
+        "error": null,
+        "search_trace": []
+      },
+      "quality_note": "No public card offer or calculated benefit was provided.",
+      "jev_judgment_correct": null
+    },
+    {
+      "case_id": "impulse-purchase-001",
+      "scenario": "충동구매 방지",
+      "outcome": "pass",
+      "reasons": [],
+      "metrics": {
+        "e2e_latency_ms": 42122,
+        "codex_runs": 1,
+        "search_calls": 1,
+        "mcp_calls": 0,
+        "mcp_failures": 0,
+        "jev_calls": 0,
+        "jev_judgment": null,
+        "attempts": 1,
+        "timeout": false,
+        "error": null,
+        "search_trace": [
+          {
+            "at_ms": 15630,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "site:apple.com/kr/shop/buy-mac/macbook-air MacBook Air 가격 2026 1690000",
+              "site:apple.com/kr/macbook-air/ MacBook Air 시작 가격 2026"
+            ],
+            "result_count": 17
+          },
+          {
+            "at_ms": 22005,
+            "type": "web_search",
+            "action": "other",
+            "queries": [],
+            "result_count": 2
+          },
+          {
+            "at_ms": 28676,
+            "type": "web_search",
+            "action": "other",
+            "queries": [],
+            "result_count": 1
+          }
+        ]
+      },
+      "quality_note": "Reviewed against the unchanged fixture and observed answer.",
+      "jev_judgment_correct": null
+    },
+    {
+      "case_id": "grocery-budget-001",
+      "scenario": "장보기 예산 절감",
+      "outcome": "pass",
+      "reasons": [],
+      "metrics": {
+        "e2e_latency_ms": 100866,
+        "codex_runs": 1,
+        "search_calls": 4,
+        "mcp_calls": 3,
+        "mcp_failures": 0,
+        "jev_calls": 0,
+        "jev_judgment": null,
+        "attempts": 1,
+        "timeout": false,
+        "error": null,
+        "search_trace": [
+          {
+            "at_ms": 20999,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "site:emart.ssg.com 계란 30구 가격 두부 300g 콩나물",
+              "site:emart.ssg.com 쌀 4kg 가격 닭고기 1kg",
+              "site:emart.ssg.com 양배추 1통 감자 1kg 양파 1kg 가격",
+              "site:homeplus.co.kr 계란 30구 두부 쌀 가격"
+            ],
+            "result_count": 15
+          },
+          {
+            "at_ms": 28820,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "site:mfront.homeplus.co.kr/item 쌀 4kg 2026 가격",
+              "site:mfront.homeplus.co.kr/item 닭가슴살 1kg 가격 냉동",
+              "site:mfront.homeplus.co.kr/item 두부 300g 콩나물 300g 가격",
+              "site:mfront.homeplus.co.kr/item 양배추 1통 양파 1kg 가격"
+            ],
+            "result_count": 12
+          },
+          {
+            "at_ms": 37125,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "site:mfront.homeplus.co.kr/item?itemNo= 쌀 4KG 2026 홈플러스",
+              "site:mfront.homeplus.co.kr/item?itemNo= 쌀 10KG 2026 홈플러스",
+              "site:mfront.homeplus.co.kr/item?itemNo= 양배추 통 홈플러스 2026  원",
+              "site:mfront.homeplus.co.kr/item?itemNo= 양파 1KG 감자 1KG 홈플러스 2026"
+            ],
+            "result_count": 12
+          },
+          {
+            "at_ms": 43357,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "site:mfront.homeplus.co.kr/item \"쌀 4KG\" 원",
+              "site:mfront.homeplus.co.kr/item \"쌀 5KG\" 원",
+              "site:mfront.homeplus.co.kr/item \"양파 1KG\" 원",
+              "site:mfront.homeplus.co.kr/item \"감자 1KG\" 원"
+            ],
+            "result_count": 12
+          }
+        ]
+      },
+      "quality_note": "Reviewed against the unchanged fixture and observed answer.",
+      "jev_judgment_correct": null
+    },
+    {
+      "case_id": "travel-budget-001",
+      "scenario": "여행비 최적화",
+      "outcome": "pass",
+      "reasons": [],
+      "metrics": {
+        "e2e_latency_ms": 41810,
+        "codex_runs": 1,
+        "search_calls": 2,
+        "mcp_calls": 0,
+        "mcp_failures": 0,
+        "jev_calls": 0,
+        "jev_judgment": null,
+        "attempts": 1,
+        "timeout": false,
+        "error": null,
+        "search_trace": [
+          {
+            "at_ms": 15227,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "2026년 11월 인천 나고야 왕복 항공권 최저가 11월",
+              "November 2026 Seoul Nagoya round trip flights KRW fare",
+              "2026 November Busan Nagoya round trip flights price KRW"
+            ],
+            "result_count": 21
+          },
+          {
+            "at_ms": 23093,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "site:jejuair.net 2026 11월 인천 나고야 왕복 원",
+              "site:jinair.com 2026 11월 인천 나고야 왕복 항공권",
+              "인천 나고야 왕복 2026 11월 3박4일 항공권 원",
+              "site:koreanair.com/flights/ko-kr/flights-from-seoul-to-nagoya 2026 November"
+            ],
+            "result_count": 18
+          },
+          {
+            "at_ms": 31561,
+            "type": "web_search",
+            "action": "other",
+            "queries": [],
+            "result_count": 2
+          }
+        ]
+      },
+      "quality_note": "Reviewed against the unchanged fixture and observed answer.",
+      "jev_judgment_correct": null
+    },
+    {
+      "case_id": "car-ownership-001",
+      "scenario": "자동차 유지비 계산",
+      "outcome": "fail",
+      "reasons": [
+        "status:error",
+        "missing:cost_components",
+        "missing:five_year_tco",
+        "search_call_mismatch",
+        "mcp_call_mismatch"
+      ],
+      "metrics": {
+        "e2e_latency_ms": 120873,
+        "codex_runs": 1,
+        "search_calls": null,
+        "mcp_calls": 0,
+        "mcp_failures": 0,
+        "jev_calls": 0,
+        "jev_judgment": null,
+        "attempts": 1,
+        "timeout": false,
+        "error": "Codex request failed.",
+        "search_trace": [
+          {
+            "at_ms": 19708,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "현대자동차 2026 아반떼 가솔린 가격표 연비 1.6 공식",
+              "오피넷 전국 평균 휘발유 가격 2026 9월 24일",
+              "2026 아반떼 자동차세 1598cc 연간 비영업용 세율 공식",
+              "아반떼 보험료 평균 연간 2026 자동차보험 30대"
+            ],
+            "result_count": 20
+          },
+          {
+            "at_ms": 30150,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "site:hyundai.com/kr/ko/e/vehicles/avante 2.0 연비 2026 디 올 뉴 아반떼 2.0",
+              "site:hyundaimotorgroup.com 디 올 뉴 아반떼 2.0 복합 연비 2026",
+              "site:law.go.kr 지방세법 제127조 승용자동차 1600 초과 200원 차령 3년 5%",
+              "site:hyundai.com 아반떼 2026 2.0 취득세 자동차 등록 7%"
+            ],
+            "result_count": 17
+          },
+          {
+            "at_ms": 41633,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "2026 디 올 뉴 아반떼 2.0 배기량 1999 cc 제원 현대",
+              "site:hyundai.com/kr/ko/e/vehicles/avante/specification 가솔린 2.0 1999",
+              "site:law.go.kr 자동차 취득세 비영업용 승용차 7% 지방세법",
+              "site:law.go.kr 지방교육세 자동차세 30% 비영업용 승용차",
+              "site:hyundai.com/kr/ko/service-membership 블루핸즈 엔진오일 타이어 교환 비용 아반떼"
+            ],
+            "result_count": 17
+          },
+          {
+            "at_ms": 48638,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "\"디 올 뉴 아반떼\" \"1,999\" \"14.3\"",
+              "\"디 올 뉴 아반떼\" \"1,999cc\"",
+              "site:law.go.kr/법령/지방세법 \"비영업용 승용자동차\" \"1천분의 70\" 취득세",
+              "site:gov.kr 자동차 취득세 승용차 7% 부가가치세 제외"
+            ],
+            "result_count": 13
+          }
+        ]
+      },
+      "quality_note": "Earlier nonzero Codex exit; historical cause unknown.",
+      "jev_judgment_correct": null
+    },
+    {
+      "case_id": "installment-001",
+      "scenario": "할부 vs 일시불",
+      "outcome": "fail",
+      "reasons": [
+        "mcp_call_mismatch"
+      ],
+      "metrics": {
+        "e2e_latency_ms": 18112,
+        "codex_runs": 1,
+        "search_calls": 0,
+        "mcp_calls": 1,
+        "mcp_failures": 0,
+        "jev_calls": 0,
+        "jev_judgment": null,
+        "attempts": 1,
+        "timeout": false,
+        "error": null,
+        "search_trace": []
+      },
+      "quality_note": "Reviewed against the unchanged fixture and observed answer.",
+      "jev_judgment_correct": null
+    },
+    {
+      "case_id": "refinance-001",
+      "scenario": "대출 갈아타기 계산",
+      "outcome": "pass",
+      "reasons": [],
+      "metrics": {
+        "e2e_latency_ms": 14272,
+        "codex_runs": 1,
+        "search_calls": 0,
+        "mcp_calls": 0,
+        "mcp_failures": 0,
+        "jev_calls": 0,
+        "jev_judgment": null,
+        "attempts": 1,
+        "timeout": false,
+        "error": null,
+        "search_trace": []
+      },
+      "quality_note": "Reviewed against the unchanged fixture and observed answer.",
+      "jev_judgment_correct": null
+    },
+    {
+      "case_id": "quote-audit-001",
+      "scenario": "견적서 바가지 체크",
+      "outcome": "fail",
+      "reasons": [
+        "mcp_call_mismatch"
+      ],
+      "metrics": {
+        "e2e_latency_ms": 46437,
+        "codex_runs": 1,
+        "search_calls": 1,
+        "mcp_calls": 1,
+        "mcp_failures": 0,
+        "jev_calls": 0,
+        "jev_judgment": null,
+        "attempts": 1,
+        "timeout": false,
+        "error": null,
+        "search_trace": [
+          {
+            "at_ms": 14227,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "site:lge.co.kr 에어컨 설치비 기본 설치 배관 1m 타공 추가 비용",
+              "site:samsung.com/sec 에어컨 설치비 배관 1m 타공 기본 설치 비용",
+              "2026 에어컨 설치비 기본 설치 배관 미터 타공 가격 숨고"
+            ],
+            "result_count": 15
+          },
+          {
+            "at_ms": 19722,
+            "type": "web_search",
+            "action": "find_in_page",
+            "queries": [],
+            "result_count": 7
+          },
+          {
+            "at_ms": 29554,
+            "type": "web_search",
+            "action": "other",
+            "queries": [],
+            "result_count": 4
+          }
+        ]
+      },
+      "quality_note": "Reviewed against the unchanged fixture and observed answer.",
+      "jev_judgment_correct": null
+    },
+    {
+      "case_id": "price-negotiation-001",
+      "scenario": "가격 협상 준비",
+      "outcome": "fail",
+      "reasons": [
+        "search_call_mismatch"
+      ],
+      "metrics": {
+        "e2e_latency_ms": 9845,
+        "codex_runs": 1,
+        "search_calls": 0,
+        "mcp_calls": 0,
+        "mcp_failures": 0,
+        "jev_calls": 0,
+        "jev_judgment": null,
+        "attempts": 1,
+        "timeout": false,
+        "error": null,
+        "search_trace": []
+      },
+      "quality_note": "Reviewed against the unchanged fixture and observed answer.",
+      "jev_judgment_correct": null
+    },
+    {
+      "case_id": "annual-leaks-001",
+      "scenario": "연간 새는 돈 찾기",
+      "outcome": "fail",
+      "reasons": [
+        "missing:saving_scenarios"
+      ],
+      "metrics": {
+        "e2e_latency_ms": 25386,
+        "codex_runs": 1,
+        "search_calls": 0,
+        "mcp_calls": 3,
+        "mcp_failures": 0,
+        "jev_calls": 0,
+        "jev_judgment": null,
+        "attempts": 1,
+        "timeout": false,
+        "error": null,
+        "search_trace": []
+      },
+      "quality_note": "Savings shown, but uncertainty about satisfaction was omitted.",
+      "jev_judgment_correct": null
+    },
+    {
+      "case_id": "purchase-review-001",
+      "scenario": "구매 전 최종 심사",
+      "outcome": "pass",
+      "reasons": [],
+      "metrics": {
+        "e2e_latency_ms": 63236,
+        "codex_runs": 1,
+        "search_calls": 2,
+        "mcp_calls": 1,
+        "mcp_failures": 0,
+        "jev_calls": 0,
+        "jev_judgment": null,
+        "attempts": 1,
+        "timeout": false,
+        "error": null,
+        "search_trace": [
+          {
+            "at_ms": 15688,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "인천 나고야 왕복 항공권 최저가 2026 10월 스카이스캐너",
+              "서울 오사카 왕복 항공권 최저가 2026 10월 스카이스캐너",
+              "서울 후쿠오카 왕복 항공권 최저가 2026 10월 스카이스캐너",
+              "서울 도쿄 왕복 항공권 최저가 2026 10월 스카이스캐너"
+            ],
+            "result_count": 19
+          },
+          {
+            "at_ms": 22121,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "site:koreanair.com/flights/ko/flights-from-seoul-to-nagoya \"2026년 October\"",
+              "site:koreanair.com/flights/ko/flights-from-seoul-to-osaka \"2026년 October\"",
+              "site:koreanair.com/flights/ko/flights-from-seoul-to-tokyo \"2026년 October\"",
+              "site:flyasiana.com 서울 나고야 왕복 최저가 2026 10월"
+            ],
+            "result_count": 13
+          },
+          {
+            "at_ms": 27726,
+            "type": "web_search",
+            "action": "open_page",
+            "queries": [],
+            "result_count": 4
+          },
+          {
+            "at_ms": 35120,
+            "type": "web_search",
+            "action": "find_in_page",
+            "queries": [],
+            "result_count": 5
+          }
+        ]
+      },
+      "quality_note": "Reviewed against the unchanged fixture and observed answer.",
+      "jev_judgment_correct": null
+    }
+  ]
+}

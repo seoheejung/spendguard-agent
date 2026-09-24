@@ -1,0 +1,1873 @@
+{
+  "dataset_version": "chapter-b-sparse-v1",
+  "fixture_sha256": "a55ef56b9f2e5a67e671f9b1cb70c36d94251b9b537f6dbafc1b10cc325a3f24",
+  "mode": "baseline",
+  "started_at": "2026-09-24T12:19:01.938007+00:00",
+  "runs": [
+    {
+      "case_id": "price-comparison-001",
+      "http_status": 200,
+      "status": "ready",
+      "answer": "**13인치 M5·16GB·512GB 신품 기준이라면 169만 원은 좋은 가격입니다.** 2026년 9월 24일 조회한 동일 사양 스카이 블루 모델의 표시 가격은 [11번가 205만 8,600원(무료배송)](https://catalog.11st.co.kr/pc/506811247?poc=pc&sortCds=DLV_INCLUDE), [신세계몰 212만 4,300원(무료배송, 9월 30일까지 즉시할인 표시)](https://shinsegaemall.ssg.com/item/itemView.ssg?itemId=1000799306150&salestrNo=6005&siteNo=6004)입니다. 제시받은 **노트북 1대 가격**이 각각 **36만 8,600원**, **43만 4,300원** 낮습니다.\n\n다만 질문에는 화면 크기와 제품 상태가 빠져 있습니다. **13인치·8코어 GPU·국내 정품 신품이고 169만 원이 배송비까지 포함한 최종 결제액**이라는 가정에서 위 비교가 성립합니다. 중고·리퍼 제품이거나 특정 카드, 교육 자격, 보상판매가 필요한 가격이라면 조건을 맞춰 다시 비교해야 합니다. 판매가도 결제 전에 재확인하세요.",
+      "metadata": {
+        "mode": "baseline",
+        "latency_ms": 71061,
+        "codex_runs": 1,
+        "search_calls": 3,
+        "search_sources": [
+          {
+            "url": "https://www.apple.com/kr/newsroom/2026/03/apple-introduces-the-new-macbook-air-with-m5/",
+            "title": "Apple, M5를 탑재한 신규 MacBook Air 공개 - Apple (KR)"
+          },
+          {
+            "url": "https://www.apple.com/kr/macbook-air/specs/",
+            "title": "MacBook Air - 제품 사양 - Apple (KR)"
+          },
+          {
+            "url": "https://www.apple.com/kr/shop/product/fdh74kh/a",
+            "title": "리퍼비쉬 MacBook Air 13 Apple M5 칩 모델(10코어 CPU 및 8코어 GPU) - 실버"
+          },
+          {
+            "url": "https://www.apple.com/kr-edu/shop/buy-mac/macbook-air/15-%EB%AA%A8%EB%8D%B8-silver-m5-%EC%B9%A9-10%EC%BD%94%EC%96%B4-cpu-10%EC%BD%94%EC%96%B4-gpu-16gb-%EB%A9%94%EB%AA%A8%EB%A6%AC-512gb-%EC%A0%80%EC%9E%A5-%EC%9E%A5%EC%B9%98",
+            "title": "MacBook Air, 15 모델, M5 칩, 10코어 CPU, 10코어 GPU, 실버, 16GB 메모리, 512GB 저장 장치 구입하기"
+          },
+          {
+            "url": "https://www.apple.com/kr/shop/buy-mac/macbook-air/13-%EB%AA%A8%EB%8D%B8",
+            "title": "www.apple.com"
+          },
+          {
+            "url": "https://www.apple.com/kr/environment/pdf/Apple_Environmental_Progress_Report_2026.pdf",
+            "title": "Apple 2026 Environmental Progress Report"
+          },
+          {
+            "url": "https://prod.danawa.com/info/?cate=11336468&pcode=106754546",
+            "title": "APPLE 맥북에어13 M5 10코어 CPU, 8코어 GPU 블루 (램16GB, SSD 512GB) : 다나와 가격비교"
+          },
+          {
+            "url": "https://catalog.11st.co.kr/pc/506811247?poc=pc&sortCds=DLV_INCLUDE",
+            "title": "Apple 맥북에어 13 M5 CPU 10코어/GPU 8코어 MDHH4KH/A 스카이 블루 16GB SSD 512GB - 가격비교-11번가 PC"
+          },
+          {
+            "url": "https://www.coupang.com/vp/products/9410641464?itemId=27961674149&vendorItemId=94919713477",
+            "title": "Apple 맥북 에어 13 M5칩 - 노트북 | 쿠팡"
+          },
+          {
+            "url": "https://www.nstoreprice.co.kr/products/apple-macbook-air-13-m5-13197341199",
+            "title": "애플 공식 브랜드스토어 애플 맥북에어 13 M5 C… 가격비교 | 최저가 2,124,300원 | N프라이스"
+          },
+          {
+            "url": "https://prod.danawa.com/list/?cate=11343869",
+            "title": "M5 맥북 : 다나와 가격비교"
+          },
+          {
+            "url": "https://web.joongna.com/search/m5%2016%20512",
+            "title": "m5 16 512 중고거래 | 중고나라 - 안심되는 중고거래"
+          },
+          {
+            "url": "https://www.enuri.com/detail.jsp?modelno=142946801",
+            "title": "APPLE 맥북에어13 M5 10코어 CPU, 8코어 GPU 블루 [램16GB, SSD 512GB] - 에누리 가격비교"
+          },
+          {
+            "url": "https://www.apple.com/kr/environment/pdf/products/notebooks/MacBook_Air_M5_PER_Mar2026.pdf",
+            "title": "MacBook Air (M5) Product Environmental Report"
+          },
+          {
+            "url": "https://www.apple.com/environment/pdf/products/notebooks/MacBook_Air_M5_PER_Mar2026.pdf",
+            "title": "MacBook_Air_M5_PER_Mar2025"
+          },
+          {
+            "url": "https://www.hankyung.com/koreamarket/consensus/pdf/2026-01-a2041b70d7b016fd5b600efc74ddab6b",
+            "title": "Daishin Research | 2026.01.12(월)~2026.01.16(금)"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=2cB9UlpUGYE",
+            "title": "Wash Your Hands Song + More Nursery Rhymes & Kids Songs - CoComelon - YouTube"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=GscJVHZY8N0",
+            "title": "Basketball Song + More Nursery Rhymes & Kids Songs - CoComelon - YouTube"
+          },
+          {
+            "url": "https://www.reddit.com/r/Maclien/comments/1ffgxxl",
+            "title": "이번 아이폰16은 할인행사가 없는건지 꽁꽁 싸매고 있네요?"
+          },
+          {
+            "url": "https://www.reddit.com/r/Mogong/comments/klntjb",
+            "title": "장난감으로 쓸 맥북이 생겼습니다."
+          },
+          {
+            "url": "https://www.reddit.com/r/Mogong/comments/1ppgp2f/%EC%97%AC%ED%96%89%EC%9A%A9_%EC%BA%90%EB%A6%AC%EC%96%B4_%EA%B5%AC%EB%A7%A4%EC%8B%9C_%EA%B3%A0%EB%A0%A4_%EC%82%AC%ED%95%AD_%EC%A0%95%EB%A6%AC%ED%95%B4_%EB%B4%A4%EC%8A%B5%EB%8B%88%EB%8B%A4/",
+            "title": "여행용 캐리어 구매시 고려 사항 정리해 봤습니다."
+          },
+          {
+            "url": "https://www.apple.com/kr/shop/buy-mac/macbook-air/13-%EB%AA%A8%EB%8D%B8-%EC%8A%A4%EC%B9%B4%EC%9D%B4-%EB%B8%94%EB%A3%A8-m5-%EC%B9%A9-10%EC%BD%94%EC%96%B4-cpu-8%EC%BD%94%EC%96%B4-gpu-16gb-%EB%A9%94%EB%AA%A8%EB%A6%AC-512gb-%EC%A0%80%EC%9E%A5-%EC%9E%A5%EC%B9%98",
+            "title": "www.apple.com"
+          },
+          {
+            "url": "https://www.11st.co.kr/products/9163813829",
+            "title": "애플 맥북에어 13 M5 (CPU 10코어/GPU 8코어) 16GB 512GB 스카이 블루 MDHH4KH/A"
+          },
+          {
+            "url": "https://hanip.net/categories/Mac?sub=MacBook+Air+15",
+            "title": "MacBook Air 15 최저가 비교 — 쿠팡·11번가·G마켓 실시간 가격 | 한입"
+          },
+          {
+            "url": "https://pcsise.space/items/395021",
+            "title": "맥북에어M5 15\" 16g/512GB (애플케어O) | 중고 맥북 시세 | 피씨시세"
+          },
+          {
+            "url": "https://www.ssg.com/item/itemView.ssg?itemId=1000799317688",
+            "title": "애플 맥북에어 15 M5 (CPU 10코어/GPU 10코어) 16GB 512GB 스타라이트 MDVD4KH/A - SSG.COM"
+          },
+          {
+            "url": "https://search.danawa.com/dsearch.php?query=%EB%A7%A5%EB%B6%81%EC%97%90%EC%96%B4+M5",
+            "title": "맥북에어 M5 : 다나와 통합검색"
+          },
+          {
+            "url": "https://prod.danawa.com/info/?pcode=106754474",
+            "title": "APPLE 맥북에어13 M5 10코어 CPU, 8코어 GPU 골드 (램16GB, SSD 512GB) : 다나와 가격비교"
+          },
+          {
+            "url": "https://prod.danawa.com/info/?cate=11354978&pcode=106754546",
+            "title": "APPLE 맥북에어13 M5 10코어 CPU, 8코어 GPU 블루 (램16GB, SSD 512GB) : 다나와 가격비교"
+          },
+          {
+            "url": "https://www.macsa.kr/listings/b2daf489-b6c3-429f-a386-b5a74544e84e",
+            "title": "MacBook M5 13\" 16GB/512GB | MacSa | MacSa"
+          },
+          {
+            "url": "https://prod.danawa.com/info/?cate=11336468&pcode=106755140",
+            "title": "APPLE 맥북에어15 M5 10코어 CPU, 10코어 GPU 실버 (램16GB, SSD 512GB) : 다나와 가격비교"
+          },
+          {
+            "url": "https://kream.co.kr/products/823761",
+            "title": "애플 2026 맥북 에어 13 M5 512기가 SSD / 16기가 메모리 스카이 블루 (국내 정식 발매 제품) 정품 안심 거래 | KREAM"
+          },
+          {
+            "url": "https://www.g2b.go.kr/pn/pnp/pnpe/UntyAtchFile/downloadFile.do?bidPbancNo=R26BK01392647&bidPbancOrd=000&fileSeq=1&fileType=&prcmBsneSeCd=01",
+            "title": "NLCS Jeju 국제학교 애플 테블릿 컴퓨터 구입 및 설치 전자 입찰 공고"
+          },
+          {
+            "url": "https://shinsegaemall.ssg.com/item/itemView.ssg?itemId=1000799306150&salestrNo=6005&siteNo=6004",
+            "title": "애플 맥북에어 13 M5 (CPU 10코어/GPU 8코어) 16GB 512GB 스카이 블루 MDHH4KH/A - 신세계몰"
+          },
+          {
+            "url": "https://www.lotteon.com/csearch/search/search?NaPm=ct%3Dmi3zb0g1%7Cci%3DERb821c7f4-c429-11f0-9752-be15427a68ad%7Ctr%3Dsa%7Chk%3Df0b2effab749fdb2d8e1714745f12b6382a4a182%7Cnacn%3DAFkxB0g0PKnA&ad_creative=nad-a001-01-000000291178812&ad_group=grp-a001-01-000000041104804&ad_type=click&airbridge_referrer=airbridge%3Dtrue%26client_id%3D6a374b20-79bc-4ae1-b093-b11e334764a0%26event_uuid%3Df5aa1326-51e1-49d0-a231-e0228501924f%26referrer_timestamp%3D1763434392162%26channel%3Dnaver.searchad%26campaign%3Dcmp-a001-01-000000007172927%26tracking_template_id%3Dd7e5f1a39e08cd25c74d61bfad4ec2c6%26ad_group%3Dgrp-a001-01-000000041104804%26ad_creative%3Dnad-a001-01-000000291178812%26term%3D%25EB%25A7%25A5%25EB%25B6%2581%25EC%2597%2590%25EC%2596%25B4%26term_id%3Dnkw-a001-01-000006094832774%26sub_id%3D1%26sub_id_1%3Dcontents%26sub_id_2%3D735235%26hash_str%3D562fdca7884f552546b241f265178282%26routing_short_id%3Dnegua5&campaign=cmp-a001-01-000000007172927&ch_dtl_no=1000543&ch_no=100168&hash_str=562fdca7884f552546b241f265178282&keyword=%EB%A7%A5%EB%B6%81%EC%97%90%EC%96%B4&mall_no=1&match=1&q=%EB%A7%A5%EB%B6%81%EC%97%90%EC%96%B4&rank=1&render=search&routing_short_id=negua5&sub_id=1&sub_id_1=contents&sub_id_2=735235&term=%EB%A7%A5%EB%B6%81%EC%97%90%EC%96%B4&term_id=nkw-a001-01-000006094832774&tracking_template_id=d7e5f1a39e08cd25c74d61bfad4ec2c6",
+            "title": "맥북에어 : 롯데ON"
+          },
+          {
+            "url": "https://www.ssg.com/search.ssg?query=%EC%8A%A4%EC%B9%B4%EC%9D%B4%EB%94%94%EC%A7%80%ED%84%B8",
+            "title": "스카이디지털 - 추천•인기 상품, SSG.COM"
+          },
+          {
+            "url": "https://www.lotteon.com/csearch/search/search?NaPm=ct%3Dmielf7pr%7Cci%3DER0c51e615-ca00-11f0-8ab0-0202fc9a38de%7Ctr%3Dsa%7Chk%3D92bff07bafa1f6e1a95e42237aac684c304c4929%7Cnacn%3DFpKZB0Aehu1oB&ad_creative=nad-a001-01-000000291178812&ad_group=grp-a001-01-000000041104804&ad_type=click&airbridge_referrer=airbridge%3Dtrue%26client_id%3Dfa623eea-5a96-4fb7-9d5e-10727c2e532c%26event_uuid%3Ddd4e6845-e6fc-48d3-aa37-0f04a4c49555%26referrer_timestamp%3D1764076201222%26channel%3Dnaver.searchad%26campaign%3Dcmp-a001-01-000000007172927%26tracking_template_id%3Dd7e5f1a39e08cd25c74d61bfad4ec2c6%26ad_group%3Dgrp-a001-01-000000041104804%26ad_creative%3Dnad-a001-01-000000291178812%26term%3DMACBOOK%26term_id%3Dnkw-a001-01-000006094832791%26sub_id%3D1%26sub_id_1%3Dcontents%26sub_id_2%3D735235%26hash_str%3D562fdca7884f552546b241f265178282%26routing_short_id%3Dnegua5&campaign=cmp-a001-01-000000007172927&ch_dtl_no=1000543&ch_no=100168&hash_str=562fdca7884f552546b241f265178282&keyword=MACBOOK&mall_no=1&match=1&q=MACBOOK&rank=2&render=search&routing_short_id=negua5&sub_id=1&sub_id_1=contents&sub_id_2=735235&term=MACBOOK&term_id=nkw-a001-01-000006094832791&tracking_template_id=d7e5f1a39e08cd25c74d61bfad4ec2c6",
+            "title": "macbook : 롯데ON"
+          },
+          {
+            "url": "https://www.ssg.com/search.ssg?query=%EB%A7%A5%EC%97%90%EC%96%B4",
+            "title": "맥에어 - 추천•인기 상품, SSG.COM"
+          },
+          {
+            "url": "https://www.lotteon.com/csearch/search/search?mallId=&platform=m&q=%EB%A7%A5%EB%B6%8113&render=search",
+            "title": "맥북13 : 롯데ON"
+          },
+          {
+            "url": "https://www.ssg.com/disp/brandShop.ssg?brandId=2000000375&ctgId=",
+            "title": "애플 | 추천 브랜드,SSG.COM"
+          },
+          {
+            "url": "https://www.lotteon.com/csearch/search/search?mallId=2&platform=m&q=%EC%95%A0%ED%94%8C&render=search",
+            "title": "애플 : 롯데백화점"
+          },
+          {
+            "url": "https://www.ssg.com/search.ssg?query=%EB%A7%A5%EB%B6%81%EC%97%90%EC%96%B4m315%EC%9D%B8%EC%B9%98",
+            "title": "맥북에어m315인치 - 추천•인기 상품, SSG.COM"
+          },
+          {
+            "url": "https://www.lotteon.com/csearch/search/search?mallId=2&platform=m&q=APPLE&render=search",
+            "title": "apple : 롯데백화점"
+          },
+          {
+            "url": "https://www.ssg.com/disp/category.ssg?dispCtgId=6000234250",
+            "title": "애플 - SSG.COM"
+          },
+          {
+            "url": "https://www.ssg.com/search.ssg?query=%EB%A7%A5%EB%B6%81%EC%97%90%EC%96%B4m2%EC%8A%A4%ED%83%80%EB%9D%BC%EC%9D%B4%ED%8A%B8",
+            "title": "맥북에어m2스타라이트 - 추천•인기 상품, SSG.COM"
+          }
+        ],
+        "mcp_calls": [
+          {
+            "tool": "compare_costs",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "options": [
+                  {
+                    "name": "사용자 제시가",
+                    "total_cost": 1690000
+                  },
+                  {
+                    "name": "11번가 13형 스카이 블루",
+                    "total_cost": 2058600
+                  },
+                  {
+                    "name": "SSG 13형 스카이 블루",
+                    "total_cost": 2124300
+                  }
+                ]
+              }
+            },
+            "result": {
+              "inputs": {
+                "options": [
+                  {
+                    "name": "사용자 제시가",
+                    "total_cost": "1690000"
+                  },
+                  {
+                    "name": "11번가 13형 스카이 블루",
+                    "total_cost": "2058600"
+                  },
+                  {
+                    "name": "SSG 13형 스카이 블루",
+                    "total_cost": "2124300"
+                  }
+                ],
+                "currency": "KRW"
+              },
+              "formula": "difference_from_lowest = option_total_cost - lowest_total_cost",
+              "intermediate": {
+                "사용자 제시가": "1690000",
+                "11번가 13형 스카이 블루": "2058600",
+                "SSG 13형 스카이 블루": "2124300"
+              },
+              "result": {
+                "lowest_cost_option": "사용자 제시가",
+                "lowest_total_cost": "1690000.00",
+                "currency": "KRW",
+                "difference_from_사용자 제시가": "0.00",
+                "difference_from_11번가 13형 스카이 블루": "368600.00",
+                "difference_from_SSG 13형 스카이 블루": "434300.00"
+              }
+            },
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "jev_calls": 0,
+        "jev_judgment": null
+      },
+      "trace": [
+        {
+          "at_ms": 13586,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "맥북 에어 M5 13 16GB 512GB 가격 최저가 2026 한국",
+            "site:apple.com/kr MacBook Air M5 16GB 512GB 가격",
+            "맥북에어 M5 16GB 512GB 13인치 판매가 쿠팡 11번가 네이버"
+          ],
+          "result_count": 21
+        },
+        {
+          "at_ms": 19278,
+          "type": "web_search",
+          "action": "other",
+          "queries": [],
+          "result_count": 5
+        },
+        {
+          "at_ms": 23942,
+          "type": "web_search",
+          "action": "other",
+          "queries": [],
+          "result_count": 2
+        },
+        {
+          "at_ms": 30879,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "\"맥북에어\" \"M5\" \"16GB\" \"512GB\" \"1,6\"",
+            "\"MDHH4KH/A\" \"원\" 할인 2026",
+            "site:apple.com/kr/shop/buy-mac/macbook-air \"13\" \"16GB\" \"512GB\" \"₩\"",
+            "\"맥북에어 M5\" \"16GB\" \"512GB\" 최저가 2026 9월"
+          ],
+          "result_count": 13
+        },
+        {
+          "at_ms": 39615,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "site:hanip.net \"MacBook Air 13\" \"M5\" \"512GB\" 2026-09",
+            "\"맥북에어 13\" \"M5\" \"16GB\" \"512GB\" \"원\" site:ssg.com 2026.09",
+            "\"맥북 에어 13 M5\" \"16GB\" \"512GB\" \"원\" site:lotteon.com"
+          ],
+          "result_count": 12
+        },
+        {
+          "at_ms": 45818,
+          "type": "mcp_tool_call",
+          "tool": "compare_costs",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "options": [
+                {
+                  "name": "사용자 제시가",
+                  "total_cost": 1690000
+                },
+                {
+                  "name": "11번가 13형 스카이 블루",
+                  "total_cost": 2058600
+                },
+                {
+                  "name": "SSG 13형 스카이 블루",
+                  "total_cost": 2124300
+                }
+              ]
+            }
+          },
+          "result": {
+            "inputs": {
+              "options": [
+                {
+                  "name": "사용자 제시가",
+                  "total_cost": "1690000"
+                },
+                {
+                  "name": "11번가 13형 스카이 블루",
+                  "total_cost": "2058600"
+                },
+                {
+                  "name": "SSG 13형 스카이 블루",
+                  "total_cost": "2124300"
+                }
+              ],
+              "currency": "KRW"
+            },
+            "formula": "difference_from_lowest = option_total_cost - lowest_total_cost",
+            "intermediate": {
+              "사용자 제시가": "1690000",
+              "11번가 13형 스카이 블루": "2058600",
+              "SSG 13형 스카이 블루": "2124300"
+            },
+            "result": {
+              "lowest_cost_option": "사용자 제시가",
+              "lowest_total_cost": "1690000.00",
+              "currency": "KRW",
+              "difference_from_사용자 제시가": "0.00",
+              "difference_from_11번가 13형 스카이 블루": "368600.00",
+              "difference_from_SSG 13형 스카이 블루": "434300.00"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 58062,
+          "type": "web_search",
+          "action": "other",
+          "queries": [],
+          "result_count": 1
+        }
+      ],
+      "error": null,
+      "exit_diagnostic": null,
+      "e2e_latency_ms": 71067,
+      "attempts": 1
+    },
+    {
+      "case_id": "subscription-audit-001",
+      "http_status": 200,
+      "status": "ready",
+      "answer": "둘 다 꾸준히 보지 않는다면 **하나는 끊고 번갈아 구독하는 편**이 좋겠습니다. 최근 한 달간 거의 켜지 않은 쪽을 먼저 해지하고, 보고 싶은 작품이 쌓이면 그때 다시 구독하세요.\n\n넷플릭스와 디즈니플러스 중 무엇을 남길지는 시청 습관에 달려 있습니다. 가족이 디즈니·마블 작품을 자주 본다면 디즈니플러스를, 넷플릭스 작품을 더 자주 본다면 넷플릭스를 남기세요. 절약액은 **해지하는 요금제의 월 결제액만큼 매달**, 1년 내내 해지 상태라면 **그 금액의 12개월분**입니다. 실제 요금제와 이용 빈도를 모르므로 어느 쪽이 금전적으로 더 나은지까지는 단정하기 어렵습니다.",
+      "metadata": {
+        "mode": "baseline",
+        "latency_ms": 12483,
+        "codex_runs": 1,
+        "search_calls": 0,
+        "search_sources": [],
+        "mcp_calls": [],
+        "jev_calls": 0,
+        "jev_judgment": null
+      },
+      "trace": [],
+      "error": null,
+      "exit_diagnostic": null,
+      "e2e_latency_ms": 12486,
+      "attempts": 1
+    },
+    {
+      "case_id": "card-benefits-001",
+      "http_status": 200,
+      "status": "ready",
+      "answer": "배달앱에 **월 30만 원을 쓴다는 사실만으로 카드 교체 혜택이 크게 늘지는 않습니다.** 현재 카드의 할인액은 알려주지 않으셔서, 아래 금액은 *새 카드의 혜택*이며 교체로 늘어나는 금액은 아닙니다.\n\n2026년 9월 24일 확인한 카드사 안내 기준, **알리익스프레스 신한카드**는 전월 실적 30만 원 이상일 때 배달의민족·땡겨요 결제액의 10%를 할인합니다. 다만 음식점·카페와 합쳐 **월 최대 5,000원, 하루 최대 1,000원**이라 여러 날 주문해야 한도를 채웁니다. 매달 한도를 채우면 **연 60,000원**의 할인입니다. 쿠팡이츠·요기요 이용분은 대상이 아닙니다. [신한카드 상품 안내](https://www.shinhancard.com/pconts/html/card/apply/credit/1231466_2207.html)\n\n**현대카드Z ontact**는 배달의민족·요기요·쿠팡이츠가 대상이고, 전월 실적 40만 원 이상이면 **월 최대 5,000원**, 80만 원 이상이면 **월 최대 8,000원** 할인입니다. 높은 실적 구간도 첫 구간보다 **월 3,000원** 더 받는 수준입니다. 연회비는 **연 10,000원**이며, 할인받은 결제액은 다음 달 실적에서 제외됩니다. 배달앱 지출 월 30만 원만으로는 실적 조건을 채우기 어렵습니다. [현대카드 가이드북](https://www.hyundaicard.com/upload/card/%EA%B0%80%EC%9D%B4%EB%93%9C%EB%B6%81_Z%20ontact_260330.pdf)\n\n따라서 **주로 배민·땡겨요를 쓰고 현재 배달 할인이 거의 없다면** 교체로 월 최대 5,000원 혜택을 기대할 수 있습니다. 실제 이득은 현재 카드 혜택과 새 카드 연회비를 빼고 비교해야 합니다. 신한카드 안내에서 연회비 금액은 확인되지 않아 순이득은 확정할 수 없습니다.",
+      "metadata": {
+        "mode": "baseline",
+        "latency_ms": 129567,
+        "codex_runs": 1,
+        "search_calls": 4,
+        "search_sources": [
+          {
+            "url": "https://www.hyundaicard.com/upload/card/%EA%B0%80%EC%9D%B4%EB%93%9C%EB%B6%81_Z%20ontact_260330.pdf",
+            "title": ""
+          },
+          {
+            "url": "https://card.kbcard.com/CRD/DVIEW/HCAMCXPRICAC0076?cooperationcode=09923",
+            "title": "카드상품/안내>카드 | 국민의 행복생활 파트너 KB국민카드"
+          },
+          {
+            "url": "https://www.hyundaicard.com/upload/card/T_A3W-20260319-1715-01_%EA%B0%80%EC%9D%B4%EB%93%9C%EB%B6%81_MB_X3%20FoodNDrink_V3_%EA%B3%B5%EC%8B%9C%EC%8B%A4%EC%9A%A9.pdf",
+            "title": "MY BUSINESS 플래티넘서비스"
+          },
+          {
+            "url": "https://www.shinhancard.com/pconts/html/card/apply/check/1231695_2206.html",
+            "title": "신한카드Point Plan체크(서울시다둥이행복카드) | 카드 | 신한카드"
+          },
+          {
+            "url": "https://www.shinhancard.com/pconts/html/card/apply/credit/1211550_2207.html",
+            "title": "신한카드 Puzzle | 카드 | 신한카드"
+          },
+          {
+            "url": "https://www.shinhancard.com/pconts/html/benefit/event/1237331_2239.html",
+            "title": "이벤트 | 혜택 | 신한카드"
+          },
+          {
+            "url": "https://www.hyundaicard.com/upload/card/20260330_X%20Cut.pdf",
+            "title": "연회비\n국내전용/국내외겸용(Visa Platinum/Amex Platinum)\n30,000"
+          },
+          {
+            "url": "https://www.shinhancard.com/pconts/html/card/apply/credit/1231466_2207.html",
+            "title": "알리익스프레스 신한카드 | 카드 | 신한카드"
+          },
+          {
+            "url": "https://www.hyundaicard.com/upload/card/%EA%B8%88%EC%86%8C%EB%B2%95_Z%20family_0311.pdf",
+            "title": "1. 현대카드Z family 상품 개요"
+          },
+          {
+            "url": "https://www.hyundaicard.com/upload/card/20260428_%ED%95%98%EC%9D%B4%EB%B8%8C%EB%A6%AC%EB%93%9C%20%EC%BA%90%EC%8B%9C%EB%B0%B1%ED%98%95.pdf",
+            "title": "현대카드 하이브리드"
+          },
+          {
+            "url": "https://www.samsungcard.com/personal/customer-service/faq/UHPPCC0259M0.jsp",
+            "title": "자주하는 질문(FAQ) - 삼성카드"
+          },
+          {
+            "url": "https://www.shinhancard.com/pconts/html/card/apply/credit/1217594_2207.html",
+            "title": "신한카드 Deep Oil(배민커넥트) | 카드 | 신한카드"
+          },
+          {
+            "url": "https://www.shinhancard.com/pconts/html/card/apply/credit/1230340_2207.html",
+            "title": "신한 후불 기후동행 신용카드 | 카드 | 신한카드"
+          },
+          {
+            "url": "https://www.samsungcard.com/personal/card/showroom/UHPPCA0212M0.jsp",
+            "title": "삼성카드"
+          },
+          {
+            "url": "https://www.hyundaicard.com/upload/card/T_AEY-20260303-2110-79_%EA%B8%88%EC%86%8C%EB%B2%95_MX%20Black_v1.pdf",
+            "title": "1. 현대카드 MX Black 상품 개요"
+          },
+          {
+            "url": "https://card.kbcard.com/CRD/DVIEW/HCAMCXPRICAC0076?cooperationcode=02229&mainCC=a",
+            "title": "카드상품/안내>카드 | 국민의 행복생활 파트너 KB국민카드"
+          },
+          {
+            "url": "https://www.shinhancard.com/pconts/html/card/apply/credit/1200235_2207.html",
+            "title": "신한카드 국민행복 | 카드 | 신한카드"
+          },
+          {
+            "url": "https://www.shinhancard.com/pconts/html/card/apply/premium/1202530_2205.html",
+            "title": "신한카드 LABE | 카드 | 신한카드"
+          },
+          {
+            "url": "https://www.hyundaicard.com/cpc/cr/CPCCR0201_01.hc?cardWcd=ZO&cardflag=D",
+            "title": "현대카드Z ontact-현대카드"
+          },
+          {
+            "url": "https://www.hyundaicard.com/cpu/ug/CPUUG2001_0405.hc?c=02880",
+            "title": "신용카드 설명서\n· \u0007이 설명서는 금융 상품에 관한 중요한 사항을 금융소비자(이하 “회원”"
+          },
+          {
+            "url": "https://www.hyundaicard.com/upload/card/%EA%B8%88%EC%86%8C%EB%B2%95_Z%20ontact_0311.pdf",
+            "title": "1. 현대카드Z ontact 상품 개요"
+          },
+          {
+            "url": "https://card.kbcard.com/BON/DVIEW/HBEM0009",
+            "title": "| 국민의 행복생활 파트너 KB국민카드"
+          },
+          {
+            "url": "https://newsroom.hyundaicard.com/front/board/%ED%98%84%EB%8C%80%EC%B9%B4%EB%93%9CZ-%EA%B5%AC%EA%B0%84-%EB%B0%98%EB%B3%B5-%ED%95%A0%EC%9D%B8%EC%9D%98-%EB%81%9D%ED%8C%90%EC%99%95",
+            "title": "현대카드Z, ‘구간 반복 할인의 끝판왕’ - 현대카드·현대커머셜 뉴스룸"
+          },
+          {
+            "url": "https://card.kbcard.com/CRD/DVIEW/HCAMCXPRICAC0047?cateIdx=7&pageNo=1",
+            "title": "포인트/마일리지>신용카드>카드 | 국민의 행복생활 파트너 KB국민카드"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=y5bMgV-eorc",
+            "title": "넥슨팩으로 게임력 레벨 업 [넥슨 현대카드 Edition2] - YouTube"
+          },
+          {
+            "url": "https://www.shinhancard.com/pconts/html/benefit/event/1237271_2239.html",
+            "title": "이벤트 | 혜택 | 신한카드"
+          },
+          {
+            "url": "https://www.shinhancard.com/pconts/html/card/apply/credit/1223684_2207.html",
+            "title": "SPOTV NOW 신한카드 구독 좋아요 | 카드 | 신한카드"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=A0Fse8OA-c8",
+            "title": "당신의 소망을 담은 카드, KB YOU Wish - YouTube"
+          },
+          {
+            "url": "https://www.shinhancard.com/pconts/html/card/apply/check/1229908_2206.html",
+            "title": "신한카드 SOL글로벌U 체크 | 카드 | 신한카드"
+          },
+          {
+            "url": "https://card.kbcard.com/CRD/DVIEW/HCAMCXPRICAC0076?cooperationcode=02212&mainCC=a",
+            "title": "카드상품/안내>카드 | 국민의 행복생활 파트너 KB국민카드"
+          },
+          {
+            "url": "https://card.kbcard.com/SVC/DVIEW/CRD/DVIEW/HCAMCXPRICAC0076?cooperationcode=09771&mainCC=a&solicitorcode=7005678901",
+            "title": "카드상품/안내>카드 | 국민의 행복생활 파트너 KB국민카드"
+          },
+          {
+            "url": "https://bccard.com/down/individual/customer/77_bcbaro_clear_230210.pdf",
+            "title": "부가서비스 안내\n카드 발급 안내\n·\n구분\n내용\n발급대상\n민법상 성년인 만 19세 이상 개인"
+          },
+          {
+            "url": "https://www.bccard.co.kr/down/individual/customer/101507.pdf",
+            "title": "(211102) 바로 밸런스카드(무직타이거) 리플렛(금소법의무표기)"
+          },
+          {
+            "url": "https://www.bccard.com/down/individual/customer/101712.pdf",
+            "title": "(220808) BC 바로카드 KT복지카드 리플렛"
+          },
+          {
+            "url": "https://www.reddit.com/r/u_Ok-Divide2981/comments/1uazhjo/%E1%84%8B%E1%85%A9%E1%84%87%E1%85%B3%E1%86%AB%E1%84%86%E1%85%A1%E1%84%85%E1%85%AE%E1%84%8E%E1%85%B5%E1%84%8F%E1%85%B5%E1%86%AB_%EB%8C%80%EA%B5%AC_%EC%83%81%EC%9D%B8%EB%8F%99_%EC%B9%98%ED%82%A8_%EB%A7%9B%EC%A7%91/",
+            "title": "오븐마루치킨 대구 상인동 치킨 맛집"
+          },
+          {
+            "url": "https://www.reddit.com/r/KoreaNewsfeed/comments/1s7jq69/bts_%EC%BB%B4%EB%B0%B1%EC%97%90%EB%8F%84_%EA%B4%91%ED%99%94%EB%AC%B8_%EC%86%8C%EB%B9%84_%EC%A0%9C%EC%9E%90%EB%A6%AC%EC%99%B8%EA%B5%AD%EC%9D%B8mz%EB%A7%8C_%EC%9B%83%EC%97%88%EB%8B%A4/",
+            "title": "BTS 컴백에도 '광화문 소비' 제자리…외국인·MZ만 웃었다"
+          },
+          {
+            "url": "https://www.reddit.com/r/u_fxmuxrzd979/comments/v3pfm4",
+            "title": "신용카드 추천 BEST 7 혜택 좋은 것"
+          },
+          {
+            "url": "https://arxiv.org/abs/1406.2661",
+            "title": "Generative Adversarial Networks"
+          },
+          {
+            "url": "https://www.reddit.com/r/u_moosa73/comments/dte6np",
+            "title": "더체크 사업장정보등록방법 [1초 정산 카드매출 누락 확인 앱_서비스 이용방법]"
+          },
+          {
+            "url": "https://arxiv.org/abs/1602.03837",
+            "title": "Observation of Gravitational Waves from a Binary Black Hole Merger"
+          },
+          {
+            "url": "https://www.reddit.com/r/u_xuckinglightweight/comments/10xqoap",
+            "title": "주유할인카드 추천 신한카드 국민카드 현대카드 등"
+          },
+          {
+            "url": "https://www.reddit.com/r/u_Tiny-Candidate3049/comments/1kso290",
+            "title": "카드전략 실적 채우기보다 중요한 신용카드 관리법 3가지 (2025 기준)"
+          },
+          {
+            "url": "https://arxiv.org/abs/1311.2524",
+            "title": "Rich feature hierarchies for accurate object detection and semantic segmentation"
+          },
+          {
+            "url": "https://www.shinhancard.com/pconts/html/card/apply/credit/1192499_2207.html",
+            "title": "교직원복지 신한카드 LOVE | 카드 | 신한카드"
+          },
+          {
+            "url": "https://www.shinhancard.com/pconts/html/card/apply/credit/1223978_2207.html",
+            "title": "신한카드 Applus | 카드 | 신한카드"
+          },
+          {
+            "url": "https://card.kbcard.com/CRD/DVIEW/HCAMCXPRICAC0076?cooperationcode=07964&mainCC=a",
+            "title": "카드상품/안내>카드 | 국민의 행복생활 파트너 KB국민카드"
+          },
+          {
+            "url": "https://card.kbcard.com/CRD/DVIEW/HCAMCXPRICAC0076?cooperationcode=09248&mainCC=a",
+            "title": "카드상품/안내>카드 | 국민의 행복생활 파트너 KB국민카드"
+          },
+          {
+            "url": "https://www.shinhancard.com/pconts/html/card/apply/credit/1232369_2207.html",
+            "title": "신한카드 Discount Plan | 카드 | 신한카드"
+          },
+          {
+            "url": "https://www.shinhancard.com/pconts/company/html/promotion/press/1218764_3999.html",
+            "title": "회사소개 - 신한카드"
+          },
+          {
+            "url": "https://www.shinhancard.com/pconts/html/card/apply/credit/1227751_2207.html",
+            "title": "신한카드 SOL트래블 | 카드 | 신한카드"
+          },
+          {
+            "url": "https://www.shinhancard.com/pconts/html/card/apply/credit/1228407_2207.html",
+            "title": "신한카드 Point Plan+ | 카드 | 신한카드"
+          },
+          {
+            "url": "https://www.shinhancard.com/pconts/html/card/apply/credit/1198942_2207.html",
+            "title": "신한카드 The More(더모아) | 카드 | 신한카드"
+          },
+          {
+            "url": "https://www.hyundaicard.com/cpu/ug/CPUUG2001_0405.hc?c=03035&cDS=00",
+            "title": "연회비 안내\n국내전용/국내외겸용 \n(VISA Platinum/MasterCard Plati"
+          },
+          {
+            "url": "https://www.hyundaicard.com/upload/card/%EA%B0%80%EC%9D%B4%EB%93%9C%EB%B6%81_%ED%98%84%EB%8C%80%EC%B9%B4%EB%93%9CZ_family.pdf",
+            "title": "현대카드Z family"
+          },
+          {
+            "url": "https://www.hyundaicard.com/upload/card/20211018_Z%20ontact.pdf",
+            "title": "할인서비스\n\n온택트(ontact) 소비 5개 영역 청구 할인\n\n<table id=\"e1\">"
+          },
+          {
+            "url": "https://www.hyundaicard.com/cpu/ug/CPUUG2001_0405.hc?c=03360&cDS=00",
+            "title": "현대카드Z everyday 가이드북"
+          },
+          {
+            "url": "https://www.shinhancard.com/pconts/html/card/apply/credit/1232613_2207.html",
+            "title": "여댕냥 PET 신한카드 Point Plan | 카드 | 신한카드"
+          },
+          {
+            "url": "https://www.shinhancard.com/pconts/html/card/apply/credit/1239171_2207.html",
+            "title": "신한카드 SOL Plan+ | 카드 | 신한카드"
+          },
+          {
+            "url": "https://www.shinhancard.com/pconts/html/card/apply/credit/1210370_2207.html?empSeq=546",
+            "title": "신한카드 My TeenS | 카드 | 신한카드"
+          },
+          {
+            "url": "https://www.shinhancard.com/pconts/html/card/apply/credit/1188286_2207.html",
+            "title": "신한카드 Deep Making | 카드 | 신한카드"
+          },
+          {
+            "url": "https://www.shinhancard.com/pconts/html/card/apply/premium/1237950_2205.html",
+            "title": "The CLASSIC AIR | 카드 | 신한카드"
+          },
+          {
+            "url": "https://www.shinhancard.com/pconts/html/landing/bestCardC.html?epCase=naver",
+            "title": "카드 > 분야별 BEST 카드 > 인기"
+          },
+          {
+            "url": "https://www.shinhancard.com/pconts/html/card/apply/credit/1227020_2207.html",
+            "title": "신한카드 처음 | 카드 | 신한카드"
+          },
+          {
+            "url": "https://www.shinhancard.com/pconts/html/card/apply/credit/1217913_2207.html",
+            "title": "여천NCC 신한카드 Love(임직원) | 카드 | 신한카드"
+          },
+          {
+            "url": "https://cardapply.shinhancard.com/pconts/html/card/apply/premium/1236160_2205.html",
+            "title": "신한카드 The CLASSIC NEO"
+          },
+          {
+            "url": "https://www.shinhancard.com/pconts/html/card/apply/credit/1188407_2207.html",
+            "title": "더본 신한카드 | 카드 | 신한카드"
+          },
+          {
+            "url": "https://www.shinhancard.com/pconts/html/landing/executivesCard.html",
+            "title": "신한카드"
+          },
+          {
+            "url": "https://www.shinhancard.com/pconts/download/card_member_terms/T20230419499161.pdf",
+            "title": "레이아웃 1"
+          },
+          {
+            "url": "https://www.shinhancard.com/pconts/download/card/NAVERpayLinefriends_terms.pdf",
+            "title": "00931_네이버페이 라인프렌즈 신한카드_210907"
+          },
+          {
+            "url": "https://www.shinhancard.com/pconts/download/sales/20250220624338.pdf",
+            "title": "PowerPoint 프레젠테이션"
+          },
+          {
+            "url": "https://www.shinhancard.com/pconts/download/card/PC_26_01120_master_world_4_bestnew.pdf",
+            "title": "마스터월드_선택_유형4_베스트급_최근상품_251023"
+          },
+          {
+            "url": "https://www.shinhancard.com/pconts/download/card_member_terms/T20210324405302.pdf",
+            "title": "레이아웃 1"
+          },
+          {
+            "url": "https://www.shinhancard.com/pconts/download/person/20211213403011.pdf?v=20211216",
+            "title": "법인신용카드 설명서\n\n1. 상품 개요\n\n<table id=\"e1\">\n<tr>\n<td>상품명"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=2IEkQNnKMsw",
+            "title": "[삼성카드 THE TWENTY] 오직 20대만 가능한 무료멤버십 - YouTube"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=MZlvJJnW2mk",
+            "title": "(광고) 문 앞에 두고 가세요, 직접 받으셔야합니냥 - YouTube"
+          }
+        ],
+        "mcp_calls": [
+          {
+            "tool": "calculate_repeated_cost",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "unit_cost": 5000,
+                "quantity": 12,
+                "unit": "months"
+              }
+            },
+            "result": {
+              "inputs": {
+                "unit_cost": "5000",
+                "quantity": "12",
+                "unit": "months",
+                "currency": "KRW"
+              },
+              "formula": "total_cost = unit_cost * quantity",
+              "intermediate": {
+                "quantity": "12"
+              },
+              "result": {
+                "total_cost": "60000.00",
+                "currency": "KRW"
+              }
+            },
+            "status": "completed",
+            "error": null
+          },
+          {
+            "tool": "calculate_repeated_cost",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "unit_cost": 8000,
+                "quantity": 12,
+                "unit": "months"
+              }
+            },
+            "result": {
+              "inputs": {
+                "unit_cost": "8000",
+                "quantity": "12",
+                "unit": "months",
+                "currency": "KRW"
+              },
+              "formula": "total_cost = unit_cost * quantity",
+              "intermediate": {
+                "quantity": "12"
+              },
+              "result": {
+                "total_cost": "96000.00",
+                "currency": "KRW"
+              }
+            },
+            "status": "completed",
+            "error": null
+          },
+          {
+            "tool": "compare_costs",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "options": [
+                  {
+                    "name": "5k benefit",
+                    "total_cost": 5000
+                  },
+                  {
+                    "name": "8k benefit",
+                    "total_cost": 8000
+                  }
+                ]
+              }
+            },
+            "result": {
+              "inputs": {
+                "options": [
+                  {
+                    "name": "5k benefit",
+                    "total_cost": "5000"
+                  },
+                  {
+                    "name": "8k benefit",
+                    "total_cost": "8000"
+                  }
+                ],
+                "currency": "KRW"
+              },
+              "formula": "difference_from_lowest = option_total_cost - lowest_total_cost",
+              "intermediate": {
+                "5k benefit": "5000",
+                "8k benefit": "8000"
+              },
+              "result": {
+                "lowest_cost_option": "5k benefit",
+                "lowest_total_cost": "5000.00",
+                "currency": "KRW",
+                "difference_from_5k benefit": "0.00",
+                "difference_from_8k benefit": "3000.00"
+              }
+            },
+            "status": "completed",
+            "error": null
+          },
+          {
+            "tool": "sum_costs",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "items": [
+                  {
+                    "name": "Annual delivery discount",
+                    "amount": 60000
+                  },
+                  {
+                    "name": "Annual fee",
+                    "amount": -10000
+                  }
+                ]
+              }
+            },
+            "result": null,
+            "status": "failed",
+            "error": null
+          }
+        ],
+        "jev_calls": 0,
+        "jev_judgment": null
+      },
+      "trace": [
+        {
+          "at_ms": 14593,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "site:card.kbcard.com 배달의민족 요기요 할인 카드 월 할인한도 전월실적 2026",
+            "site:shinhancard.com 배달앱 할인 카드 배달의민족 요기요 2026 월 한도",
+            "site:hyundaicard.com 배달의민족 카드 할인 월 한도 전월 실적",
+            "site:samsungcard.com 배달앱 할인 카드 배달의민족 요기요 2026"
+          ],
+          "result_count": 18
+        },
+        {
+          "at_ms": 21852,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "배달앱 카드 배달의민족 쿠팡이츠 10% 할인 월 1만원 전월 30만원 연회비 공식 카드",
+            "site:shinhancard.com \"배달앱\" \"월\" \"연회비\" \"10%\"",
+            "site:hyundaicard.com \"Z ontact\" \"연회비\" \"배달 앱\"",
+            "site:card.kbcard.com \"My WE:SH\" \"연회비\" \"배달\""
+          ],
+          "result_count": 29
+        },
+        {
+          "at_ms": 26812,
+          "type": "web_search",
+          "action": "other",
+          "queries": [],
+          "result_count": 4
+        },
+        {
+          "at_ms": 37639,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "site:shinhancard.com/pconts/html/card/apply \"배달앱\" \"전월\" \"30만원\" \"월\" \"할인\"",
+            "site:card.kbcard.com/CRD/DVIEW \"배달의민족\" \"전월 이용실적 30만원\" \"월 할인한도\"",
+            "site:wooricard.com 배달앱 10% 할인 전월 30만원 월 할인한도 카드",
+            "site:hyundaicard.com 배달 앱 할인 전월 30만원 월 한도 연회비"
+          ],
+          "result_count": 18
+        },
+        {
+          "at_ms": 45930,
+          "type": "web_search",
+          "action": "find_in_page",
+          "queries": [],
+          "result_count": 4
+        },
+        {
+          "at_ms": 55259,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "알리익스프레스 신한카드 연회비 국내전용 마스터카드 2026",
+            "site:shinhancard.com/pconts/html/card/apply/credit/1232369_2207.html \"배달앱\" \"전월\" \"한도\"",
+            "site:shinhancard.com/pconts/html/card/apply/credit/1231466_2207.html \"연회비\" \"원\""
+          ],
+          "result_count": 20
+        },
+        {
+          "at_ms": 63355,
+          "type": "web_search",
+          "action": "other",
+          "queries": [],
+          "result_count": 4
+        },
+        {
+          "at_ms": 80828,
+          "type": "web_search",
+          "action": "other",
+          "queries": [],
+          "result_count": 2
+        },
+        {
+          "at_ms": 98306,
+          "type": "mcp_tool_call",
+          "tool": "calculate_repeated_cost",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "unit_cost": 5000,
+              "quantity": 12,
+              "unit": "months"
+            }
+          },
+          "result": {
+            "inputs": {
+              "unit_cost": "5000",
+              "quantity": "12",
+              "unit": "months",
+              "currency": "KRW"
+            },
+            "formula": "total_cost = unit_cost * quantity",
+            "intermediate": {
+              "quantity": "12"
+            },
+            "result": {
+              "total_cost": "60000.00",
+              "currency": "KRW"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 98307,
+          "type": "mcp_tool_call",
+          "tool": "calculate_repeated_cost",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "unit_cost": 8000,
+              "quantity": 12,
+              "unit": "months"
+            }
+          },
+          "result": {
+            "inputs": {
+              "unit_cost": "8000",
+              "quantity": "12",
+              "unit": "months",
+              "currency": "KRW"
+            },
+            "formula": "total_cost = unit_cost * quantity",
+            "intermediate": {
+              "quantity": "12"
+            },
+            "result": {
+              "total_cost": "96000.00",
+              "currency": "KRW"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 98307,
+          "type": "mcp_tool_call",
+          "tool": "compare_costs",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "options": [
+                {
+                  "name": "5k benefit",
+                  "total_cost": 5000
+                },
+                {
+                  "name": "8k benefit",
+                  "total_cost": 8000
+                }
+              ]
+            }
+          },
+          "result": {
+            "inputs": {
+              "options": [
+                {
+                  "name": "5k benefit",
+                  "total_cost": "5000"
+                },
+                {
+                  "name": "8k benefit",
+                  "total_cost": "8000"
+                }
+              ],
+              "currency": "KRW"
+            },
+            "formula": "difference_from_lowest = option_total_cost - lowest_total_cost",
+            "intermediate": {
+              "5k benefit": "5000",
+              "8k benefit": "8000"
+            },
+            "result": {
+              "lowest_cost_option": "5k benefit",
+              "lowest_total_cost": "5000.00",
+              "currency": "KRW",
+              "difference_from_5k benefit": "0.00",
+              "difference_from_8k benefit": "3000.00"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 101377,
+          "type": "mcp_tool_call",
+          "tool": "sum_costs",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "items": [
+                {
+                  "name": "Annual delivery discount",
+                  "amount": 60000
+                },
+                {
+                  "name": "Annual fee",
+                  "amount": -10000
+                }
+              ]
+            }
+          },
+          "result": null,
+          "status": "failed",
+          "error": null
+        }
+      ],
+      "error": null,
+      "exit_diagnostic": null,
+      "e2e_latency_ms": 129570,
+      "attempts": 1
+    },
+    {
+      "case_id": "price-negotiation-001",
+      "http_status": 200,
+      "status": "ready",
+      "answer": "네, 깎아달라고 해도 됩니다. 다만 **30만 원이 비싼지는 어떤 설치인지에 따라 달라요.** 지금 확인된 건 제시받은 금액뿐이고, 기종과 작업 범위는 알 수 없습니다.\n\n비교 기준으로, 삼성의 공개 요금표는 **벽걸이 이전설치 1대 19만 3천 원**, **스탠드(81.8㎡ 이하) 이전설치 1대 31만 3천 원**입니다. 추가 자재와 운반비 등에 따라 실제 금액은 달라집니다. 따라서 같은 범위의 벽걸이 작업이라면 30만 원은 **10만 7천 원 높아** 조정을 요청할 만하고, 스탠드 이전설치라면 공개 기준보다 **1만 3천 원 낮아** 금액만으로 과하다고 보긴 어렵습니다. [삼성전자 이전설치 요금표](https://www.samsung.com/sec/move-out-simulator/) (2026년 9월 24일 확인)\n\n“배관 몇 m, 타공, 실외기 앵글, 철거·운반비가 각각 얼마인지 알려주세요. 추가 작업이 없다면 30만 원에서 조정 가능할까요?”라고 물어보세요. **새 제품을 구매하면서 하는 설치**라면 판매가에 기본 설치가 포함됐는지도 먼저 확인하는 게 좋습니다. [LG전자 설치 안내](https://www.lge.co.kr/story/user-guide/air-conditioners-install-guide/) (2026년 9월 24일 확인)",
+      "metadata": {
+        "mode": "baseline",
+        "latency_ms": 57477,
+        "codex_runs": 1,
+        "search_calls": 2,
+        "search_sources": [
+          {
+            "url": "https://enuri.com/knowcom/detail.jsp?kbno=3999708",
+            "title": "2025년 삼성 에어컨 공식 설치비 가이드 - 에누리 쇼핑지식 구매가이드"
+          },
+          {
+            "url": "https://portainer.samsungsales.co.kr/customer/carePlus.sesc?menu=w613",
+            "title": "고객지원 | SAMSUNG 삼성전자판매"
+          },
+          {
+            "url": "https://www.lge.co.kr/story/user-guide/air-conditioners-install-guide",
+            "title": "구매 전 알아두면 좋은 에어컨 설치가이드 | 설치가이드 | 가이드 | 스토리 | LG전자"
+          },
+          {
+            "url": "https://placemanual.com/price/aircon-relocation-cost-2026/",
+            "title": "에어컨 이전설치 비용 2026년 요금표 전체 공개 | placemanual"
+          },
+          {
+            "url": "https://glasswallet.com/calculate/aircon-installation-cost/system-aircon-cost/",
+            "title": "시스템 에어컨(천장형) 설치비 — 1대 vs 다대 견적 | 유리지갑 (Glasswallet)"
+          },
+          {
+            "url": "https://vuedot.co.kr/lg-aircon-relocation-cost/",
+            "title": "LG 에어컨 이전설치 비용 가격표 (2026) | VueDot"
+          },
+          {
+            "url": "https://tmddls.com/posts/2026/lg-eaikon-ejeonsa-echee-byo/",
+            "title": "엘지 에어컨 이전설치 추가비용, 부가비 속았다 라는 분들 주의해야 할 핵심 팁"
+          },
+          {
+            "url": "https://grandlife.co.kr/air-conditioner-cleaning-cost/",
+            "title": "에어컨 청소 비용: 공식 요금표와 업체 견적 비교 방법"
+          },
+          {
+            "url": "https://www.lge.co.kr/story/faq/air-conditioners-faq",
+            "title": "에어컨, 자주 묻는 질문 살펴보기 | FAQ | 가이드 | 스토리 | LG전자"
+          },
+          {
+            "url": "https://smartbohemian.tistory.com/547",
+            "title": "에어컨 설치 바가지 당한 썰"
+          },
+          {
+            "url": "https://daitcom.co.kr/catalogue/airconSetting2017.pdf",
+            "title": "삼성 스마트 에어컨 추가 설치비 운영기준"
+          },
+          {
+            "url": "https://www.bblogggg.com/2026/03/2026_13.html",
+            "title": "삼성 에어컨 설치비용 눈탱이 방지! 2026 추가 설치비 공식 단가표"
+          },
+          {
+            "url": "https://isaplan.pages.dev/guide/aircon",
+            "title": "에어컨 이전 설치 비용 가이드 — 벽걸이·스탠드형 참고 요금과 추가비용 | 이사플랜"
+          },
+          {
+            "url": "https://allgooddoc.com/post_file_download.cm?c=YTo1OntzOjEwOiJib2FyZF9jb2RlIjtzOjIyOiJiMjAyMjA2MTYwYmM1ZGNlOGQxYmI2IjtzOjk6InBvc3RfY29kZSI7czoyMjoicDIwMjIwNzA0OTA0MDlmNzdlYTUyMyI7czo5OiJmaWxlX2NvZGUiO3M6MjI6InAyMDIyMDcwNGIzNGFlZWQyNGFkYTgiO3M6MTk6InBvc3RfZG93bmxvYWRfdG9rZW4iO3M6MTM6IjY5YTFkYTliNWY3MDEiO3M6MTE6Im1lbWJlcl9jb2RlIjtOO30%3D",
+            "title": "2022년 에어컨 추가 설치비 운영기준"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=Rkxt-wehCUM",
+            "title": "[경제 인사이드] 에어컨 구매, 배보다 배꼽이 더 크다?…추가 비용 ‘덤터기’ 주의 / KBS뉴스(News) - YouTube"
+          },
+          {
+            "url": "https://pdf.metroseoul.co.kr/pdf/2025/08/19/kr_metro_1_0819_21.pdf",
+            "title": "21011001-19082025000.ps"
+          },
+          {
+            "url": "https://samsung.aiibook.net/b2c/catImage/185/dp_20240506.pdf",
+            "title": "00 표지_AV생활가전_2024 0506월호_240424_전속.pdf"
+          },
+          {
+            "url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=7IpaJjt08sCO9Mhkjsnw",
+            "title": "사용설명서 보러 가기 | --- | ---LG전자 홈페이지에서 확인하기"
+          },
+          {
+            "url": "https://www.seoulywca.or.kr/webzine/2107-08_web/20210708_webzine.pdf",
+            "title": "vol.613\n2021 7/8\n나눔을 실천하는 \n세계를 품는 \n참여하는 \n건강한 \n▼\n여성"
+          },
+          {
+            "url": "https://www.reddit.com/r/u_xuckinglightweight/comments/13b8ime",
+            "title": "에어컨 설치 비용 설치비용 저렴하게 어떻게?"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=IrsdbYGb5P4",
+            "title": "에어컨 이전 설치 비용  호구 안당하는 방법! 설치비 내기 전 반드시 알아야 하는 7가지 진실 (냉매가스 충전, 시스템, 벽걸이, 배관) - YouTube"
+          },
+          {
+            "url": "https://www.samsung.com/sec/move-out-simulator/",
+            "title": "Samsung 대한민국"
+          },
+          {
+            "url": "https://saison.samsungsales.co.kr/customer/carePlus.sesc?menu=w613",
+            "title": "고객지원 | SAMSUNG 삼성전자판매"
+          },
+          {
+            "url": "https://www.samsung.com/sec/careplus/applySubscribeView/",
+            "title": "Samsung 대한민국"
+          },
+          {
+            "url": "https://www.samsung.com/sec/samsung-care-plus/move-out-service-da-tcmosn/DA-TCMOSN/",
+            "title": "이전설치 (이전/철거/재설치) | Samsung 대한민국"
+          },
+          {
+            "url": "https://www.samsung.com/sec/air-conditioners/all-air-conditioners/",
+            "title": "에어컨 | Samsung 대한민국"
+          },
+          {
+            "url": "https://www.samsung.com/sec/samsung-care-plus/all-samsung-care-plus/",
+            "title": "삼성케어플러스 가전/TV | Samsung 대한민국"
+          },
+          {
+            "url": "https://www.samsung.com/sec/Samsung-Care-Plus/CE/",
+            "title": "삼성케어플러스 가전/TV | 삼성닷컴"
+          },
+          {
+            "url": "https://www.samsung.com/sec/system-air-conditioners/all-system-air-conditioners/",
+            "title": "시스템에어컨 | Samsung 대한민국"
+          },
+          {
+            "url": "https://www.samsung.com/sec/samsung-care-plus/move-out-nk-tcrnkcnu/NK-TCRNKCNU/",
+            "title": "이전설치,삼성케어플러스,철거,재설치,Samsung,삼성"
+          },
+          {
+            "url": "https://www.samsung.com/sec/business/air-conditioners-care-service/all-air-conditioners-care-service/",
+            "title": "에어컨 케어서비스 | Samsung Business 대한민국"
+          },
+          {
+            "url": "https://www.samsung.com/sec/Samsung-Care-Plus/IM/",
+            "title": "삼성케어플러스 모바일/PC | 삼성닷컴"
+          },
+          {
+            "url": "https://www.samsung.com/sec/system-air-conditioners/package-ac060cs4fbh2st-d2c/AC060CS4FBH2ST/",
+            "title": "싱글 에어컨 무풍 4Way (1등급) | AC060CS4FBH2ST | Samsung 대한민국"
+          },
+          {
+            "url": "https://www.samsung.com/sec/sustainability/landing_hub-file/AZF48xdKDfgALYM9/Wind_Free_Air_conditioner_Environmental_Report_kr.pdf",
+            "title": "Wind Free™ Air conditioner2024.07.30."
+          },
+          {
+            "url": "https://images.samsung.com/is/content/samsung/p5/sec/business/insights/brochure/2020/10/system_airconditioner_20201012.pdf",
+            "title": "비즈니스\n2020\n⏍\n⎕\n㉍\n⛁\n⚥\n⿙\n \n⎕\n㒊\nೱ\n⡥\nᗍ\nSPEC GUIDE\n강력한 냉"
+          }
+        ],
+        "mcp_calls": [
+          {
+            "tool": "compare_costs",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "options": [
+                  {
+                    "name": "받은 설치 견적",
+                    "total_cost": 300000
+                  },
+                  {
+                    "name": "삼성 벽걸이 이전설치 기본",
+                    "total_cost": 193000
+                  },
+                  {
+                    "name": "삼성 스탠드 81.8㎡ 이하 이전설치 기본",
+                    "total_cost": 313000
+                  },
+                  {
+                    "name": "삼성 2in1 이전설치 기본",
+                    "total_cost": 404000
+                  }
+                ]
+              }
+            },
+            "result": {
+              "inputs": {
+                "options": [
+                  {
+                    "name": "받은 설치 견적",
+                    "total_cost": "300000"
+                  },
+                  {
+                    "name": "삼성 벽걸이 이전설치 기본",
+                    "total_cost": "193000"
+                  },
+                  {
+                    "name": "삼성 스탠드 81.8㎡ 이하 이전설치 기본",
+                    "total_cost": "313000"
+                  },
+                  {
+                    "name": "삼성 2in1 이전설치 기본",
+                    "total_cost": "404000"
+                  }
+                ],
+                "currency": "KRW"
+              },
+              "formula": "difference_from_lowest = option_total_cost - lowest_total_cost",
+              "intermediate": {
+                "받은 설치 견적": "300000",
+                "삼성 벽걸이 이전설치 기본": "193000",
+                "삼성 스탠드 81.8㎡ 이하 이전설치 기본": "313000",
+                "삼성 2in1 이전설치 기본": "404000"
+              },
+              "result": {
+                "lowest_cost_option": "삼성 벽걸이 이전설치 기본",
+                "lowest_total_cost": "193000.00",
+                "currency": "KRW",
+                "difference_from_받은 설치 견적": "107000.00",
+                "difference_from_삼성 벽걸이 이전설치 기본": "0.00",
+                "difference_from_삼성 스탠드 81.8㎡ 이하 이전설치 기본": "120000.00",
+                "difference_from_삼성 2in1 이전설치 기본": "211000.00"
+              }
+            },
+            "status": "completed",
+            "error": null
+          },
+          {
+            "tool": "compare_costs",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "options": [
+                  {
+                    "name": "받은 견적",
+                    "total_cost": 300000
+                  },
+                  {
+                    "name": "스탠드",
+                    "total_cost": 313000
+                  }
+                ]
+              }
+            },
+            "result": {
+              "inputs": {
+                "options": [
+                  {
+                    "name": "받은 견적",
+                    "total_cost": "300000"
+                  },
+                  {
+                    "name": "스탠드",
+                    "total_cost": "313000"
+                  }
+                ],
+                "currency": "KRW"
+              },
+              "formula": "difference_from_lowest = option_total_cost - lowest_total_cost",
+              "intermediate": {
+                "받은 견적": "300000",
+                "스탠드": "313000"
+              },
+              "result": {
+                "lowest_cost_option": "받은 견적",
+                "lowest_total_cost": "300000.00",
+                "currency": "KRW",
+                "difference_from_받은 견적": "0.00",
+                "difference_from_스탠드": "13000.00"
+              }
+            },
+            "status": "completed",
+            "error": null
+          },
+          {
+            "tool": "compare_costs",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "options": [
+                  {
+                    "name": "받은 견적",
+                    "total_cost": 300000
+                  },
+                  {
+                    "name": "2in1",
+                    "total_cost": 404000
+                  }
+                ]
+              }
+            },
+            "result": {
+              "inputs": {
+                "options": [
+                  {
+                    "name": "받은 견적",
+                    "total_cost": "300000"
+                  },
+                  {
+                    "name": "2in1",
+                    "total_cost": "404000"
+                  }
+                ],
+                "currency": "KRW"
+              },
+              "formula": "difference_from_lowest = option_total_cost - lowest_total_cost",
+              "intermediate": {
+                "받은 견적": "300000",
+                "2in1": "404000"
+              },
+              "result": {
+                "lowest_cost_option": "받은 견적",
+                "lowest_total_cost": "300000.00",
+                "currency": "KRW",
+                "difference_from_받은 견적": "0.00",
+                "difference_from_2in1": "104000.00"
+              }
+            },
+            "status": "completed",
+            "error": null
+          },
+          {
+            "tool": "compare_costs",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "options": [
+                  {
+                    "name": "받은 견적",
+                    "total_cost": 300000
+                  },
+                  {
+                    "name": "삼성 재설치 기본",
+                    "total_cost": 200000
+                  }
+                ]
+              }
+            },
+            "result": {
+              "inputs": {
+                "options": [
+                  {
+                    "name": "받은 견적",
+                    "total_cost": "300000"
+                  },
+                  {
+                    "name": "삼성 재설치 기본",
+                    "total_cost": "200000"
+                  }
+                ],
+                "currency": "KRW"
+              },
+              "formula": "difference_from_lowest = option_total_cost - lowest_total_cost",
+              "intermediate": {
+                "받은 견적": "300000",
+                "삼성 재설치 기본": "200000"
+              },
+              "result": {
+                "lowest_cost_option": "삼성 재설치 기본",
+                "lowest_total_cost": "200000.00",
+                "currency": "KRW",
+                "difference_from_받은 견적": "100000.00",
+                "difference_from_삼성 재설치 기본": "0.00"
+              }
+            },
+            "status": "completed",
+            "error": null
+          },
+          {
+            "tool": "compare_costs",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "options": [
+                  {
+                    "name": "받은 견적",
+                    "total_cost": 300000
+                  },
+                  {
+                    "name": "삼성 재설치 기본",
+                    "total_cost": 137000
+                  }
+                ]
+              }
+            },
+            "result": {
+              "inputs": {
+                "options": [
+                  {
+                    "name": "받은 견적",
+                    "total_cost": "300000"
+                  },
+                  {
+                    "name": "삼성 재설치 기본",
+                    "total_cost": "137000"
+                  }
+                ],
+                "currency": "KRW"
+              },
+              "formula": "difference_from_lowest = option_total_cost - lowest_total_cost",
+              "intermediate": {
+                "받은 견적": "300000",
+                "삼성 재설치 기본": "137000"
+              },
+              "result": {
+                "lowest_cost_option": "삼성 재설치 기본",
+                "lowest_total_cost": "137000.00",
+                "currency": "KRW",
+                "difference_from_받은 견적": "163000.00",
+                "difference_from_삼성 재설치 기본": "0.00"
+              }
+            },
+            "status": "completed",
+            "error": null
+          },
+          {
+            "tool": "compare_costs",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "options": [
+                  {
+                    "name": "받은 견적",
+                    "total_cost": 300000
+                  },
+                  {
+                    "name": "삼성 재설치 기본",
+                    "total_cost": 285000
+                  }
+                ]
+              }
+            },
+            "result": {
+              "inputs": {
+                "options": [
+                  {
+                    "name": "받은 견적",
+                    "total_cost": "300000"
+                  },
+                  {
+                    "name": "삼성 재설치 기본",
+                    "total_cost": "285000"
+                  }
+                ],
+                "currency": "KRW"
+              },
+              "formula": "difference_from_lowest = option_total_cost - lowest_total_cost",
+              "intermediate": {
+                "받은 견적": "300000",
+                "삼성 재설치 기본": "285000"
+              },
+              "result": {
+                "lowest_cost_option": "삼성 재설치 기본",
+                "lowest_total_cost": "285000.00",
+                "currency": "KRW",
+                "difference_from_받은 견적": "15000.00",
+                "difference_from_삼성 재설치 기본": "0.00"
+              }
+            },
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "jev_calls": 0,
+        "jev_judgment": null
+      },
+      "trace": [
+        {
+          "at_ms": 11517,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "에어컨 이전 설치 비용 기본 설치비 벽걸이 스탠드 배관 2026 30만원",
+            "삼성 에어컨 설치 추가 비용 배관 타공 공식 설치비",
+            "LG 에어컨 이전설치 비용 벽걸이 스탠드 공식 가격"
+          ],
+          "result_count": 21
+        },
+        {
+          "at_ms": 22899,
+          "type": "web_search",
+          "action": "other",
+          "queries": [],
+          "result_count": 2
+        },
+        {
+          "at_ms": 30642,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "site:samsung.com/sec/care-plus aircon 이전설치 단가표 193000 313000 404000",
+            "site:samsungsales.co.kr/customer/carePlus.sesc 에어컨 이전설치 단가표 벽걸이 193000 스탠드 313000"
+          ],
+          "result_count": 14
+        },
+        {
+          "at_ms": 34718,
+          "type": "mcp_tool_call",
+          "tool": "compare_costs",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "options": [
+                {
+                  "name": "받은 설치 견적",
+                  "total_cost": 300000
+                },
+                {
+                  "name": "삼성 벽걸이 이전설치 기본",
+                  "total_cost": 193000
+                },
+                {
+                  "name": "삼성 스탠드 81.8㎡ 이하 이전설치 기본",
+                  "total_cost": 313000
+                },
+                {
+                  "name": "삼성 2in1 이전설치 기본",
+                  "total_cost": 404000
+                }
+              ]
+            }
+          },
+          "result": {
+            "inputs": {
+              "options": [
+                {
+                  "name": "받은 설치 견적",
+                  "total_cost": "300000"
+                },
+                {
+                  "name": "삼성 벽걸이 이전설치 기본",
+                  "total_cost": "193000"
+                },
+                {
+                  "name": "삼성 스탠드 81.8㎡ 이하 이전설치 기본",
+                  "total_cost": "313000"
+                },
+                {
+                  "name": "삼성 2in1 이전설치 기본",
+                  "total_cost": "404000"
+                }
+              ],
+              "currency": "KRW"
+            },
+            "formula": "difference_from_lowest = option_total_cost - lowest_total_cost",
+            "intermediate": {
+              "받은 설치 견적": "300000",
+              "삼성 벽걸이 이전설치 기본": "193000",
+              "삼성 스탠드 81.8㎡ 이하 이전설치 기본": "313000",
+              "삼성 2in1 이전설치 기본": "404000"
+            },
+            "result": {
+              "lowest_cost_option": "삼성 벽걸이 이전설치 기본",
+              "lowest_total_cost": "193000.00",
+              "currency": "KRW",
+              "difference_from_받은 설치 견적": "107000.00",
+              "difference_from_삼성 벽걸이 이전설치 기본": "0.00",
+              "difference_from_삼성 스탠드 81.8㎡ 이하 이전설치 기본": "120000.00",
+              "difference_from_삼성 2in1 이전설치 기본": "211000.00"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 41069,
+          "type": "mcp_tool_call",
+          "tool": "compare_costs",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "options": [
+                {
+                  "name": "받은 견적",
+                  "total_cost": 300000
+                },
+                {
+                  "name": "스탠드",
+                  "total_cost": 313000
+                }
+              ]
+            }
+          },
+          "result": {
+            "inputs": {
+              "options": [
+                {
+                  "name": "받은 견적",
+                  "total_cost": "300000"
+                },
+                {
+                  "name": "스탠드",
+                  "total_cost": "313000"
+                }
+              ],
+              "currency": "KRW"
+            },
+            "formula": "difference_from_lowest = option_total_cost - lowest_total_cost",
+            "intermediate": {
+              "받은 견적": "300000",
+              "스탠드": "313000"
+            },
+            "result": {
+              "lowest_cost_option": "받은 견적",
+              "lowest_total_cost": "300000.00",
+              "currency": "KRW",
+              "difference_from_받은 견적": "0.00",
+              "difference_from_스탠드": "13000.00"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 41070,
+          "type": "mcp_tool_call",
+          "tool": "compare_costs",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "options": [
+                {
+                  "name": "받은 견적",
+                  "total_cost": 300000
+                },
+                {
+                  "name": "2in1",
+                  "total_cost": 404000
+                }
+              ]
+            }
+          },
+          "result": {
+            "inputs": {
+              "options": [
+                {
+                  "name": "받은 견적",
+                  "total_cost": "300000"
+                },
+                {
+                  "name": "2in1",
+                  "total_cost": "404000"
+                }
+              ],
+              "currency": "KRW"
+            },
+            "formula": "difference_from_lowest = option_total_cost - lowest_total_cost",
+            "intermediate": {
+              "받은 견적": "300000",
+              "2in1": "404000"
+            },
+            "result": {
+              "lowest_cost_option": "받은 견적",
+              "lowest_total_cost": "300000.00",
+              "currency": "KRW",
+              "difference_from_받은 견적": "0.00",
+              "difference_from_2in1": "104000.00"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 48642,
+          "type": "mcp_tool_call",
+          "tool": "compare_costs",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "options": [
+                {
+                  "name": "받은 견적",
+                  "total_cost": 300000
+                },
+                {
+                  "name": "삼성 재설치 기본",
+                  "total_cost": 200000
+                }
+              ]
+            }
+          },
+          "result": {
+            "inputs": {
+              "options": [
+                {
+                  "name": "받은 견적",
+                  "total_cost": "300000"
+                },
+                {
+                  "name": "삼성 재설치 기본",
+                  "total_cost": "200000"
+                }
+              ],
+              "currency": "KRW"
+            },
+            "formula": "difference_from_lowest = option_total_cost - lowest_total_cost",
+            "intermediate": {
+              "받은 견적": "300000",
+              "삼성 재설치 기본": "200000"
+            },
+            "result": {
+              "lowest_cost_option": "삼성 재설치 기본",
+              "lowest_total_cost": "200000.00",
+              "currency": "KRW",
+              "difference_from_받은 견적": "100000.00",
+              "difference_from_삼성 재설치 기본": "0.00"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 48643,
+          "type": "mcp_tool_call",
+          "tool": "compare_costs",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "options": [
+                {
+                  "name": "받은 견적",
+                  "total_cost": 300000
+                },
+                {
+                  "name": "삼성 재설치 기본",
+                  "total_cost": 137000
+                }
+              ]
+            }
+          },
+          "result": {
+            "inputs": {
+              "options": [
+                {
+                  "name": "받은 견적",
+                  "total_cost": "300000"
+                },
+                {
+                  "name": "삼성 재설치 기본",
+                  "total_cost": "137000"
+                }
+              ],
+              "currency": "KRW"
+            },
+            "formula": "difference_from_lowest = option_total_cost - lowest_total_cost",
+            "intermediate": {
+              "받은 견적": "300000",
+              "삼성 재설치 기본": "137000"
+            },
+            "result": {
+              "lowest_cost_option": "삼성 재설치 기본",
+              "lowest_total_cost": "137000.00",
+              "currency": "KRW",
+              "difference_from_받은 견적": "163000.00",
+              "difference_from_삼성 재설치 기본": "0.00"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 48644,
+          "type": "mcp_tool_call",
+          "tool": "compare_costs",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "options": [
+                {
+                  "name": "받은 견적",
+                  "total_cost": 300000
+                },
+                {
+                  "name": "삼성 재설치 기본",
+                  "total_cost": 285000
+                }
+              ]
+            }
+          },
+          "result": {
+            "inputs": {
+              "options": [
+                {
+                  "name": "받은 견적",
+                  "total_cost": "300000"
+                },
+                {
+                  "name": "삼성 재설치 기본",
+                  "total_cost": "285000"
+                }
+              ],
+              "currency": "KRW"
+            },
+            "formula": "difference_from_lowest = option_total_cost - lowest_total_cost",
+            "intermediate": {
+              "받은 견적": "300000",
+              "삼성 재설치 기본": "285000"
+            },
+            "result": {
+              "lowest_cost_option": "삼성 재설치 기본",
+              "lowest_total_cost": "285000.00",
+              "currency": "KRW",
+              "difference_from_받은 견적": "15000.00",
+              "difference_from_삼성 재설치 기본": "0.00"
+            }
+          },
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "error": null,
+      "exit_diagnostic": null,
+      "e2e_latency_ms": 57480,
+      "attempts": 1
+    }
+  ],
+  "finished_at": "2026-09-24T12:23:32.767678+00:00",
+  "repository_unchanged": true
+}

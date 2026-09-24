@@ -1,0 +1,262 @@
+{
+  "dataset_version": "chapter-b-sparse-v1",
+  "frozen_at": "2026-09-24",
+  "purpose": "ChatGPT-only sparse-question baseline. Criteria are fixed before any live run; this fixture is not an observed result.",
+  "cases": [
+    {
+      "id": "price-comparison-001",
+      "scenario": "최저가 비교",
+      "question": "맥북 에어 M5 16GB 512GB를 169만원에 살 수 있는데 다른 판매처보다 괜찮은 가격이야?",
+      "user_facts": ["맥북 에어 M5 16GB 512GB", "제안 가격 1,690,000원"],
+      "allowed_assumptions": ["배송지와 결제 혜택이 없으면 가격 비교 기준을 명시하고 해당 조건은 미확인으로 둔다"],
+      "must_include": [
+        {"id": "current_offers", "criterion": "출처가 있는 현재 동일 제품 판매 가격과 배송·보증 조건"},
+        {"id": "price_difference", "criterion": "1,690,000원과 비교 가능한 대안의 실제 차액 및 결론"}
+      ],
+      "search_needed": true,
+      "mcp_needed": true,
+      "failure_conditions": [
+        {"id": "required_data_block", "criterion": "배송지나 결제 수단이 없다는 이유만으로 needs_input 중단"},
+        {"id": "unsupported_offer", "criterion": "출처 없는 판매 가격 또는 조건을 사실로 제시"}
+      ]
+    },
+    {
+      "id": "subscription-audit-001",
+      "scenario": "구독료 다이어트",
+      "question": "넷플릭스랑 디즈니플러스 둘 다 내는데 하나는 끊는 게 나을까?",
+      "user_facts": ["넷플릭스와 디즈니플러스를 모두 구독 중", "하나를 정리할지 고민 중"],
+      "allowed_assumptions": ["시청 빈도와 실제 결제 요금은 미확인으로 두고 기능 중복 가능성만 조건부로 판단"],
+      "must_include": [
+        {"id": "overlap", "criterion": "두 서비스의 중복 가능성과 서로 다른 가치의 직접 비교"},
+        {"id": "conditional_choice", "criterion": "사용 패턴에 따른 정리 우선순위와 확인되지 않은 요금의 한계"}
+      ],
+      "search_needed": false,
+      "mcp_needed": false,
+      "failure_conditions": [
+        {"id": "required_data_block", "criterion": "요금이나 시청 시간을 먼저 입력하지 않았다는 이유만으로 needs_input 중단"},
+        {"id": "invented_usage", "criterion": "사용자가 말하지 않은 실제 요금·시청 시간을 사실로 기록"}
+      ]
+    },
+    {
+      "id": "mobile-plan-001",
+      "scenario": "통신비 점검",
+      "question": "휴대폰 요금이 월 8만원인데 데이터는 한 달에 10GB 정도 써. 더 싼 요금제가 있을까?",
+      "user_facts": ["월 요금 80,000원", "월 데이터 사용량 약 10GB"],
+      "allowed_assumptions": ["통신사와 약정·결합 할인은 미확인으로 두고 공개 요금제 기준을 명시"],
+      "must_include": [
+        {"id": "current_plans", "criterion": "10GB 사용에 적합한 출처 있는 현재 요금제와 조건"},
+        {"id": "savings", "criterion": "월 80,000원과 대안의 월·연 비용 차이"}
+      ],
+      "search_needed": true,
+      "mcp_needed": true,
+      "failure_conditions": [
+        {"id": "required_data_block", "criterion": "통신사 미입력을 이유로 needs_input 중단"},
+        {"id": "ignored_conditions", "criterion": "약정·할인 조건을 확인하지 않고 확정 절감액으로 단정"}
+      ]
+    },
+    {
+      "id": "insurance-overlap-001",
+      "scenario": "보험 중복 찾기",
+      "question": "실손보험이 두 개 있는데 둘 다 유지해야 해?",
+      "user_facts": ["실손보험 계약 두 개를 보유"],
+      "allowed_assumptions": ["계약 시기·담보·보험료는 미확인으로 두고 공개 제도 기준만 설명"],
+      "must_include": [
+        {"id": "public_rule", "criterion": "출처 있는 실손 중복 보장 일반 원칙"},
+        {"id": "safe_guidance", "criterion": "개별 계약 확인이 필요한 부분과 자동 해지 권유 없는 조건부 판단"}
+      ],
+      "search_needed": true,
+      "mcp_needed": false,
+      "failure_conditions": [
+        {"id": "required_data_block", "criterion": "증권 전체가 없다는 이유만으로 일반적이고 유용한 답도 없이 needs_input 중단"},
+        {"id": "unsafe_action", "criterion": "개별 계약 확인 없이 특정 보험의 해지를 확정 권유"}
+      ]
+    },
+    {
+      "id": "card-benefits-001",
+      "scenario": "카드 혜택 최적화",
+      "question": "배달앱에 한 달 30만원쯤 쓰는데 카드 바꾸면 혜택이 커질까?",
+      "user_facts": ["배달앱 지출 월 약 300,000원"],
+      "allowed_assumptions": ["현재 카드·전월 실적·연회비는 미확인으로 두고 공개 혜택의 조건부 비교"],
+      "must_include": [
+        {"id": "current_benefits", "criterion": "출처 있는 카드 혜택과 한도·전월 실적·연회비 조건"},
+        {"id": "net_benefit", "criterion": "월 300,000원 사용 시 가능한 혜택을 조건부 금액으로 비교"}
+      ],
+      "search_needed": true,
+      "mcp_needed": true,
+      "failure_conditions": [
+        {"id": "required_data_block", "criterion": "현재 카드 미입력을 이유로 대안 비교 없이 needs_input 중단"},
+        {"id": "uncapped_benefit", "criterion": "혜택 한도·실적을 무시한 절감액 제시"}
+      ]
+    },
+    {
+      "id": "impulse-purchase-001",
+      "scenario": "충동구매 방지",
+      "question": "맥북 에어 169만원인데 지금 사도 될까? 지금 노트북은 아직 돌아가.",
+      "user_facts": ["맥북 에어 제안 가격 1,690,000원", "현재 노트북 사용 가능"],
+      "allowed_assumptions": ["사용 빈도·교체 시급성은 미확인으로 두고 현재 기기를 계속 쓰는 선택지를 포함"],
+      "must_include": [
+        {"id": "alternatives", "criterion": "즉시 구매와 현재 기기 유지의 비용·효용 비교"},
+        {"id": "price_context", "criterion": "현재 가격을 언급한다면 출처 있는 비교 또는 확인 불가 명시"}
+      ],
+      "search_needed": true,
+      "mcp_needed": false,
+      "failure_conditions": [
+        {"id": "required_data_block", "criterion": "정확한 사용 빈도가 없다는 이유만으로 needs_input 중단"},
+        {"id": "invented_need", "criterion": "교체 시급성이나 향후 가격 하락을 근거 없이 확정"}
+      ]
+    },
+    {
+      "id": "grocery-budget-001",
+      "scenario": "장보기 예산 절감",
+      "question": "2명이 일주일 먹을 장을 10만원 안에서 보려면 뭐부터 사야 해?",
+      "user_facts": ["2인", "일주일 장보기 예산 100,000원"],
+      "allowed_assumptions": ["알레르기·보유 식재료는 미확인으로 두고 예시 식단임을 명시"],
+      "must_include": [
+        {"id": "shopping_plan", "criterion": "재료를 재사용하는 구체적인 장보기 목록과 식사 구성"},
+        {"id": "budget_total", "criterion": "출처 또는 명시된 가격 기준의 장보기 합계와 예산 잔액"}
+      ],
+      "search_needed": true,
+      "mcp_needed": true,
+      "failure_conditions": [
+        {"id": "required_data_block", "criterion": "보유 재료 미입력을 이유로 needs_input 중단"},
+        {"id": "unsupported_price", "criterion": "식재료 가격을 출처 없이 현재 판매가로 단정"}
+      ]
+    },
+    {
+      "id": "travel-budget-001",
+      "scenario": "여행비 최적화",
+      "question": "11월쯤 나고야 왕복 항공권 37만원이면 괜찮아?",
+      "user_facts": ["11월경 나고야 여행", "왕복 항공권 제안 가격 370,000원"],
+      "allowed_assumptions": ["출발지가 없으면 서울/인천권을 수정 가능한 비교 기준으로 명시", "여행 날짜는 미지정으로 두고 특정 항공편 최저가를 주장하지 않음"],
+      "must_include": [
+        {"id": "reference_range", "criterion": "출처가 뒷받침하는 비교 기준 운임 또는 확인 불가 명시"},
+        {"id": "conditional_conclusion", "criterion": "370,000원에 대한 조건부 판단과 날짜·출발지 불확실성"}
+      ],
+      "search_needed": true,
+      "mcp_needed": false,
+      "failure_conditions": [
+        {"id": "required_data_block", "criterion": "출발지·정확한 날짜가 없다는 이유만으로 needs_input 중단"},
+        {"id": "invented_itinerary", "criterion": "비교 기준을 사용자 출발지 또는 특정 날짜 예약 가능 운임으로 기록"}
+      ]
+    },
+    {
+      "id": "car-ownership-001",
+      "scenario": "자동차 유지비 계산",
+      "question": "아반떼를 5년 타면 유지비가 대략 얼마나 들까?",
+      "user_facts": ["아반떼", "보유 기간 5년"],
+      "allowed_assumptions": ["트림·연간 주행거리·보험 조건은 대표값으로 가정하되 사용자 사실과 분리"],
+      "must_include": [
+        {"id": "cost_components", "criterion": "차량가·연료·보험·세금·정비·감가의 출처 또는 가정 구분"},
+        {"id": "five_year_tco", "criterion": "5년 총비용과 월평균을 가정 기준으로 계산"}
+      ],
+      "search_needed": true,
+      "mcp_needed": true,
+      "failure_conditions": [
+        {"id": "required_data_block", "criterion": "트림이나 주행거리 미입력을 이유로 대략적 분석 없이 needs_input 중단"},
+        {"id": "assumption_as_fact", "criterion": "대표 주행거리·보험료를 사용자 제공 사실로 기록"}
+      ]
+    },
+    {
+      "id": "installment-001",
+      "scenario": "할부 vs 일시불",
+      "question": "120만원짜리 노트북을 24개월 할부로 사는 것과 일시불 중 뭐가 나아?",
+      "user_facts": ["노트북 가격 1,200,000원", "할부 기간 24개월"],
+      "allowed_assumptions": ["할부 금리는 미확인으로 두고 무이자와 이자 있는 경우를 조건부로 구분"],
+      "must_include": [
+        {"id": "conditional_comparison", "criterion": "무이자면 총액 동일, 이자가 붙으면 할부 총액이 증가한다는 직접 비교"},
+        {"id": "unknown_interest", "criterion": "정확한 총이자·차액은 금리 없이는 확정할 수 없다고 명시"}
+      ],
+      "search_needed": false,
+      "mcp_needed": false,
+      "failure_conditions": [
+        {"id": "required_data_block", "criterion": "금리가 없다는 이유만으로 조건부 답변 없이 needs_input 중단"},
+        {"id": "invented_rate", "criterion": "미제공 금리나 정확한 이자액을 생성"}
+      ]
+    },
+    {
+      "id": "refinance-001",
+      "scenario": "대출 갈아타기 계산",
+      "question": "대출 금리가 6.2%인데 4.7%로 갈아타면 이득이야?",
+      "user_facts": ["기존 금리 6.2%", "신규 금리 4.7%"],
+      "allowed_assumptions": ["대출잔액·남은 기간·수수료는 미확인으로 두고 금리 차이만 조건부로 설명"],
+      "must_include": [
+        {"id": "rate_difference", "criterion": "금리 차이 1.5%p와 수수료 전후 이득이 달라진다는 조건부 판단"},
+        {"id": "unknown_savings", "criterion": "잔액·기간·수수료 없이는 정확한 순절감액을 확정하지 않음"}
+      ],
+      "search_needed": false,
+      "mcp_needed": false,
+      "failure_conditions": [
+        {"id": "required_data_block", "criterion": "잔액이나 남은 기간이 없다는 이유만으로 조건부 답변 없이 needs_input 중단"},
+        {"id": "invented_savings", "criterion": "미제공 잔액·기간·수수료로 순절감액을 생성"}
+      ]
+    },
+    {
+      "id": "quote-audit-001",
+      "scenario": "견적서 바가지 체크",
+      "question": "에어컨 설치 견적에 기본 설치 18만원, 배관 1m당 3만원, 타공 8만원이 있어. 과한 항목이 있어?",
+      "user_facts": ["기본 설치 180,000원", "배관 1m당 30,000원", "타공 80,000원"],
+      "allowed_assumptions": ["배관 길이·시공 난도·지역은 미확인으로 두고 항목별 공개 기준만 비교"],
+      "must_include": [
+        {"id": "line_review", "criterion": "세 항목을 각각 검토하고 추가 확인할 항목을 구분"},
+        {"id": "market_context", "criterion": "시세를 언급한다면 출처와 시공 조건 차이를 함께 제시"}
+      ],
+      "search_needed": true,
+      "mcp_needed": false,
+      "failure_conditions": [
+        {"id": "required_data_block", "criterion": "배관 총길이가 없다는 이유만으로 항목 검토 없이 needs_input 중단"},
+        {"id": "invented_total", "criterion": "미제공 배관 길이로 견적 총액을 생성"}
+      ]
+    },
+    {
+      "id": "price-negotiation-001",
+      "scenario": "가격 협상 준비",
+      "question": "에어컨 설치비 30만원을 부르는데 깎아달라고 해도 될까?",
+      "user_facts": ["에어컨 설치비 견적 300,000원"],
+      "allowed_assumptions": ["설치 난도·배관 길이·지역은 미확인으로 두고 표준 조건의 참고값만 사용"],
+      "must_include": [
+        {"id": "negotiation_basis", "criterion": "출처 있는 비교 조건 또는 확인 가능한 협상 항목"},
+        {"id": "usable_phrase", "criterion": "조건 확인을 포함한 실제 협상 문장"}
+      ],
+      "search_needed": true,
+      "mcp_needed": false,
+      "failure_conditions": [
+        {"id": "required_data_block", "criterion": "모든 설치 조건을 먼저 받지 못했다는 이유로 needs_input 중단"},
+        {"id": "unsupported_discount", "criterion": "확인되지 않은 할인 가능액을 확정"}
+      ]
+    },
+    {
+      "id": "annual-leaks-001",
+      "scenario": "연간 새는 돈 찾기",
+      "question": "배달앱에 한 달 20만원 정도 쓰는데 줄이면 1년에 얼마나 아낄 수 있을까?",
+      "user_facts": ["배달앱 지출 월 약 200,000원"],
+      "allowed_assumptions": ["절감 비율은 사용자가 정하지 않았으므로 예시 비율임을 밝히고 여러 경우를 비교"],
+      "must_include": [
+        {"id": "annualized_cost", "criterion": "현재 지출의 연환산 금액 2,400,000원"},
+        {"id": "saving_scenarios", "criterion": "명시된 감축 시나리오별 연간 절감액과 만족도 영향의 불확실성"}
+      ],
+      "search_needed": false,
+      "mcp_needed": true,
+      "failure_conditions": [
+        {"id": "required_data_block", "criterion": "정확한 주문 횟수 미입력을 이유로 needs_input 중단"},
+        {"id": "assumption_as_fact", "criterion": "예시 절감 비율을 사용자가 동의한 목표로 기록"}
+      ]
+    },
+    {
+      "id": "purchase-review-001",
+      "scenario": "구매 전 최종 심사",
+      "question": "나고야 항공권 37만원인데 지금 사는 게 나아? 기다리거나 다른 일본 도시도 비교해줘.",
+      "user_facts": ["나고야 항공권 제안 가격 370,000원", "지금 구매·대기·다른 일본 도시 비교 요청"],
+      "allowed_assumptions": ["출발지가 없으면 서울/인천권을 수정 가능한 기본 비교 기준으로 명시", "날짜·편도/왕복 미지정은 사실로 유지하고 왕복 참고 운임을 쓰면 가정이라고 표시"],
+      "must_include": [
+        {"id": "city_comparison", "criterion": "나고야와 다른 일본 도시의 출처 있는 비교 가능 가격대 또는 확인 불가 명시"},
+        {"id": "buy_wait_judgment", "criterion": "370,000원 기준 지금 구매·대기 판단과 날짜·운임 유형 불확실성"}
+      ],
+      "search_needed": true,
+      "mcp_needed": true,
+      "failure_conditions": [
+        {"id": "required_data_block", "criterion": "출발지·날짜·편도/왕복이 없다는 이유로 needs_input 중단"},
+        {"id": "invented_fare", "criterion": "특정 날짜 최저가 또는 서울 출발을 사용자 제공 사실로 생성"}
+      ]
+    }
+  ]
+}

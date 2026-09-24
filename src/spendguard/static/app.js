@@ -1,4 +1,4 @@
-const state = { question: "", data: {}, decision: null, scenarioId: null, activeScenarioGroup: "사기 전에", requestInFlight: false };
+const state = { question: "", decision: null, scenarioId: null, activeScenarioGroup: "사기 전에", requestInFlight: false };
 
 const scenarioDefinitions = [
   { id: "price-comparison", group: "사기 전에", label: "최저가 비교", promptTemplate: "[제품명]을 사려고 해. 같은 제품뿐 아니라 비슷한 대안까지 찾아서 가격과 조건을 비교해줘.", inputHints: ["제품명"], guidance: "[제품명]을 먼저 고치세요.", icon: "tag" },
@@ -22,79 +22,29 @@ const scenarioGroups = ["사기 전에", "매달 새는 돈", "큰돈 계산", "
 const scenarioById = new Map(scenarioDefinitions.map((scenario) => [scenario.id, scenario]));
 let activePlaceholderIndex = -1;
 
-const fieldDefinitions = {
-  target: { label: "무엇을 고려하고 있나요?", type: "text" },
-  purpose: { label: "어떤 목적으로 필요한가요?", type: "text" },
-  "price or price_confirmation_needed": { label: "현재 가격 또는 확인이 필요한 가격", type: "text", key: "price", hint: "예: 80000원 또는 현재 가격 확인" },
-  item: { label: "어떤 지출인가요?", type: "text" },
-  current_cost: { label: "현재 비용", type: "number", unit: "원" },
-  amount: { label: "금액", type: "number", unit: "원" },
-  term_months: { label: "기간", type: "number", unit: "개월" },
-  rate_or_comparison: { label: "이자율 또는 비교 기준", type: "text", hint: "예: 연 4.5% 또는 기존 조건과 비교" },
-  ownership_months: { label: "보유 기간", type: "number", unit: "개월" },
-  quote_items: { label: "견적 항목", type: "text", key: "quote_items", hint: "예: 에어컨 수리" },
-  "budget or expenses": { label: "예산", type: "number", key: "budget", unit: "원" },
-};
-
-const calculationLabels = {
-  calculate_installment: "할부 비용",
-  calculate_refinance: "대환 비용 비교",
-  calculate_usage_cost: "단위당 비용",
-  annualize_expense: "연간 비용",
-  calculate_tco: "총 보유 비용",
-  compare_costs: "선택지 비용 비교",
-};
-
-const resultFieldLabels = {
-  monthly_payment: "월 납입액",
-  total_payment: "총 납입액",
-  total_interest: "총 이자",
-  new_remaining_total: "새 조건의 잔여 총액",
-  savings: "절감액",
-  cost_per_unit: "단위당 비용",
-  annual_amount: "연간 금액",
-  tco: "총 보유 비용",
-  lowest_cost_option: "가장 낮은 비용의 선택지",
-  lowest_total_cost: "가장 낮은 총비용",
-};
-
-function resultFieldLabel(key) {
-  if (key.startsWith("difference_from_")) return `${key.slice("difference_from_".length)} 대비 차이`;
-  return resultFieldLabels[key] || key.replaceAll("_", " ");
-}
-
 const questionForm = document.querySelector("#decision-form");
 const question = document.querySelector("#question");
-const requiredData = document.querySelector("#required-data");
-const requiredDataForm = document.querySelector("#required-data-form");
-const requiredDataFields = document.querySelector("#required-data-fields");
 const resultSection = document.querySelector("#decision-result");
 const decisionCards = document.querySelector("#decision-cards");
 const status = document.querySelector("#decision-status");
 const error = document.querySelector("#error");
-const inspector = document.querySelector("#inspector");
-const inspectorContent = document.querySelector("#inspector-content");
 const scenarioGroupsContainer = document.querySelector("#scenario-groups");
 const templateGuidance = document.querySelector("#template-guidance");
 const workspace = document.querySelector("#workspace");
 const siteHeader = document.querySelector(".site-header");
 const processingBlocker = document.querySelector("#processing-blocker");
 const processingMessage = document.querySelector("#processing-message");
+const cancelRequest = document.querySelector("#cancel-request");
+const REQUEST_WAIT_LIMIT_MS = 250_000;
+let activeRequestController = null;
 
-function setStatus(value, statusName) {
+function setStatus(value, name) {
   status.querySelector(".status-label").textContent = value;
-  status.dataset.status = statusName;
+  status.dataset.status = name;
 }
 
-function setProgress(active) {
-  document.body.dataset.decisionStage = active;
-  const messages = {
-    request: "요청을 확인하고 있어요",
-    work: "가격과 조건을 확인하고 있어요",
-    details: "필요한 정보를 정리하고 있어요",
-    result: "결과를 정리하고 있어요",
-  };
-  processingMessage.textContent = messages[active] || messages.request;
+function setProgress(message) {
+  processingMessage.textContent = message;
 }
 
 function setRequestLock(locked) {
@@ -246,266 +196,178 @@ function setError(message) {
   error.hidden = !message;
 }
 
-function listCard(title, values, className = "") {
-  const card = document.createElement("article");
-  card.className = `result-card solid-panel ${className}`;
-  if (title) card.append(Object.assign(document.createElement("h3"), { textContent: title }));
-  const list = document.createElement("ul");
-  for (const value of values.length ? values : ["확인된 내용이 없습니다."]) {
-    list.append(Object.assign(document.createElement("li"), { textContent: value }));
-  }
-  card.append(list);
-  return card;
-}
-
-function valueRows(values) {
-  const list = document.createElement("dl");
-  list.className = "value-list";
-  for (const [key, value] of Object.entries(values)) {
-    const term = document.createElement("dt");
-    term.textContent = resultFieldLabel(key);
-    const detail = document.createElement("dd");
-    detail.textContent = typeof value === "object" ? Object.values(value).join(", ") : String(value);
-    const row = document.createElement("div");
-    row.className = "value-row";
-    row.append(term, detail);
-    list.append(row);
-  }
-  return list;
-}
-
-function keyNumbers(decision) {
-  const values = {};
-  for (const entry of decision.calculations) {
-    for (const [key, value] of Object.entries(entry.calculation.result)) {
-      if (key !== "currency" && typeof value !== "object") values[key] = value;
+function appendAnswerInline(parent, text) {
+  const markup = /\*\*([^*]+)\*\*|\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g;
+  let position = 0;
+  for (const match of text.matchAll(markup)) {
+    parent.append(document.createTextNode(text.slice(position, match.index)));
+    if (match[1]) {
+      const strong = document.createElement("strong");
+      strong.textContent = match[1];
+      parent.append(strong);
+    } else {
+      const link = document.createElement("a");
+      link.href = match[3];
+      link.target = "_blank";
+      link.rel = "noreferrer noopener";
+      link.textContent = match[2];
+      parent.append(link);
     }
+    position = match.index + match[0].length;
   }
-  return values;
+  parent.append(document.createTextNode(text.slice(position)));
+}
+
+function renderAnswer(text) {
+  const body = document.createElement("div");
+  body.className = "answer-body";
+  const lines = String(text).trim().split(/\r?\n/);
+  let list = null;
+  let paragraph = null;
+  for (let index = 0; index < lines.length; index += 1) {
+    const line = lines[index];
+    const trimmed = line.trim();
+    if (!trimmed) {
+      list = null;
+      paragraph = null;
+      continue;
+    }
+    if (trimmed.startsWith("|") && /^\|[\s:|-]+\|$/.test((lines[index + 1] || "").trim())) {
+      list = null;
+      paragraph = null;
+      const wrapper = document.createElement("div");
+      wrapper.className = "answer-table-wrap";
+      const table = document.createElement("table");
+      const rows = [trimmed];
+      index += 2;
+      while (index < lines.length && lines[index].trim().startsWith("|")) {
+        rows.push(lines[index].trim());
+        index += 1;
+      }
+      index -= 1;
+      for (const [rowIndex, row] of rows.entries()) {
+        const tr = document.createElement("tr");
+        for (const cell of row.slice(1, -1).split("|")) {
+          const element = document.createElement(rowIndex === 0 ? "th" : "td");
+          appendAnswerInline(element, cell.trim());
+          tr.append(element);
+        }
+        table.append(tr);
+      }
+      wrapper.append(table);
+      body.append(wrapper);
+      continue;
+    }
+    const heading = trimmed.match(/^#{1,4}\s+(.+)$/);
+    if (heading) {
+      list = null;
+      paragraph = null;
+      const element = document.createElement("h3");
+      appendAnswerInline(element, heading[1]);
+      body.append(element);
+      continue;
+    }
+    const bullet = trimmed.match(/^[-*]\s+(.+)$/);
+    const numbered = trimmed.match(/^\d+[.)]\s+(.+)$/);
+    if (bullet || numbered) {
+      paragraph = null;
+      const tag = bullet ? "ul" : "ol";
+      if (!list || list.tagName.toLowerCase() !== tag) {
+        list = document.createElement(tag);
+        body.append(list);
+      }
+      const item = document.createElement("li");
+      appendAnswerInline(item, (bullet || numbered)[1]);
+      list.append(item);
+      continue;
+    }
+    list = null;
+    if (trimmed.startsWith("> ")) {
+      paragraph = null;
+      const quote = document.createElement("blockquote");
+      appendAnswerInline(quote, trimmed.slice(2));
+      body.append(quote);
+      continue;
+    }
+    if (!paragraph) {
+      paragraph = document.createElement("p");
+      body.append(paragraph);
+    } else {
+      paragraph.append(document.createTextNode(" "));
+    }
+    appendAnswerInline(paragraph, trimmed);
+  }
+  return body;
 }
 
 function renderDecisionResult(decision) {
   decisionCards.replaceChildren();
   const conclusion = document.createElement("article");
   conclusion.className = "result-card solid-panel conclusion-card";
-  conclusion.append(
-    Object.assign(document.createElement("p"), { className: "eyebrow", textContent: decision.status === "needs_input" ? "다음 단계" : "결론" }),
-    Object.assign(document.createElement("p"), { textContent: decision.conclusion }),
-  );
+  conclusion.append(renderAnswer(decision.answer));
   decisionCards.append(conclusion);
-
-  const numbers = keyNumbers(decision);
-  if (Object.keys(numbers).length) {
-    const card = document.createElement("article");
-    card.className = "result-card solid-panel key-number-card";
-    card.append(Object.assign(document.createElement("h3"), { textContent: "핵심 숫자" }), valueRows(numbers));
-    decisionCards.append(card);
-  }
-  if (decision.options.length) decisionCards.append(listCard("선택지", decision.options, "options-card"));
-  if (decision.risks.length) decisionCards.append(listCard("주의할 점", decision.risks, "risks-card"));
-  if (decision.next_actions.length) decisionCards.append(listCard("다음 할 일", decision.next_actions, "actions-card"));
   resultSection.hidden = false;
   document.body.classList.add("has-decision", "has-active-decision");
-}
-
-function definitionFor(missingField) {
-  return fieldDefinitions[missingField] || { label: missingField.replaceAll("_", " "), type: "text" };
-}
-
-function renderRequiredData(missingFields) {
-  decisionCards.replaceChildren();
-  resultSection.hidden = true;
-  inspector.hidden = true;
-  document.body.classList.remove("has-decision", "inspector-open");
-  requiredDataFields.replaceChildren();
-  for (const missingField of missingFields) {
-    const definition = definitionFor(missingField);
-    const key = definition.key || missingField;
-    const wrapper = document.createElement("div");
-    wrapper.className = "field-with-unit";
-    const inputId = `required-${key.replaceAll(" ", "-")}`;
-    const label = document.createElement("label");
-    label.htmlFor = inputId;
-    label.textContent = definition.label;
-    const input = document.createElement("input");
-    input.id = inputId;
-    input.name = key;
-    input.type = definition.type;
-    input.required = true;
-    input.autocomplete = "off";
-    input.value = state.data[key] || "";
-    if (definition.type === "number") input.inputMode = "decimal";
-    if (definition.hint) input.placeholder = definition.hint;
-    wrapper.append(label, input);
-    if (definition.unit) wrapper.append(Object.assign(document.createElement("span"), { className: "input-unit", textContent: definition.unit }));
-    requiredDataFields.append(wrapper);
-  }
-  document.querySelector("#required-data-note").textContent = "답변을 만들기 전에 이 정보만 확인할게요.";
-  requiredData.hidden = false;
-  requiredData.scrollIntoView({ behavior: "smooth", block: "start" });
-}
-
-function updateDataFromForm() {
-  for (const input of requiredDataFields.querySelectorAll("input")) {
-    if (input.name === "quote_items") {
-      state.data.quote_items = [{ name: input.value }];
-    } else {
-      state.data[input.name] = input.value;
-    }
-  }
-}
-
-function enteredFacts() {
-  return Object.entries(state.data).map(([key, value]) => {
-    const label = definitionFor(key).label;
-    if (Array.isArray(value)) return `${label}: ${value.map((item) => item.name).join(", ")}`;
-    return `${label}: ${value}`;
-  });
-}
-
-function inspectorSection(title, content) {
-  const section = document.createElement("section");
-  section.className = "inspector-card";
-  section.append(Object.assign(document.createElement("h3"), { textContent: title }), content);
-  return section;
-}
-
-function sourceList(sources) {
-  const list = document.createElement("div");
-  list.className = "source-list";
-  for (const source of sources) {
-    const item = document.createElement("article");
-    const link = document.createElement("a");
-    link.href = source.source_url;
-    link.target = "_blank";
-    link.rel = "noreferrer";
-    link.textContent = source.source_name;
-    item.append(
-      Object.assign(document.createElement("p"), { textContent: source.value }),
-      link,
-      Object.assign(document.createElement("p"), { className: "form-note", textContent: `조회 시각: ${source.retrieved_at}` }),
-    );
-    list.append(item);
-  }
-  return list;
-}
-
-function renderInspector() {
-  const decision = state.decision;
-  if (!decision) return;
-  inspectorContent.replaceChildren();
-  inspectorContent.append(inspectorSection("사실", listCard("", [...decision.facts, ...enteredFacts()])));
-  if (decision.calculations.length) {
-    const calculations = document.createElement("div");
-    for (const calculation of decision.calculations) {
-      const item = document.createElement("article");
-      item.className = "trace-item";
-      item.append(Object.assign(document.createElement("h4"), { textContent: calculationLabels[calculation.tool] || "계산 결과" }), valueRows(calculation.calculation.result));
-      calculations.append(item);
-    }
-    inspectorContent.append(inspectorSection("계산", calculations));
-  }
-  if (decision.sources.length) inspectorContent.append(inspectorSection("출처", sourceList(decision.sources)));
-  if (decision.assumptions.length) inspectorContent.append(inspectorSection("가정", listCard("", decision.assumptions)));
-
-  const technical = document.createElement("details");
-  technical.className = "technical-details";
-  technical.append(Object.assign(document.createElement("summary"), { textContent: "기술 세부 정보" }));
-  const content = document.createElement("div");
-  content.append(Object.assign(document.createElement("p"), { textContent: `결정 유형: ${decision.pack || "unknown"}` }));
-  for (const calculation of decision.calculations) {
-    content.append(
-      Object.assign(document.createElement("p"), { textContent: `도구: ${calculation.tool}` }),
-      Object.assign(document.createElement("code"), { textContent: calculation.calculation.formula }),
-    );
-  }
-  technical.append(content);
-  inspectorContent.append(technical);
-  inspector.hidden = false;
-  document.body.classList.add("inspector-open");
 }
 
 async function requestDecision() {
   if (state.requestInFlight) return;
   state.requestInFlight = true;
-  const buttons = document.querySelectorAll("#decision-form button, #required-data-form button");
-  buttons.forEach((button) => { button.disabled = true; });
+  const controller = new AbortController();
+  activeRequestController = controller;
+  let timedOut = false;
+  const timer = window.setTimeout(() => {
+    timedOut = true;
+    controller.abort();
+  }, REQUEST_WAIT_LIMIT_MS);
+  const submit = questionForm.querySelector("button[type=submit]");
+  submit.disabled = true;
   questionForm.setAttribute("aria-busy", "true");
-  requiredDataForm.setAttribute("aria-busy", "true");
   setRequestLock(true);
-  requiredData.hidden = true;
   resultSection.hidden = true;
-  inspector.hidden = true;
-  document.body.classList.remove("has-decision", "inspector-open");
+  document.body.classList.remove("has-decision");
   document.body.classList.add("has-active-decision");
   setError("");
-  setStatus("요청 확인 중", "checking");
-  setProgress("request");
+  setStatus("분석 중", "checking");
+  setProgress("질문을 분석하고 있어요.");
   try {
-    const preflight = await fetch("/api/research-needed", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ question: state.question }),
-    });
-    if (!preflight.ok) throw new Error("현재 정보 확인 여부를 알 수 없습니다.");
-    if ((await preflight.json()).needed) {
-      setStatus("정보 조사 중", "researching");
-      setProgress("work");
-    } else {
-      setStatus("추가 정보 확인 중", "checking");
-      setProgress("details");
-    }
     const response = await fetch("/api/decisions", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ question: state.question, data: state.data }),
+      body: JSON.stringify({ question: state.question }),
+      signal: controller.signal,
     });
+    if (!response.ok) throw new Error("Decision request failed");
     const decision = await response.json();
-    if (!response.ok) throw new Error(decision.detail || "결정 요청을 완료하지 못했습니다.");
+    if (decision.status !== "ready" || !decision.answer) throw new Error("Decision answer missing");
     state.decision = decision;
-    if (decision.status === "needs_input") {
-      setStatus("추가 정보 필요", "needs-input");
-      setProgress("details");
-      renderRequiredData(decision.missing_fields);
-    } else if (decision.status === "ready") {
-      renderDecisionResult(decision);
-      renderInspector();
-      setStatus("준비됨", "ready");
-      setProgress("result");
-      resultSection.scrollIntoView({ behavior: "smooth", block: "start" });
-    } else {
-      renderDecisionResult(decision);
-      setStatus("검토 필요", "review-needed");
-      setProgress("result");
-    }
-  } catch (cause) {
-    setError(cause.message);
-    setStatus("추가 정보 필요", "needs-input");
+    renderDecisionResult(decision);
+    setStatus("준비됨", "ready");
+    resultSection.scrollIntoView({ behavior: "smooth", block: "start" });
+  } catch {
+    setError(controller.signal.aborted
+      ? (timedOut ? "분석 시간이 길어져 요청을 종료했어요. 다시 시도해 주세요." : "분석을 중단했어요.")
+      : "분석 중 문제가 생겼어요. 잠시 후 다시 시도해 주세요.");
+    setStatus("분석을 완료하지 못했어요", "error");
   } finally {
+    window.clearTimeout(timer);
+    if (activeRequestController === controller) activeRequestController = null;
     state.requestInFlight = false;
     setRequestLock(false);
-    buttons.forEach((button) => { button.disabled = false; });
+    submit.disabled = false;
     questionForm.removeAttribute("aria-busy");
-    requiredDataForm.removeAttribute("aria-busy");
   }
 }
 
+cancelRequest.addEventListener("click", () => activeRequestController?.abort());
 questionForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   state.question = question.value.trim();
-  state.data = {};
   if (state.question) await requestDecision();
-});
-
-requiredDataForm.addEventListener("submit", async (event) => {
-  event.preventDefault();
-  updateDataFromForm();
-  await requestDecision();
 });
 
 renderScenarioGroups();
 question.placeholder = scenarioDefinitions[new Date().getDate() % scenarioDefinitions.length].promptTemplate;
-
 scenarioGroupsContainer.addEventListener("click", (event) => {
   const tab = event.target.closest("[data-scenario-group]");
   if (tab) {
@@ -514,10 +376,8 @@ scenarioGroupsContainer.addEventListener("click", (event) => {
     return;
   }
   const card = event.target.closest("[data-scenario-id]");
-  if (!card) return;
-  selectScenario(scenarioById.get(card.dataset.scenarioId));
+  if (card) selectScenario(scenarioById.get(card.dataset.scenarioId));
 });
-
 question.addEventListener("keydown", (event) => {
   if (event.key !== "Tab" || !state.scenarioId || activePlaceholderIndex < 0) return;
   const placeholders = placeholderRanges();
@@ -526,37 +386,16 @@ question.addEventListener("keydown", (event) => {
   event.preventDefault();
   selectPlaceholder(nextIndex);
 });
-
-setProgress("request");
-
 document.querySelector("[data-new-decision]").addEventListener("click", () => {
   state.question = "";
-  state.data = {};
   state.decision = null;
   state.scenarioId = null;
   activePlaceholderIndex = -1;
   question.value = "";
   templateGuidance.hidden = true;
   setScenarioSelection("");
-  requiredData.hidden = true;
   resultSection.hidden = true;
-  inspector.hidden = true;
-  document.body.classList.remove("has-decision", "has-active-decision", "inspector-open");
-  setProgress("request");
+  document.body.classList.remove("has-decision", "has-active-decision");
   setError("");
   setStatus("준비됨", "ready");
-});
-
-document.querySelector("[data-inspect]").addEventListener("click", () => {
-  if (inspector.hidden) {
-    renderInspector();
-    document.querySelector("#close-inspector").focus();
-  } else {
-    inspector.hidden = true;
-    document.body.classList.remove("inspector-open");
-  }
-});
-document.querySelector("#close-inspector").addEventListener("click", () => {
-  inspector.hidden = true;
-  document.body.classList.remove("inspector-open");
 });

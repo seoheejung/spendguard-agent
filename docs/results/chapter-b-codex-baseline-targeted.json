@@ -1,0 +1,3258 @@
+{
+  "dataset_version": "chapter-b-sparse-v1",
+  "fixture_sha256": "a55ef56b9f2e5a67e671f9b1cb70c36d94251b9b537f6dbafc1b10cc325a3f24",
+  "mode": "baseline",
+  "started_at": "2026-09-24T08:10:21.968204+00:00",
+  "runs": [
+    {
+      "case_id": "price-comparison-001",
+      "http_status": 200,
+      "status": "ready",
+      "answer": "**13형 M5·16GB·512GB 신품을 최종 결제액 169만원에 살 수 있다면 좋은 가격입니다.** 질문에 화면 크기와 구매 조건이 없어, 아래 비교는 **13형 기본형**을 가정했습니다.\n\n2026년 9월 24일 확인한 같은 사양의 미드나이트 모델은 [롯데하이마트에서 5% 즉시할인 적용 시 2,080,500원](https://www.e-himart.co.kr/app/goods/goodsDetail?goodsNo=0062781077)으로, 제시하신 가격보다 **390,500원 높습니다**. [프리스비 표시가는 2,140,000원](https://www.frisbeekorea.com/shopMo/products/products-detail.do?cate1=101&cate2=201&cate3=&prod_idx=19343)으로 **450,000원 높지만**, 확인 당시 품절이라 구매 가능한 대안은 아닙니다.\n\n구매 전 **13형인지, 미개봉 국내 정식 제품인지, 169만원에 배송비와 필수 결제 조건이 모두 포함되는지**만 확인하세요. 색상이나 판매 시점에 따라 가격은 달라질 수 있어, 이 비교만으로 전체 판매처의 최저가라고 단정할 수는 없습니다.",
+      "metadata": {
+        "mode": "baseline",
+        "latency_ms": 81659,
+        "codex_runs": 1,
+        "search_calls": 4,
+        "search_sources": [
+          {
+            "url": "https://prod.danawa.com/info/?cate=11336468&pcode=106755140",
+            "title": "APPLE 맥북에어15 M5 10코어 CPU, 10코어 GPU 실버 (램16GB, SSD 512GB) : 다나와 가격비교"
+          },
+          {
+            "url": "https://www.coupang.com/vp/products/9410641464?itemId=27961674149&vendorItemId=94919713477",
+            "title": "Apple 맥북 에어 13 M5칩 - 노트북 | 쿠팡"
+          },
+          {
+            "url": "https://web.joongna.com/search/m5%2016%20512",
+            "title": "m5 16 512 중고거래 | 중고나라 - 안심되는 중고거래"
+          },
+          {
+            "url": "https://hanip.net/categories/Mac?sub=MacBook+Air+15",
+            "title": "MacBook Air 15 최저가 비교 — 쿠팡·11번가·G마켓 실시간 가격 | 한입"
+          },
+          {
+            "url": "https://prod.danawa.com/list/?cate=11343869",
+            "title": "M5 맥북 : 다나와 가격비교"
+          },
+          {
+            "url": "https://www.enuri.com/detail.jsp?modelno=142946934",
+            "title": "APPLE 맥북에어15 M5 10코어 CPU, 10코어 GPU 블루 [램16GB, SSD 512GB] - 에누리 가격비교"
+          },
+          {
+            "url": "https://web.joongna.com/search/%EB%A7%A5%EB%B6%81m5%2015",
+            "title": "맥북m5 15 중고거래 | 중고나라 - 안심되는 중고거래"
+          },
+          {
+            "url": "https://search.danawa.com/mobile/dsearch.php?keyword=%EB%A7%A5%EB%B6%81%EC%97%90%EC%96%B4+m5",
+            "title": "맥북에어 m5 : 다나와 통합검색"
+          },
+          {
+            "url": "https://www.ganow.co.kr/appliance/12576",
+            "title": "[MDVD4KH/A] Apple 2026 맥북 에어 15 M5칩, 스타라이트, M5 10코어, 10코어, 16GB, 512GB, 한글 (MDVD4KH/A) | 가전나우"
+          },
+          {
+            "url": "https://kream.co.kr/products/956564",
+            "title": "애플 2026 맥북 에어 15 M5 512기가 SSD / 16기가 메모리 실버 (국내 정식 발매 제품) 정품 안심 거래 | KREAM"
+          },
+          {
+            "url": "https://jjini.maeumonwp.com/%EB%A7%A5%EB%B6%81-%EC%97%90%EC%96%B4-m5-13%EC%9D%B8%EC%B9%98-%EC%B6%94%EC%B2%9C%EF%BD%9C16gb-512gb-%EC%82%B4-%EB%A7%8C%ED%95%A0%EA%B9%8C/",
+            "title": "맥북 에어 M5 13인치 추천｜16GB 512GB 살 만할까? - 찌니짱짱"
+          },
+          {
+            "url": "https://akzpxld.sejulab.com/macbook-air-13-m5-review/",
+            "title": "애플 맥북 에어 13 M5 가벼운 사무용 노트북 추천"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=EjKgHynachw",
+            "title": "\"4월 노트북은 이거 안사면 사지마세요\" 역대급 가성비가 되어서 돌아온 애플 2026 맥북 에어 13  외 2종│2026년 4월 노트북추천 BEST3│가성비노트북│ - YouTube"
+          },
+          {
+            "url": "https://www.reddit.com/r/Mogong/comments/1c681yo",
+            "title": "이왕이면 병에 걸려.... 지름신고합니다."
+          },
+          {
+            "url": "https://www.reddit.com/r/XiaomiGlobal/comments/1uzjsi3/macbook_air_m5_vs_xiaomi_16_redmibook_2026_ultra/",
+            "title": "MacBook Air M5 vs Xiaomi 16\" RedmiBook 2026 (Ultra 5) vs RedmiBook 16\" 2025 (Ultra 7) - Which one to choose for prestaction?"
+          },
+          {
+            "url": "https://www.samsungpop.com/common.do?cmd=down&contentType=application%2Fpdf&fileName=2020%2F2026031214474878K_02_02.pdf&inlineYn=Y&saveKey=research.pdf",
+            "title": "슬라이드 1"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=oHZFzz76T4M",
+            "title": "맥북 프로 이미 수천 명이 샀어요 - YouTube"
+          },
+          {
+            "url": "https://treem.co.kr/down/treem_catalogue2024_01.pdf",
+            "title": "트리엠 종합 제품안내"
+          },
+          {
+            "url": "https://www.g2b.go.kr/pn/pnp/pnpe/UntyAtchFile/downloadFile.do?bidPbancNo=R26BK01550050&bidPbancOrd=001&fileSeq=2&fileType=&prcmBsneSeCd=01",
+            "title": "1. Ü©˝(2026D 5Ô).xlsx"
+          },
+          {
+            "url": "https://bestshop.lge.co.kr/kr/ebook/2026/january/best/catImage/622/202601_best_catalogue.pdf",
+            "title": "LG 그램 Pro AI"
+          },
+          {
+            "url": "https://prod.danawa.com/info/?cate=11336468&pcode=106754228",
+            "title": "APPLE 맥북에어13 M5 10코어 CPU, 8코어 GPU 스카이 (램16GB, SSD 512GB) : 다나와 가격비교"
+          },
+          {
+            "url": "https://www.apple.com/kr/shop/buy-mac/macbook-air/13-%EB%AA%A8%EB%8D%B8",
+            "title": "www.apple.com"
+          },
+          {
+            "url": "https://prod.danawa.com/list/?cate=11343778",
+            "title": "M5 맥북 : 다나와 가격비교"
+          },
+          {
+            "url": "https://prod.danawa.com/list/?_OC_=dpgk&cate=11236463&logger_kw=dpgk",
+            "title": "APPLE 맥북 : 다나와 가격비교"
+          },
+          {
+            "url": "https://prod.danawa.com/vssearch/?productCodes=642998",
+            "title": "APPLE 맥북프로 MB133KH/A 상품비교 : 다나와 VS검색"
+          },
+          {
+            "url": "https://prod.danawa.com/vssearch/?productCodes=17836682",
+            "title": "APPLE 맥북에어13 M2 8코어 CPU, 10코어 GPU 그레이 (램16GB, SSD 256GB) 상품비교 : 다나와 VS검색"
+          },
+          {
+            "url": "https://prod.danawa.com/vssearch/?productCodes=106756532",
+            "title": "APPLE 맥북에어13 M5 10코어 CPU, 10코어 GPU 실버 (램16GB, SSD 1TB) 상품비교 : 다나와 VS검색"
+          },
+          {
+            "url": "https://www.apple.com/kr/newsroom/2026/03/apple-introduces-the-new-macbook-air-with-m5/",
+            "title": "Apple, M5를 탑재한 신규 MacBook Air 공개 - Apple (KR)"
+          },
+          {
+            "url": "https://www.apple.com/kr/shop/product/fdh74kh/a",
+            "title": "리퍼비쉬 MacBook Air 13 Apple M5 칩 모델(10코어 CPU 및 8코어 GPU) - 실버"
+          },
+          {
+            "url": "https://www.apple.com/kr/shop/mac/accessories/mice-keyboards/macbook-air-13m5-%EB%AA%A8%EB%8D%B8",
+            "title": "MacBook Air 13(M5 모델) - 마우스 및 키보드 - Mac 액세서리"
+          },
+          {
+            "url": "https://prod.danawa.com/list/?cate=112758&searchOption=searchMaker%3D702%2C2137%2FsearchAttributeValue%3D617822%2C662507%2F",
+            "title": "노트북 전체 : 다나와 가격비교"
+          },
+          {
+            "url": "https://www.apple.com/kr/environment/pdf/Apple_Environmental_Progress_Report_2026.pdf",
+            "title": "Apple 2026 Environmental Progress Report"
+          },
+          {
+            "url": "https://www.reddit.com/r/askanything/comments/1weim93/macbook_air_m5_vs_samsung_galaxy_book6_pro_which/",
+            "title": "MacBook Air M5 vs Samsung Galaxy Book6 Pro - which one would you pick?"
+          },
+          {
+            "url": "https://www.apple.com/kr/environment/pdf/products/notebooks/MacBook_Air_M5_PER_Mar2026.pdf",
+            "title": "MacBook Air (M5) Product Environmental Report"
+          },
+          {
+            "url": "https://www.reddit.com/r/u_g3collection/comments/1vqk0yt/macbook_air_13inch_with_apple_m5_16gb_ram_512gb/",
+            "title": "MacBook Air 13-inch with Apple M5 — 16GB RAM + 512GB SSD 💻🔥"
+          },
+          {
+            "url": "https://www.reddit.com/r/laptops/comments/1vgyqiq/macbook_air_m5_1624gb_vs_asus_rog_strix_g16_ryzen/",
+            "title": "MacBook Air M5 (16/24GB) vs ASUS ROG Strix G16 (Ryzen 9 + RTX 5050)"
+          },
+          {
+            "url": "https://www.coupang.com/vp/products/9410641464?sourceType=SDP_ALSO_VIEWED&vendorItemId=94919713477",
+            "title": "Apple 맥북 에어 13 M5칩 - 노트북 | 쿠팡"
+          },
+          {
+            "url": "https://www.coupang.com/vp/products/9410641464?itemId=27961674150&itemsCount=37&q=16+%28-10%29&rank=28&searchId=4803b9774319094&searchRank=28&sourceType=search&vendorItemId=94919713476",
+            "title": "Apple 맥북 에어 13 M5칩 - 노트북 | 쿠팡"
+          },
+          {
+            "url": "https://hotdang.kr/free/4238",
+            "title": "[쿠팡] (역대급) Apple 맥북 에어 13 M5칩 (스카이 블루 M5 10코어 × 8코어 GPU × 16GB × 512GB × 한글) (1,605,630원) > 오늘의핫딜 | 핫딜당"
+          },
+          {
+            "url": "https://hanip.net/products/%EB%A7%A5%EB%B6%81-%EC%97%90%EC%96%B4-13%EC%9D%B8%EC%B9%98-%EB%AF%B8%EB%93%9C%EB%82%98%EC%9D%B4%ED%8A%B8-mdhe4kh-a",
+            "title": "맥북 에어 13인치 M5 16GB 512GB 미드나이트 MDHE4KH/A 최저가 2,190,000원 | 한입"
+          },
+          {
+            "url": "https://hotdeal.zip/%EB%A7%A5%EB%B6%81-%EC%97%90%EC%96%B4-13%EC%9D%B8%EC%B9%98-M5%EC%B9%A9-%EC%8B%A4%EB%B2%84-M5-10%EC%BD%94%EC%96%B4-8%EC%BD%94%EC%96%B4-GPU-512GB-16GB-6de8",
+            "title": "맥북 에어 13인치 M5칩 실버 M5 10코어 8코어 GPU 512GB 16GB - 핫딜모음"
+          },
+          {
+            "url": "https://dasaja.co.kr/saja_korea/427038",
+            "title": "맥북 에어 13인치 M5칩 실버 M5 10코어 8코어 GPU 512GB 16GB > 국내 딜 | 다사자 - 핫딜 쇼핑 커뮤니티"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=kTd3LdaQXe0",
+            "title": "맥북 에어 가성비 좋아서 부담 없이 추천 - YouTube"
+          },
+          {
+            "url": "https://web.joongna.com/product/226484719",
+            "title": "[미개봉] M5 맥북 에어 13인치 실버 16GB 램 / 512GB 저장공간 | 중고나라 - 안심되는 중고거래"
+          },
+          {
+            "url": "https://web.joongna.com/search/%EB%A7%A5%EB%B6%81%2016%20m5",
+            "title": "맥북 16 m5 중고거래 | 중고나라 - 안심되는 중고거래"
+          },
+          {
+            "url": "https://plan.danawa.com/mobile/info/index.php?nPlanSeq=12205",
+            "title": "맥북 에어 M5핵심 정리 : 다나와 쇼핑기획전"
+          },
+          {
+            "url": "https://www.apple.com/kr/shop/buy-mac/macbook-air/13-%EB%AA%A8%EB%8D%B8-silver-m5-%EC%B9%A9-10%EC%BD%94%EC%96%B4-cpu-8%EC%BD%94%EC%96%B4-gpu-16gb-%EB%A9%94%EB%AA%A8%EB%A6%AC-512gb-%EC%A0%80%EC%9E%A5-%EC%9E%A5%EC%B9%98",
+            "title": "www.apple.com"
+          },
+          {
+            "url": "https://www.apple.com/kr/shop/buy-mac/macbook-air/15-%EB%AA%A8%EB%8D%B8-silver-m5-%EC%B9%A9-10%EC%BD%94%EC%96%B4-cpu-10%EC%BD%94%EC%96%B4-gpu-16gb-%EB%A9%94%EB%AA%A8%EB%A6%AC-512gb-%EC%A0%80%EC%9E%A5-%EC%9E%A5%EC%B9%98",
+            "title": "www.apple.com"
+          },
+          {
+            "url": "https://www.apple.com/kr/shop/buy-mac/macbook-air/13-%EB%AA%A8%EB%8D%B8-%EC%8A%A4%EC%B9%B4%EC%9D%B4-%EB%B8%94%EB%A3%A8-m5-%EC%B9%A9-10%EC%BD%94%EC%96%B4-cpu-8%EC%BD%94%EC%96%B4-gpu-16gb-%EB%A9%94%EB%AA%A8%EB%A6%AC-512gb-%EC%A0%80%EC%9E%A5-%EC%9E%A5%EC%B9%98",
+            "title": "www.apple.com"
+          },
+          {
+            "url": "https://kream.co.kr/products/823760",
+            "title": "애플 2026 맥북 에어 13 M5 512기가 SSD / 16기가 메모리 미드나이트 (국내 정식 발매 제품) 정품 안심 거래 | KREAM"
+          },
+          {
+            "url": "https://www.e-himart.co.kr/app/goods/goodsDetail?goodsNo=0062781077",
+            "title": "롯데하이마트 | 맥북에어 13 M5, 10코어 CPU, 8코어 GPU, 16GB RAM, 512GB SSD - 미드나이트 [MDHE4KH/A]"
+          },
+          {
+            "url": "https://nosearch.com/product/all/notebook/detail/MDHE4KH%2FA%20M5%2010Core%20-%208GPU%20-%2016GB%20-%20512GB",
+            "title": "APPLE 2026 맥북에어13 MDHE4KH/A M5 10Core - 8GPU - 16GB - 512GB 리뷰&스펙분석"
+          },
+          {
+            "url": "https://www.coupang.com/vp/products/9410641464?itemId=27961674147&itemsCount=49&q=e-m10%EB%A7%88%EC%9D%B4%ED%81%AC&rank=12&searchId=d2a17e1b3566529&searchRank=12&sourceType=search&vendorItemId=94919713475",
+            "title": "Apple 맥북 에어 13 M5칩 - 노트북 | 쿠팡"
+          },
+          {
+            "url": "https://www.frisbeekorea.com/shopMo/products/products-detail.do?cate1=101&cate2=201&cate3=&prod_idx=19343",
+            "title": "맥북 에어 13 2026년 M5 10CPU 8GPU 16GB RAM 512GB SSD 미드나이트 MDHE4KH/A - Frisbee"
+          },
+          {
+            "url": "https://www.frisbeekorea.com/shopMo/products/products-detail.do?prod_idx=19343",
+            "title": "맥북 에어 13 2026년 M5 10CPU 8GPU 16GB RAM 512GB SSD 미드나이트 MDHE4KH/A - Frisbee"
+          },
+          {
+            "url": "https://www.officenex.com/item/itemView.do?itemId=27200022866973",
+            "title": "오피스넥스 | 공식 온라인 스토어"
+          },
+          {
+            "url": "https://www.enuri.com/detail.jsp?modelno=142946585",
+            "title": "APPLE 맥북에어13 M5 10코어 CPU, 8코어 GPU 실버 [램16GB, SSD 512GB] - 에누리 가격비교"
+          },
+          {
+            "url": "https://www.i-store.co.kr/plp/pdp/1918",
+            "title": "아이스토어 | Apple Premium Partner"
+          },
+          {
+            "url": "https://www.compuzone.co.kr/product/product_detail.htm?BigDivNo=&DivNo=0&MediumDivNo=1445&ProductNo=1327186",
+            "title": "[Apple] 맥북에어 13 M5 (10C CPU 8C GPU)/16GB/512GB - 미드나이트 [MDHE4KH/A] : 컴퓨존"
+          },
+          {
+            "url": "https://www.compuzone.co.kr/product/product_detail.htm?BigDivNo=3&DivNo=2021&MediumDivNo=1008&ProductNo=1329750",
+            "title": "[Apple] 2026 맥북에어 13 M5 (10C CPU 10C GPU)/24GB/512GB 실버 [Z1L0, MDH74KH/A] [Z1L0000Q0] : 컴퓨존"
+          },
+          {
+            "url": "https://www.frisbeekorea.com/shop/products/products-detail.do?prod_idx=19347&rec_id=e77c1edf-18bf-4d72-8bd4-bf733eb7c251&rec_mid=9290&rec_pid=19347&rec_sid=k2LwVS6KtmjBWhYoLa3hwW",
+            "title": "맥북 에어 13 2026년 M5 10CPU 8GPU 16GB RAM 512GB SSD 실버 MDH74KH/A - Frisbee"
+          }
+        ],
+        "mcp_calls": [
+          {
+            "tool": "compare_costs",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "options": [
+                  {
+                    "name": "사용자 제시 가격",
+                    "total_cost": 1690000
+                  },
+                  {
+                    "name": "롯데하이마트 즉시할인가",
+                    "total_cost": 2080500
+                  },
+                  {
+                    "name": "프리스비 표시가",
+                    "total_cost": 2140000
+                  },
+                  {
+                    "name": "애플 2026년 3월 13형 출시가",
+                    "total_cost": 1790000
+                  }
+                ]
+              }
+            },
+            "result": {
+              "inputs": {
+                "options": [
+                  {
+                    "name": "사용자 제시 가격",
+                    "total_cost": "1690000"
+                  },
+                  {
+                    "name": "롯데하이마트 즉시할인가",
+                    "total_cost": "2080500"
+                  },
+                  {
+                    "name": "프리스비 표시가",
+                    "total_cost": "2140000"
+                  },
+                  {
+                    "name": "애플 2026년 3월 13형 출시가",
+                    "total_cost": "1790000"
+                  }
+                ],
+                "currency": "KRW"
+              },
+              "formula": "difference_from_lowest = option_total_cost - lowest_total_cost",
+              "intermediate": {
+                "사용자 제시 가격": "1690000",
+                "롯데하이마트 즉시할인가": "2080500",
+                "프리스비 표시가": "2140000",
+                "애플 2026년 3월 13형 출시가": "1790000"
+              },
+              "result": {
+                "lowest_cost_option": "사용자 제시 가격",
+                "lowest_total_cost": "1690000.00",
+                "currency": "KRW",
+                "difference_from_사용자 제시 가격": "0.00",
+                "difference_from_롯데하이마트 즉시할인가": "390500.00",
+                "difference_from_프리스비 표시가": "450000.00",
+                "difference_from_애플 2026년 3월 13형 출시가": "100000.00"
+              }
+            },
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "jev_calls": 0,
+        "jev_judgment": null
+      },
+      "trace": [
+        {
+          "at_ms": 14444,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "맥북 에어 M5 13인치 16GB 512GB 가격 2026 애플",
+            "맥북 에어 M5 16GB 512GB 최저가 13인치 네이버 쿠팡 2026 9월",
+            "맥북 에어 M5 15인치 16GB 512GB 가격 애플 한국"
+          ],
+          "result_count": 20
+        },
+        {
+          "at_ms": 20581,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "site:apple.com/kr/shop/buy-mac/macbook-air M5 13 512 16 ₩",
+            "site:prod.danawa.com/info/ \"맥북에어13 M5\" \"512GB\" \"16GB\"",
+            "맥북에어13 M5 16GB 512GB 가격 2026 9월",
+            "site:hanip.net \"MacBook Air 13\" \"M5\" \"512GB\""
+          ],
+          "result_count": 19
+        },
+        {
+          "at_ms": 28003,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "\"맥북 에어 13\" \"M5\" \"16GB\" \"512GB\" \"원\" 쿠팡",
+            "\"맥북에어13 M5\" \"16GB\" \"512GB\" \"1,6\"",
+            "\"맥북 에어 M5\" \"16GB\" \"512GB\" \"1,590,000\""
+          ],
+          "result_count": 16
+        },
+        {
+          "at_ms": 32685,
+          "type": "web_search",
+          "action": "other",
+          "queries": [],
+          "result_count": 3
+        },
+        {
+          "at_ms": 38751,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "\"MDH74KH/A\" \"원\" 맥북 2026",
+            "\"MDHE4KH/A\" \"원\" 맥북 2026",
+            "\"MDH74KH/A\" \"1,690,000\"",
+            "\"MDH74KH/A\" \"1,7\" 가격"
+          ],
+          "result_count": 12
+        },
+        {
+          "at_ms": 44875,
+          "type": "mcp_tool_call",
+          "tool": "compare_costs",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "options": [
+                {
+                  "name": "사용자 제시 가격",
+                  "total_cost": 1690000
+                },
+                {
+                  "name": "롯데하이마트 즉시할인가",
+                  "total_cost": 2080500
+                },
+                {
+                  "name": "프리스비 표시가",
+                  "total_cost": 2140000
+                },
+                {
+                  "name": "애플 2026년 3월 13형 출시가",
+                  "total_cost": 1790000
+                }
+              ]
+            }
+          },
+          "result": {
+            "inputs": {
+              "options": [
+                {
+                  "name": "사용자 제시 가격",
+                  "total_cost": "1690000"
+                },
+                {
+                  "name": "롯데하이마트 즉시할인가",
+                  "total_cost": "2080500"
+                },
+                {
+                  "name": "프리스비 표시가",
+                  "total_cost": "2140000"
+                },
+                {
+                  "name": "애플 2026년 3월 13형 출시가",
+                  "total_cost": "1790000"
+                }
+              ],
+              "currency": "KRW"
+            },
+            "formula": "difference_from_lowest = option_total_cost - lowest_total_cost",
+            "intermediate": {
+              "사용자 제시 가격": "1690000",
+              "롯데하이마트 즉시할인가": "2080500",
+              "프리스비 표시가": "2140000",
+              "애플 2026년 3월 13형 출시가": "1790000"
+            },
+            "result": {
+              "lowest_cost_option": "사용자 제시 가격",
+              "lowest_total_cost": "1690000.00",
+              "currency": "KRW",
+              "difference_from_사용자 제시 가격": "0.00",
+              "difference_from_롯데하이마트 즉시할인가": "390500.00",
+              "difference_from_프리스비 표시가": "450000.00",
+              "difference_from_애플 2026년 3월 13형 출시가": "100000.00"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 51070,
+          "type": "web_search",
+          "action": "find_in_page",
+          "queries": [],
+          "result_count": 5
+        },
+        {
+          "at_ms": 65471,
+          "type": "web_search",
+          "action": "other",
+          "queries": [],
+          "result_count": 1
+        },
+        {
+          "at_ms": 69596,
+          "type": "web_search",
+          "action": "find_in_page",
+          "queries": [],
+          "result_count": 1
+        }
+      ],
+      "error": null,
+      "e2e_latency_ms": 81664,
+      "attempts": 1
+    },
+    {
+      "case_id": "subscription-audit-001",
+      "http_status": 200,
+      "status": "ready",
+      "answer": "최근 한 달 동안 **거의 보지 않은 쪽이 있다면 끊는 게 좋습니다.** 요금보다 실제 시청 빈도와 그 서비스에서만 볼 수 있는 작품이 있는지를 기준으로 고르세요.\n\n둘 다 가끔만 본다면 한 번에 하나만 구독하고, 보고 싶은 작품이 쌓였을 때 번갈아 이용하는 방법도 좋습니다. 가족이 함께 쓰거나 연간 결제 중이라면 다른 이용자와 다음 갱신일을 먼저 확인하세요.\n\n현재 요금제와 이용량을 모르므로 어느 쪽을 끊을지, 얼마를 아낄지는 단정할 수 없습니다.",
+      "metadata": {
+        "mode": "baseline",
+        "latency_ms": 15901,
+        "codex_runs": 1,
+        "search_calls": 0,
+        "search_sources": [],
+        "mcp_calls": [],
+        "jev_calls": 0,
+        "jev_judgment": null
+      },
+      "trace": [],
+      "error": null,
+      "e2e_latency_ms": 15904,
+      "attempts": 1
+    },
+    {
+      "case_id": "mobile-plan-001",
+      "http_status": 200,
+      "status": "ready",
+      "answer": "네, **월 10GB 정도 쓴다면 더 싼 요금제가 있습니다.** 아래 절약액은 말씀하신 월 8만 원이 단말기 할부금 등을 제외한 **통신요금**이고, 새 요금이 12개월간 같다는 가정으로 계산했습니다.\n\n- **알뜰폰으로 옮길 수 있다면:** LG헬로모바일의 LTE 7GB 요금제에 매월 10GB 추가 패키지를 붙이면 **월 17GB에 17,400원**입니다. 통화·문자는 기본 제공이며, 데이터를 다 쓰면 최대 1Mbps로 이용할 수 있습니다. 현재 요금 대비 **월 62,600원, 1년 751,200원** 절약하는 셈입니다. [LG헬로모바일 요금 안내](https://direct.lghellovision.net/main.do) — 2026년 9월 24일 확인.\n- **KT를 유지하고 싶다면:** 온라인 전용 ‘요고 32’는 **월 10GB에 32,000원**이며, 소진 후 최대 400Kbps로 이용할 수 있습니다. 현재 요금 대비 **월 48,000원, 1년 576,000원** 절약하는 셈입니다. 기존 약정이 있다면 변경 시 위약금이 생길 수 있습니다. [KT 요고 다이렉트 안내](https://shop.kt.com/m/unify/yogo.do) — 2026년 9월 24일 확인.\n\n**추천은 알뜰폰 17GB 요금제**입니다. 다만 8만 원에 단말기 할부금이 포함돼 있거나 결합 할인을 받고 있다면 실제 절약액은 달라집니다. 변경 전에 청구서의 통신요금·할부금·결합 할인과 약정 위약금을 확인하세요.",
+      "metadata": {
+        "mode": "baseline",
+        "latency_ms": 74367,
+        "codex_runs": 1,
+        "search_calls": 2,
+        "search_sources": [
+          {
+            "url": "https://m.product.kt.com/static/prodetail/1381/mobile/itemAccordion/scalable/scalable_1381_01_01_230417.html",
+            "title": "상품서비스 | 글로벌 No.1 KT"
+          },
+          {
+            "url": "https://product.kt.com/wDic/productDetail.do?ItemCode=1694",
+            "title": "베이직(이월) | 모바일 요금제 | KT닷컴"
+          },
+          {
+            "url": "https://shop.kt.com/m/smartCompare/productCompare.popView.do?inslMonsTypeCd=05&pplGroupDivCd=&pplId=0770&prodNo=WL00052145&sntyNo=WL000521450004&supportType=02",
+            "title": "다른조건 알아보기 | 본사직영 온라인샵 | KT 다이렉트샵"
+          },
+          {
+            "url": "https://m.product.kt.com/static/prodetail/1284/mobile/itemAccordion/scalable/scalable_1284_01_01_20240613.html",
+            "title": "상품서비스 | 글로벌 No.1 KT"
+          },
+          {
+            "url": "https://m.product.kt.com/static/prodetail/1284/mobile/itemAccordion/scalable/scalable_1284_01_01_220812.html",
+            "title": "상품서비스 | 글로벌 No.1 KT"
+          },
+          {
+            "url": "https://m.corp.kt.com/attach/board/BS00000005/10192/KT%2B5G%EC%84%9C%EB%B9%84%EC%8A%A4%2B%EC%9D%B4%EC%9A%A9%EC%95%BD%EA%B4%80.pdf",
+            "title": "5G 서비스 이용약관"
+          },
+          {
+            "url": "https://shop.kt.com/unify/yogoEvent.do",
+            "title": "요고 모바일 가입 혜택 | 본사직영 온라인샵 | KT 다이렉트샵"
+          },
+          {
+            "url": "https://corp.kt.com/attach/board/BS00000005/10192/5G%EC%84%9C%EB%B9%84%EC%8A%A4%EC%9D%B4%EC%9A%A9%EC%95%BD%EA%B4%80.pdf",
+            "title": "⑦ 5G 다이렉트\n\n<table id=\"e1\">\n<tr>\n<th>요금제명</th>\n<th>"
+          },
+          {
+            "url": "https://product.kt.com/wDic/productDetail.do?ItemCode=1577",
+            "title": "웰컴 | 모바일 요금제 | KT닷컴"
+          },
+          {
+            "url": "https://shop.kt.com/content/openshop/price/etc/etc_SmartDevice.html",
+            "title": "스마트 디바이스 요금제"
+          },
+          {
+            "url": "https://direct.lghellovision.net/main.do",
+            "title": "LG헬로모바일 다이렉트 - 알뜰폰 반값요금제, 최저가 알뜰폰 지금 확인"
+          },
+          {
+            "url": "https://shop.kt.com/display/olhsPlan.do?plnDispNo=2321",
+            "title": "자급제폰 x 요고 모바일 | 본사직영 온라인샵 | KT 다이렉트샵"
+          },
+          {
+            "url": "https://corp.kt.com/attach/board/BS00000005/10192/KT%2B5G%EC%84%9C%EB%B9%84%EC%8A%A4%2B%EC%9D%B4%EC%9A%A9%EC%95%BD%EA%B4%80.pdf",
+            "title": "② 5G IoT 요금제"
+          },
+          {
+            "url": "https://m.product.kt.com/benefit/membership/mobile/y-bonus.html",
+            "title": "Y덤 | 이용혜택 | KT닷컴"
+          },
+          {
+            "url": "https://product.kt.com/static/prodetail/1359/mobile/itemAccordion/html/accordion_20210813154202.html",
+            "title": ""
+          },
+          {
+            "url": "https://shop.kt.com/m/unify/yogo.do",
+            "title": "요고 다이렉트 | 요금제 | 본사직영 온라인샵 | KT 다이렉트샵"
+          },
+          {
+            "url": "https://shop.kt.com/m/direct/directChangeRate.do",
+            "title": "휴대폰 등록 및 요금제 변경 | 본사직영 온라인샵 | KT 다이렉트샵"
+          },
+          {
+            "url": "https://shop.kt.com/display/olhsPlan.do?plnDispNo=1171",
+            "title": "선불인터넷 기획전 | 본사직영 온라인샵 | KT 다이렉트샵"
+          },
+          {
+            "url": "https://shop.kt.com/direct/directChangeRate.do",
+            "title": "휴대폰 등록 및 요금제 변경 | 본사직영 온라인샵 | KT 다이렉트샵"
+          },
+          {
+            "url": "https://www.ktmmobile.com/rate/rateLayer.do?btnDisplayYn=N&rateAdsvcCd=PL203D131&rateAdsvcGdncSeq=18",
+            "title": ""
+          },
+          {
+            "url": "https://m.ktmmobile.com/event/eventDetail.do?ntcartSeq=934&pageNo=1&sbstCtg=E",
+            "title": "통신비 다이어트 끝판왕! 초절약 초저가 특가전 | kt M모바일 공식 다이렉트몰"
+          },
+          {
+            "url": "https://www.ktmmobile.com/m/event/eventDetail.do?NaPm=ct%3Dmdnbhuav%7Cci%3DER330b5b7a-6bcf-11f0-9166-5649e68243b8%7Ctr%3Dsa%7Chk%3Dae57edbf3d98e9a5411781e74a25c6e32a8d19bb%7Cnacn%3DS6W0BswjGaLq&n_ad=nad-a001-01-000000388971911&n_ad_group=grp-a001-01-000000012230848&n_ad_group_type=1&n_campaign_type=1&n_keyword=%EC%95%8C%EB%9C%B0%ED%8F%B0&n_keyword_id=nkw-a001-01-000002259622847&n_match=1&n_media=118496&n_rank=2&ntcartSeq=1675&pageNo=1&sbstCtg=E",
+            "title": "매월 데이터 10GB 추가 증정 요금제 | kt M모바일 공식 다이렉트몰"
+          },
+          {
+            "url": "https://shop.kt.com/display/olhsPlan.do?plnDispNo=2389",
+            "title": "인터넷, TV도 무약정으로 요고뭉치 결합! | 본사직영 온라인샵 | KT 다이렉트샵"
+          },
+          {
+            "url": "https://mcp.ktmmobile.com/rate/rateComp.do",
+            "title": "요금제 비교 | kt M모바일 공식 다이렉트몰"
+          },
+          {
+            "url": "https://mcp.ktmmobile.com/m/event/eventDetail.do?eventBranch=E&ntcartSeq=1012&sbstCtg=E",
+            "title": "무제한 요금제 가입하면 최대 5천P 매월 적립 | kt M모바일 공식 다이렉트몰"
+          },
+          {
+            "url": "https://direct.lghellovision.net/upload/cuplan/180904_info_A.pdf",
+            "title": "헬로 모바일 개통 안내(KT)"
+          },
+          {
+            "url": "https://www.ktmmobile.com/resources/upload/editor/202210131008280017/AI%20%EC%9A%94%EA%B8%88%EC%A0%9C%20%EC%B6%94%EC%B2%9C%20%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EA%B5%AC%EC%B6%95%20%EC%9A%A9%EC%97%AD%20%EC%A0%9C%EC%95%88%EC%9A%94%EC%B2%AD%EC%84%9C.pdf",
+            "title": "KT M mobile"
+          },
+          {
+            "url": "https://www.ktmmobile.com/resources/upload/editor_2604/%2726%EB%85%84%20kt%20M%20mobile%20VMD%20%EB%8C%80%ED%96%89%EC%82%AC%20%EC%84%A0%EC%A0%95%20RFP.pdf",
+            "title": "kt M mobile 2026년 VMD 대행사 선정 RFP"
+          }
+        ],
+        "mcp_calls": [
+          {
+            "tool": "compare_costs",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "options": [
+                  {
+                    "name": "현재 월 요금",
+                    "total_cost": 80000
+                  },
+                  {
+                    "name": "LG헬로모바일 7GB+10GB 패키지",
+                    "total_cost": 17400
+                  },
+                  {
+                    "name": "KT 요고 32",
+                    "total_cost": 32000
+                  }
+                ]
+              }
+            },
+            "result": {
+              "inputs": {
+                "options": [
+                  {
+                    "name": "현재 월 요금",
+                    "total_cost": "80000"
+                  },
+                  {
+                    "name": "LG헬로모바일 7GB+10GB 패키지",
+                    "total_cost": "17400"
+                  },
+                  {
+                    "name": "KT 요고 32",
+                    "total_cost": "32000"
+                  }
+                ],
+                "currency": "KRW"
+              },
+              "formula": "difference_from_lowest = option_total_cost - lowest_total_cost",
+              "intermediate": {
+                "현재 월 요금": "80000",
+                "LG헬로모바일 7GB+10GB 패키지": "17400",
+                "KT 요고 32": "32000"
+              },
+              "result": {
+                "lowest_cost_option": "LG헬로모바일 7GB+10GB 패키지",
+                "lowest_total_cost": "17400.00",
+                "currency": "KRW",
+                "difference_from_현재 월 요금": "62600.00",
+                "difference_from_LG헬로모바일 7GB+10GB 패키지": "0.00",
+                "difference_from_KT 요고 32": "14600.00"
+              }
+            },
+            "status": "completed",
+            "error": null
+          },
+          {
+            "tool": "compare_costs",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "options": [
+                  {
+                    "name": "KT 요고 32",
+                    "total_cost": 32000
+                  },
+                  {
+                    "name": "현재 월 요금",
+                    "total_cost": 80000
+                  }
+                ]
+              }
+            },
+            "result": {
+              "inputs": {
+                "options": [
+                  {
+                    "name": "KT 요고 32",
+                    "total_cost": "32000"
+                  },
+                  {
+                    "name": "현재 월 요금",
+                    "total_cost": "80000"
+                  }
+                ],
+                "currency": "KRW"
+              },
+              "formula": "difference_from_lowest = option_total_cost - lowest_total_cost",
+              "intermediate": {
+                "KT 요고 32": "32000",
+                "현재 월 요금": "80000"
+              },
+              "result": {
+                "lowest_cost_option": "KT 요고 32",
+                "lowest_total_cost": "32000.00",
+                "currency": "KRW",
+                "difference_from_KT 요고 32": "0.00",
+                "difference_from_현재 월 요금": "48000.00"
+              }
+            },
+            "status": "completed",
+            "error": null
+          },
+          {
+            "tool": "calculate_repeated_cost",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "unit": "개월",
+                "unit_cost": 48000,
+                "quantity": 12
+              }
+            },
+            "result": {
+              "inputs": {
+                "unit_cost": "48000",
+                "quantity": "12",
+                "unit": "개월",
+                "currency": "KRW"
+              },
+              "formula": "total_cost = unit_cost * quantity",
+              "intermediate": {
+                "quantity": "12"
+              },
+              "result": {
+                "total_cost": "576000.00",
+                "currency": "KRW"
+              }
+            },
+            "status": "completed",
+            "error": null
+          },
+          {
+            "tool": "calculate_repeated_cost",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "unit": "개월",
+                "unit_cost": 62600,
+                "quantity": 12
+              }
+            },
+            "result": {
+              "inputs": {
+                "unit_cost": "62600",
+                "quantity": "12",
+                "unit": "개월",
+                "currency": "KRW"
+              },
+              "formula": "total_cost = unit_cost * quantity",
+              "intermediate": {
+                "quantity": "12"
+              },
+              "result": {
+                "total_cost": "751200.00",
+                "currency": "KRW"
+              }
+            },
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "jev_calls": 0,
+        "jev_judgment": null
+      },
+      "trace": [
+        {
+          "at_ms": 15579,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "site:ktmmobile.com 요금제 10GB 월 요금 LTE 2026",
+            "site:tplusmobile.com 10GB 요금제 월 2026",
+            "site:direct.lghellovision.net 10GB 요금제 월",
+            "site:kt.com 10GB 요금제 월정액 5G"
+          ],
+          "result_count": 15
+        },
+        {
+          "at_ms": 21541,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "site:ktmmobile.com 상품 요금제 10GB 100분 월정액 2026",
+            "site:direct.lghellovision.net 10GB 17900 요금제 2026",
+            "site:shop.kt.com 요고 32 32000 10GB 약정 가입 조건"
+          ],
+          "result_count": 15
+        },
+        {
+          "at_ms": 27472,
+          "type": "web_search",
+          "action": "other",
+          "queries": [],
+          "result_count": 3
+        },
+        {
+          "at_ms": 33909,
+          "type": "web_search",
+          "action": "other",
+          "queries": [],
+          "result_count": 1
+        },
+        {
+          "at_ms": 40978,
+          "type": "mcp_tool_call",
+          "tool": "compare_costs",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "options": [
+                {
+                  "name": "현재 월 요금",
+                  "total_cost": 80000
+                },
+                {
+                  "name": "LG헬로모바일 7GB+10GB 패키지",
+                  "total_cost": 17400
+                },
+                {
+                  "name": "KT 요고 32",
+                  "total_cost": 32000
+                }
+              ]
+            }
+          },
+          "result": {
+            "inputs": {
+              "options": [
+                {
+                  "name": "현재 월 요금",
+                  "total_cost": "80000"
+                },
+                {
+                  "name": "LG헬로모바일 7GB+10GB 패키지",
+                  "total_cost": "17400"
+                },
+                {
+                  "name": "KT 요고 32",
+                  "total_cost": "32000"
+                }
+              ],
+              "currency": "KRW"
+            },
+            "formula": "difference_from_lowest = option_total_cost - lowest_total_cost",
+            "intermediate": {
+              "현재 월 요금": "80000",
+              "LG헬로모바일 7GB+10GB 패키지": "17400",
+              "KT 요고 32": "32000"
+            },
+            "result": {
+              "lowest_cost_option": "LG헬로모바일 7GB+10GB 패키지",
+              "lowest_total_cost": "17400.00",
+              "currency": "KRW",
+              "difference_from_현재 월 요금": "62600.00",
+              "difference_from_LG헬로모바일 7GB+10GB 패키지": "0.00",
+              "difference_from_KT 요고 32": "14600.00"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 46910,
+          "type": "mcp_tool_call",
+          "tool": "compare_costs",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "options": [
+                {
+                  "name": "KT 요고 32",
+                  "total_cost": 32000
+                },
+                {
+                  "name": "현재 월 요금",
+                  "total_cost": 80000
+                }
+              ]
+            }
+          },
+          "result": {
+            "inputs": {
+              "options": [
+                {
+                  "name": "KT 요고 32",
+                  "total_cost": "32000"
+                },
+                {
+                  "name": "현재 월 요금",
+                  "total_cost": "80000"
+                }
+              ],
+              "currency": "KRW"
+            },
+            "formula": "difference_from_lowest = option_total_cost - lowest_total_cost",
+            "intermediate": {
+              "KT 요고 32": "32000",
+              "현재 월 요금": "80000"
+            },
+            "result": {
+              "lowest_cost_option": "KT 요고 32",
+              "lowest_total_cost": "32000.00",
+              "currency": "KRW",
+              "difference_from_KT 요고 32": "0.00",
+              "difference_from_현재 월 요금": "48000.00"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 50403,
+          "type": "mcp_tool_call",
+          "tool": "calculate_repeated_cost",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "unit": "개월",
+              "unit_cost": 48000,
+              "quantity": 12
+            }
+          },
+          "result": {
+            "inputs": {
+              "unit_cost": "48000",
+              "quantity": "12",
+              "unit": "개월",
+              "currency": "KRW"
+            },
+            "formula": "total_cost = unit_cost * quantity",
+            "intermediate": {
+              "quantity": "12"
+            },
+            "result": {
+              "total_cost": "576000.00",
+              "currency": "KRW"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 50403,
+          "type": "mcp_tool_call",
+          "tool": "calculate_repeated_cost",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "unit": "개월",
+              "unit_cost": 62600,
+              "quantity": 12
+            }
+          },
+          "result": {
+            "inputs": {
+              "unit_cost": "62600",
+              "quantity": "12",
+              "unit": "개월",
+              "currency": "KRW"
+            },
+            "formula": "total_cost = unit_cost * quantity",
+            "intermediate": {
+              "quantity": "12"
+            },
+            "result": {
+              "total_cost": "751200.00",
+              "currency": "KRW"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 59474,
+          "type": "web_search",
+          "action": "find_in_page",
+          "queries": [],
+          "result_count": 3
+        }
+      ],
+      "error": null,
+      "e2e_latency_ms": 74370,
+      "attempts": 1
+    },
+    {
+      "case_id": "grocery-budget-001",
+      "http_status": 200,
+      "status": "ready",
+      "answer": "**먼저 쌀·달걀·두부를 담고, 그다음 고기·채소를 고르세요.** 2명이 집에서 일주일 먹고 기본 양념은 있다는 가정입니다. 아래는 **2026년 9월 24일 조회한 이마트몰 표시 가격**으로 짠 예시이며, 쿠폰·카드 할인은 넣지 않았습니다.\n\n1. **기본 식사:** [쌀 2kg 11,980원](https://emart.ssg.com/item/itemView.ssg?itemId=0000007097773), [달걀 30구 7,450원](https://www.ssg.com/item/itemView.ssg?itemId=1000610910289), [두부 300g×2입 2팩 6,960원](https://emart.ssg.com/item/itemView.ssg?itemId=1000040538045) (팩당 3,480원).\n2. **주요 반찬:** [돼지 앞다리 찌개용 1kg 15,800원](https://emart.ssg.com/item/itemView.ssg?itemId=1000564818850), [참치 135g×4캔 12,680원](https://emart.ssg.com/item/itemView.ssg?itemId=1000066603640), [김치 1kg 9,980원](https://emart.ssg.com/item/itemView.ssg?itemId=1000518328443).\n3. **여러 요리에 돌려 쓸 채소:** [콩나물 300g 2봉 1,980원](https://emart.ssg.com/item/itemDtl.ssg?itemId=1000005110090) (봉당 990원), [당근 1kg 4,780원](https://emart.ssg.com/item/itemView.ssg?itemId=0000010717442), [양파 1.8kg 3,730원](https://emart.ssg.com/item/itemView.ssg?itemId=1000031797670), [애호박 1개 2,980원](https://emart.ssg.com/item/itemView.ssg?itemId=0000007704947).\n4. **남으면 과일:** [바나나 1kg 3,980원](https://emart.ssg.com/item/itemView.ssg?itemId=1000044119013).\n\n**상품값 합계는 82,300원, 예산 잔액은 17,700원**입니다. 밥·달걀·두부로 아침을, 돼지고기와 양파·당근으로 볶음이나 찌개를, 김치·참치·콩나물로 다른 끼니를 돌려 먹으면 됩니다. 남은 돈은 실제 매장의 저렴한 제철 채소나 부족한 양념에 쓰세요. 돼지고기와 양파는 별도 판매자 상품이라 **배송비가 붙을 수 있고**, 지역·재고·가격도 결제 시 달라질 수 있으니 10만 원을 넘지 않는지 마지막에 확인해야 합니다.",
+      "metadata": {
+        "mode": "baseline",
+        "latency_ms": 177949,
+        "codex_runs": 1,
+        "search_calls": 11,
+        "search_sources": [
+          {
+            "url": "https://emart.ssg.com/item/itemDtl.ssg?itemId=1000005110090",
+            "title": "990 콩나물 300g - 이마트몰, 원하는 상품을 원하는 시간에 쓱, 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000681005934&salestrNo=6005&siteNo=6001",
+            "title": "24년산 양파(특) 요리용 4kg[34988853] - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/search.ssg?query=%EA%B0%9C%EC%A7%84%EA%B0%90%EC%9E%90",
+            "title": "개진감자 - 추천•인기 상품, 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/disp/brandShop.ssg?brandId=3000025386",
+            "title": "미스터네이처 | 추천 브랜드,이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/search.ssg?query=%EB%82%9C%EA%B0%81%EB%B2%88%ED%98%B81%EB%B2%88%EA%B3%84%EB%9E%80&src_area=srlt&target=all",
+            "title": "난각번호1번계란 - 추천•인기 상품, 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/search.ssg?query=%EA%B5%AD%EC%82%B0%EA%B0%90%EC%B4%88",
+            "title": "국산감초 - 추천•인기 상품, 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/search.ssg?query=%23%EC%86%8C%EC%8A%A4%EB%8A%94%EC%9E%85%EB%A7%9B%EB%8C%80%EB%A1%9C",
+            "title": "#소스는입맛대로 - 추천•인기 상품, 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/search.ssg?query=%ED%98%B8%EC%A3%BC%EC%82%B0%EC%98%A4%EC%9D%B4%EC%8A%A4%ED%84%B0%EB%B8%94%EB%A0%88%EC%9D%B4%EB%93%9C",
+            "title": "호주산오이스터블레이드 - 추천•인기 상품, 이마트몰"
+          },
+          {
+            "url": "https://m.emart.ssg.com/item/itemView.ssg?click=itemMidArea12&itemId=1000022222496&itemSsgCollectYn=N&salestrNo=6005&siteNo=6001",
+            "title": "상품상세"
+          },
+          {
+            "url": "https://emart.ssg.com/disp/category.ssg?dispCtgId=6000213176",
+            "title": "양파 | 양파/마늘/파/생강 | 채소 - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/search.ssg?query=%ED%94%BC%EC%BD%94%ED%81%AC%EB%83%89%EC%9D%B4%EB%90%9C%EC%9E%A5%EC%B0%8C%EA%B0%9C",
+            "title": "피코크냉이된장찌개 - 추천•인기 상품, 이마트몰"
+          },
+          {
+            "url": "https://m.emart.ssg.com/item/itemView.ssg?click=itemMidArea15&itemId=1000030809972&salestrNo=6005&siteNo=6001",
+            "title": "상품상세"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000220072503",
+            "title": "[농할 20% 할인쿠폰 다운로드] 파머스픽 1등급 30구 (특란, 1800g) - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/disp/category.ssg?dispCtgId=6000213169",
+            "title": "두부 | 두부/콩나물/숙주나물 | 채소 - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/search.ssg?query=%EB%85%B8%EB%B8%8C%EB%9E%9C%EB%93%9C%EA%B5%AD%EC%82%B0%EC%BD%A9%EB%91%90%EB%B6%80300g%2A2%EC%9E%85",
+            "title": "노브랜드국산콩두부300g*2입 - 추천•인기 상품, 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000488903014&salestrNo=6005&siteNo=6001",
+            "title": "에어포장 고당도 샤인머스켓 2kg (2-3수) - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000518328443&salestrNo=2037&siteNo=6001",
+            "title": "아삭하고 시원한 맛김치 1kg - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000850177996&salestrNo=6005&siteNo=6001",
+            "title": "아삭달콤한 고당도 말랑 딱딱이 털복숭아 2kg 소과 14-17과 내외 - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000706225457&salestrNo=6005&siteNo=6001",
+            "title": "아삭하고 달콤한 제철 딱딱이 복숭아 2kg(8-12과내외) - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000062667327&salestrNo=6005&siteNo=6002",
+            "title": "향기나는 성주참외 2kg 특과 6-9과 - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/disp/category.ssg?dispCtgId=6000213205",
+            "title": "양배추 | 양배추/양상추/브로콜리 | 채소 - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/disp/category.ssg?ctgId=6000213205",
+            "title": "양배추 | 양배추/양상추/브로콜리 | 채소 - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/plan/planShop.ssg?dispCmptId=6000430948",
+            "title": "기획전 > 종가 갓담은 김치모음전, 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/disp/category.ssg?dispCtgId=6000213304",
+            "title": "갓김치/기타김치 | 김치 | 김치/반찬/델리 - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000519624422&salestrNo=2037&siteNo=6001",
+            "title": "당근 (1kg) - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=0000010717442&salestrNo=2037&siteNo=6001",
+            "title": "세척 당근 1kg 봉 - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=2097000900896",
+            "title": "무농약 친환경 양파 1kg/망 - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/disp/category.ssg?dispCtgId=6000215153",
+            "title": "백미 | 쌀/잡곡/견과 - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/disp/category.ssg?ctgId=6000215156",
+            "title": "5kg이상~10kg미만 | 백미 | 쌀/잡곡/견과 - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/disp/category.ssg?dispCtgId=6000215155",
+            "title": "2kg이상~5kg미만 | 백미 | 쌀/잡곡/견과 - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/dealItemView.ssg?itemId=1000804635507&salestrNo=6005&siteNo=6001",
+            "title": "인기 소포장 신선쌀 모음 - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/search.ssg?query=%EC%96%B4%EC%82%AC%EC%A7%84%EB%AF%B8&src_area=srlt&target=all",
+            "title": "어사진미 - 추천•인기 상품, 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/search.ssg?query=%EC%94%BB%EC%96%B4%EB%82%98%EC%98%A8",
+            "title": "씻어나온 - 추천•인기 상품, 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/search.ssg?query=%EB%B0%B1%EB%AF%B8%EC%8C%802kg",
+            "title": "백미쌀2kg - 추천•인기 상품, 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/disp/brandShop.ssg?brandId=3000025735",
+            "title": "현대농산 | 추천 브랜드,이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/disp/category.ssg?dispCtgId=6000215193&mccode=7018",
+            "title": "쌀/잡곡선물세트 | 쌀/잡곡/견과 - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000044119013&itemViewSTestEnabled=false&itemViewSTestStoreEnabled=false&siteNo=6001",
+            "title": "에콰도르산 달콤 바나나 1kg - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000038169670",
+            "title": "필리핀산 스위티오 바나나 1kg - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=0000007704947",
+            "title": "애호박 (개) - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000697592806&salestrNo=2551&siteNo=7009",
+            "title": "에콰도르산 달콤 바나나 1kg - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000044119013&salestrNo=2037&siteNo=6001",
+            "title": "에콰도르산 달콤 바나나 1kg - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000023717343&salestrNo=6005&siteNo=6001",
+            "title": "바나나칩 1kg - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000625714895&salestrNo=6005&siteNo=6001",
+            "title": "쥬스용 못난이 낱발 고당도 바나나 1kg 내외 - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000007545408",
+            "title": "[농할 20% 할인쿠폰 다운로드] 애호박 (개) - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000021023905&salestrNo=6005&siteNo=6001",
+            "title": "[딜라잇가든]냉동 바나나(슬라이스) 1kg - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000873797827&salestrNo=6005&siteNo=6001",
+            "title": "국내산 김천 제철 노지 자두 소과 1kg (S50838795) - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000857276600&salestrNo=6005&siteNo=6001",
+            "title": "올품 냉장 일반 등급 닭볶음탕용(절단) 1kg - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/dealItemView.ssg?itemId=1000510047828&salestrNo=2551&siteNo=7009",
+            "title": "쫀득달콤 스위티오 바나나 금주행사 - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000040538045",
+            "title": "노브랜드 국산콩두부300g*2입 - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=0000007097773&itemViewSTestEnabled=false&itemViewSTestStoreEnabled=false&siteNo=6001",
+            "title": "씻어나온 쌀 2kg - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/",
+            "title": "원하는 상품을 원하는 시간에 쓱, 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/disp/brandShop.ssg?brandId=3000019629",
+            "title": "맛템 | 추천 브랜드,이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/disp/category.ssg?ctgId=6000213168",
+            "title": "두부/콩나물/숙주나물 | 채소 - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/disp/category.ssg?dispCtgId=6000223701",
+            "title": "두부/콩나물 | 채소 | 이마트 쓱배송 - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/search.ssg?query=%EC%B0%A8%EB%9F%89%EC%9A%A9+%EA%B2%BD%EA%B4%91%EB%93%B1+%EC%B6%94%EC%B2%9C",
+            "title": "차량용 경광등 추천 - 추천•인기 상품, 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/search.ssg?query=NextEpochMarket+official.emp",
+            "title": "NextEpochMarket official.emp - 추천•인기 상품, 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/search.ssg?query=%EB%BB%A5%EC%86%8C%EB%A6%AC",
+            "title": "뻥소리 - 추천•인기 상품, 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000066603640&itemViewSTestEnabled=false&itemViewSTestStoreEnabled=false&siteNo=6001",
+            "title": "동원 살코기참치 135g*4입 - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000100139213",
+            "title": "사조 살코기참치 135g*4입 - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000354640422&salestrNo=2037&siteNo=6001",
+            "title": "사조 프리미엄 마라참치 100g*4입 - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000066603693&itemViewSTestEnabled=false&itemViewSTestStoreEnabled=false&siteNo=6001",
+            "title": "동원 고추참치 135g*4입 - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000100138604&salestrNo=2037&siteNo=6001",
+            "title": "사조 찌개전용참치 135g*4입 - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000066603638",
+            "title": "동원 살코기참치 90g*4입 - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000035982853&salestrNo=2491&siteNo=6002",
+            "title": "동원 반반참치 (라이트 100g X 4 + 고추 100g X 4입) - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000100139213&salestrNo=2551&siteNo=7009",
+            "title": "사조 살코기참치 135g*4입 - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000129869073&itemViewSTestEnabled=false&itemViewSTestStoreEnabled=false&siteNo=6001",
+            "title": "사조 살코기참치 85g*4입 - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000066603640&salestrNo=2037&siteNo=6001",
+            "title": "동원 살코기참치 135g*4입 - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000066603691&itemViewSTestEnabled=false&itemViewSTestStoreEnabled=false&siteNo=6001",
+            "title": "동원 고추참치 90g*4입 - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000066603693&salestrNo=2037&siteNo=6001",
+            "title": "동원 고추참치 135g*4입 - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000564818850&salestrNo=6005&siteNo=6001",
+            "title": "[영주농협]국내산 냉장 돈육 앞다리 1kg (찌개용) - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000027477285&salestrNo=6005&siteNo=6001",
+            "title": "[냉장] [무항생제] 양지 600g 2등급 - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000861720256&salestrNo=6005&siteNo=6001",
+            "title": "[바로배송/지정일] 1++등급(7이상) 600g 한우 스페셜 모둠 선물세트 (등심/불고기/국거리) - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000831388824&salestrNo=6005&siteNo=6001",
+            "title": "진한국물 한우100프로 수제곰탕 600g 냉동 - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000027506885&salestrNo=6005&siteNo=6001",
+            "title": "[냉장] [무항생제] 잡채 600g 1등급 - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000694770250&salestrNo=6005&siteNo=6001",
+            "title": "1등급 암소 숙성한우 꽃등심 600g(300g x2팩) - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000613629463&salestrNo=6005&siteNo=6001",
+            "title": "[조선호텔] 한우 실속 구이세트 1호(1+등급, 등심300g+살치살150g+갈비살150g/총600g) - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000767851402&salestrNo=6005&siteNo=6001",
+            "title": "[냉장][냉동] [소돈가]1++투뿔한우구이모듬+등심600g - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000027472080&salestrNo=6005&siteNo=6001",
+            "title": "[냉동] [무항생제] 불고기 600g 2등급 - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000564818859&salestrNo=6005&siteNo=6001",
+            "title": "[영주농협]국내산 냉장 돈육 앞다리 1kg (불고기용) - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000632848064&salestrNo=2551&siteNo=7009",
+            "title": "[냉장] 한돈 김치 짜글이 600g - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000771549238&salestrNo=6005&siteNo=6001",
+            "title": "1++(7이상) 한우 구이9호 1.2kg(살치300g/채끝300g/등심600g) 선물세트 - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/main.ssg",
+            "title": "원하는 상품을 원하는 시간에 쓱, 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000007858329",
+            "title": "양파 1.8kg 망 - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/disp/category.ssg?ctgId=6000215196",
+            "title": "계란 | 계란/알류 | 정육/계란류 - 이마트몰"
+          },
+          {
+            "url": "https://dasaja.co.kr/saja_korea/454151",
+            "title": "이마트 계란 30개 7680 > 국내 딜 | 다사자 - 핫딜 쇼핑 커뮤니티"
+          },
+          {
+            "url": "https://emartapp.emart.com/menu/emartMall.do?trcknCode=menu_header",
+            "title": "이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/disp/category.ssg?ctgId=6000213176",
+            "title": "양파 | 양파/마늘/파/생강 | 채소 - 이마트몰"
+          },
+          {
+            "url": "https://www.gmarket.co.kr/n/emartmall/category?categoryCode=200000003&serviceType=dawn",
+            "title": "이마트몰 - 계란/알류"
+          },
+          {
+            "url": "https://pay.ssg.com/",
+            "title": "장바구니, 믿고 사는 즐거움 SSG.COM"
+          },
+          {
+            "url": "https://m.emart.ssg.com/item/itemView.ssg?click=itemMidArea05&itemId=1000038559086&salestrNo=6005&siteNo=6001",
+            "title": "상품상세"
+          },
+          {
+            "url": "https://dealradar.kr/detail.php?id=1881",
+            "title": "이맛란 30구 (특란, 1800g) - 이마트몰 - 딜레이더"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=0000010467212&salestrNo=2551&siteNo=7009",
+            "title": "마카다미아넛 473ml - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=0000008553280",
+            "title": "[오뚜기] 옛날 자른 당면 500g - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000712155369",
+            "title": "머스크 메론 2.2kg (왕특대) - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000822973832&salestrNo=6005&siteNo=6001",
+            "title": "[떡 1위] 더바른 반반 바람떡 1box 개별포장 국내산 - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000675609282&salestrNo=6005&siteNo=6002",
+            "title": "[웰굿] 프리미엄 팬시 생 레몬 5kg(49과내외,개당90g내외) - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/disp/brandShop.ssg?brandId=2000049436",
+            "title": "네이쳐스웨이 | 추천 브랜드,이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000682329474&salestrNo=6005&siteNo=6001",
+            "title": "탱글한 맥반석 구운계란 구운란 30구+30구 (대란/총2판) - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000831883410&salestrNo=6005&siteNo=6001",
+            "title": "당일도정 신선한 백미 10kg 재구매 1위 GAP 농산물우수관리 인증 - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000075701296&salestrNo=6005&siteNo=6001",
+            "title": "촉촉한 건망고 말랭이 230g(용기) - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000716880789&salestrNo=6005&siteNo=6001",
+            "title": "26년산 더알찬곡물 국산 압맥 700g 1봉 납작보리 - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000603804176&salestrNo=6005&siteNo=6001",
+            "title": "팥앙금 망개떡 팥소 망개잎 찹쌀떡 (25g 40개입) - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000220072503&salestrNo=2037&siteNo=6001",
+            "title": "[농할 20% 할인쿠폰 다운로드] 파머스픽 1등급 30구 (특란, 1800g) - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000610910289&salestrNo=2037&siteNo=6001",
+            "title": "[농할 20% 할인쿠폰 다운로드] 후레쉬 계란 30구 (대란, 1560g) - 이마트몰"
+          },
+          {
+            "url": "https://emart.ssg.com/item/itemView.ssg?itemId=1000610910289",
+            "title": "[농할 20% 할인쿠폰 다운로드] 후레쉬 계란 30구 (대란, 1560g) - 이마트몰"
+          },
+          {
+            "url": "https://www.ssg.com/item/itemView.ssg?itemId=1000610910289&salestrNo=2037&siteNo=6001",
+            "title": "후레쉬 계란 30구 (대란, 1560g) - SSG.COM"
+          },
+          {
+            "url": "https://www.ssg.com/search.ssg?query=egg",
+            "title": "egg - 추천•인기 상품, SSG.COM"
+          },
+          {
+            "url": "https://m.gmarket.co.kr/n/emartmall/best?serviceType=dawn",
+            "title": "이마트몰 - 전체 베스트"
+          },
+          {
+            "url": "https://www.ssg.com/item/itemView.ssg?itemId=1000610910289",
+            "title": "[농할 20% 할인쿠폰 다운로드] 후레쉬 계란 30구 (대란, 1560g) - SSG.COM"
+          },
+          {
+            "url": "https://www.gmarket.co.kr/n/emartmall/best?categoryCode=100000000&serviceType=reserve",
+            "title": "이마트몰 - 정육/계란 베스트"
+          },
+          {
+            "url": "https://www.coocha.co.kr/deal/detail?did=MTk5NTgwNDU1MA%3D%3D",
+            "title": "쿠차 | 시간을 줄여주는 쇼핑검색"
+          },
+          {
+            "url": "https://emart.ssg.com/disp/theme/category.ssg?dispCtgId=6000223562",
+            "title": "카테고리 > 계란/알류"
+          },
+          {
+            "url": "https://search.11st.co.kr/MW/search?searchKeyword=%EA%B0%90%EB%8F%99%EB%9E%8030%EA%B5%AC",
+            "title": "감동란30구 - 11번가 추천"
+          },
+          {
+            "url": "https://emart.ssg.com/disp/category.ssg?dispCtgId=6000213356",
+            "title": "참치/연어통조림 | 참치/스팸/축수산통조림 | 면류/통조림 - 이마트몰"
+          },
+          {
+            "url": "https://m.ssg.com/sellerhome/111864/search/seller.ssg?query=%EC%B0%B8%EC%B9%98",
+            "title": "(주)동원에프엔비, 믿고 사는 즐거움 SSG.COM"
+          },
+          {
+            "url": "https://www.ssg.com/search.ssg?query=%EB%8F%99%EC%9B%90+%EC%82%B4%EC%BD%94%EA%B8%B0+%EC%B0%B8%EC%B9%98+135g",
+            "title": "동원 살코기 참치 135g - 추천•인기 상품, SSG.COM"
+          },
+          {
+            "url": "https://shinsegaemall.ssg.com/disp/category.ssg?dispCtgId=6000139250",
+            "title": "장조림/돈가스/잡채용 | 돼지고기 | 정육/계란류 - 신세계몰"
+          },
+          {
+            "url": "https://www.thedirectdonation.org/donate/complete/9188",
+            "title": "모금완료 - #2609-38. (단독) 대학 기숙사 이용이 어려워 자취를 하게 된 자립준비청년 박군(가명)에게 (from 최종구)"
+          },
+          {
+            "url": "https://search.11st.co.kr/MW/search?searchKeyword=%EB%8F%99%EC%9B%90%EC%B0%B8%EC%B9%98dha&tabId=DEAL",
+            "title": "동원참치dha - 11번가 추천"
+          },
+          {
+            "url": "https://www.ssg.com/search.ssg?query=%23%EC%B9%B4%EB%A0%88%EC%9A%A9%EA%B3%A0%EA%B8%B0",
+            "title": "#카레용고기 - 추천•인기 상품, SSG.COM"
+          },
+          {
+            "url": "https://www.ssg.com/search.ssg?query=%EC%B9%B4%EB%A0%88%EC%9A%A9%EB%8F%BC%EC%A7%80%EA%B3%A0%EA%B8%B0",
+            "title": "카레용돼지고기 - 추천•인기 상품, SSG.COM"
+          },
+          {
+            "url": "https://m.ssg.com/disp/theme/category.ssg?dispCtgId=6000224158&statusGnbTitleBg=morning",
+            "title": "참치/스팸통조림 | 면류/통조림 | 새벽배송 - SSG.COM"
+          }
+        ],
+        "mcp_calls": [
+          {
+            "tool": "calculate_repeated_cost",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "unit_cost": 3480,
+                "quantity": 2,
+                "unit": "2팩(각 300g×2모)"
+              }
+            },
+            "result": {
+              "inputs": {
+                "unit_cost": "3480",
+                "quantity": "2",
+                "unit": "2팩(각 300g×2모)",
+                "currency": "KRW"
+              },
+              "formula": "total_cost = unit_cost * quantity",
+              "intermediate": {
+                "quantity": "2"
+              },
+              "result": {
+                "total_cost": "6960.00",
+                "currency": "KRW"
+              }
+            },
+            "status": "completed",
+            "error": null
+          },
+          {
+            "tool": "calculate_repeated_cost",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "unit_cost": 990,
+                "quantity": 2,
+                "unit": "봉(각 300g)"
+              }
+            },
+            "result": {
+              "inputs": {
+                "unit_cost": "990",
+                "quantity": "2",
+                "unit": "봉(각 300g)",
+                "currency": "KRW"
+              },
+              "formula": "total_cost = unit_cost * quantity",
+              "intermediate": {
+                "quantity": "2"
+              },
+              "result": {
+                "total_cost": "1980.00",
+                "currency": "KRW"
+              }
+            },
+            "status": "completed",
+            "error": null
+          },
+          {
+            "tool": "sum_costs",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "budget": 100000,
+                "items": [
+                  {
+                    "name": "쌀 2kg",
+                    "amount": 11980
+                  },
+                  {
+                    "name": "달걀 30구",
+                    "amount": 7450
+                  },
+                  {
+                    "name": "두부 2팩",
+                    "amount": 6960
+                  },
+                  {
+                    "name": "돼지 앞다리 1kg",
+                    "amount": 15800
+                  },
+                  {
+                    "name": "참치 135g 4캔",
+                    "amount": 12680
+                  },
+                  {
+                    "name": "김치 1kg",
+                    "amount": 9980
+                  },
+                  {
+                    "name": "콩나물 2봉",
+                    "amount": 1980
+                  },
+                  {
+                    "name": "당근 1kg",
+                    "amount": 4780
+                  },
+                  {
+                    "name": "양파 1.8kg",
+                    "amount": 3730
+                  },
+                  {
+                    "name": "애호박 1개",
+                    "amount": 3480
+                  },
+                  {
+                    "name": "바나나 1kg",
+                    "amount": 3980
+                  }
+                ]
+              }
+            },
+            "result": {
+              "inputs": {
+                "items": [
+                  {
+                    "name": "쌀 2kg",
+                    "amount": "11980"
+                  },
+                  {
+                    "name": "달걀 30구",
+                    "amount": "7450"
+                  },
+                  {
+                    "name": "두부 2팩",
+                    "amount": "6960"
+                  },
+                  {
+                    "name": "돼지 앞다리 1kg",
+                    "amount": "15800"
+                  },
+                  {
+                    "name": "참치 135g 4캔",
+                    "amount": "12680"
+                  },
+                  {
+                    "name": "김치 1kg",
+                    "amount": "9980"
+                  },
+                  {
+                    "name": "콩나물 2봉",
+                    "amount": "1980"
+                  },
+                  {
+                    "name": "당근 1kg",
+                    "amount": "4780"
+                  },
+                  {
+                    "name": "양파 1.8kg",
+                    "amount": "3730"
+                  },
+                  {
+                    "name": "애호박 1개",
+                    "amount": "3480"
+                  },
+                  {
+                    "name": "바나나 1kg",
+                    "amount": "3980"
+                  }
+                ],
+                "budget": "100000",
+                "currency": "KRW"
+              },
+              "formula": "total_cost = sum(item.amount); budget_remaining = budget - total_cost",
+              "intermediate": {
+                "쌀 2kg": "11980",
+                "달걀 30구": "7450",
+                "두부 2팩": "6960",
+                "돼지 앞다리 1kg": "15800",
+                "참치 135g 4캔": "12680",
+                "김치 1kg": "9980",
+                "콩나물 2봉": "1980",
+                "당근 1kg": "4780",
+                "양파 1.8kg": "3730",
+                "애호박 1개": "3480",
+                "바나나 1kg": "3980"
+              },
+              "result": {
+                "total_cost": "82800.00",
+                "currency": "KRW",
+                "budget_remaining": "17200.00"
+              }
+            },
+            "status": "completed",
+            "error": null
+          },
+          {
+            "tool": "sum_costs",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "budget": 100000,
+                "items": [
+                  {
+                    "name": "쌀 2kg",
+                    "amount": 11980
+                  },
+                  {
+                    "name": "달걀 30구",
+                    "amount": 7450
+                  },
+                  {
+                    "name": "두부 2팩",
+                    "amount": 6960
+                  },
+                  {
+                    "name": "돼지 앞다리 1kg",
+                    "amount": 15800
+                  },
+                  {
+                    "name": "참치 135g 4캔",
+                    "amount": 12680
+                  },
+                  {
+                    "name": "김치 1kg",
+                    "amount": 9980
+                  },
+                  {
+                    "name": "콩나물 2봉",
+                    "amount": 1980
+                  },
+                  {
+                    "name": "당근 1kg",
+                    "amount": 4780
+                  },
+                  {
+                    "name": "양파 1.8kg",
+                    "amount": 3730
+                  },
+                  {
+                    "name": "애호박 1개",
+                    "amount": 2980
+                  },
+                  {
+                    "name": "바나나 1kg",
+                    "amount": 3980
+                  }
+                ]
+              }
+            },
+            "result": {
+              "inputs": {
+                "items": [
+                  {
+                    "name": "쌀 2kg",
+                    "amount": "11980"
+                  },
+                  {
+                    "name": "달걀 30구",
+                    "amount": "7450"
+                  },
+                  {
+                    "name": "두부 2팩",
+                    "amount": "6960"
+                  },
+                  {
+                    "name": "돼지 앞다리 1kg",
+                    "amount": "15800"
+                  },
+                  {
+                    "name": "참치 135g 4캔",
+                    "amount": "12680"
+                  },
+                  {
+                    "name": "김치 1kg",
+                    "amount": "9980"
+                  },
+                  {
+                    "name": "콩나물 2봉",
+                    "amount": "1980"
+                  },
+                  {
+                    "name": "당근 1kg",
+                    "amount": "4780"
+                  },
+                  {
+                    "name": "양파 1.8kg",
+                    "amount": "3730"
+                  },
+                  {
+                    "name": "애호박 1개",
+                    "amount": "2980"
+                  },
+                  {
+                    "name": "바나나 1kg",
+                    "amount": "3980"
+                  }
+                ],
+                "budget": "100000",
+                "currency": "KRW"
+              },
+              "formula": "total_cost = sum(item.amount); budget_remaining = budget - total_cost",
+              "intermediate": {
+                "쌀 2kg": "11980",
+                "달걀 30구": "7450",
+                "두부 2팩": "6960",
+                "돼지 앞다리 1kg": "15800",
+                "참치 135g 4캔": "12680",
+                "김치 1kg": "9980",
+                "콩나물 2봉": "1980",
+                "당근 1kg": "4780",
+                "양파 1.8kg": "3730",
+                "애호박 1개": "2980",
+                "바나나 1kg": "3980"
+              },
+              "result": {
+                "total_cost": "82300.00",
+                "currency": "KRW",
+                "budget_remaining": "17700.00"
+              }
+            },
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "jev_calls": 0,
+        "jev_judgment": null
+      },
+      "trace": [
+        {
+          "at_ms": 18736,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "site:emart.ssg.com 쌀 2kg 가격 계란 30구 두부 300g",
+            "site:emart.ssg.com 닭가슴살 1kg 가격 돼지고기 앞다리 1kg",
+            "site:emart.ssg.com 양파 1kg 당근 1kg 양배추 가격",
+            "site:emart.ssg.com 콩나물 300g 김치 1kg 감자 1kg 가격"
+          ],
+          "result_count": 12
+        },
+        {
+          "at_ms": 29025,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "site:emart.ssg.com/item/itemDtl.ssg 쌀 2kg 최적가",
+            "site:emart.ssg.com/item/itemDtl.ssg 파머스픽 1등급 30구 11980",
+            "site:emart.ssg.com/item/itemDtl.ssg 노브랜드 국산콩두부300g 2입 3480",
+            "site:emart.ssg.com/item/itemDtl.ssg 양배추 1통 가격",
+            "site:emart.ssg.com/item/itemDtl.ssg 김치 1kg 가격"
+          ],
+          "result_count": 12
+        },
+        {
+          "at_ms": 35722,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "site:emart.ssg.com/item/itemView.ssg?itemId= \"쌀 2kg\" \"판매가격\"",
+            "site:emart.ssg.com/item/itemView.ssg?itemId= \"쌀 4kg\" \"판매가격\"",
+            "site:emart.ssg.com/item/itemView.ssg?itemId= \"양파 1kg\" \"최적가\"",
+            "site:emart.ssg.com/item/itemView.ssg?itemId= \"당근 1kg\" \"최적가\""
+          ],
+          "result_count": 12
+        },
+        {
+          "at_ms": 44721,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "site:emart.ssg.com/item/itemView.ssg \"씻어나온 쌀 2kg\" \"11,900\"",
+            "site:emart.ssg.com/item/itemView.ssg \"닭볶음탕용\" \"1kg\" \"원\"",
+            "site:emart.ssg.com/item/itemView.ssg \"국산 양배추\" \"1통\" \"최적가\"",
+            "site:emart.ssg.com/item/itemView.ssg \"애호박\" \"1개\" \"최적가\"",
+            "site:emart.ssg.com/item/itemView.ssg \"바나나\" \"1kg\" \"최적가\""
+          ],
+          "result_count": 12
+        },
+        {
+          "at_ms": 53070,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "site:emart.ssg.com/item/itemView.ssg \"씻어나온 쌀 2kg\"",
+            "site:emart.ssg.com/item/itemView.ssg \"쌀 2kg\" \"최적가\"",
+            "site:emart.ssg.com/item/itemView.ssg \"노브랜드 국산콩두부300g*2입\"",
+            "site:emart.ssg.com/item/itemView.ssg \"맛템 유명산지 수제망 양파 1.8kg\""
+          ],
+          "result_count": 12
+        },
+        {
+          "at_ms": 67008,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "site:emart.ssg.com/item/itemView.ssg \"닭볶음탕용\" \"1kg\" \"최적가\" 이마트",
+            "site:emart.ssg.com/item/itemView.ssg \"냉동 닭가슴살 1kg\" \"최적가\"",
+            "site:emart.ssg.com/item/itemView.ssg \"참치\" \"4입\" \"최적가\"",
+            "site:emart.ssg.com/item/itemView.ssg \"양배추\" \"1통\" \"최적가\""
+          ],
+          "result_count": 12
+        },
+        {
+          "at_ms": 76676,
+          "type": "web_search",
+          "action": "other",
+          "queries": [],
+          "result_count": 5
+        },
+        {
+          "at_ms": 82963,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "site:emart.ssg.com/item/itemView.ssg \"돼지고기 앞다리\" \"600g\" \"최적가\"",
+            "site:emart.ssg.com/item/itemView.ssg \"국내산 앞다리\" \"600g\"",
+            "site:emart.ssg.com/item/itemView.ssg \"돈육 앞다리\" \"1kg\" \"최적가\""
+          ],
+          "result_count": 12
+        },
+        {
+          "at_ms": 88308,
+          "type": "web_search",
+          "action": "other",
+          "queries": [],
+          "result_count": 5
+        },
+        {
+          "at_ms": 98978,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "https://emart.ssg.com/item/itemView.ssg?itemId=1000031797670 유명산지 양파 1.8kg 가격",
+            "https://emart.ssg.com/item/itemView.ssg?itemId=1000564818850 앞다리 1kg 가격 배송",
+            "https://emart.ssg.com/item/itemView.ssg?itemId=1000220072503 계란 30구 판매가 10980"
+          ],
+          "result_count": 12
+        },
+        {
+          "at_ms": 105348,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "site:emart.ssg.com/item/itemView.ssg?itemId=1000007858329 \"최적가\"",
+            "site:emart.ssg.com/item/itemView.ssg?itemId=1000610910289 \"판매가\"",
+            "site:emart.ssg.com/item/itemView.ssg?itemId=1000564818850 \"배송비\""
+          ],
+          "result_count": 12
+        },
+        {
+          "at_ms": 111697,
+          "type": "mcp_tool_call",
+          "tool": "calculate_repeated_cost",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "unit_cost": 3480,
+              "quantity": 2,
+              "unit": "2팩(각 300g×2모)"
+            }
+          },
+          "result": {
+            "inputs": {
+              "unit_cost": "3480",
+              "quantity": "2",
+              "unit": "2팩(각 300g×2모)",
+              "currency": "KRW"
+            },
+            "formula": "total_cost = unit_cost * quantity",
+            "intermediate": {
+              "quantity": "2"
+            },
+            "result": {
+              "total_cost": "6960.00",
+              "currency": "KRW"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 111697,
+          "type": "mcp_tool_call",
+          "tool": "calculate_repeated_cost",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "unit_cost": 990,
+              "quantity": 2,
+              "unit": "봉(각 300g)"
+            }
+          },
+          "result": {
+            "inputs": {
+              "unit_cost": "990",
+              "quantity": "2",
+              "unit": "봉(각 300g)",
+              "currency": "KRW"
+            },
+            "formula": "total_cost = unit_cost * quantity",
+            "intermediate": {
+              "quantity": "2"
+            },
+            "result": {
+              "total_cost": "1980.00",
+              "currency": "KRW"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 120623,
+          "type": "mcp_tool_call",
+          "tool": "sum_costs",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "budget": 100000,
+              "items": [
+                {
+                  "name": "쌀 2kg",
+                  "amount": 11980
+                },
+                {
+                  "name": "달걀 30구",
+                  "amount": 7450
+                },
+                {
+                  "name": "두부 2팩",
+                  "amount": 6960
+                },
+                {
+                  "name": "돼지 앞다리 1kg",
+                  "amount": 15800
+                },
+                {
+                  "name": "참치 135g 4캔",
+                  "amount": 12680
+                },
+                {
+                  "name": "김치 1kg",
+                  "amount": 9980
+                },
+                {
+                  "name": "콩나물 2봉",
+                  "amount": 1980
+                },
+                {
+                  "name": "당근 1kg",
+                  "amount": 4780
+                },
+                {
+                  "name": "양파 1.8kg",
+                  "amount": 3730
+                },
+                {
+                  "name": "애호박 1개",
+                  "amount": 3480
+                },
+                {
+                  "name": "바나나 1kg",
+                  "amount": 3980
+                }
+              ]
+            }
+          },
+          "result": {
+            "inputs": {
+              "items": [
+                {
+                  "name": "쌀 2kg",
+                  "amount": "11980"
+                },
+                {
+                  "name": "달걀 30구",
+                  "amount": "7450"
+                },
+                {
+                  "name": "두부 2팩",
+                  "amount": "6960"
+                },
+                {
+                  "name": "돼지 앞다리 1kg",
+                  "amount": "15800"
+                },
+                {
+                  "name": "참치 135g 4캔",
+                  "amount": "12680"
+                },
+                {
+                  "name": "김치 1kg",
+                  "amount": "9980"
+                },
+                {
+                  "name": "콩나물 2봉",
+                  "amount": "1980"
+                },
+                {
+                  "name": "당근 1kg",
+                  "amount": "4780"
+                },
+                {
+                  "name": "양파 1.8kg",
+                  "amount": "3730"
+                },
+                {
+                  "name": "애호박 1개",
+                  "amount": "3480"
+                },
+                {
+                  "name": "바나나 1kg",
+                  "amount": "3980"
+                }
+              ],
+              "budget": "100000",
+              "currency": "KRW"
+            },
+            "formula": "total_cost = sum(item.amount); budget_remaining = budget - total_cost",
+            "intermediate": {
+              "쌀 2kg": "11980",
+              "달걀 30구": "7450",
+              "두부 2팩": "6960",
+              "돼지 앞다리 1kg": "15800",
+              "참치 135g 4캔": "12680",
+              "김치 1kg": "9980",
+              "콩나물 2봉": "1980",
+              "당근 1kg": "4780",
+              "양파 1.8kg": "3730",
+              "애호박 1개": "3480",
+              "바나나 1kg": "3980"
+            },
+            "result": {
+              "total_cost": "82800.00",
+              "currency": "KRW",
+              "budget_remaining": "17200.00"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 133196,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "\"[영주농협]국내산 냉장 돈육 앞다리 1kg (찌개용)\" \"배송비\"",
+            "\"유명산지 수제망 양파 1.8kg(망)\" \"배송비\"",
+            "\"파머스픽 1등급 30구\" \"10,980\"",
+            "\"후레쉬 계란 30구\" \"7,450\""
+          ],
+          "result_count": 12
+        },
+        {
+          "at_ms": 143122,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "\"맛템\" \"유명산지 수제망 양파 1.8kg\" \"3,730\"",
+            "\"[영주농협]국내산 냉장 돈육 앞다리 1kg (찌개용)\" \"15,800\"",
+            "\"동원 살코기참치 135g*4입\" \"12,680\""
+          ],
+          "result_count": 12
+        },
+        {
+          "at_ms": 163097,
+          "type": "mcp_tool_call",
+          "tool": "sum_costs",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "budget": 100000,
+              "items": [
+                {
+                  "name": "쌀 2kg",
+                  "amount": 11980
+                },
+                {
+                  "name": "달걀 30구",
+                  "amount": 7450
+                },
+                {
+                  "name": "두부 2팩",
+                  "amount": 6960
+                },
+                {
+                  "name": "돼지 앞다리 1kg",
+                  "amount": 15800
+                },
+                {
+                  "name": "참치 135g 4캔",
+                  "amount": 12680
+                },
+                {
+                  "name": "김치 1kg",
+                  "amount": 9980
+                },
+                {
+                  "name": "콩나물 2봉",
+                  "amount": 1980
+                },
+                {
+                  "name": "당근 1kg",
+                  "amount": 4780
+                },
+                {
+                  "name": "양파 1.8kg",
+                  "amount": 3730
+                },
+                {
+                  "name": "애호박 1개",
+                  "amount": 2980
+                },
+                {
+                  "name": "바나나 1kg",
+                  "amount": 3980
+                }
+              ]
+            }
+          },
+          "result": {
+            "inputs": {
+              "items": [
+                {
+                  "name": "쌀 2kg",
+                  "amount": "11980"
+                },
+                {
+                  "name": "달걀 30구",
+                  "amount": "7450"
+                },
+                {
+                  "name": "두부 2팩",
+                  "amount": "6960"
+                },
+                {
+                  "name": "돼지 앞다리 1kg",
+                  "amount": "15800"
+                },
+                {
+                  "name": "참치 135g 4캔",
+                  "amount": "12680"
+                },
+                {
+                  "name": "김치 1kg",
+                  "amount": "9980"
+                },
+                {
+                  "name": "콩나물 2봉",
+                  "amount": "1980"
+                },
+                {
+                  "name": "당근 1kg",
+                  "amount": "4780"
+                },
+                {
+                  "name": "양파 1.8kg",
+                  "amount": "3730"
+                },
+                {
+                  "name": "애호박 1개",
+                  "amount": "2980"
+                },
+                {
+                  "name": "바나나 1kg",
+                  "amount": "3980"
+                }
+              ],
+              "budget": "100000",
+              "currency": "KRW"
+            },
+            "formula": "total_cost = sum(item.amount); budget_remaining = budget - total_cost",
+            "intermediate": {
+              "쌀 2kg": "11980",
+              "달걀 30구": "7450",
+              "두부 2팩": "6960",
+              "돼지 앞다리 1kg": "15800",
+              "참치 135g 4캔": "12680",
+              "김치 1kg": "9980",
+              "콩나물 2봉": "1980",
+              "당근 1kg": "4780",
+              "양파 1.8kg": "3730",
+              "애호박 1개": "2980",
+              "바나나 1kg": "3980"
+            },
+            "result": {
+              "total_cost": "82300.00",
+              "currency": "KRW",
+              "budget_remaining": "17700.00"
+            }
+          },
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "error": null,
+      "e2e_latency_ms": 177953,
+      "attempts": 1
+    },
+    {
+      "case_id": "travel-budget-001",
+      "http_status": 200,
+      "status": "ready",
+      "answer": "**인천 출발, 2026년 11월 왕복 기준이라면 37만 원은 무난하지만 특가는 아니에요.** 사용자가 본 항공편의 날짜와 항공사는 아직 모르므로, 같은 날짜의 최저가와 직접 비교한 판단은 아닙니다.\n\n9월 24일 조회한 [스투비플래너](https://flights.stubbyplanner.com/to/nagoya/202611)에는 인천→나고야 **11월 4일 출발·11일 귀국, 직항 왕복 1인 237,719원** 같은 날짜 유연형 상품이 표시됩니다. 반면 [대한항공](https://www.koreanair.com/flights/en-kr/flights-from-seoul-to-nagoya)의 **11월 인천↔나고야 일반석 왕복 1인 최저가는 422,300원부터**로 표시됩니다. 두 가격은 항공사와 여행 날짜가 달라 같은 조건의 견적은 아니며, 예약 시 변동될 수 있습니다.\n\n따라서 **날짜를 바꿀 수 있고 저가항공이라면 조금 더 찾아볼 만하고**, 원하는 날짜의 직항이거나 수하물이 포함된 항공권이라면 37만 원에 예약해도 괜찮은 편입니다. 결제 전에는 왕복 총액에 위탁수하물과 좌석 선택 비용이 포함됐는지만 확인하세요.",
+      "metadata": {
+        "mode": "baseline",
+        "latency_ms": 48332,
+        "codex_runs": 1,
+        "search_calls": 3,
+        "search_sources": [
+          {
+            "url": "https://www.koreanair.com/flights/en-kr/flights-from-seoul-to-nagoya",
+            "title": "Seoul to Nagoya Flights | Korean Air"
+          },
+          {
+            "url": "https://www.coupzip.com/flights/nagoya/",
+            "title": "인천 나고야 항공권 최저가 — 출발일·월별 시세 비교 (2026년 9월)"
+          },
+          {
+            "url": "https://www.traveloka.com/en-kr/flight/to/nagoya.ngoa",
+            "title": "Fly to Nagoya | Find the Best Flight Deals & Promos"
+          },
+          {
+            "url": "https://putivator.com/en/flights/sel-ngo/",
+            "title": "Cheap flights Seoul — Nagoya | Prices from 66 $ | Putivator"
+          },
+          {
+            "url": "https://www.trip.com/flights/seoul-to-nagoya/airfares-sel-ngo/",
+            "title": "Cheap Flights from Seoul to Nagoya from US$58 (SEL to NGO) | Trip.com"
+          },
+          {
+            "url": "https://www.traveloka.com/en-kr/flight/route/Seoul-Nagoya.GMP.NGO",
+            "title": "Flight Ticket from Seoul to Nagoya - Traveloka"
+          },
+          {
+            "url": "https://www.routavio.com/flights/seoul-to-nagoya",
+            "title": "Cheap flights from Seoul to Nagoya: prices, airlines and dates · Routavio"
+          },
+          {
+            "url": "https://www.koreanair.com/flights/fr-kr/flights-from-seoul-to-nagoya",
+            "title": "Vols de Séoul vers Nagoya | Korean Air"
+          },
+          {
+            "url": "https://lowcost.club/cheap-flights-from-seoul-to-nagoya-sel-ngo/",
+            "title": "Cheap flights from Seoul (SEL) to Nagoya (NGO) from $39 ✈ LowCost.Club"
+          },
+          {
+            "url": "https://www.expedia.com/lp/flights/gmp/ngo/seoul-to-nagoya?flightType=ROUND_TRIP",
+            "title": "Seoul to Nagoya cheap flights from $233 (GMP to NGO) - Expedia"
+          },
+          {
+            "url": "https://www.agoda.com/flights/airport/icn/nkm/seoul-nagoya.html",
+            "title": "Cheap Flights from Seoul (ICN) to Nagoya (NKM) | Book with Agoda.com & Save!"
+          },
+          {
+            "url": "https://lowcost.club/jp/cheap-flights-from-seoul-to-nagoya-sel-ngo/",
+            "title": "ソウル特別市 (SEL)から名古屋市 (NGO)への￥6,008らの格安便 ✈ LowCost.Club"
+          },
+          {
+            "url": "https://www.ana.co.jp/guide/plan/fare/domestic/pdf/en_26s_standard_roundtrip_250529.pdf",
+            "title": "Fare Charts (Standard-Round Trip) ※Available for reservation and tickets issued on/after 2025/5/29"
+          },
+          {
+            "url": "https://www.asianasabre.co.kr/CommonFiles/BoardUpLoadFiles/AirLineNews/85815/TW%202026%20%EA%B5%AD%EC%A0%9C%EC%84%A0%20GDS%EC%9A%A9%20GPD_1st%20%2820251001%29.pdf",
+            "title": "인천-나트랑 노선 정규 운임"
+          },
+          {
+            "url": "https://www.hanjinsabre.com/CommonFiles/BoardUpLoadFiles/AirLineNews/86712/%28PCF%20AGT%292026-27_1%EC%B0%A8.pdf",
+            "title": "S26-W26 한국·해외지역"
+          },
+          {
+            "url": "https://www.hanjinsabre.com/CommonFiles/BoardUpLoadFiles/AirLineNews/88169/KORCI26_011_CI%20SEL%20FIT%20PROMOTION%20%2808MAY26~%29.pdf",
+            "title": "공 시 일 : 2026 년 5 월6 일"
+          },
+          {
+            "url": "https://www.koreanair.com/flights/de-kr/flights-from-seoul-to-nagoya",
+            "title": "Seoul nach Nagoya Flüge | Korean Air"
+          },
+          {
+            "url": "https://www.koreanair.com/flights/de/flights-from-seoul-to-nagoya",
+            "title": "Seoul nach Nagoya Flüge | Korean Air"
+          },
+          {
+            "url": "https://www.koreanair.com/flights/de/flights-from-busan-to-nagoya",
+            "title": "Busan nach Nagoya Flüge | Korean Air"
+          },
+          {
+            "url": "https://www.koreanair.com/flights/es-kr/flights-from-seoul-to-nagoya",
+            "title": "Seúl a Nagoya Vuelos | Korean Air"
+          },
+          {
+            "url": "https://www.koreanair.com/flights/vi/flights-from-seoul-to-nagoya",
+            "title": "Chuyến bay khởi hành từ Seoul đến Nagoya | Korean Air"
+          },
+          {
+            "url": "https://www.koreanair.com/flights/vi-kr/flights-from-busan-to-nagoya",
+            "title": "Chuyến bay khởi hành từ Busan đến Nagoya | Korean Air"
+          },
+          {
+            "url": "https://www.koreanair.com/flights/vi/flights-from-busan-to-nagoya",
+            "title": "Chuyến bay khởi hành từ Busan đến Nagoya | Korean Air"
+          },
+          {
+            "url": "https://www.koreanair.com/flights/pt-kr/voos-de-seoul-para-nagoya",
+            "title": "Voos de Seul para Nagoya | Korean Air"
+          },
+          {
+            "url": "https://www.koreanair.com/flights/it/flights-from-seoul-to-nagoya",
+            "title": "Voli da Seul a Nagoya | Korean Air"
+          },
+          {
+            "url": "https://www.koreanair.com/flights/en-kr/flights-to-japan",
+            "title": "Flights to Japan with Korean Air"
+          },
+          {
+            "url": "https://coupzip.com/flights/nagoya/",
+            "title": "인천 나고야 항공권 최저가 — 출발일·월별 시세 비교 (2026년 9월)"
+          },
+          {
+            "url": "https://flights.stubbyplanner.com/to/nagoya/202611",
+            "title": "flights.stubbyplanner.com"
+          },
+          {
+            "url": "https://incheonmarathon.or.kr/shop_mypage",
+            "title": "2026 인천마라톤"
+          },
+          {
+            "url": "https://koreagenda.com/ko/calendar/2026-11/incheon",
+            "title": "2026년 11월, 인천에서 무엇을 할까? · Koreagenda"
+          },
+          {
+            "url": "https://flights.stubbyplanner.com/to/danang/202611",
+            "title": "2026년 11월 다낭 항공권 최저가 | 스투비플래너"
+          },
+          {
+            "url": "https://www.coupzip.com/flights/taipei/",
+            "title": "인천 타이베이 항공권 최저가 — 출발일·월별 시세 비교 (2026년 9월)"
+          },
+          {
+            "url": "https://hotel.stubbyplanner.com/hong-kong/2026-11",
+            "title": "2026년 11월 홍콩 호텔 + 항공권 가격 | 스투비플래너"
+          },
+          {
+            "url": "https://allrunabout.com/marathon/incheon-marathon-2026",
+            "title": "2026 인천마라톤 접수·참가비·코스 | 11월 22일 인천아시아드주경기장 | 러닝의 모든것"
+          },
+          {
+            "url": "https://coupzip.com/flights/okinawa/",
+            "title": "인천 오키나와 항공권 최저가 — 출발일·월별 시세 비교 (2026년 9월)"
+          },
+          {
+            "url": "https://www.accuweather.com/ko/kr/incheon/1-224032_30_al/november-weather/1-224032_30_al",
+            "title": "인천, 인천시, 대한민국 월별 날씨 | AccuWeather"
+          },
+          {
+            "url": "https://flights.stubbyplanner.com/to/singapore/202611",
+            "title": "2026년 11월 싱가폴 항공권 최저가 | 스투비플래너"
+          },
+          {
+            "url": "https://zipdal.com/schedule/2026-11/incheon",
+            "title": "2026년 11월 인천 청약 일정 | 집달력"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=7Byokk0ZW50",
+            "title": "달릴수록 커지는 혜택, 신한20+뛰어요! - YouTube"
+          },
+          {
+            "url": "https://www.mafra.go.kr/bbs/home/792/596938/download.do",
+            "title": "보도자료 \n보도시점\n2026. 4. 28.(화)\n배포\n2026. 4. 28.(화)\n회의 종"
+          },
+          {
+            "url": "https://itskorea.kr/downloadFile.do?fileId=FILE_000000000105721&fileSn=1",
+            "title": "2026_수혜자별_주요_지원내용_fin"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=VztLyuVWLUQ",
+            "title": "2026년에는 대한민국의 새로운 도약이 시작됩니다 - YouTube"
+          }
+        ],
+        "mcp_calls": [],
+        "jev_calls": 0,
+        "jev_judgment": null
+      },
+      "trace": [
+        {
+          "at_ms": 13812,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "인천 나고야 2026 11월 왕복 항공권 가격 11월",
+            "Seoul Nagoya round trip November 2026 flights price",
+            "ICN NGO Nov 2026 round trip flights KRW"
+          ],
+          "result_count": 16
+        },
+        {
+          "at_ms": 20051,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "site:koreanair.com/flights \"Nov\" \"2026\" \"Nagoya\" \"KRW\"",
+            "site:flights.trip.com \"Seoul\" \"Nagoya\" \"Nov\" \"2026\" \"round-trip\"",
+            "site:traveloka.com/en-kr/flight \"Nagoya\" \"November\" \"2026\" \"Round trip\"",
+            "site:expedia.co.kr ICN NGO 2026 11월 왕복 항공권"
+          ],
+          "result_count": 12
+        },
+        {
+          "at_ms": 26187,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "2026 11월 인천 나고야 왕복 20만원 30만원 항공권",
+            "site:jejuair.net 인천 나고야 2026 11월 왕복 항공권",
+            "site:jinair.com 인천 나고야 2026 11월 왕복",
+            "site:skyscanner.co.kr 인천 나고야 2026 11월 왕복"
+          ],
+          "result_count": 16
+        },
+        {
+          "at_ms": 31923,
+          "type": "web_search",
+          "action": "other",
+          "queries": [],
+          "result_count": 3
+        },
+        {
+          "at_ms": 36786,
+          "type": "web_search",
+          "action": "other",
+          "queries": [],
+          "result_count": 1
+        }
+      ],
+      "error": null,
+      "e2e_latency_ms": 48335,
+      "attempts": 1
+    },
+    {
+      "case_id": "car-ownership-001",
+      "http_status": 200,
+      "status": "ready",
+      "answer": "차종과 주행거리가 적혀 있지 않아 **아반떼 1.6 가솔린을 새로 등록해 연 1만 2천 km씩 5년 운행**한다고 가정하면, **기름값과 자동차세만 약 1,066만 원**입니다. 연평균 약 213만 원, 월평균 약 17만 8천 원입니다. **보험료·정비비가 빠진 금액이므로 5년 유지비 전체는 이보다 큽니다.**\n\n연료비는 실주행 연비를 **12km/L로 가정**해 5년간 5,000L, 약 **929만 원**으로 계산했습니다. 참고한 아반떼 1.6 가솔린의 16인치 타이어 기준 공인 복합연비는 **14.8km/L**이며, 기름값은 **2026년 9월 23일 전국 주유소 보통휘발유 평균 1,858.47원/L**를 5년 내내 적용한 가정입니다. [현대자동차 제원](https://www.hyundai.com/contents/repn-car/catalog/avante-catalog.pdf.pdf), [오피넷 유가 통계](https://www.opinet.co.kr/user/dopospdrg/dopOsPdrgSelect.do) (2026년 9월 24일 확인)\n\n자동차세는 **1,598cc 비영업용 승용차** 기준, 지방교육세를 포함해 첫해 약 **29만 원**, 차령 경감을 반영한 5년 합계 약 **137만 원**으로 잡았습니다. 등록 시점에 따라 실제 부과액은 달라질 수 있습니다. [서초구 자동차세 안내](https://www.seocho.go.kr/site/tax/02/10201050000002023050810.jsp) (2026년 9월 24일 확인)\n\n실제 예산에는 **보험료, 엔진오일·타이어 등 정비비, 주차비와 통행료**를 더해야 합니다. 이 항목들은 운전자 조건과 이용 방식이 없어 금액을 임의로 넣지 않았습니다. 차를 사서 5년 뒤 판다는 뜻이라면 **구입비와 매각가 차이**도 별도로 봐야 합니다.",
+      "metadata": {
+        "mode": "baseline",
+        "latency_ms": 95065,
+        "codex_runs": 1,
+        "search_calls": 3,
+        "search_sources": [
+          {
+            "url": "https://www.hyundai.com/content/dam/hyundai/kr/ko/data/vehicles/price/avante-price.pdf",
+            "title": "avante-price-03"
+          },
+          {
+            "url": "https://www.hyundai.com/kr/ko/e/vehicles/the-new-avante-hybrid/price",
+            "title": "AVANTE Hybrid > 가격 | 현대자동차 - 현대닷컴 | 대한민국 대표 자동차회사 hyundai.com"
+          },
+          {
+            "url": "https://www.hyundai.com/kr/ko/vehicles/avante/price.html",
+            "title": "디 올 뉴 아반떼 > 가격 | 현대자동차 현대닷컴"
+          },
+          {
+            "url": "https://www.hyundai.com/content/dam/hyundai/kr/ko/data/vehicles/catalog/avante-catalog-1.pdf",
+            "title": "avante-catalog-T"
+          },
+          {
+            "url": "https://www.hyundai.com/kr/ko/brand/brandstory/heritage/2023-the-new-avante",
+            "title": "Lineage of Hyundai Cars > 2023 The new AVANTE | 현대자동차 - 현대닷컴 | 대한민국 대표 자동차회사 hyundai.com"
+          },
+          {
+            "url": "https://www.hyundai.com/kr/ko/brand/brandstory/heritage/2020-avante",
+            "title": "Lineage of Hyundai Cars > 2020 AVANTE | 현대자동차 - 현대닷컴 | 대한민국 대표 자동차회사 hyundai.com"
+          },
+          {
+            "url": "https://www.hyundai.com/kr/ko/vehicles/avante",
+            "title": "The all-new AVANTE > 하이라이트 | 현대자동차 - 현대닷컴 | 대한민국 대표 자동차회사 hyundai.com"
+          },
+          {
+            "url": "https://www.hyundai.com/kr/ko/brand/heritage/model/avante-history/2020-avante-cn7",
+            "title": "2020-avante-cn7 | 현대자동차 - 현대닷컴 | 대한민국 대표 자동차회사 hyundai.com"
+          },
+          {
+            "url": "https://www.hyundai.com/kr/ko/brand/brandstory/model/avante-history/2020-avante-hybrid",
+            "title": "2020 Avante Hybrid | 현대자동차 - 현대닷컴 | 대한민국 대표 자동차회사 hyundai.com"
+          },
+          {
+            "url": "https://www.hyundai.com/contents/repn-car/catalog/the-new-avante-catalog.pdf",
+            "title": "AVANTE"
+          },
+          {
+            "url": "https://www.hyundai.com/contents/repn-car/catalog/avante-catalog.pdf.pdf",
+            "title": "AVANTE"
+          },
+          {
+            "url": "https://www.hyundai.com/kr/ko/brand/brandstory/heritage/2018-avante",
+            "title": "Lineage of Hyundai Cars > 2018 Avante AD | 현대자동차 - 현대닷컴 | 대한민국 대표 자동차회사 hyundai.com"
+          },
+          {
+            "url": "https://www.hyundai.com/kr/ko/brand/brandstory/heritage/2010-avante-md",
+            "title": "Lineage of Hyundai Cars > 2010 Avante MD | 현대자동차 - 현대닷컴 | 대한민국 대표 자동차회사 hyundai.com"
+          },
+          {
+            "url": "https://www.hyundai.com/kr/ko/e/vehicles/estimation/model/making?model=CN17&modelCode=CNJS4RBT4&purposeCode=J",
+            "title": "내 차 만들기 (견적) > 02. 색상/옵션 선택 | 현대자동차 현대닷컴"
+          },
+          {
+            "url": "https://www.hyundai.com/kr/en/sedan/the-new-avante/price",
+            "title": "Price – The new AVANTE – SEDAN | HYUNDAI Motors"
+          },
+          {
+            "url": "https://www.hyundai.com/kr/ko/vehicles/tucson/20my/specifications.html",
+            "title": "제원 - 투싼 - 전체모델 | 현대자동차 - 현대닷컴 | 대한민국 대표 자동차회사 hyundai.com"
+          },
+          {
+            "url": "https://www.opinet.co.kr/user/dopospdrg/dopOsPdrgSelect.do",
+            "title": "싼 주유소 찾기 오피넷"
+          },
+          {
+            "url": "https://moim.bio/live/oil/",
+            "title": "오늘의 기름값 | moim.bio"
+          },
+          {
+            "url": "https://sisepedia.com/%EA%B8%B0%EB%A6%84%EA%B0%92",
+            "title": "오늘의 기름값 — 전국·시도별 휘발유·경유 평균가 · 시세피디아"
+          },
+          {
+            "url": "https://realmoneyshot.kr/gas-station-price-comparison-2026-09/",
+            "title": "알뜰주유소 가격 비교 2026년 9월, 자영 1,822원 농협 1,864원 42원 차이 - realmoneyshot"
+          },
+          {
+            "url": "https://beezbook.com/car-tax/1600",
+            "title": "1,600cc 자동차세 — 연 291,200원 (2026년, 차령 경감·연납 할인표) | 비즈북"
+          },
+          {
+            "url": "https://setax.kr/vehicle-tax/1600cc",
+            "title": "1,600cc 자동차세 계산 - 비영업·영업 비교 | 세택스"
+          },
+          {
+            "url": "https://calceverything.kr/car/car-tax/1600cc",
+            "title": "1600cc 자동차세 (2026년) · 연 290,820원 | 계산의 민족"
+          },
+          {
+            "url": "https://www.knoc.co.kr/?no=36",
+            "title": "한국석유공사"
+          },
+          {
+            "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/66/295/2019/CLIKC1178081362667412_attach_1.pdf",
+            "title": "<5BC1A4C3A531392D32395D20B4EBB1E2C8AFB0E620BFC0BFB0BAF1BFEBC0BB20B0EDB7C1C7D120BCD2C0AFBAD020C0DAB5BFC2F7BCBC20B0B3BCB1B9E6BEC828504DC0B1BBF3C8A3292D352E687770>"
+          },
+          {
+            "url": "https://www.chasam.co.kr/utility/car-tax",
+            "title": "자동차세 계산기 | 배기량별 연세액·반기분 조회 | 차삼"
+          },
+          {
+            "url": "https://car.mustarddata.com/calculator/car-tax/cc/",
+            "title": "배기량별 자동차세 조회 - 1000cc, 1600cc, 2000cc, 3000cc — 자동차 계산기"
+          },
+          {
+            "url": "https://www.koreatax.org/tax/taxpayers/car/car_5.php",
+            "title": "한국납세자연맹"
+          },
+          {
+            "url": "https://oilprice-kr.pages.dev/",
+            "title": "전국 주유소 최저가 (2026-09-23 17:01 기준)"
+          },
+          {
+            "url": "https://file2.taxnet.co.kr/taxnetfile/public_data/%EC%97%85%EB%AC%B4%EC%9A%A9%EC%8A%B9%EC%9A%A9%EC%B0%A8%20%EA%B4%80%EB%A0%A8%EB%B9%84%EC%9A%A9%EC%9D%98%20%EC%84%B8%EB%AC%B4%EC%B2%98%EB%A6%AC%28%EC%86%8C%EB%93%9D%29_6728371.pdf",
+            "title": "Ⅰ. 제도 개요········································································································1"
+          },
+          {
+            "url": "https://cfile240.uf.daum.net/attach/1667D7144BE75EEF12CFC0",
+            "title": "untitled"
+          },
+          {
+            "url": "https://www.yeonggwang.kr/bbs/?b_id=bulletin&bf_idx=474280064&bs_idx=1156624&mn=9077&name=2025%25EB%2585%2584_12%25EC%259B%2594_%25EC%2598%25A5%25EB%258B%25B9%25EA%25B3%25A8%25EC%2586%258C%25EC%258B%259D%25EC%25A7%2580.pdf&offset=&site=headquarter_new&type=download",
+            "title": "제601호 \n2025. 12. 26.(금)\n영 광 군옥당골소식\n♡군민을 위한 유익한 정보지"
+          },
+          {
+            "url": "https://www.nabo.go.kr/system/common/JSPservlet/download.jsp?fBid=19&fCode=9421&fMime=application%2Fpdf&fName=20100706_2009%EB%85%84_%EC%84%B8%EB%B2%95%EA%B0%9C%EC%A0%95_%EC%84%B8%EC%88%98%EB%B3%80%ED%99%94_%EC%B6%94%EA%B3%84_%EC%82%AC%EB%A1%80%EC%A7%91.pdf&fSHC=&flag=bluenet",
+            "title": "세법개정세수변화추계사례집"
+          },
+          {
+            "url": "https://clik.nanet.go.kr/clikr-collection/policyinfo/46/194/2006/CLIKC1468727444988271_img_1.pdf",
+            "title": "untitled"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=OPKFEb1YbY8",
+            "title": "화들짝 놀랄 소주 가격...'살인물가 울릉도 안 가요' [지금이뉴스]  / YTN - YouTube"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=x3eqqoZPV_E",
+            "title": "BABYMONSTER - '춤 (CHOOM)' M/V - YouTube"
+          },
+          {
+            "url": "https://www.hyundai.com/contents/repn-car/catalog/the-new-avante-hybrid-catalog.pdf",
+            "title": "AVANTE"
+          },
+          {
+            "url": "https://www.hyundai.com/contents/repn-car/catalog/avante-catalog.pdf",
+            "title": "Dimensions\n\n* 단위 : mm * 이미지 및 문구 수치는 스마트스트림 가솔린 1."
+          },
+          {
+            "url": "https://www.gijang.go.kr/index.gijang?menuCd=DOM_000000102006001002",
+            "title": "기장군 > 전자민원 > 세무민원안내 > 지방세종류 및 납부안내 > 자동차세"
+          },
+          {
+            "url": "https://www.gwangjin.go.kr/portal/main/contents.do?menuNo=200785",
+            "title": "자동차세 < 세목별안내 < 지방세 < 세무/여권 < 분야별정보 < 포털사이트"
+          },
+          {
+            "url": "https://www.hyundai.com/contents/repn-car/catalog/sonata-the-edge-hybrid-catalog.pdf",
+            "title": "Dimensions\n\n<visual_element id=\"e1\">\nFront, side,"
+          },
+          {
+            "url": "https://dongjak.go.kr/portal/main/contents.do?menuNo=200726",
+            "title": "자동차세 < 세목별안내 < 세무/세금 < 분야별 민원안내 < 종합민원 < 포털사이트"
+          },
+          {
+            "url": "https://www.seocho.go.kr/site/tax/02/10201050000002023050810.jsp",
+            "title": "자동차세(소유분) - 세금알아보기"
+          },
+          {
+            "url": "https://www.anseong.go.kr/depart/contents.do?mId=0107021100",
+            "title": "자동차세 | 세목별 안내 | 지방세 | 기업/경제 | 안성시청 분야별 홈페이지"
+          },
+          {
+            "url": "https://www.ulsannamgu.go.kr/e-complaints/wetaxInfo09.jsp",
+            "title": "세목별 안내 - 자동차세(소유) | 울산광역시 남구청"
+          },
+          {
+            "url": "https://seongbuk.go.kr/www/contents.do?key=5780",
+            "title": "자동차세 - 성북구청"
+          },
+          {
+            "url": "https://www.usc.go.kr/ko/page.do?mnu_uid=268",
+            "title": "자동차세(소유) | 세목별안내 | 지방세안내 | 민원정보 | 의성군"
+          },
+          {
+            "url": "https://www.hyundai.com/contents/repn-car/catalog/tucson-n-line-catalog.pdf",
+            "title": "Dimensions\n\n<visual_element id=\"e1\">\nFront view of"
+          },
+          {
+            "url": "https://yangsan.go.kr/portal/contents.do?mid=0205040203",
+            "title": "자동차세 | 시세 | 지방세 | 분야별민원 | 종합민원 | 양산시청 홈페이지"
+          }
+        ],
+        "mcp_calls": [
+          {
+            "tool": "calculate_repeated_cost",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "unit_cost": 1858.47,
+                "quantity": 5000,
+                "unit": "L"
+              }
+            },
+            "result": {
+              "inputs": {
+                "unit_cost": "1858.47",
+                "quantity": "5000",
+                "unit": "L",
+                "currency": "KRW"
+              },
+              "formula": "total_cost = unit_cost * quantity",
+              "intermediate": {
+                "quantity": "5000"
+              },
+              "result": {
+                "total_cost": "9292350.00",
+                "currency": "KRW"
+              }
+            },
+            "status": "completed",
+            "error": null
+          },
+          {
+            "tool": "calculate_repeated_cost",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "unit_cost": 140,
+                "quantity": 1598,
+                "unit": "cc"
+              }
+            },
+            "result": {
+              "inputs": {
+                "unit_cost": "140",
+                "quantity": "1598",
+                "unit": "cc",
+                "currency": "KRW"
+              },
+              "formula": "total_cost = unit_cost * quantity",
+              "intermediate": {
+                "quantity": "1598"
+              },
+              "result": {
+                "total_cost": "223720.00",
+                "currency": "KRW"
+              }
+            },
+            "status": "completed",
+            "error": null
+          },
+          {
+            "tool": "calculate_repeated_cost",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "unit_cost": "223720.00",
+                "quantity": "1.3",
+                "unit": "자동차세와 지방교육세 합산 계수"
+              }
+            },
+            "result": {
+              "inputs": {
+                "unit_cost": "223720.00",
+                "quantity": "1.3",
+                "unit": "자동차세와 지방교육세 합산 계수",
+                "currency": "KRW"
+              },
+              "formula": "total_cost = unit_cost * quantity",
+              "intermediate": {
+                "quantity": "1.3"
+              },
+              "result": {
+                "total_cost": "290836.00",
+                "currency": "KRW"
+              }
+            },
+            "status": "completed",
+            "error": null
+          },
+          {
+            "tool": "calculate_repeated_cost",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "unit_cost": "290836.00",
+                "quantity": "4.7",
+                "unit": "5년간 차령 할인 반영 연수"
+              }
+            },
+            "result": {
+              "inputs": {
+                "unit_cost": "290836.00",
+                "quantity": "4.7",
+                "unit": "5년간 차령 할인 반영 연수",
+                "currency": "KRW"
+              },
+              "formula": "total_cost = unit_cost * quantity",
+              "intermediate": {
+                "quantity": "4.7"
+              },
+              "result": {
+                "total_cost": "1366929.20",
+                "currency": "KRW"
+              }
+            },
+            "status": "completed",
+            "error": null
+          },
+          {
+            "tool": "sum_costs",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "items": [
+                  {
+                    "name": "5년 연료비",
+                    "amount": "9292350.00"
+                  },
+                  {
+                    "name": "5년 자동차세",
+                    "amount": "1366929.20"
+                  }
+                ]
+              }
+            },
+            "result": {
+              "inputs": {
+                "items": [
+                  {
+                    "name": "5년 연료비",
+                    "amount": "9292350.00"
+                  },
+                  {
+                    "name": "5년 자동차세",
+                    "amount": "1366929.20"
+                  }
+                ],
+                "budget": null,
+                "currency": "KRW"
+              },
+              "formula": "total_cost = sum(item.amount); budget_remaining = budget - total_cost",
+              "intermediate": {
+                "5년 연료비": "9292350.00",
+                "5년 자동차세": "1366929.20"
+              },
+              "result": {
+                "total_cost": "10659279.20",
+                "currency": "KRW"
+              }
+            },
+            "status": "completed",
+            "error": null
+          },
+          {
+            "tool": "annualize_expense",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "amount": "10659279.20",
+                "period_months": 60
+              }
+            },
+            "result": {
+              "inputs": {
+                "amount": "10659279.20",
+                "period_months": "60",
+                "currency": "KRW"
+              },
+              "formula": "annual_amount = amount * (12 / period_months)",
+              "intermediate": {
+                "annualization_multiplier": "0.2"
+              },
+              "result": {
+                "annual_amount": "2131855.84",
+                "currency": "KRW"
+              }
+            },
+            "status": "completed",
+            "error": null
+          },
+          {
+            "tool": "calculate_usage_cost",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "total_cost": "10659279.20",
+                "units": 60
+              }
+            },
+            "result": {
+              "inputs": {
+                "total_cost": "10659279.20",
+                "units": "60",
+                "currency": "KRW"
+              },
+              "formula": "cost_per_unit = total_cost / units",
+              "intermediate": {
+                "units": "60"
+              },
+              "result": {
+                "cost_per_unit": "177654.65",
+                "currency": "KRW"
+              }
+            },
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "jev_calls": 0,
+        "jev_judgment": null
+      },
+      "trace": [
+        {
+          "at_ms": 13193,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "site:hyundai.com/kr/ko/e/vehicles/avante 1.6 가솔린 연비 배기량 아반떼",
+            "site:opinet.co.kr 전국 평균 휘발유 가격 2026 9월 24일",
+            "site:gov.kr 자동차세 1600cc cc당 140원 지방교육세 30%"
+          ],
+          "result_count": 16
+        },
+        {
+          "at_ms": 19534,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "오피넷 전국 평균 휘발유 가격 2026년 9월 24일 리터",
+            "오피넷 전국 평균 휘발유 가격 오늘 2026 9월",
+            "자동차세 1600cc 이하 140원 cc당 지방교육세 30% 공식"
+          ],
+          "result_count": 20
+        },
+        {
+          "at_ms": 34573,
+          "type": "web_search",
+          "action": "other",
+          "queries": [],
+          "result_count": 4
+        },
+        {
+          "at_ms": 40907,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "site:go.kr \"자동차세\" \"1,600cc 이하\" \"140원\" \"지방교육세\" \"차령\"",
+            "site:wetax.go.kr 자동차세 1600cc 140원 차령 5% 지방교육세",
+            "site:hyundai.com \"가솔린 1.6\" \"1,598\" \"14.8\" 아반떼"
+          ],
+          "result_count": 14
+        },
+        {
+          "at_ms": 55368,
+          "type": "web_search",
+          "action": "other",
+          "queries": [],
+          "result_count": 2
+        },
+        {
+          "at_ms": 65115,
+          "type": "mcp_tool_call",
+          "tool": "calculate_repeated_cost",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "unit_cost": 1858.47,
+              "quantity": 5000,
+              "unit": "L"
+            }
+          },
+          "result": {
+            "inputs": {
+              "unit_cost": "1858.47",
+              "quantity": "5000",
+              "unit": "L",
+              "currency": "KRW"
+            },
+            "formula": "total_cost = unit_cost * quantity",
+            "intermediate": {
+              "quantity": "5000"
+            },
+            "result": {
+              "total_cost": "9292350.00",
+              "currency": "KRW"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 65115,
+          "type": "mcp_tool_call",
+          "tool": "calculate_repeated_cost",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "unit_cost": 140,
+              "quantity": 1598,
+              "unit": "cc"
+            }
+          },
+          "result": {
+            "inputs": {
+              "unit_cost": "140",
+              "quantity": "1598",
+              "unit": "cc",
+              "currency": "KRW"
+            },
+            "formula": "total_cost = unit_cost * quantity",
+            "intermediate": {
+              "quantity": "1598"
+            },
+            "result": {
+              "total_cost": "223720.00",
+              "currency": "KRW"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 68082,
+          "type": "mcp_tool_call",
+          "tool": "calculate_repeated_cost",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "unit_cost": "223720.00",
+              "quantity": "1.3",
+              "unit": "자동차세와 지방교육세 합산 계수"
+            }
+          },
+          "result": {
+            "inputs": {
+              "unit_cost": "223720.00",
+              "quantity": "1.3",
+              "unit": "자동차세와 지방교육세 합산 계수",
+              "currency": "KRW"
+            },
+            "formula": "total_cost = unit_cost * quantity",
+            "intermediate": {
+              "quantity": "1.3"
+            },
+            "result": {
+              "total_cost": "290836.00",
+              "currency": "KRW"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 70703,
+          "type": "mcp_tool_call",
+          "tool": "calculate_repeated_cost",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "unit_cost": "290836.00",
+              "quantity": "4.7",
+              "unit": "5년간 차령 할인 반영 연수"
+            }
+          },
+          "result": {
+            "inputs": {
+              "unit_cost": "290836.00",
+              "quantity": "4.7",
+              "unit": "5년간 차령 할인 반영 연수",
+              "currency": "KRW"
+            },
+            "formula": "total_cost = unit_cost * quantity",
+            "intermediate": {
+              "quantity": "4.7"
+            },
+            "result": {
+              "total_cost": "1366929.20",
+              "currency": "KRW"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 74411,
+          "type": "mcp_tool_call",
+          "tool": "sum_costs",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "items": [
+                {
+                  "name": "5년 연료비",
+                  "amount": "9292350.00"
+                },
+                {
+                  "name": "5년 자동차세",
+                  "amount": "1366929.20"
+                }
+              ]
+            }
+          },
+          "result": {
+            "inputs": {
+              "items": [
+                {
+                  "name": "5년 연료비",
+                  "amount": "9292350.00"
+                },
+                {
+                  "name": "5년 자동차세",
+                  "amount": "1366929.20"
+                }
+              ],
+              "budget": null,
+              "currency": "KRW"
+            },
+            "formula": "total_cost = sum(item.amount); budget_remaining = budget - total_cost",
+            "intermediate": {
+              "5년 연료비": "9292350.00",
+              "5년 자동차세": "1366929.20"
+            },
+            "result": {
+              "total_cost": "10659279.20",
+              "currency": "KRW"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 78780,
+          "type": "mcp_tool_call",
+          "tool": "annualize_expense",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "amount": "10659279.20",
+              "period_months": 60
+            }
+          },
+          "result": {
+            "inputs": {
+              "amount": "10659279.20",
+              "period_months": "60",
+              "currency": "KRW"
+            },
+            "formula": "annual_amount = amount * (12 / period_months)",
+            "intermediate": {
+              "annualization_multiplier": "0.2"
+            },
+            "result": {
+              "annual_amount": "2131855.84",
+              "currency": "KRW"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 78780,
+          "type": "mcp_tool_call",
+          "tool": "calculate_usage_cost",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "total_cost": "10659279.20",
+              "units": 60
+            }
+          },
+          "result": {
+            "inputs": {
+              "total_cost": "10659279.20",
+              "units": "60",
+              "currency": "KRW"
+            },
+            "formula": "cost_per_unit = total_cost / units",
+            "intermediate": {
+              "units": "60"
+            },
+            "result": {
+              "cost_per_unit": "177654.65",
+              "currency": "KRW"
+            }
+          },
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "error": null,
+      "e2e_latency_ms": 95069,
+      "attempts": 1
+    }
+  ],
+  "finished_at": "2026-09-24T08:18:35.531144+00:00",
+  "repository_unchanged": true
+}

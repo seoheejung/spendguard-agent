@@ -1,0 +1,4311 @@
+{
+  "dataset_version": "chapter-b-sparse-v1",
+  "fixture_sha256": "a55ef56b9f2e5a67e671f9b1cb70c36d94251b9b537f6dbafc1b10cc325a3f24",
+  "mode": "jev",
+  "started_at": "2026-09-24T12:05:06.992864+00:00",
+  "runs": [
+    {
+      "case_id": "price-comparison-001",
+      "http_status": 200,
+      "status": "ready",
+      "answer": "**13인치 신품이라면 169만 원은 괜찮은 가격입니다.** 화면 크기는 질문에 없어 13인치 기본형을 기준으로 봤습니다. 2026년 9월 24일 확인한 [다나와 가격비교](https://prod.danawa.com/info/?cate=11354978&pcode=106754228)에는 M5·16GB·512GB **13인치 스카이 블루**가 무료배송 203만 9천 원, 삼성카드 결제 시 193만 9천 원으로 표시됩니다. 색상과 결제 조건이 같지는 않지만, 제시받은 169만 원이 더 낮습니다.\n\n[Apple의 출시 가격 안내](https://www.apple.com/kr/newsroom/2026/03/apple-introduces-the-new-macbook-air-with-m5/)상 13인치는 179만 원부터, **교육 할인 대상자**는 162만 9천 원부터였습니다. 교육 할인 자격이 있다면 그쪽 가격도 확인해 보세요. 15인치라면 출시 가격이 209만 원부터였으므로 169만 원은 더 매력적입니다.\n\n구매 전에는 **13인치인지 15인치인지**, 미개봉 신품인지, 국내 정식 판매 제품인지, 배송비와 카드·회원 조건을 포함한 **최종 결제액이 169만 원인지**만 확인하면 됩니다.",
+      "metadata": {
+        "mode": "jev",
+        "latency_ms": 55359,
+        "codex_runs": 1,
+        "search_calls": 2,
+        "search_sources": [
+          {
+            "url": "https://www.apple.com/kr/shop/buy-ipad/ipad-pro/11-%EB%94%94%EC%8A%A4%ED%94%8C%EB%A0%88%EC%9D%B4-512gb-%EC%8A%A4%ED%8E%98%EC%9D%B4%EC%8A%A4-%EB%B8%94%EB%9E%99-wifi-%EC%8A%A4%ED%83%A0%EB%8B%A4%EB%93%9C-%EA%B8%80%EB%9E%98%EC%8A%A4",
+            "title": "iPad Pro 11 Wi‑Fi 512GB 스탠다드 글래스 모델 - 스페이스 블랙 구입하기"
+          },
+          {
+            "url": "https://www.apple.com/kr/shop/product/fdh74kh/a",
+            "title": "리퍼비쉬 MacBook Air 13 Apple M5 칩 모델(10코어 CPU 및 8코어 GPU) - 실버"
+          },
+          {
+            "url": "https://www.apple.com/kr/shop/buy-mac/macbook-air/13-%EB%AA%A8%EB%8D%B8",
+            "title": "www.apple.com"
+          },
+          {
+            "url": "https://www.apple.com/kr/newsroom/2026/03/apple-introduces-the-new-macbook-air-with-m5/",
+            "title": "Apple, M5를 탑재한 신규 MacBook Air 공개 - Apple (KR)"
+          },
+          {
+            "url": "https://www.apple.com/kr/store",
+            "title": "Apple Store 온라인"
+          },
+          {
+            "url": "https://www.apple.com/kr/shop/buy-ipad/ipad/512gb-%EB%B8%94%EB%A3%A8-wifi",
+            "title": "iPad Wi-Fi 512GB - 블루 구입하기"
+          },
+          {
+            "url": "https://www.apple.com/kr/shop/buy-mac/mac-studio",
+            "title": "Mac Studio 구입하기"
+          },
+          {
+            "url": "https://www.apple.com/kr/shop/refurbished/mac",
+            "title": "리퍼비쉬 Mac"
+          },
+          {
+            "url": "https://macsa.kr/price/MBA-M5-Air-cut-15-16-512",
+            "title": "맥북 Air M5 컷칩 15형 16GB/512GB 기준 시세 (참고) — 평균 200만원 | MacSa"
+          },
+          {
+            "url": "https://www.apple.com/kr/shop/buy-mac/macbook-pro/14-%EB%AA%A8%EB%8D%B8-silver-nano-texture-%EB%94%94%EC%8A%A4%ED%94%8C%EB%A0%88%EC%9D%B4-apple-m5-max-%EC%B9%A9-18%EC%BD%94%EC%96%B4-cpu-40%EC%BD%94%EC%96%B4-gpu-48gb-%EB%A9%94%EB%AA%A8%EB%A6%AC-4tb-%EC%A0%80%EC%9E%A5-%EC%9E%A5%EC%B9%98",
+            "title": "MacBook Pro, 14 모델, M5 Max 칩, 18코어 CPU, 40코어 GPU, 실버, Nano-texture 디스플레이, 48GB 메모리, 4TB 저장 장치 구입하기"
+          },
+          {
+            "url": "https://prod.danawa.com/info/?cate=11336468&pcode=106755140",
+            "title": "APPLE 맥북에어15 M5 10코어 CPU, 10코어 GPU 실버 (램16GB, SSD 512GB) : 다나와 가격비교"
+          },
+          {
+            "url": "https://web.joongna.com/search/m5%2016%20512",
+            "title": "m5 16 512 중고거래 | 중고나라 - 안심되는 중고거래"
+          },
+          {
+            "url": "https://www.apple.com/kr/environment/pdf/products/notebooks/MacBook_Pro_14-inch_M5_PER_Oct2025.pdf",
+            "title": "MacBook Pro 14-inch (M5) Product Environmental Report"
+          },
+          {
+            "url": "https://www.samsungpop.com/common.do?cmd=down&contentType=application%2Fpdf&fileName=2020%2F2026031214474878K_02_02.pdf&inlineYn=Y&saveKey=research.pdf",
+            "title": "슬라이드 1"
+          },
+          {
+            "url": "https://www.reddit.com/r/u_danyalk3/comments/1td6kiv/brand_new_apple_macbook_air_m5_13_16gb512gb/",
+            "title": "Brand New Apple MacBook Air M5 13” (16GB/512GB) – Midnight Color, Warranty Till 2027"
+          },
+          {
+            "url": "https://www.reddit.com/r/macbook/comments/1su4eyi/costco_battle_mbp_14_m5_16512_vs_mba_15_m5_16512/",
+            "title": "Costco battle: MBP 14” M5 16/512 vs MBA 15” M5 16/512"
+          },
+          {
+            "url": "https://www.reddit.com/r/macbookair/comments/1viq2k5/is_that_a_good_deal_or_shoud_i_buy_m5_13_inch_at/",
+            "title": "is that a good deal or shoud i buy M5 13 inch At same price 16/512gb please suggest me"
+          },
+          {
+            "url": "https://www.reddit.com/r/macbookair/comments/1vlmhfd/first_macbook_did_i_mess_up/",
+            "title": "First MacBook… did I mess up?"
+          },
+          {
+            "url": "https://www.reddit.com/r/macbookpro/comments/1ty7hex/need_help_deciding_macbook_pro_m5_16gb_vs_macbook/",
+            "title": "Need help deciding: MacBook Pro M5 16GB vs MacBook Air M5 24GB (same price)"
+          },
+          {
+            "url": "https://www.reddit.com/r/macbookair/comments/1sgpmdn/firsttime_mac_buyer_macbook_air_m5_2026_16512gb/",
+            "title": "First-time Mac buyer MacBook Air M5 (2026) 16/512gb vs 24/512gb"
+          },
+          {
+            "url": "https://www.reddit.com/r/XiaomiGlobal/comments/1uzjsi3/macbook_air_m5_vs_xiaomi_16_redmibook_2026_ultra/",
+            "title": "MacBook Air M5 vs Xiaomi 16\" RedmiBook 2026 (Ultra 5) vs RedmiBook 16\" 2025 (Ultra 7) - Which one to choose for prestaction?"
+          },
+          {
+            "url": "https://www.reddit.com/r/laptops/comments/1uzbqsb/macbook_air_m5_vs_xiaomi_redmibook_2026_ultra_5/",
+            "title": "MacBook Air M5 vs Xiaomi RedmiBook 2026 (Ultra 5) vs RedmiBook 2025 (Ultra 7) - Which one to choose?"
+          },
+          {
+            "url": "https://www.reddit.com/r/u_tnomart/comments/1uzjsrr/macbook_air_m5_vs_xiaomi_16_redmibook_2026_ultra/",
+            "title": "MacBook Air M5 vs Xiaomi 16\" RedmiBook 2026 (Ultra 5) vs RedmiBook 16\" 2025 (Ultra 7) - Which one to choose for prestaction?"
+          },
+          {
+            "url": "https://www.reddit.com/r/dubaiclassifieds/comments/1vzn6qm/wts_macbook_pro_m5_16512_applecare/",
+            "title": "[WTS] - MacBook Pro M5 – 16/512 – AppleCare+"
+          },
+          {
+            "url": "https://www.reddit.com/r/macbookair/comments/1s8nvy4/back_to_the_mac2026_apple_macbook_air_13_m5_16gb/",
+            "title": "Back to the Mac—2026 Apple MacBook Air 13” (M5, 16GB, 512GB)"
+          },
+          {
+            "url": "https://www.reddit.com/r/SuggestALaptop/comments/1uzbs4s/macbook_air_m5_vs_xiaomi_redmibook_2026_ultra_5/",
+            "title": "MacBook Air M5 vs Xiaomi RedmiBook 2026 (Ultra 5) vs RedmiBook 2025 (Ultra 7) - Which one to choose?"
+          },
+          {
+            "url": "https://www.kg-mobility.com/attached/contents/display/file/200000200010009/20260228234124907_S5jH34.pdf",
+            "title": "무쏘\n\n<table id=\"e1\">\n<tr>\n<th>판매 가격 공급가액(부가세)</th>"
+          },
+          {
+            "url": "https://www.hankyung.com/koreamarket/consensus/pdf/2026-01-a2041b70d7b016fd5b600efc74ddab6b",
+            "title": "Daishin Research | 2026.01.12(월)~2026.01.16(금)"
+          },
+          {
+            "url": "https://www.g2b.go.kr/pn/pnp/pnpe/UntyAtchFile/downloadFile.do?bidPbancNo=R26BK01550050&bidPbancOrd=001&fileSeq=2&fileType=&prcmBsneSeCd=01",
+            "title": "1. Ü©˝(2026D 5Ô).xlsx"
+          },
+          {
+            "url": "https://www.coupang.com/vp/products/9410641464?itemId=27961674149&vendorItemId=94919713477",
+            "title": "Apple 맥북 에어 13 M5칩 - 노트북 | 쿠팡"
+          },
+          {
+            "url": "https://www.coupang.com/vp/products/9410641464?itemId=27961674150&itemsCount=37&q=16+%28-10%29&rank=28&searchId=4803b9774319094&searchRank=28&sourceType=search&vendorItemId=94919713476",
+            "title": "Apple 맥북 에어 13 M5칩 - 노트북 | 쿠팡"
+          },
+          {
+            "url": "https://prod.danawa.com/list/?cate=11343869",
+            "title": "M5 맥북 : 다나와 가격비교"
+          },
+          {
+            "url": "https://www.coupang.com/np/search?q=%EB%A7%A5%EB%B6%81air13",
+            "title": "쿠팡이 추천하는 맥북air13 관련 혜택과 특가"
+          },
+          {
+            "url": "https://prod.danawa.com/info/?cate=11354978&pcode=106754228",
+            "title": "APPLE 맥북에어13 M5 10코어 CPU, 8코어 GPU 스카이 (램16GB, SSD 512GB) : 다나와 가격비교"
+          },
+          {
+            "url": "https://www.coupang.com/np/search?q=mac+book+air+m5++16%2F512",
+            "title": "쿠팡이 추천하는 mac book air m5 16/512 관련 혜택과 특가"
+          },
+          {
+            "url": "https://search.danawa.com/dsearch.php?query=%EB%A7%A5%EB%B6%81%EC%97%90%EC%96%B4+M5",
+            "title": "맥북에어 M5 : 다나와 통합검색"
+          },
+          {
+            "url": "https://www.lowchart.com/9410641464-27961674150",
+            "title": "Apple 맥북 에어 13 M5칩, 스카이 블루, M5 10코어, 8코어 GPU, 16GB, 512GB, 한글 쿠팡 가격 변동·최저가 기록 | 로우차트"
+          },
+          {
+            "url": "https://search.danawa.com/dsearch.php?query=%EB%A7%A5%EB%B6%81+13%EC%9D%B8%EC%B9%98%EB%85%B8%ED%8A%B8%EB%B6%81",
+            "title": "맥북 13인치노트북 : 다나와 통합검색"
+          },
+          {
+            "url": "https://hanip.net/products/%EB%A7%A5%EB%B6%81-%EC%97%90%EC%96%B4-13%EC%9D%B8%EC%B9%98-%EB%AF%B8%EB%93%9C%EB%82%98%EC%9D%B4%ED%8A%B8-mdhe4kh-a",
+            "title": "맥북 에어 13인치 M5 16GB 512GB 미드나이트 MDHE4KH/A 최저가 2,190,000원 | 한입"
+          },
+          {
+            "url": "https://m.danawa.com/product/product.html?code=106754423",
+            "title": "APPLE 맥북에어13 M5 10코어 CPU, 8코어 GPU 실버 (램16GB, SSD 512GB) : 다나와 가격비교"
+          },
+          {
+            "url": "https://www.nstoreprice.co.kr/products/apple-macbook-air-13-m5-13197341199",
+            "title": "애플 공식 브랜드스토어 애플 맥북에어 13 M5 C… 가격비교 | 최저가 2,124,300원 | N프라이스"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=hykP7xEwpUE",
+            "title": "6만5천700원 싸게 뜬 맥북에어 M5 MacBook Air 13 16GB 512GB 실버 카페용 노트북 특가 - YouTube"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=uAyBWRkSzgI",
+            "title": "- YouTube"
+          },
+          {
+            "url": "https://www.tio.pl/drukuj-produkt/8031/apple-macbook-air-13-m5-16gb-512gb-ssd-10-cpu/8-gpu---srebrny.html",
+            "title": "Produkt Apple MacBook Air 13 M5 16GB 512GB SSD 10 CPU/8 GPU - Srebrny"
+          },
+          {
+            "url": "https://www.reddit.com/r/Tech_Philippines/comments/1unve0j/buy_macbook_air_m5_now/",
+            "title": "buy macbook air m5 now?"
+          },
+          {
+            "url": "https://www.reddit.com/r/macbook/comments/1w9s2j4/macbook_air_m5_1265_vs_macbook_pro_m5_1449_which/",
+            "title": "MacBook Air M5 (€1,265) vs MacBook Pro M5 (€1,449) – Which would you buy today?"
+          },
+          {
+            "url": "https://www.reddit.com/r/macbook/comments/1u93935/which_one_the_best_to_buy_macbook_pro_m5_16512gb/",
+            "title": "Which one the best to buy Macbook Pro M5 16/512GB or Macbook Air 24/512GB)?"
+          },
+          {
+            "url": "https://www.reddit.com/r/macbookair/comments/1sptskz/which_one_should_i_get/",
+            "title": "Which one should I get?"
+          },
+          {
+            "url": "https://www.reddit.com/r/mac/comments/1wm5eue/macbook_air_m4_16256_for_850_vs_m5_16512_for_1100/",
+            "title": "MacBook Air M4 16/256 for €850 vs M5 16/512 for €1,100 — which is the better deal?"
+          },
+          {
+            "url": "https://www.reddit.com/r/macbookpro/comments/1rmrrjr/which_macbook_to_settle_on/",
+            "title": "Which MacBook to settle on?"
+          },
+          {
+            "url": "https://www.reddit.com/r/macbookair/comments/1tax0v0/macbook_air_m4_or_m5/",
+            "title": "Macbook Air M4 or M5?"
+          },
+          {
+            "url": "https://www.reddit.com/r/evaaratech/comments/1uovbd1/apple_macbook_air_m5_13inch_16gb_ram_512gb_ssd/",
+            "title": "APPLE MACBOOK AIR M5 13-INCH 💻 16GB RAM | 512GB SSD 💾"
+          },
+          {
+            "url": "https://www.reddit.com/r/macbook/comments/1t97dmw/query_macbook_m5_air_13_inch_16512gb_for_97313/",
+            "title": "[Query] Macbook M5 Air 13 inch 16/512GB for 97,313/-. Worth it?"
+          },
+          {
+            "url": "https://www.techradar.com/computing/macbooks/by-the-way-you-can-get-a-new-macbook-air-m5-for-just-usd349-by-bundling-together-these-deals-at-best-buy",
+            "title": "By the way, you can get a new MacBook Air M5 for just $349 by bundling together these deals at Best Buy"
+          },
+          {
+            "url": "https://www.tomsguide.com/news/cheap-macbook-deals-and-sales",
+            "title": "Best MacBook deals in September 2026"
+          },
+          {
+            "url": "https://www.techradar.com/computing/macbooks/apple-macbook-air-13-inch-m5-review",
+            "title": "The Apple MacBook Air 13-inch (M5) is still the best ultraportable I've ever used - and I wrote this review on it"
+          },
+          {
+            "url": "https://www.techradar.com/computing/macbooks/the-new-macbook-air-has-already-dropped-to-a-record-low-price-on-amazon",
+            "title": "The new MacBook Air has already dropped to a record-low price on Amazon"
+          },
+          {
+            "url": "https://www.tomsguide.com/computing/macbooks/the-macbook-air-m5-just-hit-its-lowest-pricer-ever-save-usd150-on-amazon-now",
+            "title": "The MacBook Air M5 just hit its lowest pricer ever: save $150 on Amazon now"
+          },
+          {
+            "url": "https://www.tomsguide.com/computing/macbooks/macbook-air-m5-review",
+            "title": "I just tested the MacBook Air M5 and it's almost perfect - but there's one catch"
+          },
+          {
+            "url": "https://www.apple.com/kr/shop/buy-mac/macbook-air/13-%EB%AA%A8%EB%8D%B8-%EC%8A%A4%EC%B9%B4%EC%9D%B4-%EB%B8%94%EB%A3%A8-m5-%EC%B9%A9-10%EC%BD%94%EC%96%B4-cpu-8%EC%BD%94%EC%96%B4-gpu-16gb-%EB%A9%94%EB%AA%A8%EB%A6%AC-512gb-%EC%A0%80%EC%9E%A5-%EC%9E%A5%EC%B9%98",
+            "title": "www.apple.com"
+          },
+          {
+            "url": "https://www.apple.com/kr/shop/buy-mac/macbook-air/15-%EB%AA%A8%EB%8D%B8-silver-m5-%EC%B9%A9-10%EC%BD%94%EC%96%B4-cpu-10%EC%BD%94%EC%96%B4-gpu-16gb-%EB%A9%94%EB%AA%A8%EB%A6%AC-512gb-%EC%A0%80%EC%9E%A5-%EC%9E%A5%EC%B9%98",
+            "title": "www.apple.com"
+          }
+        ],
+        "mcp_calls": [
+          {
+            "tool": "compare_costs",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "options": [
+                  {
+                    "name": "제시가격",
+                    "total_cost": 1690000
+                  },
+                  {
+                    "name": "Apple 13 일반",
+                    "total_cost": 1790000
+                  },
+                  {
+                    "name": "Apple 13 교육",
+                    "total_cost": 1629000
+                  },
+                  {
+                    "name": "다나와 SSG 삼성카드",
+                    "total_cost": 1939000
+                  },
+                  {
+                    "name": "Apple 15 일반",
+                    "total_cost": 2090000
+                  }
+                ]
+              }
+            },
+            "result": {
+              "inputs": {
+                "options": [
+                  {
+                    "name": "제시가격",
+                    "total_cost": "1690000"
+                  },
+                  {
+                    "name": "Apple 13 일반",
+                    "total_cost": "1790000"
+                  },
+                  {
+                    "name": "Apple 13 교육",
+                    "total_cost": "1629000"
+                  },
+                  {
+                    "name": "다나와 SSG 삼성카드",
+                    "total_cost": "1939000"
+                  },
+                  {
+                    "name": "Apple 15 일반",
+                    "total_cost": "2090000"
+                  }
+                ],
+                "currency": "KRW"
+              },
+              "formula": "difference_from_lowest = option_total_cost - lowest_total_cost",
+              "intermediate": {
+                "제시가격": "1690000",
+                "Apple 13 일반": "1790000",
+                "Apple 13 교육": "1629000",
+                "다나와 SSG 삼성카드": "1939000",
+                "Apple 15 일반": "2090000"
+              },
+              "result": {
+                "lowest_cost_option": "Apple 13 교육",
+                "lowest_total_cost": "1629000.00",
+                "currency": "KRW",
+                "difference_from_제시가격": "61000.00",
+                "difference_from_Apple 13 일반": "161000.00",
+                "difference_from_Apple 13 교육": "0.00",
+                "difference_from_다나와 SSG 삼성카드": "310000.00",
+                "difference_from_Apple 15 일반": "461000.00"
+              }
+            },
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "jev_calls": 0,
+        "jev_judgment": null
+      },
+      "trace": [
+        {
+          "at_ms": 10501,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "맥북 에어 M5 13 16GB 512GB 가격 판매 2026",
+            "맥북 에어 M5 15 16GB 512GB 가격 판매 2026",
+            "site:apple.com/kr/shop 맥북 에어 M5 512GB 가격"
+          ],
+          "result_count": 29
+        },
+        {
+          "at_ms": 15950,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "맥북에어13 M5 16GB 512GB 가격 다나와 2026",
+            "MacBook Air 13 M5 16GB 512GB 쿠팡 가격",
+            "맥북에어 M5 13 16 512 최저가 2026 9월"
+          ],
+          "result_count": 32
+        },
+        {
+          "at_ms": 20936,
+          "type": "web_search",
+          "action": "other",
+          "queries": [],
+          "result_count": 5
+        },
+        {
+          "at_ms": 25634,
+          "type": "web_search",
+          "action": "other",
+          "queries": [],
+          "result_count": 3
+        },
+        {
+          "at_ms": 34205,
+          "type": "mcp_tool_call",
+          "tool": "compare_costs",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "options": [
+                {
+                  "name": "제시가격",
+                  "total_cost": 1690000
+                },
+                {
+                  "name": "Apple 13 일반",
+                  "total_cost": 1790000
+                },
+                {
+                  "name": "Apple 13 교육",
+                  "total_cost": 1629000
+                },
+                {
+                  "name": "다나와 SSG 삼성카드",
+                  "total_cost": 1939000
+                },
+                {
+                  "name": "Apple 15 일반",
+                  "total_cost": 2090000
+                }
+              ]
+            }
+          },
+          "result": {
+            "inputs": {
+              "options": [
+                {
+                  "name": "제시가격",
+                  "total_cost": "1690000"
+                },
+                {
+                  "name": "Apple 13 일반",
+                  "total_cost": "1790000"
+                },
+                {
+                  "name": "Apple 13 교육",
+                  "total_cost": "1629000"
+                },
+                {
+                  "name": "다나와 SSG 삼성카드",
+                  "total_cost": "1939000"
+                },
+                {
+                  "name": "Apple 15 일반",
+                  "total_cost": "2090000"
+                }
+              ],
+              "currency": "KRW"
+            },
+            "formula": "difference_from_lowest = option_total_cost - lowest_total_cost",
+            "intermediate": {
+              "제시가격": "1690000",
+              "Apple 13 일반": "1790000",
+              "Apple 13 교육": "1629000",
+              "다나와 SSG 삼성카드": "1939000",
+              "Apple 15 일반": "2090000"
+            },
+            "result": {
+              "lowest_cost_option": "Apple 13 교육",
+              "lowest_total_cost": "1629000.00",
+              "currency": "KRW",
+              "difference_from_제시가격": "61000.00",
+              "difference_from_Apple 13 일반": "161000.00",
+              "difference_from_Apple 13 교육": "0.00",
+              "difference_from_다나와 SSG 삼성카드": "310000.00",
+              "difference_from_Apple 15 일반": "461000.00"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 41264,
+          "type": "web_search",
+          "action": "find_in_page",
+          "queries": [],
+          "result_count": 3
+        }
+      ],
+      "error": null,
+      "exit_diagnostic": null,
+      "e2e_latency_ms": 55365,
+      "attempts": 1
+    },
+    {
+      "case_id": "subscription-audit-001",
+      "http_status": 200,
+      "status": "ready",
+      "answer": "둘 다 자주 보지 않는다면 **한 달씩 번갈아 구독**하는 게 좋겠습니다. 이번 달에 볼 작품이 있는 서비스만 남기고, 다 보면 해지한 뒤 다른 쪽으로 옮기는 방식입니다.\n\n지금 알 수 있는 건 두 서비스를 결제 중이라는 점뿐입니다. 디즈니플러스가 중복되거나 사용량이 적은지는 아직 불확실하므로, 어느 쪽을 끊으라고 단정하기는 어렵습니다. 최근 한 달 시청 기록을 보고 **거의 안 본 쪽부터 해지**하세요. 두 서비스 모두 꾸준히 보고 있다면 유지해도 됩니다. 월 절약액은 해지할 서비스의 실제 결제액만큼이며, 요금제와 결제 금액을 알려주시면 연간 절약액까지 비교해 드릴 수 있습니다.",
+      "metadata": {
+        "mode": "jev",
+        "latency_ms": 12902,
+        "codex_runs": 1,
+        "search_calls": 0,
+        "search_sources": [],
+        "mcp_calls": [],
+        "jev_calls": 1,
+        "jev_judgment": {
+          "candidate": "subscription_audit",
+          "item": "디즈니플러스 구독",
+          "choice": "unknown",
+          "confidence": 0.94,
+          "latency_ms": 698
+        }
+      },
+      "trace": [],
+      "error": null,
+      "exit_diagnostic": null,
+      "e2e_latency_ms": 12909,
+      "attempts": 1
+    },
+    {
+      "case_id": "mobile-plan-001",
+      "http_status": 200,
+      "status": "ready",
+      "answer": "네, **월 10GB 정도라면 8만원보다 싼 요금제가 있습니다.** 국내 알뜰폰 유심/eSIM 요금제를 기준으로, 2026년 9월 24일 확인한 가격은 다음과 같습니다.\n\n| 요금제 | 월 요금과 주요 조건 | 8만원 대비 절감액 |\n|---|---|---:|\n| [U+유모바일 LTE 10GB/100분](https://www.uplusumobile.com/product/pric/pricDetail?devKdCd=003&seq=589&upPpnCd=) | **8,800원/월**. 데이터 10GB, 통화·문자 각 100분·100건. **24개월 약정 할인** 가격이며, 만료 후에는 월 11,000원 요금제로 전환 | 월 71,200원, 연 854,400원 |\n| [SK 7mobile 셀프 LTE 유심 10GB/2000분](https://www.sk7mobile.com/prod/data/callingPlanView.do?prodCd=PC0RB00491&refCode=USIM&searchCallPlanType=PROD_USIM_TYPE_014) | **11,900원/월**. 데이터 10GB, 통화·문자 각 2,000분·2,000건. 셀프 개통 전용 프로모션 가격이며, 10GB 초과 시 추가 과금 | 월 68,100원, 연 817,200원 |\n| [U+유모바일 10GB+/500분](https://www.uplusumobile.com/product/pric/pricDetail?devKdCd=003&seq=475&upPpnCd=NPAY) | **18,500원/월**. 데이터 10GB, 통화·문자 각 500분·500건. 데이터 소진 후 최대 1Mbps로 계속 이용 | 월 61,500원, 연 738,000원 |\n\n**통화가 월 100분을 넘거나 약정이 부담스럽다면 SK 7mobile이 무난합니다.** 어떤 달에는 10GB를 넘긴다면 U+유모바일 18,500원 요금제가 초과 데이터 요금을 피하기에 편합니다.\n\n절감액은 말씀하신 **월 8만원이 순수 통신요금**이고, 새 요금제를 12개월간 같은 가격으로 쓴다는 가정입니다. 현재 청구액에 휴대폰 할부금이 포함됐거나 결합 할인·약정 위약금이 있다면 실제 절감액은 달라집니다. 변경 전 청구서에서 이 세 항목을 확인해 보세요.",
+      "metadata": {
+        "mode": "jev",
+        "latency_ms": 73594,
+        "codex_runs": 1,
+        "search_calls": 3,
+        "search_sources": [
+          {
+            "url": "https://www2.uplusumobile.com/product/pric/phone/pricList",
+            "title": "휴대폰 요금제 | U+유모바일"
+          },
+          {
+            "url": "https://www.ktmmobile.com/m/event/eventDetail.do?NaPm=ct%3Dmdnbhuav%7Cci%3DER330b5b7a-6bcf-11f0-9166-5649e68243b8%7Ctr%3Dsa%7Chk%3Dae57edbf3d98e9a5411781e74a25c6e32a8d19bb%7Cnacn%3DS6W0BswjGaLq&n_ad=nad-a001-01-000000388971911&n_ad_group=grp-a001-01-000000012230848&n_ad_group_type=1&n_campaign_type=1&n_keyword=%EC%95%8C%EB%9C%B0%ED%8F%B0&n_keyword_id=nkw-a001-01-000002259622847&n_match=1&n_media=118496&n_rank=2&ntcartSeq=1675&pageNo=1&sbstCtg=E",
+            "title": "매월 데이터 10GB 추가 증정 요금제 | kt M모바일 공식 다이렉트몰"
+          },
+          {
+            "url": "https://www.uplusumobile.com/product/pric/pricDetail?devKdCd=003&seq=102&upPpnCd=UPAD",
+            "title": "데이터만 10GB | U+유모바일"
+          },
+          {
+            "url": "https://family.uplusumobile.com/product/pric/usim/pricList",
+            "title": "유심/eSIM 요금제 | U+유모바일"
+          },
+          {
+            "url": "https://www.uplusumobile.com/product/pric/usim/pricList",
+            "title": "유심/eSIM 요금제 | U+유모바일"
+          },
+          {
+            "url": "https://www.uplusumobile.com/product/pric/phone/pricList",
+            "title": "휴대폰 요금제 | U+유모바일"
+          },
+          {
+            "url": "https://www2.uplusumobile.com/product/pric/usim/pricList",
+            "title": "유심/eSIM 요금제 | U+유모바일"
+          },
+          {
+            "url": "https://mcp.ktmmobile.com/company/event.do",
+            "title": "홍보채널 | kt M mobile"
+          },
+          {
+            "url": "https://ktmmobile.com/event/eventDetail.do?n_ad=nad-a001-01-000000136274193&n_ad_group=grp-a001-01-000000014551245&n_ad_group_type=1&n_campaign_type=1&n_keyword=%EC%95%8C%EB%9C%B0%EC%9A%94%EA%B8%88%EC%A0%9C%EB%B9%84%EA%B5%90&n_keyword_id=nkw-a001-01-000003447703169&n_media=27758&n_query=%EC%95%8C%EB%9C%B0%EC%9A%94%EA%B8%88%EC%A0%9C%EB%B9%84%EA%B5%90&n_rank=2&ntcartSeq=934&pageNo=1&sbstCtg=E",
+            "title": "통신비 다이어트 끝판왕! 초절약 초저가 특가전 | kt M모바일 공식 다이렉트몰"
+          },
+          {
+            "url": "https://m.ktmmobile.com/company/event.do",
+            "title": "홍보채널 | kt M mobile"
+          },
+          {
+            "url": "https://www.sk7mobile.com/prod/data/callingPlanList.do?refCode=PHONE&searchCallPlanType=PROD_LTE_TYPE_ALL&searchOrderby=6",
+            "title": "요금제 | 나를 아끼는 모바일 - SK 7mobile"
+          },
+          {
+            "url": "https://www.sk7mobile.com/main.do",
+            "title": "나를 아끼는 모바일 - SK 7mobile"
+          },
+          {
+            "url": "https://www.uplusumobile.com/upload/clause/%EB%AF%B8%EB%94%94%EC%96%B4%EB%A1%9C%EA%B7%B8_%EC%9D%B4%EC%9A%A9%EC%95%BD%EA%B4%80_%EB%B3%84%ED%91%9C_202601.pdf",
+            "title": "※ 10% 적립 5G (150GB+) / 월정액 53,900원 요금제는 2022년 04월 01일부터 신규가입 및 요금변경 중단"
+          },
+          {
+            "url": "https://www.uplusumobile.com/upload/clause/3-2.%20%EB%AF%B8%EB%94%94%EC%96%B4%EB%A1%9C%EA%B7%B8_%EC%9D%B4%EC%9A%A9%EC%95%BD%EA%B4%80_%EB%B3%84%ED%91%9C_20200701_%EC%B5%9C%EC%A2%85.pdf",
+            "title": "ver. 2020. 07"
+          },
+          {
+            "url": "https://www.uplusumobile.com/upload/clause/3-2.%20%EB%AF%B8%EB%94%94%EC%96%B4%EB%A1%9C%EA%B7%B8_%EC%9D%B4%EC%9A%A9%EC%95%BD%EA%B4%80_%EB%B3%84%ED%91%9C_20200901_%EC%B5%9C%EC%A2%85.pdf",
+            "title": "ver. 2020. 09"
+          },
+          {
+            "url": "https://www.uplusumobile.com/upload/clause/2-2.%20%EB%AF%B8%EB%94%94%EC%96%B4%EB%A1%9C%EA%B7%B8_%EC%9D%B4%EC%9A%A9%EC%95%BD%EA%B4%80_%EB%B3%84%ED%91%9C_20190327.pdf",
+            "title": "ver. 2019. 03"
+          },
+          {
+            "url": "https://www.uplusumobile.com/product/pric/pricDetail?devKdCd=003&seq=589&upPpnCd=",
+            "title": "LTE (10GB/100분) [더알뜰플랜] | U+유모바일"
+          },
+          {
+            "url": "https://www.sk7mobile.com/main.do?authAreaIdForDel=authArea522&authConfigSessKeyForDel=bOOHdKmulE",
+            "title": "나를 아끼는 모바일 - SK 7mobile"
+          },
+          {
+            "url": "https://www.sk7mobile.com/",
+            "title": "나를 아끼는 모바일 - SK 7mobile"
+          },
+          {
+            "url": "https://www.sk7mobile.com/prod/data/callingPlanView.do?prodCd=PC0RB00491&refCode=USIM&searchCallPlanType=PROD_USIM_TYPE_014",
+            "title": "요금제 상세 | 나를 아끼는 모바일 - SK 7mobile"
+          },
+          {
+            "url": "https://www.sk7mobile.com/prod/data/callingPlanList.do?refCode=USIM",
+            "title": "요금제 | 나를 아끼는 모바일 - SK 7mobile"
+          },
+          {
+            "url": "https://www.sk7mobile.com/main.do?authAreaIdForDel=authArea522&authConfigSessKeyForDel=DHuTMzrhnv",
+            "title": "나를 아끼는 모바일 - SK 7mobile"
+          },
+          {
+            "url": "https://www.sk7mobile.com/prod/data/callingPlanList.do?refCode=USIM&refer=brandevt",
+            "title": "요금제 | 나를 아끼는 모바일 - SK 7mobile"
+          },
+          {
+            "url": "https://www.sk7mobile.com/prod/data/callingPlanList.do?refCode=USIM%3Frefer%3Dtriplecrown",
+            "title": "요금제 | 나를 아끼는 모바일 - SK 7mobile"
+          },
+          {
+            "url": "https://www.uplusumobile.com/upload/clause/%EB%AF%B8%EB%94%94%EC%96%B4%EB%A1%9C%EA%B7%B8_%EC%9D%B4%EC%9A%A9%EC%95%BD%EA%B4%80_%EB%B3%84%ED%91%9C_20221101.pdf",
+            "title": "Microsoft Word - 3-2. ø\u0014´\\ø_t©}"
+          },
+          {
+            "url": "https://www.sk7mobile.com/shop/mobile/usimList.do?postTp=1&refer=maincuration3&salePlcyCd=1000042883",
+            "title": "가입 신청서 작성 | 나를 아끼는 모바일 - SK 7mobile"
+          },
+          {
+            "url": "https://www.uplusumobile.com/product/pric/pricDetail?devKdCd=003&seq=475&upPpnCd=NPAY",
+            "title": "10%적립 (10GB+/500분) | U+유모바일"
+          },
+          {
+            "url": "https://www.uplusumobile.com/product/pric/pricDetail?devKdCd=003&seq=566&upPpnCd=PLUSALPHA",
+            "title": "데이터플러스 (10GB+/통화기본) | U+유모바일"
+          },
+          {
+            "url": "https://www.uplusumobile.com/product/pric/pricDetail?devKdCd=003&seq=479&upPpnCd=USIMZ",
+            "title": "이십세 (10GB+/500분) | U+유모바일"
+          },
+          {
+            "url": "https://www.uplusumobile.com/product/pric/pricDetail?devKdCd=003&seq=410&upPpnCd=U007",
+            "title": "LTE (10GB+/통화기본) | U+유모바일"
+          },
+          {
+            "url": "https://www.uplusumobile.com/product/pric/pricDetail?devKdCd=003&seq=280&upPpnCd=U011",
+            "title": "5G (10GB/통화기본) | U+유모바일"
+          },
+          {
+            "url": "https://www.uplusumobile.com/product/pric/pricDetail?devKdCd=003&seq=552&upPpnCd=DAISO_LTE",
+            "title": "다성비 (10GB+/통화기본) | U+유모바일"
+          },
+          {
+            "url": "https://www.uplusumobile.com/product/pric/pricDetail?devKdCd=003&seq=524&upPpnCd=KYOBO_LTE",
+            "title": "교보문고 북 플러스알파 (10GB+/통화기본) | U+유모바일"
+          }
+        ],
+        "mcp_calls": [
+          {
+            "tool": "sum_costs",
+            "arguments": {
+              "data": {
+                "budget": 80000,
+                "currency": "KRW",
+                "items": [
+                  {
+                    "name": "요금제 월 기본료",
+                    "amount": 11900
+                  }
+                ]
+              }
+            },
+            "result": {
+              "inputs": {
+                "items": [
+                  {
+                    "name": "요금제 월 기본료",
+                    "amount": "11900"
+                  }
+                ],
+                "budget": "80000",
+                "currency": "KRW"
+              },
+              "formula": "total_cost = sum(item.amount); budget_remaining = budget - total_cost",
+              "intermediate": {
+                "요금제 월 기본료": "11900"
+              },
+              "result": {
+                "total_cost": "11900.00",
+                "currency": "KRW",
+                "budget_remaining": "68100.00"
+              }
+            },
+            "status": "completed",
+            "error": null
+          },
+          {
+            "tool": "sum_costs",
+            "arguments": {
+              "data": {
+                "budget": 80000,
+                "currency": "KRW",
+                "items": [
+                  {
+                    "name": "요금제 월 기본료",
+                    "amount": 8800
+                  }
+                ]
+              }
+            },
+            "result": {
+              "inputs": {
+                "items": [
+                  {
+                    "name": "요금제 월 기본료",
+                    "amount": "8800"
+                  }
+                ],
+                "budget": "80000",
+                "currency": "KRW"
+              },
+              "formula": "total_cost = sum(item.amount); budget_remaining = budget - total_cost",
+              "intermediate": {
+                "요금제 월 기본료": "8800"
+              },
+              "result": {
+                "total_cost": "8800.00",
+                "currency": "KRW",
+                "budget_remaining": "71200.00"
+              }
+            },
+            "status": "completed",
+            "error": null
+          },
+          {
+            "tool": "sum_costs",
+            "arguments": {
+              "data": {
+                "budget": 80000,
+                "currency": "KRW",
+                "items": [
+                  {
+                    "name": "요금제 월 기본료",
+                    "amount": 18500
+                  }
+                ]
+              }
+            },
+            "result": {
+              "inputs": {
+                "items": [
+                  {
+                    "name": "요금제 월 기본료",
+                    "amount": "18500"
+                  }
+                ],
+                "budget": "80000",
+                "currency": "KRW"
+              },
+              "formula": "total_cost = sum(item.amount); budget_remaining = budget - total_cost",
+              "intermediate": {
+                "요금제 월 기본료": "18500"
+              },
+              "result": {
+                "total_cost": "18500.00",
+                "currency": "KRW",
+                "budget_remaining": "61500.00"
+              }
+            },
+            "status": "completed",
+            "error": null
+          },
+          {
+            "tool": "calculate_repeated_cost",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "quantity": 12,
+                "unit": "개월",
+                "unit_cost": 68100
+              }
+            },
+            "result": {
+              "inputs": {
+                "unit_cost": "68100",
+                "quantity": "12",
+                "unit": "개월",
+                "currency": "KRW"
+              },
+              "formula": "total_cost = unit_cost * quantity",
+              "intermediate": {
+                "quantity": "12"
+              },
+              "result": {
+                "total_cost": "817200.00",
+                "currency": "KRW"
+              }
+            },
+            "status": "completed",
+            "error": null
+          },
+          {
+            "tool": "calculate_repeated_cost",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "quantity": 12,
+                "unit": "개월",
+                "unit_cost": 71200
+              }
+            },
+            "result": {
+              "inputs": {
+                "unit_cost": "71200",
+                "quantity": "12",
+                "unit": "개월",
+                "currency": "KRW"
+              },
+              "formula": "total_cost = unit_cost * quantity",
+              "intermediate": {
+                "quantity": "12"
+              },
+              "result": {
+                "total_cost": "854400.00",
+                "currency": "KRW"
+              }
+            },
+            "status": "completed",
+            "error": null
+          },
+          {
+            "tool": "calculate_repeated_cost",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "quantity": 12,
+                "unit": "개월",
+                "unit_cost": 61500
+              }
+            },
+            "result": {
+              "inputs": {
+                "unit_cost": "61500",
+                "quantity": "12",
+                "unit": "개월",
+                "currency": "KRW"
+              },
+              "formula": "total_cost = unit_cost * quantity",
+              "intermediate": {
+                "quantity": "12"
+              },
+              "result": {
+                "total_cost": "738000.00",
+                "currency": "KRW"
+              }
+            },
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "jev_calls": 0,
+        "jev_judgment": null
+      },
+      "trace": [
+        {
+          "at_ms": 14604,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "site:ktmmobile.com 10GB 요금제 월 2026",
+            "site:sk7mobile.com 10GB 요금제 월 LTE",
+            "site:uplusumobile.com 10GB 요금제 월"
+          ],
+          "result_count": 16
+        },
+        {
+          "at_ms": 20130,
+          "type": "web_search",
+          "action": "other",
+          "queries": [],
+          "result_count": 3
+        },
+        {
+          "at_ms": 26806,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "site:uplusumobile.com/product/pric/pricDetail \"LTE (10GB/100분) [더알뜰플랜]\" \"8,800원\"",
+            "site:sk7mobile.com \"[셀프] LTE 유심 (10GB/2000분)\" \"11,900원\""
+          ],
+          "result_count": 15
+        },
+        {
+          "at_ms": 39595,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "site:uplusumobile.com/product/pric/pricDetail \"10%적립 (10GB+/500분)\" \"18,500원\"",
+            "site:uplusumobile.com/product/pric/pricDetail \"데이터플러스 (10GB+/통화기본)\" \"19,900원\""
+          ],
+          "result_count": 15
+        },
+        {
+          "at_ms": 45822,
+          "type": "mcp_tool_call",
+          "tool": "sum_costs",
+          "arguments": {
+            "data": {
+              "budget": 80000,
+              "currency": "KRW",
+              "items": [
+                {
+                  "name": "요금제 월 기본료",
+                  "amount": 11900
+                }
+              ]
+            }
+          },
+          "result": {
+            "inputs": {
+              "items": [
+                {
+                  "name": "요금제 월 기본료",
+                  "amount": "11900"
+                }
+              ],
+              "budget": "80000",
+              "currency": "KRW"
+            },
+            "formula": "total_cost = sum(item.amount); budget_remaining = budget - total_cost",
+            "intermediate": {
+              "요금제 월 기본료": "11900"
+            },
+            "result": {
+              "total_cost": "11900.00",
+              "currency": "KRW",
+              "budget_remaining": "68100.00"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 45823,
+          "type": "mcp_tool_call",
+          "tool": "sum_costs",
+          "arguments": {
+            "data": {
+              "budget": 80000,
+              "currency": "KRW",
+              "items": [
+                {
+                  "name": "요금제 월 기본료",
+                  "amount": 8800
+                }
+              ]
+            }
+          },
+          "result": {
+            "inputs": {
+              "items": [
+                {
+                  "name": "요금제 월 기본료",
+                  "amount": "8800"
+                }
+              ],
+              "budget": "80000",
+              "currency": "KRW"
+            },
+            "formula": "total_cost = sum(item.amount); budget_remaining = budget - total_cost",
+            "intermediate": {
+              "요금제 월 기본료": "8800"
+            },
+            "result": {
+              "total_cost": "8800.00",
+              "currency": "KRW",
+              "budget_remaining": "71200.00"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 45824,
+          "type": "mcp_tool_call",
+          "tool": "sum_costs",
+          "arguments": {
+            "data": {
+              "budget": 80000,
+              "currency": "KRW",
+              "items": [
+                {
+                  "name": "요금제 월 기본료",
+                  "amount": 18500
+                }
+              ]
+            }
+          },
+          "result": {
+            "inputs": {
+              "items": [
+                {
+                  "name": "요금제 월 기본료",
+                  "amount": "18500"
+                }
+              ],
+              "budget": "80000",
+              "currency": "KRW"
+            },
+            "formula": "total_cost = sum(item.amount); budget_remaining = budget - total_cost",
+            "intermediate": {
+              "요금제 월 기본료": "18500"
+            },
+            "result": {
+              "total_cost": "18500.00",
+              "currency": "KRW",
+              "budget_remaining": "61500.00"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 50113,
+          "type": "mcp_tool_call",
+          "tool": "calculate_repeated_cost",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "quantity": 12,
+              "unit": "개월",
+              "unit_cost": 68100
+            }
+          },
+          "result": {
+            "inputs": {
+              "unit_cost": "68100",
+              "quantity": "12",
+              "unit": "개월",
+              "currency": "KRW"
+            },
+            "formula": "total_cost = unit_cost * quantity",
+            "intermediate": {
+              "quantity": "12"
+            },
+            "result": {
+              "total_cost": "817200.00",
+              "currency": "KRW"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 50113,
+          "type": "mcp_tool_call",
+          "tool": "calculate_repeated_cost",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "quantity": 12,
+              "unit": "개월",
+              "unit_cost": 71200
+            }
+          },
+          "result": {
+            "inputs": {
+              "unit_cost": "71200",
+              "quantity": "12",
+              "unit": "개월",
+              "currency": "KRW"
+            },
+            "formula": "total_cost = unit_cost * quantity",
+            "intermediate": {
+              "quantity": "12"
+            },
+            "result": {
+              "total_cost": "854400.00",
+              "currency": "KRW"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 50114,
+          "type": "mcp_tool_call",
+          "tool": "calculate_repeated_cost",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "quantity": 12,
+              "unit": "개월",
+              "unit_cost": 61500
+            }
+          },
+          "result": {
+            "inputs": {
+              "unit_cost": "61500",
+              "quantity": "12",
+              "unit": "개월",
+              "currency": "KRW"
+            },
+            "formula": "total_cost = unit_cost * quantity",
+            "intermediate": {
+              "quantity": "12"
+            },
+            "result": {
+              "total_cost": "738000.00",
+              "currency": "KRW"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 55269,
+          "type": "web_search",
+          "action": "find_in_page",
+          "queries": [],
+          "result_count": 3
+        }
+      ],
+      "error": null,
+      "exit_diagnostic": null,
+      "e2e_latency_ms": 73598,
+      "attempts": 1
+    },
+    {
+      "case_id": "insurance-overlap-001",
+      "http_status": 200,
+      "status": "ready",
+      "answer": "**대체로 둘 다 유지할 필요는 없습니다.** 실손보험은 두 개에 가입해도 같은 치료비를 두 번 받는 구조가 아니라, 보험사들이 실제 부담한 의료비 한도에서 나눠 보상합니다. 다만 두 계약의 보장 범위와 한도가 다를 수 있어, 바로 하나를 해지하기보다는 계약 내용을 비교해야 합니다. [손해보험협회](https://edu.knia.or.kr/edu/product3_2.do), [금융위원회](https://www.fsc.go.kr/no010101/79180)\n\n두 개가 모두 **개인 실손**이라면 보험료, 자기부담금, 보장 항목·한도를 비교해 중복이 큰 쪽의 정리를 검토하세요. 실손이 다른 보장과 묶인 *특약*이라면 계약 전체를 해지하기 전에 실손 부분만 정리할 수 있는지 보험사에 확인하는 게 안전합니다.\n\n하나는 **회사 단체 실손**이라면, 중복 가입자는 개인 실손 또는 단체 실손의 중지를 신청할 수 있습니다. 개인 실손을 중지했다면 단체 실손이 끝난 뒤 **1개월 이내** 재개를 신청해야 별도 인수심사 없이 재개할 수 있습니다. 중지하는 동안 보장 범위가 달라질 수 있으니 두 계약의 보장 항목부터 비교하세요. [금융위원회 안내](https://www.fsc.go.kr/no010101/79180)\n\n현재 알려주신 사실은 ‘실손 두 개’뿐이라 어느 계약을 정리할지는 단정할 수 없습니다. **각 계약의 개인·단체 여부, 월 보험료, 가입 시기, 보장 항목**을 확인하면 판단할 수 있습니다.",
+      "metadata": {
+        "mode": "jev",
+        "latency_ms": 40715,
+        "codex_runs": 1,
+        "search_calls": 2,
+        "search_sources": [
+          {
+            "url": "https://consumer.knia.or.kr/consumer/center/faq.do?first=&page=13&second=&third=&title=",
+            "title": "손해보험협회 소비자포털"
+          },
+          {
+            "url": "https://carinfo.knia.or.kr/lmxdata/hwp/2024/4/upload_980134413625277660.pdf",
+            "title": "교통 법규 위반 또는 사고 시 그 사고 내용, 횟수에 따라 보험료가 바뀔 수 있습니다."
+          },
+          {
+            "url": "https://edu.knia.or.kr/edu/pop/pro3_2.jsp",
+            "title": "보험금 비례보상 방식 예시"
+          },
+          {
+            "url": "https://carinfo.knia.or.kr/lmxsrv/law/lawFullContent.do?SEQ=4&SEQ_HISTORY=9",
+            "title": ""
+          },
+          {
+            "url": "https://www.knia.or.kr/file-manager/104989",
+            "title": "소비자 상담사례\n4세대 실손보험 전환 고민된다면 \n‘이것’ 꼭 비교해 보세요\n- 손해보험협"
+          },
+          {
+            "url": "https://edu.knia.or.kr/edu/product3_2.do",
+            "title": "손해보험학습센터"
+          },
+          {
+            "url": "https://opendart.fss.or.kr/uss/umt/EgovMberInsertView.do",
+            "title": "전자공시 OPENDART 시스템 | 인증키 신청"
+          },
+          {
+            "url": "https://www.klia.or.kr/board/1/view.do?boardNo=1838&seq=1",
+            "title": "생명보험협회"
+          },
+          {
+            "url": "https://www.knia.or.kr/file-manager/104953",
+            "title": "소비자 상담사례4세대 실손보험 전환 고민된다면"
+          },
+          {
+            "url": "https://carinfo.knia.or.kr/Intro.page",
+            "title": "자동차보험 종합포털"
+          },
+          {
+            "url": "https://edu.knia.or.kr/edu/step2_1.do",
+            "title": "손해보험학습센터"
+          },
+          {
+            "url": "https://consumer.knia.or.kr/consumer/center/faq.do?first=&page=17&second=&third=&title=",
+            "title": "손해보험협회 소비자포털"
+          },
+          {
+            "url": "https://carinfo.knia.or.kr/lmxsrv/main/main.do",
+            "title": "자동차보험 종합포털"
+          },
+          {
+            "url": "https://consumer.knia.or.kr/m/consumer/insurance-guide/0202.do",
+            "title": "손해보헙협회 소비자포털"
+          },
+          {
+            "url": "https://carinfo.knia.or.kr/lmxsrv/law/lawFullContent.do?SEQ=4&SEQ_HISTORY=7",
+            "title": ""
+          },
+          {
+            "url": "https://www.knia.or.kr/file-manager/104245",
+            "title": "본인부담 상한제도의 합리적 운영방안"
+          },
+          {
+            "url": "https://www.knia.or.kr/file-manager/105037",
+            "title": "임의비급여 진료행위에 대한 보험사와 의료기관의 법적 분쟁"
+          },
+          {
+            "url": "https://www.knia.or.kr/file-manager/86350",
+            "title": "장기보험\n비급여\n실손의료보험 제도 개선 방안\n본고는 2016년 6월 16일에 있었던 보험연"
+          },
+          {
+            "url": "https://www.fsc.go.kr/po010106/73428?curPage=17&srchBeginDt=&srchCtgry=6&srchEndDt=&srchKey=&srchText=",
+            "title": "자본시장정책 - 정책일반 - 정책마당 - 금융위원회"
+          },
+          {
+            "url": "https://www.fsc.go.kr/no010101/79180",
+            "title": "보도자료 - 위원회 소식 - 알림마당 - 금융위원회"
+          },
+          {
+            "url": "https://www.fsc.go.kr/no010101/79180?curPage=147&srchBeginDt=&srchCtgry=&srchEndDt=&srchKey=&srchText=",
+            "title": "보도자료 - 위원회 소식 - 알림마당 - 금융위원회"
+          },
+          {
+            "url": "https://www.fsc.go.kr/po010107/79180?curPage=208&srchBeginDt=&srchCtgry=&srchEndDt=&srchKey=&srchText=",
+            "title": "국제협력 - 정책일반 - 정책마당 - 금융위원회"
+          },
+          {
+            "url": "https://www.fsc.go.kr/no010101/79180?curPage=8&srchBeginDt=&srchCtgry=&srchEndDt=&srchKey=all&srchText=%EB%B3%B4%ED%97%98",
+            "title": "보도자료 - 위원회 소식 - 알림마당 - 금융위원회"
+          },
+          {
+            "url": "https://www.fsc.go.kr/no010101/79180?curPage=10&srchBeginDt=&srchCtgry=&srchEndDt=&srchKey=all&srchText=%EB%B3%B4%ED%97%98",
+            "title": "보도자료 - 위원회 소식 - 알림마당 - 금융위원회"
+          },
+          {
+            "url": "https://www.fsc.go.kr/no010107/79211",
+            "title": "정책영상 - 위원회 소식 - 알림마당 - 금융위원회"
+          },
+          {
+            "url": "https://fsc.go.kr/po010103/73428?curPage=19&srchBeginDt=&srchCtgry=3&srchEndDt=&srchKey=&srchText=",
+            "title": "\n\t\t보험정책 - \n\t\t\t정책일반 - \n\t\t\t정책마당 - \n\t\t\t금융위원회"
+          },
+          {
+            "url": "https://www.fsc.go.kr/no040101?cnId=1514&curPage=204&pastPage=204&srchKey=&srchText=",
+            "title": "카드뉴스 - 홍보자료 - 알림마당 - 금융위원회"
+          },
+          {
+            "url": "https://fsc.go.kr/po010106/73051?curPage=75&srchBeginDt=&srchCtgry=6&srchEndDt=&srchKey=&srchText=",
+            "title": "자본시장정책 - 정책일반 - 정책마당 - 금융위원회"
+          },
+          {
+            "url": "https://www.fsc.go.kr/no040000?cnId=1514&curPage=254&pastPage=254&srchKey=&srchText=",
+            "title": "카드뉴스 - 홍보자료 - 알림마당 - 금융위원회"
+          },
+          {
+            "url": "https://fsc.go.kr/no040000?cnId=1377&curPage=263&pastPage=270&srchKey=&srchText=",
+            "title": "카드뉴스 - 홍보자료 - 알림마당 - 금융위원회"
+          },
+          {
+            "url": "https://englishdart.fss.or.kr/report/downloadEng.do?dcmNo=10001749&flNm=NAVER_Integrated_Report_2023_ver3.pdf",
+            "title": "SEARCH PLATFORM"
+          },
+          {
+            "url": "https://better.fsc.go.kr/fsc_new/file/displayFile.do?filePath=%2FadvanceRun%2F1&orgFileName=AMLCFT_%EA%B4%80%EB%A0%A8_%EC%9C%84%ED%97%98%ED%8F%89%EA%B0%80_%EB%B0%8F_%EC%9C%84%ED%97%98%EA%B8%B0%EB%B0%98%EC%A0%91%EA%B7%BC%EB%B2%95_%EC%B2%98%EB%A6%AC_%EA%B8%B0%EC%A4%80.pdf&sysFileName=1_20181217154142_e8c0653fea13f91bf3c48159f7c24f78.pdf",
+            "title": "AML/CFT 관련\n위험평가 및 위험기반접근법 처리 기준\n2018. 12."
+          }
+        ],
+        "mcp_calls": [],
+        "jev_calls": 0,
+        "jev_judgment": null
+      },
+      "trace": [
+        {
+          "at_ms": 14046,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "site:fss.or.kr 실손의료보험 중복 가입 비례보상 단체 개인 중지 재개",
+            "site:knia.or.kr 실손보험 중복가입 비례보상 개인실손 단체실손 중지 재개",
+            "site:klia.or.kr 실손의료보험 중복가입 비례보상 자기부담금"
+          ],
+          "result_count": 18
+        },
+        {
+          "at_ms": 20849,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "site:fsc.go.kr 개인 단체 실손 중복가입 중지 재개 2023 2025",
+            "site:fss.or.kr 개인실손 단체실손 중지 재개 기존 상품 재개 2024",
+            "site:consumer.knia.or.kr 실손보험 중복 개인 개인 계약 해지 특약 해지"
+          ],
+          "result_count": 14
+        },
+        {
+          "at_ms": 27407,
+          "type": "web_search",
+          "action": "other",
+          "queries": [],
+          "result_count": 3
+        }
+      ],
+      "error": null,
+      "exit_diagnostic": null,
+      "e2e_latency_ms": 40719,
+      "attempts": 1
+    },
+    {
+      "case_id": "card-benefits-001",
+      "http_status": 200,
+      "status": "ready",
+      "answer": "월 30만 원 정도면 연간 배달앱 지출이 약 **360만 원**이라 카드 혜택을 비교해 볼 만합니다. 다만 **카드를 바꿨을 때 혜택이 실제로 커지는지는 현재 카드와 후보 카드의 조건에 달려 있습니다.**\n\n핵심은 배달앱 결제가 할인 대상인지, 월 할인 한도가 얼마인지, 전월 실적 조건을 평소 소비로 채우는지입니다. 간편결제로 결제할 때도 혜택이 적용되는지 확인하세요. 후보 카드의 **연간 예상 혜택에서 연회비를 뺀 금액**을 현재 카드의 혜택과 비교하면 됩니다. 혜택을 받으려고 지출을 더 늘려야 한다면 그 금액도 고려해야 합니다.\n\n현재 카드와 바꾸려는 카드 이름을 알려주시면 월 30만 원 사용 기준으로 비교해 드릴게요.",
+      "metadata": {
+        "mode": "jev",
+        "latency_ms": 25242,
+        "codex_runs": 1,
+        "search_calls": 0,
+        "search_sources": [],
+        "mcp_calls": [
+          {
+            "tool": "annualize_expense",
+            "arguments": {
+              "data": {
+                "amount": 300000,
+                "currency": "KRW",
+                "period_months": 1
+              }
+            },
+            "result": {
+              "inputs": {
+                "amount": "300000",
+                "period_months": "1",
+                "currency": "KRW"
+              },
+              "formula": "annual_amount = amount * (12 / period_months)",
+              "intermediate": {
+                "annualization_multiplier": "12"
+              },
+              "result": {
+                "annual_amount": "3600000.00",
+                "currency": "KRW"
+              }
+            },
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "jev_calls": 0,
+        "jev_judgment": null
+      },
+      "trace": [
+        {
+          "at_ms": 14788,
+          "type": "mcp_tool_call",
+          "tool": "annualize_expense",
+          "arguments": {
+            "data": {
+              "amount": 300000,
+              "currency": "KRW",
+              "period_months": 1
+            }
+          },
+          "result": {
+            "inputs": {
+              "amount": "300000",
+              "period_months": "1",
+              "currency": "KRW"
+            },
+            "formula": "annual_amount = amount * (12 / period_months)",
+            "intermediate": {
+              "annualization_multiplier": "12"
+            },
+            "result": {
+              "annual_amount": "3600000.00",
+              "currency": "KRW"
+            }
+          },
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "error": null,
+      "exit_diagnostic": null,
+      "e2e_latency_ms": 25245,
+      "attempts": 1
+    },
+    {
+      "case_id": "impulse-purchase-001",
+      "http_status": 200,
+      "status": "ready",
+      "answer": "지금 노트북으로 필요한 일을 무리 없이 하고 있다면 **당장은 구매를 미루는 쪽**을 권합니다. 169만원은 말씀하신 제안 가격이지만, 모델과 사양을 모르므로 좋은 가격인지는 단정하기 어렵습니다.\n\n참고로 애플이 발표한 **M5 맥북 에어 13형의 국내 출시 가격은 179만원부터**였습니다. 이는 2026년 3월 발표 가격이며, 특정 판매처의 현재 가격은 아닙니다. [Apple 발표 자료](https://www.apple.com/kr/newsroom/2026/03/apple-introduces-the-new-macbook-air-with-m5/) (2026년 9월 24일 확인)\n\n현재 노트북의 속도나 배터리 때문에 작업이 자주 끊긴다면 교체할 이유가 생깁니다. 그렇지 않다면 우선 쓰면서, 구매 전에 **169만원짜리 제품의 칩·화면 크기·메모리·저장 용량과 신품 여부**를 확인하세요. 그 정보가 있어야 가격을 제대로 판단할 수 있습니다.",
+      "metadata": {
+        "mode": "jev",
+        "latency_ms": 34735,
+        "codex_runs": 1,
+        "search_calls": 1,
+        "search_sources": [
+          {
+            "url": "https://www.apple.com/kr/newsroom/2026/03/apple-introduces-the-new-macbook-air-with-m5/",
+            "title": "Apple, M5를 탑재한 신규 MacBook Air 공개 - Apple (KR)"
+          },
+          {
+            "url": "https://www.apple.com/kr/shop/buy-mac/macbook-air/13%ED%98%95-%EB%AF%B8%EB%93%9C%EB%82%98%EC%9D%B4%ED%8A%B8-apple-m3-%EC%B9%A9%288%EC%BD%94%EC%96%B4-cpu-%EB%B0%8F-10%EC%BD%94%EC%96%B4-gpu%29-16gb-%EB%A9%94%EB%AA%A8%EB%A6%AC-512gb",
+            "title": "MacBook Air 구입하기 - Apple (KR)"
+          },
+          {
+            "url": "https://www.apple.com/kr/macbook-air/compare/?modelList=MacBook-Pro-14-M4x%2CMacBook-Air-M3",
+            "title": "MacBook Air 모델 비교하기 - Apple (KR)"
+          },
+          {
+            "url": "https://www.apple.com/kr/shop/refurbished/mac",
+            "title": "리퍼비쉬 Mac"
+          },
+          {
+            "url": "https://www.apple.com/kr/newsroom/2025/03/apple-introduces-the-new-macbook-air-with-the-m4-chip-and-a-sky-blue-color/",
+            "title": "Apple, M4 칩을 탑재한 신규 MacBook Air를 새로운 스카이 블루 색상과 함께 공개 - Apple (KR)"
+          },
+          {
+            "url": "https://www.apple.com/kr/shop/buy-mac/macbook-air/13-%EB%AA%A8%EB%8D%B8",
+            "title": "www.apple.com"
+          },
+          {
+            "url": "https://www.apple.com/kr/macbook-air/specs/",
+            "title": "MacBook Air - 제품 사양 - Apple (KR)"
+          },
+          {
+            "url": "https://www.apple.com/kr/shop/refurbished/mac/256gb-%EA%B3%A8%EB%93%9C",
+            "title": "리퍼비쉬 Mac - Apple (KR)"
+          },
+          {
+            "url": "https://www.apple.com/kr/newsroom/2024/03/apple-unveils-the-new-13-and-15-inch-macbook-air-with-the-powerful-m3-chip/",
+            "title": "Apple, 강력한 M3 칩을 탑재한 새로운 MacBook Air 13 및 15 공개 - Apple (KR)"
+          },
+          {
+            "url": "https://www.apple.com/kr-edu/shop/buy-mac/macbook-air/15-%EB%AA%A8%EB%8D%B8-silver-m5-%EC%B9%A9-10%EC%BD%94%EC%96%B4-cpu-10%EC%BD%94%EC%96%B4-gpu-16gb-%EB%A9%94%EB%AA%A8%EB%A6%AC-512gb-%EC%A0%80%EC%9E%A5-%EC%9E%A5%EC%B9%98",
+            "title": "MacBook Air, 15 모델, M5 칩, 10코어 CPU, 10코어 GPU, 실버, 16GB 메모리, 512GB 저장 장치 구입하기"
+          },
+          {
+            "url": "https://www.apple.com/kr-edu/shop/buy-mac/macbook-air/13-%EB%AA%A8%EB%8D%B8-silver-m5-%EC%B9%A9-10%EC%BD%94%EC%96%B4-cpu-10%EC%BD%94%EC%96%B4-gpu-24gb-%EB%A9%94%EB%AA%A8%EB%A6%AC-1tb-%EC%A0%80%EC%9E%A5-%EC%9E%A5%EC%B9%98",
+            "title": "MacBook Air, 13, M5 칩, 10코어 CPU, 10코어 GPU, 실버, 24GB 메모리, 1TB 저장 장치 구입하기"
+          },
+          {
+            "url": "https://www.apple.com/kr/shop/product/fw0w3kh/a/%EB%A6%AC%ED%8D%BC%EB%B9%84%EC%89%AC-MacBook-Air-13-Apple-M4-%EC%B9%A9-%EB%AA%A8%EB%8D%B8%2810%EC%BD%94%EC%96%B4-CPU-%EB%B0%8F-8%EC%BD%94%EC%96%B4-GPU%29-%EC%8B%A4%EB%B2%84?fnode=7cfd542c094c38f5c0fef56fe30e80ea3c8a34ee53e564966ff61377b98a648145317e3a7193d988747dd3d70b5fe33d9234ad261f7b98a1b51e6f3a4a6fb79c85db690a40c68c6665e20ba38411786e",
+            "title": "리퍼비쉬 MacBook Air 13 Apple M4 칩 모델(10코어 CPU 및 8코어 GPU) - 실버"
+          },
+          {
+            "url": "https://www.apple.com/kr/environment/pdf/Apple_Environmental_Progress_Report_2026.pdf",
+            "title": "Apple 2026 Environmental Progress Report"
+          },
+          {
+            "url": "https://cdsassets.apple.com/live/6GJYWVAV/information/locale/ko-kr/ma1970_macbook-air-m1-2020-info.pdf",
+            "title": "MacBook Air를 사용하기 전에 MacBook Air"
+          },
+          {
+            "url": "https://cdsassets.apple.com/live/6GJYWVAV/information/locale/ko-kr/ma1672_macbook_air-early-2014-product_info.pdf",
+            "title": "MacBook Air"
+          },
+          {
+            "url": "https://cdsassets.apple.com/live/6GJYWVAV/information/locale/ko-kr/macbook-air-13inch-m4-2025-info.pdf",
+            "title": "MacBook Air"
+          },
+          {
+            "url": "https://www.apple.com/kr/shop/buy-mac/macbook-air/13-%EB%AA%A8%EB%8D%B8-%EC%8A%A4%EC%B9%B4%EC%9D%B4-%EB%B8%94%EB%A3%A8-m5-%EC%B9%A9-10%EC%BD%94%EC%96%B4-cpu-8%EC%BD%94%EC%96%B4-gpu-16gb-%EB%A9%94%EB%AA%A8%EB%A6%AC-512gb-%EC%A0%80%EC%9E%A5-%EC%9E%A5%EC%B9%98",
+            "title": "www.apple.com"
+          }
+        ],
+        "mcp_calls": [],
+        "jev_calls": 0,
+        "jev_judgment": null
+      },
+      "trace": [
+        {
+          "at_ms": 14709,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "site:apple.com/kr/shop/buy-mac/macbook-air MacBook Air 가격 1690000 2026",
+            "site:apple.com/kr/macbook-air/ MacBook Air 현재 가격 대한민국"
+          ],
+          "result_count": 16
+        },
+        {
+          "at_ms": 19131,
+          "type": "web_search",
+          "action": "other",
+          "queries": [],
+          "result_count": 2
+        },
+        {
+          "at_ms": 23339,
+          "type": "web_search",
+          "action": "other",
+          "queries": [],
+          "result_count": 1
+        }
+      ],
+      "error": null,
+      "exit_diagnostic": null,
+      "e2e_latency_ms": 34739,
+      "attempts": 1
+    },
+    {
+      "case_id": "grocery-budget-001",
+      "http_status": 200,
+      "status": "ready",
+      "answer": "**쌀부터 확인하고, 없으면 쌀 → 달걀·두부 → 고기 → 채소 순으로 사세요.** 아래는 두 사람이 집에서 일주일 식사한다는 기준이며, 식용유·소금·간장 같은 기본 양념은 집에 있다고 가정한 장바구니입니다.\n\n| 살 것 | 수량과 예산 |\n|---|---:|\n| 쌀 | 집에 없으면 일주일 먹을 양을 **2만 5천 원 이내**에서 구매 |\n| 달걀 | 30구 1판 **14,990원** ([홈플러스](https://mfront.homeplus.co.kr/item?itemNo=070088342&storeType=HYPER)) |\n| 두부 | 300g×2개입 2팩 **5,980원** — 팩당 2,990원 ([홈플러스](https://mfront.homeplus.co.kr/item?itemNo=071002656&storeType=HYPER)) |\n| 돼지 뒷다리 다짐육 | 300g 2팩 **14,240원** — 팩당 행사 가격 7,120원 ([홈플러스](https://mfront.homeplus.co.kr/item?itemNo=121343084&storeType=HYPER)) |\n| 양배추 | 1통 **2,990원** — 행사 가격 ([홈플러스](https://mfront.homeplus.co.kr/item?itemNo=000005495&storeType=HYPER)) |\n| 추가 채소 | 양파·당근·콩나물 등 **1만 5천 원 이내** |\n| 김치·부족한 양념 | **1만 원 이내** |\n| 과일 | 여유가 있으면 **5천 원 이내** |\n\n표의 상품 가격은 **2026년 9월 24일 조회한 홈플러스 표시 가격**입니다. 확인된 네 품목은 **3만 8,200원**이고, 나머지 항목을 적어 둔 *구매 상한*까지 써도 **9만 3,200원**, 예산은 **6,800원** 남습니다. 쌀·추가 채소·김치·과일은 실제 상품 가격을 확인한 금액이 아니라 장 볼 때 지킬 한도입니다. 행사 가격과 재고는 배송지에 따라 달라질 수 있으니 결제 전 합계를 확인하세요.\n\n이 재료로 **계란밥, 두부부침, 돼지고기·양배추 볶음, 채소 넣은 볶음밥**을 돌려 만들면 됩니다. 쌀이 이미 있다면 쌀 예산을 채소와 단백질에 보태고, 가격이 넘치면 과일부터 줄이세요.",
+      "metadata": {
+        "mode": "jev",
+        "latency_ms": 99583,
+        "codex_runs": 1,
+        "search_calls": 4,
+        "search_sources": [
+          {
+            "url": "https://mfront.homeplus.co.kr/item?itemNo=10000301076452&storeType=ds",
+            "title": "당뇨에좋은쌀 30곡저당쌀 4kg | 홈플러스"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/item?itemNo=10000315607995&storeType=DS",
+            "title": "[저세상푸드] 직화 통뼈닭발 300g x 4팩 | 홈플러스"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/item?itemNo=121343084&storeType=HYPER",
+            "title": "국내산 돼지 뒷다리살 다짐용 300G(팩)/돼지고기 | 홈플러스"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/item?itemNo=121343084&storeType=hyper",
+            "title": "국내산 돼지 뒷다리살 다짐용 300G(팩)/돼지고기 | 홈플러스"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/item?itemNo=071002656&storeType=HYPER",
+            "title": "simplus 유기농 촌두부 300G*2 | 홈플러스"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/search?keyword=%E1%84%8E%E1%85%AE%E1%84%89%E1%85%A5%E1%86%A8%E1%84%89%E1%85%A5%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AF%E1%84%89%E1%85%A6%E1%84%90%E1%85%B3+%E1%84%86%E1%85%A7%E1%86%AF%E1%84%8E%E1%85%B55%E1%84%8C%E1%85%A9%E1%86%BC%E1%84%89%E1%85%A6%E1%84%90%E1%85%B3+product+info+and+reviews",
+            "title": "추석선물세트 멸치5종세트 product info and reviews | 홈플러스"
+          },
+          {
+            "url": "https://emart.ssg.com/search.ssg?query=%EC%9E%90%EC%97%B0%EB%8B%B4%EC%9D%80%EC%9C%A0%EA%B8%B0%EB%86%8D&src_area=srlt&target=all",
+            "title": "자연담은유기농 - 추천•인기 상품, 이마트몰"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/item?itemNo=069399539&storeType=HYPER",
+            "title": "simplus 도토리묵 300G | 홈플러스"
+          },
+          {
+            "url": "https://emart.ssg.com/item/dealItemView.ssg?itemId=1000867849561&salestrNo=6005&siteNo=6001",
+            "title": "[나노미] 25년산 당일도정 인기 햅쌀/백미식감 고시히카리 소프트현미 모음 - 이마트몰"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/item?itemNo=10000324006076&storeType=DS",
+            "title": "상주 김천 하우스 자두 300g 4-6과 중대과 대석자두 햇자두 김천자두 맛있는자두 토종자 | 홈플러스"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/item?itemNo=100494546&storeType=HYPER",
+            "title": "오뚜기 옛날 자른 당면 300G | 홈플러스"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/item?itemNo=10000300000141&storeType=DS",
+            "title": "[산지직송] 제주 옥돔 대 3미 (1미당 250-300g) | 홈플러스"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/item?itemNo=103665048&storeType=EXP",
+            "title": "양배추(통/국산) | 홈플러스"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/item?itemNo=112537996&storeType=HYPER",
+            "title": "컷팅 적 양배추(국산/1개) | 홈플러스"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/item?itemNo=10000303803627&storeType=DS",
+            "title": "국내산 양배추 1통 (개당 1.5kg 내외) | 홈플러스"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/item?itemNo=10000303650531&storeType=ds",
+            "title": "H고인돌 쌀4kg 국내산 찹쌀 23년 햅쌀 | 홈플러스"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/item?abtp=P_H_37_PD_070935544_2_6_000005495_PS001_&itemNo=000005495&storeType=HYPER",
+            "title": "양배추(국산)통 | 홈플러스"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/item?itemNo=122880632&storeType=hyper",
+            "title": "컷팅 양배추(국산/1개) | 홈플러스"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/item?itemNo=10000301503235&storeType=ds",
+            "title": "[e경남몰]합천 수려한 합천 영호진미 쌀 (4kg) | 홈플러스"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/item?itemNo=10000314758853&storeType=DS",
+            "title": "고시히카리 쌀 4kg 백미 상등급 햅쌀 | 홈플러스"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/item?itemNo=10000303721372&storeType=DS",
+            "title": "H고인돌 쌀4kg 고시히카리 강화섬쌀 23년햅쌀 | 홈플러스"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/item?itemNo=10000304376416&storeType=DS",
+            "title": "햇쌀푸드 안중농협 꿈마지 쌀 4kg 맛있는쌀 햅쌀 | 홈플러스"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/item?itemNo=054395814&storeType=HYPER",
+            "title": "국산 무안 달콤한 양배추(통) | 홈플러스"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/item?itemNo=069043771&storeType=HYPER",
+            "title": "클래식 양배추 샐러드 300G(팩) | 홈플러스"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/item?itemNo=069365401&storeType=HYPER",
+            "title": "오래구워 탱글한 구운계란 30구 | 홈플러스"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/item?itemNo=069823096&storeType=hyper",
+            "title": "농협 무항생제 1+ 등급란 30구 | 홈플러스"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/item?itemNo=10000310769632&storeType=DS",
+            "title": "계란트레이 냉장고 공간절약 달걀 보관함 계란 30구 수납 트레이 | 홈플러스"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/item?itemNo=070088342&storeType=HYPER",
+            "title": "무항생제 동물복지 대란 30구 | 홈플러스"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/item?itemNo=10000317769866&storeType=DS",
+            "title": "1+등급란 특란 30구 계란 달걀 | 홈플러스"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/list?addSubCategoryYn=Y&categoryDepth=2&categoryId=200048",
+            "title": "계란/알류 | 홈플러스 가격 안정 추천 상품"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/search?entry=null&keyword=%EA%B5%AC%EC%9A%B4%EA%B3%84%EB%9E%8030%EA%B5%AC",
+            "title": "구운계란30구 | 홈플러스"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/item?itemNo=10000320420131&storeType=DS",
+            "title": "홍삼먹인 자연 방사 유정란 30구 난각번호 1번 계란 한판 자연방목 계란 1번 건강한유정란 | 홈플러스"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/item?itemNo=069823096&storeType=HYPER",
+            "title": "농협 무항생제 1+ 등급란 30구 | 홈플러스"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/item?itemNo=10000305758517&storeType=DS",
+            "title": "대파 1단 2kg | 홈플러스"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/item?itemNo=068739825&storeType=HYPER",
+            "title": "산지 그대로 대파 단 | 홈플러스"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/item?itemNo=068739825&storeType=EXP",
+            "title": "산지 그대로 대파 단(국산) | 홈플러스"
+          },
+          {
+            "url": "https://memory.library.kr/files/original/bd0eb132c9b831f9664937bcfa6d1062.pdf",
+            "title": "슬라이드 1"
+          },
+          {
+            "url": "https://www.yeongdo.go.kr/board/download.do?gcode=1082&name=2022%EB%85%8411%EC%9B%943%EC%A3%BC+%EC%A0%84%ED%86%B5%EC%8B%9C%EC%9E%A5+%EB%B0%8F+%EB%8C%80%ED%98%95%EB%A7%88%ED%8A%B8+%EB%AC%BC%EA%B0%80%EC%A1%B0%EC%82%AC+%ED%98%84%ED%99%A9%28%EC%98%81%EB%8F%84%EA%B5%AC%29.pdf",
+            "title": "2022년11월3주 전통시장 및 대형마트 물가조사 현황(영도구)  |  |  |  |  |  |  |"
+          },
+          {
+            "url": "https://www.nongmin.com/-/raw/srv-nongmin/data1/srv-nongmin/resources/banner/file/banner_file_30-51%20%EC%B6%95%EC%82%B0%2C%20%EB%B6%80%EA%B0%80%EA%B0%80%EC%B9%98%EB%A5%BC%20%EB%86%92%EC%97%AC%EB%9D%BC_kZCLM.pdf",
+            "title": "양계 사례\n\n기능성 달걀, 토종란, 가공란\n\n다양한 아이디어로 부가가치 높인다\n\n달걀 가격"
+          },
+          {
+            "url": "https://www.yonhapmidas.com/_img/pdf/2012/04.pdf",
+            "title": "The monthly economic magazine"
+          },
+          {
+            "url": "https://www.krei.re.kr/attach/pdf/R864.pdf",
+            "title": "R 864 l 2018. 12. l"
+          },
+          {
+            "url": "https://dataseoul.s3.ap-northeast-2.amazonaws.com/upload/S2023100461c2d0bc92170/1d924da2daff8.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAJZQOKHMYYDTTJAFA%2F20260617%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20260617T061213Z&X-Amz-Expires=60&X-Amz-Signature=9c0b68b67549f071b461aec260050c441cde1b1729d28c7afc247cf4e720d4e6&X-Amz-SignedHeaders=host&response-cache-control=private%2C+no-store%2C+max-age%3D0&response-content-disposition=attachment%3B+filename%3D%22251027_________________________________________1______.pdf%22%3B+filename%2A%3DUTF-8%27%27251027_%25EC%258B%259D%25ED%2592%2588%25EC%2599%25B8%25EC%258B%259D_%25EB%25B0%259C%25ED%2591%259C%25EC%259E%2590%25EB%25A3%258C%25EC%25A7%2591%2528%25EC%2598%25A8%25EB%259D%25BC%25EC%259D%25B8%2529_1%25EC%259D%25BC%25EC%25B0%25A8.pdf&response-content-type=application%2Fpdf&response-expires=1997-07-28T05%3A00%3A00Z",
+            "title": "KOREA FOOD OUTLOOK 2026"
+          },
+          {
+            "url": "https://arxiv.org/abs/0912.5485",
+            "title": "30 inch Roll-Based Production of High-Quality Graphene Films for Flexible Transparent Electrodes"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/item?itemNo=137453539&storeType=HYPER",
+            "title": "신선한 백색 달걀 30개입 | 홈플러스"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/item?itemNo=070088342&storeType=hyper",
+            "title": "무항생제 동물복지 대란 30구 | 홈플러스"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/search?keyword=%E1%84%89%E1%85%B5%E1%84%8B%E1%85%A2%E1%84%90%E1%85%B3%E1%86%AF+%E1%84%8B%E1%85%A9%E1%84%87%E1%85%A5+%E1%84%92%E1%85%AE%E1%84%83%E1%85%B3+%E1%84%89%E1%85%A6%E1%86%BA%E1%84%8B%E1%85%A5%E1%86%B8%283color%29+reviews",
+            "title": "시애틀 오버 후드 셋업(3color) reviews | 홈플러스"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/search?keyword=%E1%84%83%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A9+%E1%84%8C%E1%85%A1%E1%84%83%E1%85%A9%E1%86%BC%E1%84%8E%E1%85%A1+%E1%84%83%E1%85%A9%E1%84%8B%E1%85%A5%E1%84%8B%E1%85%A6%E1%86%BA%E1%84%8C%E1%85%B5%E1%84%80%E1%85%A1%E1%84%83%E1%85%B3+4%E1%84%80%E1%85%A2%E1%84%8B%E1%85%B5%E1%86%B8+product+info+and+reviews",
+            "title": "다이소 자동차 도어엣지가드 4개입 product info and reviews | 홈플러스"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/search?keyword=%5B%E1%84%8B%E1%85%B2%E1%84%82%E1%85%B5%E1%84%8F%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A9%5D+%E1%84%82%E1%85%A1%E1%86%B7%E1%84%89%E1%85%A5%E1%86%BC+%E1%84%91%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A1%E1%86%AB%E1%84%82%E1%85%A6%E1%86%AF%E1%84%89%E1%85%A7%E1%84%8E%E1%85%B3+%E1%84%80%E1%85%B5%E1%86%AB%E1%84%91%E1%85%A1%E1%86%AF%26&middot%3B%E1%84%85%E1%85%A6%E1%84%80%E1%85%B2%E1%86%AF%E1%84%85%E1%85%A5%E1%84%8F%E1%85%A1%E1%86%AF%E1%84%85%E1%85%A1+%7C+off+white+%7C+2xl+reviews=",
+            "title": "[유니클로] 남성 플란넬셔츠 긴팔& | 홈플러스"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/search?keyword=%E1%84%92%E1%85%A1%E1%86%AB%E1%84%80%E1%85%AE%E1%86%A8+%E1%84%80%E1%85%A7%E1%86%BC%E1%84%8E%E1%85%A1%E1%86%AF%E1%84%80%E1%85%A9%E1%86%BC%E1%84%86%E1%85%AE%E1%84%8B%E1%85%AF%E1%86%AB+%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%82%E1%85%A7%E1%86%AB%E1%84%90%E1%85%AC%E1%84%8C%E1%85%B5%E1%86%A8+%E1%84%82%E1%85%A1%E1%84%8B%E1%85%B5+%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%82%E1%85%A7%E1%86%AB",
+            "title": "한국 경찰공무원 정년퇴직 나이 정년 | 홈플러스"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/search?keyword=%E1%84%8B%E1%85%B5%E1%86%AF%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%8B%E1%85%A3%E1%86%A8%E1%84%91%E1%85%AE%E1%86%B7+%E1%84%87%E1%85%B5%E1%84%8B%E1%85%A9%E1%84%90%E1%85%B5%E1%86%AB+%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%84%86%E1%85%B5%E1%84%8B%E1%85%A5%E1%86%B7+%E1%84%87%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A2%E1%86%A8+%E1%84%89%E1%85%A5%E1%86%BC%E1%84%87%E1%85%AE%E1%86%AB%E1%84%91%E1%85%AD",
+            "title": "일양약품 비오틴 프리미엄 블랙 성분표 | 홈플러스"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/search?keyword=%E1%84%82%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%87%E1%85%A5%E1%84%89%E1%85%AD%E1%84%91%E1%85%B5%E1%86%BC+%E1%84%92%E1%85%A2%E1%84%8B%E1%85%AE%E1%86%AF%E1%84%85%E1%85%B5%E1%86%B7+%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%84%86%E1%85%B5%E1%84%8B%E1%85%A5%E1%86%B7+%E1%84%89%E1%85%A5%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AF%E1%84%89%E1%85%A6%E1%84%90%E1%85%B3+4%E1%84%92%E1%85%A9",
+            "title": "네이버쇼핑 해울림 프리미엄 선물세트 4호 | 홈플러스"
+          },
+          {
+            "url": "https://mfront.homeplus.co.kr/search?keyword=%E1%84%8B%E1%85%B2%E1%84%85%E1%85%B5+%E1%84%86%E1%85%B5%E1%86%AF%E1%84%91%E1%85%A8%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%80%E1%85%B5+500ml+%E1%84%86%E1%85%B5%E1%86%AF%E1%84%91%E1%85%A8+%E1%84%8F%E1%85%B3%E1%86%AF%E1%84%85%E1%85%B5%E1%86%B8",
+            "title": "유리 밀폐용기 500ml 밀폐 클립 | 홈플러스"
+          }
+        ],
+        "mcp_calls": [
+          {
+            "tool": "calculate_repeated_cost",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "quantity": 2,
+                "unit": "팩",
+                "unit_cost": 7120
+              }
+            },
+            "result": {
+              "inputs": {
+                "unit_cost": "7120",
+                "quantity": "2",
+                "unit": "팩",
+                "currency": "KRW"
+              },
+              "formula": "total_cost = unit_cost * quantity",
+              "intermediate": {
+                "quantity": "2"
+              },
+              "result": {
+                "total_cost": "14240.00",
+                "currency": "KRW"
+              }
+            },
+            "status": "completed",
+            "error": null
+          },
+          {
+            "tool": "calculate_repeated_cost",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "quantity": 2,
+                "unit": "팩",
+                "unit_cost": 2990
+              }
+            },
+            "result": {
+              "inputs": {
+                "unit_cost": "2990",
+                "quantity": "2",
+                "unit": "팩",
+                "currency": "KRW"
+              },
+              "formula": "total_cost = unit_cost * quantity",
+              "intermediate": {
+                "quantity": "2"
+              },
+              "result": {
+                "total_cost": "5980.00",
+                "currency": "KRW"
+              }
+            },
+            "status": "completed",
+            "error": null
+          },
+          {
+            "tool": "sum_costs",
+            "arguments": {
+              "data": {
+                "budget": 100000,
+                "currency": "KRW",
+                "items": [
+                  {
+                    "name": "달걀 30구 1판",
+                    "amount": 14990
+                  },
+                  {
+                    "name": "두부 300g 2개입 2팩",
+                    "amount": 5980
+                  },
+                  {
+                    "name": "돼지 뒷다리 다짐육 300g 2팩",
+                    "amount": 14240
+                  },
+                  {
+                    "name": "양배추 1통",
+                    "amount": 2990
+                  },
+                  {
+                    "name": "쌀 구입 상한",
+                    "amount": 25000
+                  },
+                  {
+                    "name": "추가 채소 구입 상한",
+                    "amount": 15000
+                  },
+                  {
+                    "name": "김치·양념 등 구입 상한",
+                    "amount": 10000
+                  },
+                  {
+                    "name": "과일 구입 상한",
+                    "amount": 5000
+                  }
+                ]
+              }
+            },
+            "result": {
+              "inputs": {
+                "items": [
+                  {
+                    "name": "달걀 30구 1판",
+                    "amount": "14990"
+                  },
+                  {
+                    "name": "두부 300g 2개입 2팩",
+                    "amount": "5980"
+                  },
+                  {
+                    "name": "돼지 뒷다리 다짐육 300g 2팩",
+                    "amount": "14240"
+                  },
+                  {
+                    "name": "양배추 1통",
+                    "amount": "2990"
+                  },
+                  {
+                    "name": "쌀 구입 상한",
+                    "amount": "25000"
+                  },
+                  {
+                    "name": "추가 채소 구입 상한",
+                    "amount": "15000"
+                  },
+                  {
+                    "name": "김치·양념 등 구입 상한",
+                    "amount": "10000"
+                  },
+                  {
+                    "name": "과일 구입 상한",
+                    "amount": "5000"
+                  }
+                ],
+                "budget": "100000",
+                "currency": "KRW"
+              },
+              "formula": "total_cost = sum(item.amount); budget_remaining = budget - total_cost",
+              "intermediate": {
+                "달걀 30구 1판": "14990",
+                "두부 300g 2개입 2팩": "5980",
+                "돼지 뒷다리 다짐육 300g 2팩": "14240",
+                "양배추 1통": "2990",
+                "쌀 구입 상한": "25000",
+                "추가 채소 구입 상한": "15000",
+                "김치·양념 등 구입 상한": "10000",
+                "과일 구입 상한": "5000"
+              },
+              "result": {
+                "total_cost": "93200.00",
+                "currency": "KRW",
+                "budget_remaining": "6800.00"
+              }
+            },
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "jev_calls": 0,
+        "jev_judgment": null
+      },
+      "trace": [
+        {
+          "at_ms": 15175,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "site:emart.ssg.com 쌀 4kg 가격 달걀 30구 두부 300g",
+            "site:emart.ssg.com 닭가슴살 1kg 양배추 감자 1kg 가격",
+            "site:homeplus.co.kr 달걀 30구 두부 300g 쌀 4kg 가격"
+          ],
+          "result_count": 12
+        },
+        {
+          "at_ms": 22279,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "site:mfront.homeplus.co.kr/item?itemNo= \"신선한 백색 달걀 30개입\" \"원\"",
+            "site:mfront.homeplus.co.kr/item?itemNo= \"쌀 4KG\" \"원\" 홈플러스",
+            "site:mfront.homeplus.co.kr/item?itemNo= \"양배추\" \"원\" 홈플러스",
+            "site:mfront.homeplus.co.kr/item?itemNo= \"감자 1.2KG\" \"원\" 홈플러스"
+          ],
+          "result_count": 12
+        },
+        {
+          "at_ms": 30201,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "홈플러스 신선한 백색 달걀 30개입 가격",
+            "site:mfront.homeplus.co.kr/item \"계란\" \"30구\" \"원\"",
+            "site:mfront.homeplus.co.kr/item \"쌀\" \"4KG\" \"원\" \"매직배송\"",
+            "site:mfront.homeplus.co.kr/item \"대파\" \"1단\" \"원\"",
+            "site:mfront.homeplus.co.kr/item \"감자 1.2KG(봉)\""
+          ],
+          "result_count": 19
+        },
+        {
+          "at_ms": 36608,
+          "type": "web_search",
+          "action": "other",
+          "queries": [],
+          "result_count": 6
+        },
+        {
+          "at_ms": 45093,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "site:mfront.homeplus.co.kr/item?itemNo= \"신선한 백색 달걀 30개입\"",
+            "site:mfront.homeplus.co.kr/item?itemNo= \"무항생제 동물복지 대란 30구\"",
+            "site:mfront.homeplus.co.kr/item?itemNo= \"감자 1.2KG(봉)\"",
+            "site:mfront.homeplus.co.kr/item?itemNo= \"오뚜기 옛날 국수\" \"원\"",
+            "site:mfront.homeplus.co.kr/item?itemNo= \"양파 1.5KG\" \"원\""
+          ],
+          "result_count": 12
+        },
+        {
+          "at_ms": 63636,
+          "type": "mcp_tool_call",
+          "tool": "calculate_repeated_cost",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "quantity": 2,
+              "unit": "팩",
+              "unit_cost": 7120
+            }
+          },
+          "result": {
+            "inputs": {
+              "unit_cost": "7120",
+              "quantity": "2",
+              "unit": "팩",
+              "currency": "KRW"
+            },
+            "formula": "total_cost = unit_cost * quantity",
+            "intermediate": {
+              "quantity": "2"
+            },
+            "result": {
+              "total_cost": "14240.00",
+              "currency": "KRW"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 63636,
+          "type": "mcp_tool_call",
+          "tool": "calculate_repeated_cost",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "quantity": 2,
+              "unit": "팩",
+              "unit_cost": 2990
+            }
+          },
+          "result": {
+            "inputs": {
+              "unit_cost": "2990",
+              "quantity": "2",
+              "unit": "팩",
+              "currency": "KRW"
+            },
+            "formula": "total_cost = unit_cost * quantity",
+            "intermediate": {
+              "quantity": "2"
+            },
+            "result": {
+              "total_cost": "5980.00",
+              "currency": "KRW"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 75640,
+          "type": "mcp_tool_call",
+          "tool": "sum_costs",
+          "arguments": {
+            "data": {
+              "budget": 100000,
+              "currency": "KRW",
+              "items": [
+                {
+                  "name": "달걀 30구 1판",
+                  "amount": 14990
+                },
+                {
+                  "name": "두부 300g 2개입 2팩",
+                  "amount": 5980
+                },
+                {
+                  "name": "돼지 뒷다리 다짐육 300g 2팩",
+                  "amount": 14240
+                },
+                {
+                  "name": "양배추 1통",
+                  "amount": 2990
+                },
+                {
+                  "name": "쌀 구입 상한",
+                  "amount": 25000
+                },
+                {
+                  "name": "추가 채소 구입 상한",
+                  "amount": 15000
+                },
+                {
+                  "name": "김치·양념 등 구입 상한",
+                  "amount": 10000
+                },
+                {
+                  "name": "과일 구입 상한",
+                  "amount": 5000
+                }
+              ]
+            }
+          },
+          "result": {
+            "inputs": {
+              "items": [
+                {
+                  "name": "달걀 30구 1판",
+                  "amount": "14990"
+                },
+                {
+                  "name": "두부 300g 2개입 2팩",
+                  "amount": "5980"
+                },
+                {
+                  "name": "돼지 뒷다리 다짐육 300g 2팩",
+                  "amount": "14240"
+                },
+                {
+                  "name": "양배추 1통",
+                  "amount": "2990"
+                },
+                {
+                  "name": "쌀 구입 상한",
+                  "amount": "25000"
+                },
+                {
+                  "name": "추가 채소 구입 상한",
+                  "amount": "15000"
+                },
+                {
+                  "name": "김치·양념 등 구입 상한",
+                  "amount": "10000"
+                },
+                {
+                  "name": "과일 구입 상한",
+                  "amount": "5000"
+                }
+              ],
+              "budget": "100000",
+              "currency": "KRW"
+            },
+            "formula": "total_cost = sum(item.amount); budget_remaining = budget - total_cost",
+            "intermediate": {
+              "달걀 30구 1판": "14990",
+              "두부 300g 2개입 2팩": "5980",
+              "돼지 뒷다리 다짐육 300g 2팩": "14240",
+              "양배추 1통": "2990",
+              "쌀 구입 상한": "25000",
+              "추가 채소 구입 상한": "15000",
+              "김치·양념 등 구입 상한": "10000",
+              "과일 구입 상한": "5000"
+            },
+            "result": {
+              "total_cost": "93200.00",
+              "currency": "KRW",
+              "budget_remaining": "6800.00"
+            }
+          },
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "error": null,
+      "exit_diagnostic": null,
+      "e2e_latency_ms": 99587,
+      "attempts": 1
+    },
+    {
+      "case_id": "travel-budget-001",
+      "http_status": 200,
+      "status": "ready",
+      "answer": "**인천 출발, 2026년 11월 왕복**이라고 가정하면, **37만 원은 무난하지만 특가는 아니에요.** 9월 24일 확인한 가격 자료에는 11월 19~25일 직항 왕복 **32만 3,800원**(성인 1명, 세금·유류할증료 포함)이 표시돼 있고, 다른 비교 사이트에는 11월 20~25일 직항 왕복 **26만 3,882원**(1명)이 표시돼 있습니다. 날짜와 여행 기간이 달라 같은 표와 직접 비교할 수는 없습니다. [CoupZip](https://www.coupzip.com/flights/nagoya/), [스투비플래너](https://flights.stubbyplanner.com/to/nagoya/202611)\n\n원하는 날짜의 **직항이고 수하물까지 포함한 최종 결제액**이 37만 원이라면 괜찮은 선택입니다. 일정이 유연하고 수하물 별도 요금이라면 날짜를 바꿔 한 번 더 비교해 보세요. 출발 공항과 정확한 날짜를 모르므로, 해당 항공권이 그날의 최저가인지는 판단하기 어렵습니다.",
+      "metadata": {
+        "mode": "jev",
+        "latency_ms": 59436,
+        "codex_runs": 1,
+        "search_calls": 4,
+        "search_sources": [
+          {
+            "url": "https://www.airbusan.com/content/individual/booking/fareInternational",
+            "title": "국제선 운임안내 < 항공 운임안내 < 항공권 예약 < 개인"
+          },
+          {
+            "url": "https://www.airbusan.com/content/common/flynjoy/event/event/20251105_ko",
+            "title": "FLY & EVENT < FLY & JOY"
+          },
+          {
+            "url": "https://www.expedia.co.kr/lp/flights/sel/mia/seoul-to-miami?equalTargetTab=tab-1",
+            "title": "서울(SEL) -> 마이애미(MIA) 특가 항공권 ₩1,011,700~ | Expedia-항공권 예약"
+          },
+          {
+            "url": "https://www.expedia.co.kr/Nagoya.d553248635389799137.Travel",
+            "title": "나고야 자유여행! 항공권+호텔, 에어텔 예약은? ✈️🏨 | 익스피디아"
+          },
+          {
+            "url": "https://fishbisu.com/harbors/%EB%B6%80%EC%82%B0/calendar/2026-11",
+            "title": "부산 2026년 11월 물때 달력 | 낚시비서"
+          },
+          {
+            "url": "https://www.expedia.com/cn/Jung-Gu-Seoul-Hotels.0-n6049709-0.Travel-Guide-Filter-Hotels",
+            "title": "2026 首尔中区酒店网上限时优惠 |Expedia"
+          },
+          {
+            "url": "https://www.traveloka.com/ko-kr/flight/to/nagoya.ngoa",
+            "title": "나고야행 특가 항공권 예약 - 트래블로카"
+          },
+          {
+            "url": "https://www.expedia.com/Destinations-In-South-Korea.d94.Hotel-Destinations",
+            "title": "Top South Korea Hotels: 2026 Best Hotels in South Korea - Expedia"
+          },
+          {
+            "url": "https://www.expedia.com/cn/South-Korea-Destination.d94.Hotel-Destinations",
+            "title": "韩国酒店预订 - 韩国住宿宾馆查询 | Expedia.com"
+          },
+          {
+            "url": "https://www.airbusan.com/web/individual/booking/simpleScheduling",
+            "title": "에어부산"
+          },
+          {
+            "url": "https://www.momogroup.co.kr/tour/TourView2?code=1771553570&iday=2026-11-25&jday=2026-11-28&rcode=1786862114",
+            "title": "1-hanwoolair"
+          },
+          {
+            "url": "https://www.expedia.co.jp/lp/flights/pus/ngs/busan-to-nagasaki",
+            "title": "釜山(PUS)→長崎(NGS) 飛行機・格安航空券・LCC予約 | Expedia"
+          },
+          {
+            "url": "https://lib.ice.go.kr/board/boardFile/download/481/1444320/2026%EB%85%84%206%EC%9B%94%202%EC%A3%BC%20%ED%9D%AC%EB%A7%9D%EB%8F%84%EC%84%9C%20%EC%8B%A0%EC%B2%AD%20%EC%B2%98%EB%A6%AC%20%EA%B2%B0%EA%B3%BC%20%EC%95%88%EB%82%B4%282026.6.1.~6.7.%29.pdf.do",
+            "title": "2026년 6월 2주 희망도서 처리 결과"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=GscJVHZY8N0",
+            "title": "Basketball Song + More Nursery Rhymes & Kids Songs - CoComelon - YouTube"
+          },
+          {
+            "url": "https://www.kicaspace.com/upload/board_files/board_files_241030133849123.pdf",
+            "title": "한국문화공간건축학회\n\n2025년 가나자와. 나고야. 시즈오카 건축답사\n\n- Japan :"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=z935v1j_iR0",
+            "title": "Three Little Kittens + More Nursery Rhymes & Kids Songs - CoComelon - YouTube"
+          },
+          {
+            "url": "https://s3.ap-northeast-2.amazonaws.com/fabot.report.files/487814.pdf",
+            "title": "Microsoft Word - Jeju Air Indepth_180801.docx"
+          },
+          {
+            "url": "https://www.expedia.co.kr/lp/flights/ngo/icn/nagoya-to-seoul?equalTargetTab=tab-0",
+            "title": "나고야(NGO) -> 서울(ICN) 특가 항공권 ₩125,700~ | 익스피디아-항공권 예약"
+          },
+          {
+            "url": "https://www.expedia.co.kr/lp/flights/icn/ngo/seoul-to-nagoya?flightType=ONE_WAY",
+            "title": "서울(ICN) -> 나고야(NGO) 특가 항공권 ₩87,300~ | 익스피디아-항공권 예약"
+          },
+          {
+            "url": "https://www.skyscanner.co.kr/routes/icn/ont/incheon-international-to-ontario-international.html",
+            "title": "땡처리 항공권 인천 국제 - 온타리오인터내셔널 실시간 예매 I 스카이스캐너"
+          },
+          {
+            "url": "https://www.skyscanner.co.kr/routes/ngo/bn/nagoya-chubu-centrair-to-brunei.html",
+            "title": "나고야쥬부센트레아에서 출발하는 브루나이행 저가 항공권 | 스카이스캐너"
+          },
+          {
+            "url": "https://www.skyscanner.co.kr/routes/ngo/tug/nagoya-chubu-centrair-to-tuguegarao.html",
+            "title": "땡처리 항공권 나고야쥬부센트레아 - 투귀가라오 실시간 예매 I 스카이스캐너"
+          },
+          {
+            "url": "https://www.traveloka.com/ko-kr/flight",
+            "title": "국내외 특가 항공권 예약 비행기표 가격 비교 - Traveloka"
+          },
+          {
+            "url": "https://www.skyscanner.co.kr/routes/ngo/cmha/nagoya-chubu-centrair-to-columbus.html",
+            "title": "땡처리 항공권 나고야쥬부센트레아 - 콜롬버스 실시간 예매 I 스카이스캐너"
+          },
+          {
+            "url": "https://www.skyscanner.co.kr/routes/cgki/31986957/jakarta-to-tokoname.html",
+            "title": "땡처리 항공권 자카르타 - 도코나메 시 실시간 예매 I 스카이스캐너"
+          },
+          {
+            "url": "https://www.expedia.co.kr/Sairenji-Temple-Iga.d553248621532771792.Place-To-Visit",
+            "title": "이가시에 위치한 사이렌지 절 | 익스피디아"
+          },
+          {
+            "url": "https://www.skyscanner.co.kr/routes/jngo/gr/nagoya-to-greece.html",
+            "title": "나고야에서 출발하는 그리스행 저가 항공권 | 스카이스캐너"
+          },
+          {
+            "url": "https://www.expedia.co.kr/lp/flights/rgn/icn/yangon-to-seoul?equalTargetTab=tab-0",
+            "title": "양곤(RGN) -> 서울(ICN) 특가 항공권 ₩302,800~ | 익스피디아-항공권 예약"
+          },
+          {
+            "url": "https://www.traveloka.com/ko-kr/flight/to/sapporo.cts",
+            "title": "삿포로행 특가 항공권 예약 - 트래블로카"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=KODHWuNIitY",
+            "title": "2026년 6월  11일 새벽 기도회, 살아 계신 구속자, 욥 19장 21-29절 - YouTube"
+          },
+          {
+            "url": "https://www.skyscanner.co.kr/routes/ngo/31976076/nagoya-chubu-centrair-to-nagano.html?locale=ko-KR&market=KR",
+            "title": "땡처리 항공권 나고야쥬부센트레아 - 나가노 시 실시간 예매 I 스카이스캐너"
+          },
+          {
+            "url": "https://www.skyscanner.co.kr/routes/ngo/my/nagoya-chubu-centrair-to-malaysia.html",
+            "title": "나고야쥬부센트레아에서 출발하는 말레이시아행 저가 항공권 | 스카이스캐너"
+          },
+          {
+            "url": "https://www.skyscanner.co.kr/routes/ngo/gu/nagoya-chubu-centrair-to-guam.html",
+            "title": "나고야쥬부센트레아에서 출발하는 괌행 저가 항공권 | 스카이스캐너"
+          },
+          {
+            "url": "https://www.skyscanner.co.kr/routes/ngo/sg/nagoya-chubu-centrair-to-singapore.html",
+            "title": "나고야쥬부센트레아에서 출발하는 싱가포르행 저가 항공권 | 스카이스캐너"
+          },
+          {
+            "url": "https://www.skyscanner.co.kr/routes/ngo/uk/nagoya-chubu-centrair-to-united-kingdom.html",
+            "title": "나고야쥬부센트레아에서 출발하는 영국행 저가 항공권 | 스카이스캐너"
+          },
+          {
+            "url": "https://www.skyscanner.co.kr/routes/nap/ngo/naples-international-to-nagoya-chubu-centrair.html",
+            "title": "땡처리 항공권 나폴리인터내셔널 - 나고야쥬부센트레아 실시간 예매 I 스카이스캐너"
+          },
+          {
+            "url": "https://www.skyscanner.co.kr/routes/lgk/ngo/langkawi-to-nagoya-chubu-centrair.html",
+            "title": "땡처리 항공권 랑카위 - 나고야쥬부센트레아 실시간 예매 I 스카이스캐너"
+          },
+          {
+            "url": "https://www.traveloka.com/ko-kr/flight/route/Seoul-Nagoya.GMP.NGOA",
+            "title": "김포 → 나고야 항공권 예약 (GMP-NGO) | 트래블로카"
+          },
+          {
+            "url": "https://www.skyscanner.co.kr/routes/bkkt/ngo/bangkok-to-nagoya-chubu-centrair.html",
+            "title": "땡처리 항공권 방콕 - 나고야쥬부센트레아 실시간 예매 I 스카이스캐너"
+          },
+          {
+            "url": "https://www.skyscanner.co.kr/routes/ngo/bki/nagoya-chubu-centrair-to-kota-kinabalu.html",
+            "title": "땡처리 항공권 나고야쥬부센트레아 - 코타키나바루 실시간 예매 I 스카이스캐너"
+          },
+          {
+            "url": "https://www.skyscanner.co.kr/routes/icn/ngo/incheon-international-to-nagoya-chubu-centrair.html",
+            "title": "땡처리 항공권 인천 국제 - 나고야쥬부센트레아 실시간 예매 I 스카이스캐너"
+          },
+          {
+            "url": "https://coupzip.com/flights/nagoya/",
+            "title": "인천 나고야 항공권 최저가 — 출발일·월별 시세 비교 (2026년 9월)"
+          },
+          {
+            "url": "https://flights.stubbyplanner.com/to/nagoya/202611",
+            "title": "2026년 11월 나고야 항공권 최저가 | 스투비플래너"
+          },
+          {
+            "url": "https://www.koreanair.com/flights/en-kr/flights-from-seoul-to-nagoya",
+            "title": "Seoul to Nagoya Flights | Korean Air"
+          },
+          {
+            "url": "https://www.coupzip.com/flights/nagoya/",
+            "title": "인천 나고야 항공권 최저가 — 출발일·월별 시세 비교 (2026년 9월)"
+          },
+          {
+            "url": "https://m.lottetour.com/evtDetail?evtCd=D08A261110OZ000",
+            "title": "롯데관광 모바일"
+          },
+          {
+            "url": "https://www.jal.co.jp/flights/en-jp/flights-from-nagoya-to-seoul",
+            "title": "Flights from Nagoya to Seoul (NGO-SEL) on Japan Airlines (JAL)"
+          },
+          {
+            "url": "https://hottrend.news/flights/route/icn-ngo",
+            "title": "인천→나고야 항공권 가격 · 언제 싸나 | 항공권 가격 트렌드"
+          },
+          {
+            "url": "https://funin.kr/travels/NGO/airtel/759256?page=1&searchDate=2026-09-14",
+            "title": "🛫:: [나고야] [오후출발]나고야 에어텔 / 3박4일 / 나고야 사카에 워싱턴 호텔 플라자 / 제주항공"
+          },
+          {
+            "url": "https://www.trip.com/flights/airport-icn-city-ngo/",
+            "title": "Cheap Flights from Incheon International Airport (ICN) to Nagoya (NGO) 2026 ✈ from PLN 223 | Trip.com"
+          },
+          {
+            "url": "https://www.travomint.co.nz/international-flights/nagoya-to-seoul-flights",
+            "title": "Nagoya (NGO) to Seoul (ICN) Flight, Airfares @ NZD 421"
+          },
+          {
+            "url": "https://sg.trip.com/flights/airport-icn-ngo/",
+            "title": "Cheap Flights from Incheon International Airport to Chubu Centrair International Airport (ICN - NGO) 2026 ✈ from HK$ 460 | Trip.com"
+          },
+          {
+            "url": "https://www.traveloka.com/ko-kr/flight/country/japan.jp",
+            "title": "일본행 특가 항공권 예약 - 트래블로카"
+          },
+          {
+            "url": "https://aerok-homepage-storage.s3.ap-northeast-2.amazonaws.com/docs/International_flight_fares_kr_202510.pdf",
+            "title": "에어로케이항공 국제선 공시운임 안내"
+          },
+          {
+            "url": "https://pdf.etoday.co.kr/daily/pdf/detoday03033.pdf",
+            "title": "이투데이\nECONOMY TODAY\n2022년 12월 15일 목요일\netoday.co.kr"
+          }
+        ],
+        "mcp_calls": [],
+        "jev_calls": 0,
+        "jev_judgment": null
+      },
+      "trace": [
+        {
+          "at_ms": 11328,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "인천 나고야 왕복 2026년 11월 항공권 가격 37만원 스카이스캐너",
+            "서울 나고야 2026 11월 왕복 항공권 가격 Expedia",
+            "부산 나고야 2026 11월 왕복 항공권 가격"
+          ],
+          "result_count": 17
+        },
+        {
+          "at_ms": 17873,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "site:expedia.co.kr/lp/flights/icn/ngo 2026년 11월 왕복 ₩ 나고야",
+            "site:traveloka.com/ko-kr/flight/route/Seoul-Nagoya.ICN.NGO 2026 11월 왕복",
+            "site:skyscanner.co.kr/routes/icn/ngo 11월 왕복 2026 나고야 인천",
+            "서울 나고야 2026년 11월 왕복 항공권 11월 20일 11월 23일 가격"
+          ],
+          "result_count": 13
+        },
+        {
+          "at_ms": 25152,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "\"인천\" \"나고야\" \"11월\" \"왕복\" \"2026\" \"₩\"",
+            "\"서울\" \"나고야\" \"11월\" \"왕복\" \"2026\" \"원\" 항공권",
+            "site:skyscanner.co.kr/routes/icn/ngo/incheon-international-to-nagoya-chubu-centrair.html \"11월\"",
+            "site:expedia.co.kr/lp/flights/icn/ngo/seoul-to-nagoya \"11월\" \"왕복\""
+          ],
+          "result_count": 12
+        },
+        {
+          "at_ms": 30146,
+          "type": "web_search",
+          "action": "open_page",
+          "queries": [],
+          "result_count": 2
+        },
+        {
+          "at_ms": 34768,
+          "type": "web_search",
+          "action": "find_in_page",
+          "queries": [],
+          "result_count": 3
+        },
+        {
+          "at_ms": 41002,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "\"11월\" \"인천\" \"나고야\" \"왕복\" \"원\" 2026 항공",
+            "\"11월\" \"서울\" \"나고야\" \"왕복\" \"₩\" 2026 항공권",
+            "\"Nov\" \"2026\" \"ICN\" \"NGO\" \"round trip\" KRW"
+          ],
+          "result_count": 15
+        },
+        {
+          "at_ms": 45451,
+          "type": "web_search",
+          "action": "other",
+          "queries": [],
+          "result_count": 2
+        }
+      ],
+      "error": null,
+      "exit_diagnostic": null,
+      "e2e_latency_ms": 59440,
+      "attempts": 1
+    },
+    {
+      "case_id": "car-ownership-001",
+      "http_status": 200,
+      "status": "ready",
+      "answer": "**신형 아반떼 가솔린 2.0을 신차로 사서 5년간 연 1만 5천 km 탄다면**, 보험료·주유비·자동차세·정비비로 드는 유지비는 **약 1,924만 원(월평균 약 32만 원)**으로 잡을 수 있습니다. 차를 살 때 드는 비용과 5년 뒤 되팔 때까지 고려한 보유비용은 **약 3,034만 원(월평균 약 51만 원)**입니다.\n\n2026년 9월 24일 조회 기준, 신형 아반떼 가솔린 2.0 모던의 시작 가격은 **2,398만 원**, 복합연비는 **14.3km/L**입니다. 휘발유는 같은 날 전국 평균 **1,856.17원/L**를 5년 내내 적용했습니다. 이 조건의 주유비는 5년간 약 **974만 원**입니다. [차량 가격·연비](https://www.hankyung.com/article/202608055498g) · [휘발유 가격](https://moim.bio/live/oil/)\n\n나머지는 **사용자 정보가 없어 둔 추정값**입니다. 보험료 연 90만 원, 정비·소모품 연 50만 원, 자동차세 연평균 50만 원, 구입 시 취득·등록비 150만 원으로 잡았습니다. 자동차세는 배기량에 따른 세율과 차령 경감을 감안한 대략치입니다. [자동차세 기준](https://law.go.kr/flDownload.do?bylClsCd=110202&flSeq=127666171&gubun=) · [취득세율 기준](https://law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0012&lsiSeq=282559&urlMode=lsScJoRltInfoR)\n\n보유비용에는 **5년 뒤 차값이 신차 가격의 60%인 약 1,439만 원**이라는 가정을 넣었습니다. 중고차값, 실제 보험료와 주행거리에 따라 합계가 크게 달라집니다. 주차비·통행료·할부이자·사고 수리비는 개인별 차이가 커서 위 금액에 포함하지 않았습니다.",
+      "metadata": {
+        "mode": "jev",
+        "latency_ms": 147460,
+        "codex_runs": 1,
+        "search_calls": 3,
+        "search_sources": [
+          {
+            "url": "https://moim.bio/live/oil/",
+            "title": "오늘의 기름값 | moim.bio"
+          },
+          {
+            "url": "https://www.opinet.co.kr/user/dopospdrg/dopOsPdrgSelect.do",
+            "title": "싼 주유소 찾기 오피넷"
+          },
+          {
+            "url": "https://www.minsimnews.com/news/articleView.html?idxno=90382",
+            "title": "오늘 기름값 싼곳 TOP10｜9월 24일 오피넷 최저가 주유소·전국 평균유가 (+휘발유, 경유, LPG) < 경제 < 뉴스 < 기사본문 - 민심뉴스"
+          },
+          {
+            "url": "https://sisepedia.com/%EA%B8%B0%EB%A6%84%EA%B0%92",
+            "title": "오늘의 기름값 — 전국·시도별 휘발유·경유 평균가 · 시세피디아"
+          },
+          {
+            "url": "https://www.newsinside.kr/news/articleView.html?idxno=5008351",
+            "title": "[톡톡생활정보] 9월24일 경기 군포시 휘발유, 경유, 등유, LPG 유가 정보 < 유가정보 < AI기사 < 기사본문 - 뉴스인사이드"
+          },
+          {
+            "url": "https://www.xn--vj4b13a.com/gas-station/opinet/",
+            "title": "오늘 오피넷 최저가 주유소 — 지역별 휘발유·경유 기름값 제일 싼 곳 찾기"
+          },
+          {
+            "url": "https://car.naver.com/home?a=grade-trim&ncrId=car_165571",
+            "title": "2026 아반떼 : 네이버 자동차 : 네이버 자동차"
+          },
+          {
+            "url": "https://www.autotribune.co.kr/news/articleView.html?idxno=44311",
+            "title": "\"모던 풀옵션, 인스퍼레이션보다 비싸\"... 현대 아반떼, 트림별 가격은? < 분석 < 기획 < 기사본문 - 오토트리뷴"
+          },
+          {
+            "url": "https://bagguda.co.kr/shop/view.php?idx=122",
+            "title": "바꾸다"
+          },
+          {
+            "url": "https://bizautocar.com/vehicles/avante-16-gasoline/",
+            "title": "현대 아반떼 1.6 가솔린 2026 자동차세·취등록세 & 연간 유지비 완벽 분석 | bizautocar"
+          },
+          {
+            "url": "https://carestimate.kr/assets/pdf/price/20260105152929850.pdf",
+            "title": "2026 아반떼\n\n※ 세제혜택 후 판매가격은 고객님의 이해를 돕기 위해 현재 시행되고 있는"
+          },
+          {
+            "url": "https://fuel.fazr.co.kr/",
+            "title": "오늘의 전국 주유소 유가 | fuel.fazr.co.kr"
+          },
+          {
+            "url": "https://www.hyundaimotorgroup.com/ko/news/CONT0000000000081170",
+            "title": "현대자동차, 더 뉴 아반떼 출시 | 뉴스 | 현대자동차그룹"
+          },
+          {
+            "url": "https://carestimate.kr/assets/pdf/price/20250702085520804.pdf",
+            "title": "2026 아반떼 하이브리드"
+          },
+          {
+            "url": "https://www.nabo.go.kr/board/file/down.do?fid=33319156",
+            "title": "2026 대한민국 조세"
+          },
+          {
+            "url": "https://file-cdn.bok.or.kr/portal/1b011d705a1e9713c45921e3455c55d1/1/202111081204141760.pdf?token=st%3D1774446032~exp%3D1774449632~acl%3D%2Fportal%2F1b011d705a1e9713c45921e3455c55d1%2F1%2F202111081204141760.pdf%2A~hmac%3Dadfd5d45a3f503c83d3cd14d4b61887ade33c24d54d1d6eb5bdd86b7e1ed5c95",
+            "title": "2021년 11월 8일"
+          },
+          {
+            "url": "https://lib1.mods.go.kr/dl_image2/IMG/01/000000004029/SERVICE/000000004029_01.PDF",
+            "title": "8. 배기량별 자동차세"
+          },
+          {
+            "url": "https://www.watangcar.com/data/pjhgood/20231229/658e86632c37a.pdf",
+            "title": "23. 12. 29. 오후 5:41"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=RBaSiVjtKR4",
+            "title": "Body to Body - YouTube"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=VztLyuVWLUQ",
+            "title": "2026년에는 대한민국의 새로운 도약이 시작됩니다 - YouTube"
+          },
+          {
+            "url": "https://www.reddit.com/r/sportspickAI/comments/1v0dtxm/2026%EB%85%84_7%EC%9B%94_20%EC%9D%BC_%EC%84%B8%EB%A5%B4%EB%B9%84%EC%95%84_%EC%88%98%ED%8E%98%EB%A5%B4%EB%A6%AC%EA%B0%80_fk_%EB%B3%B4%EC%9D%B4%EB%B3%B4%EB%94%94%EB%82%98_vs_ofk_%EB%B2%A0%EC%98%A4%EA%B7%B8%EB%9D%BC%EB%93%9C_%ED%94%84%EB%A6%AC%EB%B7%B0/",
+            "title": "2026년 7월 20일 세르비아 수페르리가 FK 보이보디나 vs OFK 베오그라드 프리뷰"
+          },
+          {
+            "url": "https://www.hyundai.com/kr/ko/vehicles/avante/price.html",
+            "title": "디 올 뉴 아반떼 > 가격 | 현대자동차 현대닷컴"
+          },
+          {
+            "url": "https://www.hyundai.com/kr/ko/e/vehicles/the-new-avante-hybrid/price",
+            "title": "AVANTE Hybrid > 가격 | 현대자동차 - 현대닷컴 | 대한민국 대표 자동차회사 hyundai.com"
+          },
+          {
+            "url": "https://www.hyundai.com/contents/repn-car/catalog/the-new-avante-price.pdf",
+            "title": "더 뉴 아반떼\n\n※ 선택품목을 포함한 최종 가격은 세제혜택 등에 따라 상이할 수 있습니다."
+          },
+          {
+            "url": "https://www.hyundai.com/contents/repn-car/catalog/avante-2026-price.pdf",
+            "title": "2026 아반떼\n\n※ 세제혜택 후 판매가격은 고객님의 이익을 돕기 위해 현재 시행되고 있는"
+          },
+          {
+            "url": "https://www.hyundai.com/contents/repn-car/catalog/avante-n-price.pdf",
+            "title": "아반떼 N\n\n※ 선택품목을 포함한 최종 가격은 개별소비세 최대 인하 금액에 따라 상이할 수"
+          },
+          {
+            "url": "https://www.hyundai.com/kr/ko/e/vehicles/the-new-avante/intro",
+            "title": "디 올 뉴 아반떼 - 디자인, 공간 및 일상 주행 기술 | 현대자동차 현대닷컴"
+          },
+          {
+            "url": "https://www.hyundai.com/contents/repn-car/catalog/avante-hybrid-2026-price.pdf",
+            "title": "2026 아반떼 하이브리드"
+          },
+          {
+            "url": "https://www.hyundai.com/contents/repn-car/catalog/avante-n-2026-price.pdf",
+            "title": "모바일 페이지 이동\n2026 아반떼 N\n※ 세제혜택 후 판매가격은 고객님의 이해를 돕기 위"
+          },
+          {
+            "url": "https://www.hyundai.com/contents/repn-car/catalog/avante-2025-price.pdf",
+            "title": "2025 아반떼\n\n※ 모든 선택 품목 가격은 개별소비세 감면 전 기준으로 표기하였으며 개별"
+          },
+          {
+            "url": "https://www.hyundai.com/kr/ko/e/vehicles/2025-avante/intro",
+            "title": "디 올 뉴 아반떼 - 디자인, 공간 및 일상 주행 기술 | 현대자동차 현대닷컴"
+          },
+          {
+            "url": "https://www.hyundai.com/kr/ko/vehicles/new-santafe/19my/price.html",
+            "title": "가격 - 싼타페 - 전체모델 | 현대자동차 - 현대닷컴 | 대한민국 대표 자동차회사 hyundai.com"
+          },
+          {
+            "url": "https://www.nts.go.kr/nts/na/ntt/selectNttInfo.do?mi=&nttSn=94009",
+            "title": "국세청"
+          },
+          {
+            "url": "https://www.hyundai.com/kr/ko/event/event-hmc-the-all-new-avante-showroom-2608",
+            "title": "디 올 뉴 아반떼 전국 전시행사 일정 안내 | 현대자동차 - 현대닷컴 | 대한민국 대표 자동차회사 hyundai.com"
+          },
+          {
+            "url": "https://taxlaw.nts.go.kr/qt/USEQTA002P.do?ntstDcmId=010000000000364986",
+            "title": "국세법령정보시스템 질의회신상세"
+          },
+          {
+            "url": "https://www.hyundai.com/kr/ko/e/vehicles/estimation/model/making?model=CN26&modelCode=CNJS4NND5&purposeCode=J",
+            "title": "내 차 만들기 (견적) > 02. 색상/옵션 선택 | 현대자동차 현대닷컴"
+          },
+          {
+            "url": "https://certified.hyundai.com/p/search/ready-vehicle",
+            "title": "현대/제네시스 인증중고차"
+          },
+          {
+            "url": "https://org1.hyundai.com/kr/ko/e/all-vehicles",
+            "title": "국내 판매 차량 라인업 - 차종별 모델 정보 | 현대자동차 현대닷컴"
+          },
+          {
+            "url": "https://www.hyundai.com/kr/ko/e/vehicles/estimation/model/making?model=CN12&modelCode=CNJS4RKT3&purposeCode=J",
+            "title": "내 차 만들기 (견적) > 02. 색상/옵션 선택 | 현대자동차 현대닷컴"
+          },
+          {
+            "url": "https://auto.danawa.com/auto/?Model=4455&Work=model",
+            "title": "더 뉴 아반떼(CN7) 종합정보 : 다나와 자동차"
+          },
+          {
+            "url": "https://auto.danawa.com/newcar/?Model=4455&Trims=92658&Work=estimate",
+            "title": "아반떼 신차 견적내기 : 다나와 자동차"
+          },
+          {
+            "url": "https://law.go.kr/flDownload.do?bylClsCd=110202&flSeq=127666171&gubun=",
+            "title": "■ 지방세법 시행규칙[별지 제71호서식(전산용)] <개정 2021. 12. 31.>"
+          },
+          {
+            "url": "https://www.hankyung.com/article/202608055498g",
+            "title": "아반떼 2000만원 주고 샀는데…돌아온 국민 첫차의 대변신 | 한국경제"
+          },
+          {
+            "url": "https://www.law.go.kr/LSW/flDownload.do?bylClsCd=110202&flSeq=114601229&gubun=",
+            "title": "과세표준과 세율  자동차세 부과 안내 (뒤쪽)"
+          },
+          {
+            "url": "https://v.daum.net/v/3kywNf4qN6",
+            "title": "첫차 가격 공식 바꾼 신형 '아반떼'…소형 SUV와 중형 세단 사이 승부 | 오토헤럴드"
+          },
+          {
+            "url": "https://v.daum.net/v/20260805115529853",
+            "title": "“준중형 그 이상”… 8세대 아반떼, 가격은 2398만원"
+          },
+          {
+            "url": "https://web.getcha.kr/articles/rent-new-avante-cn8-8th-generation",
+            "title": "신형 아반떼 가격 2398만원부터, 8세대 트림 총정리"
+          },
+          {
+            "url": "https://www.law.go.kr/LSW/lbook/lbFileDownload.do?flExt=pdf&lbookConflSeq=74397&lbookSeq=43183",
+            "title": "127 ( )\n\n2011.12.2>\n\n1.\n\n<table id=\"e1\">\n<tr>\n  <t"
+          },
+          {
+            "url": "https://web.getcha.kr/blog/hyundai-avante-2026-trim-price-comparison",
+            "title": "2026 아반떼 트림별 가격 비교 | 8세대 리스·장기렌트 월납입금"
+          },
+          {
+            "url": "https://v.daum.net/v/20260806085227295",
+            "title": "신형 아반떼 2398만원부터 시작…첨단 안전·편의 사양 기본 적용"
+          },
+          {
+            "url": "https://web3.newspim.com/news/view/20260901000040",
+            "title": "[시승기] '디 올 뉴 아반떼' AI·자율주행 상품성 '굿'...최고 가격 3천만원 아쉬워"
+          },
+          {
+            "url": "https://www.law.go.kr/flDownload.do?flNm=%5B%EB%B3%84%ED%91%9C+4%5D+%EB%B3%B4%ED%97%98%EB%A3%8C%EB%B6%80%EA%B3%BC%EC%A0%90%EC%88%98%EC%9D%98+%EC%82%B0%EC%A0%95%EB%B0%A9%EB%B2%95%28%EC%A0%9C42%EC%A1%B0%EC%A0%9C1%ED%95%AD+%EA%B4%80%EB%A0%A8%29%0A&flSeq=33725661",
+            "title": "[별표 4] <개정 2018. 3. 6.>"
+          },
+          {
+            "url": "https://jagamlab.tistory.com/1395",
+            "title": "[26년 5월 최신] 2026 아반떼 가솔린 1.6 기본 사양(깡통) '스마트' 가격표, 외장, 내장, 제원, 연비 리뷰"
+          },
+          {
+            "url": "https://law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0012&lsiSeq=282559&urlMode=lsScJoRltInfoR",
+            "title": "국가법령정보센터 | 변경조문"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=N5E_zPRC4BQ",
+            "title": "신형 아반떼 10만 원 올랐다더니… 뜯어보니 269만 원이었습니다 - YouTube"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=wsJVAyGAcPM",
+            "title": "현대 신형 아반떼(CN8) 가솔린 2.0 급가속(2027 Hyundai Elantra 2,0 Acceleration) - 2026.08.24 - YouTube"
+          },
+          {
+            "url": "https://www.law.go.kr/LSW/flDownload.do?bylClsCd=110202&flSeq=151415741&gubun=",
+            "title": "■ 지방세법 시행규칙[별지 제75호서식]"
+          }
+        ],
+        "mcp_calls": [
+          {
+            "tool": "calculate_repeated_cost",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "unit": "L",
+                "unit_cost": 1856.17,
+                "quantity": 5250
+              }
+            },
+            "result": {
+              "inputs": {
+                "unit_cost": "1856.17",
+                "quantity": "5250",
+                "unit": "L",
+                "currency": "KRW"
+              },
+              "formula": "total_cost = unit_cost * quantity",
+              "intermediate": {
+                "quantity": "5250"
+              },
+              "result": {
+                "total_cost": "9744892.50",
+                "currency": "KRW"
+              }
+            },
+            "status": "completed",
+            "error": null
+          },
+          {
+            "tool": "calculate_repeated_cost",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "unit": "year",
+                "unit_cost": 900000,
+                "quantity": 5
+              }
+            },
+            "result": {
+              "inputs": {
+                "unit_cost": "900000",
+                "quantity": "5",
+                "unit": "year",
+                "currency": "KRW"
+              },
+              "formula": "total_cost = unit_cost * quantity",
+              "intermediate": {
+                "quantity": "5"
+              },
+              "result": {
+                "total_cost": "4500000.00",
+                "currency": "KRW"
+              }
+            },
+            "status": "completed",
+            "error": null
+          },
+          {
+            "tool": "calculate_repeated_cost",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "unit": "year",
+                "unit_cost": 500000,
+                "quantity": 5
+              }
+            },
+            "result": {
+              "inputs": {
+                "unit_cost": "500000",
+                "quantity": "5",
+                "unit": "year",
+                "currency": "KRW"
+              },
+              "formula": "total_cost = unit_cost * quantity",
+              "intermediate": {
+                "quantity": "5"
+              },
+              "result": {
+                "total_cost": "2500000.00",
+                "currency": "KRW"
+              }
+            },
+            "status": "completed",
+            "error": null
+          },
+          {
+            "tool": "calculate_repeated_cost",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "unit": "year",
+                "unit_cost": 500000,
+                "quantity": 5
+              }
+            },
+            "result": {
+              "inputs": {
+                "unit_cost": "500000",
+                "quantity": "5",
+                "unit": "year",
+                "currency": "KRW"
+              },
+              "formula": "total_cost = unit_cost * quantity",
+              "intermediate": {
+                "quantity": "5"
+              },
+              "result": {
+                "total_cost": "2500000.00",
+                "currency": "KRW"
+              }
+            },
+            "status": "completed",
+            "error": null
+          },
+          {
+            "tool": "calculate_repeated_cost",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "unit": "fraction",
+                "unit_cost": 23980000,
+                "quantity": 0.6
+              }
+            },
+            "result": {
+              "inputs": {
+                "unit_cost": "23980000",
+                "quantity": "0.6",
+                "unit": "fraction",
+                "currency": "KRW"
+              },
+              "formula": "total_cost = unit_cost * quantity",
+              "intermediate": {
+                "quantity": "0.6"
+              },
+              "result": {
+                "total_cost": "14388000.00",
+                "currency": "KRW"
+              }
+            },
+            "status": "completed",
+            "error": null
+          },
+          {
+            "tool": "sum_costs",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "items": [
+                  {
+                    "name": "신차 가격",
+                    "amount": 23980000
+                  },
+                  {
+                    "name": "5년 후 매각대금",
+                    "amount": -14388000
+                  },
+                  {
+                    "name": "취득 및 등록비 가정",
+                    "amount": 1500000
+                  },
+                  {
+                    "name": "5년 주유비",
+                    "amount": 9744892.5
+                  },
+                  {
+                    "name": "5년 보험료 가정",
+                    "amount": 4500000
+                  },
+                  {
+                    "name": "5년 소모품 정비비 가정",
+                    "amount": 2500000
+                  },
+                  {
+                    "name": "5년 자동차세 가정",
+                    "amount": 2500000
+                  }
+                ]
+              }
+            },
+            "result": null,
+            "status": "failed",
+            "error": null
+          },
+          {
+            "tool": "calculate_repeated_cost",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "unit": "fraction",
+                "unit_cost": 23980000,
+                "quantity": 0.4
+              }
+            },
+            "result": {
+              "inputs": {
+                "unit_cost": "23980000",
+                "quantity": "0.4",
+                "unit": "fraction",
+                "currency": "KRW"
+              },
+              "formula": "total_cost = unit_cost * quantity",
+              "intermediate": {
+                "quantity": "0.4"
+              },
+              "result": {
+                "total_cost": "9592000.00",
+                "currency": "KRW"
+              }
+            },
+            "status": "completed",
+            "error": null
+          },
+          {
+            "tool": "sum_costs",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "items": [
+                  {
+                    "name": "5년 감가상각 가정",
+                    "amount": 9592000
+                  },
+                  {
+                    "name": "취득 및 등록비 가정",
+                    "amount": 1500000
+                  },
+                  {
+                    "name": "5년 주유비",
+                    "amount": 9744892.5
+                  },
+                  {
+                    "name": "5년 보험료 가정",
+                    "amount": 4500000
+                  },
+                  {
+                    "name": "5년 소모품 정비비 가정",
+                    "amount": 2500000
+                  },
+                  {
+                    "name": "5년 자동차세 가정",
+                    "amount": 2500000
+                  }
+                ]
+              }
+            },
+            "result": {
+              "inputs": {
+                "items": [
+                  {
+                    "name": "5년 감가상각 가정",
+                    "amount": "9592000"
+                  },
+                  {
+                    "name": "취득 및 등록비 가정",
+                    "amount": "1500000"
+                  },
+                  {
+                    "name": "5년 주유비",
+                    "amount": "9744892.5"
+                  },
+                  {
+                    "name": "5년 보험료 가정",
+                    "amount": "4500000"
+                  },
+                  {
+                    "name": "5년 소모품 정비비 가정",
+                    "amount": "2500000"
+                  },
+                  {
+                    "name": "5년 자동차세 가정",
+                    "amount": "2500000"
+                  }
+                ],
+                "budget": null,
+                "currency": "KRW"
+              },
+              "formula": "total_cost = sum(item.amount); budget_remaining = budget - total_cost",
+              "intermediate": {
+                "5년 감가상각 가정": "9592000",
+                "취득 및 등록비 가정": "1500000",
+                "5년 주유비": "9744892.5",
+                "5년 보험료 가정": "4500000",
+                "5년 소모품 정비비 가정": "2500000",
+                "5년 자동차세 가정": "2500000"
+              },
+              "result": {
+                "total_cost": "30336892.50",
+                "currency": "KRW"
+              }
+            },
+            "status": "completed",
+            "error": null
+          },
+          {
+            "tool": "calculate_repeated_cost",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "unit": "L",
+                "unit_cost": 1856.17,
+                "quantity": 1050
+              }
+            },
+            "result": {
+              "inputs": {
+                "unit_cost": "1856.17",
+                "quantity": "1050",
+                "unit": "L",
+                "currency": "KRW"
+              },
+              "formula": "total_cost = unit_cost * quantity",
+              "intermediate": {
+                "quantity": "1050"
+              },
+              "result": {
+                "total_cost": "1948978.50",
+                "currency": "KRW"
+              }
+            },
+            "status": "completed",
+            "error": null
+          },
+          {
+            "tool": "sum_costs",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "items": [
+                  {
+                    "name": "주유비",
+                    "amount": 9744892.5
+                  },
+                  {
+                    "name": "보험료",
+                    "amount": 4500000
+                  },
+                  {
+                    "name": "정비 소모품",
+                    "amount": 2500000
+                  },
+                  {
+                    "name": "자동차세",
+                    "amount": 2500000
+                  }
+                ]
+              }
+            },
+            "result": {
+              "inputs": {
+                "items": [
+                  {
+                    "name": "주유비",
+                    "amount": "9744892.5"
+                  },
+                  {
+                    "name": "보험료",
+                    "amount": "4500000"
+                  },
+                  {
+                    "name": "정비 소모품",
+                    "amount": "2500000"
+                  },
+                  {
+                    "name": "자동차세",
+                    "amount": "2500000"
+                  }
+                ],
+                "budget": null,
+                "currency": "KRW"
+              },
+              "formula": "total_cost = sum(item.amount); budget_remaining = budget - total_cost",
+              "intermediate": {
+                "주유비": "9744892.5",
+                "보험료": "4500000",
+                "정비 소모품": "2500000",
+                "자동차세": "2500000"
+              },
+              "result": {
+                "total_cost": "19244892.50",
+                "currency": "KRW"
+              }
+            },
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "jev_calls": 0,
+        "jev_judgment": null
+      },
+      "trace": [
+        {
+          "at_ms": 17428,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "2026 아반떼 가격표 스마트 1.6 가솔린 복합연비 현대자동차",
+            "오피넷 전국 평균 휘발유 가격 2026 9월 24일",
+            "아반떼 1.6 자동차세 연간 1598cc 2026"
+          ],
+          "result_count": 21
+        },
+        {
+          "at_ms": 24905,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "site:hyundai.com 2026 아반떼 가격표 2062 스마트 복합연비 15.0",
+            "site:hyundai.com 2026 아반떼 가격표 pdf 가솔린 스마트 2062",
+            "site:nts.go.kr 자동차세 1600cc 이하 cc당 140원 지방교육세 30%",
+            "site:gov.kr 자동차 신규 등록 취득세 승용차 7%"
+          ],
+          "result_count": 18
+        },
+        {
+          "at_ms": 30808,
+          "type": "web_search",
+          "action": "find_in_page",
+          "queries": [],
+          "result_count": 6
+        },
+        {
+          "at_ms": 40250,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "2026 8월 디 올 뉴 아반떼 1.6 가솔린 2398만원 복합연비 현대",
+            "2026 디 올 뉴 아반떼 가솔린 1.6 연비 2398 가격 스마트",
+            "site:hyundai.com/contents/repn-car/catalog \"디 올 뉴 아반떼\" \"복합\" \"가솔린\" 2026",
+            "site:law.go.kr 지방세법 비영업용 승용자동차 1600시시 이하 140원 자동차세 30% 지방교육세"
+          ],
+          "result_count": 20
+        },
+        {
+          "at_ms": 79756,
+          "type": "mcp_tool_call",
+          "tool": "calculate_repeated_cost",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "unit": "L",
+              "unit_cost": 1856.17,
+              "quantity": 5250
+            }
+          },
+          "result": {
+            "inputs": {
+              "unit_cost": "1856.17",
+              "quantity": "5250",
+              "unit": "L",
+              "currency": "KRW"
+            },
+            "formula": "total_cost = unit_cost * quantity",
+            "intermediate": {
+              "quantity": "5250"
+            },
+            "result": {
+              "total_cost": "9744892.50",
+              "currency": "KRW"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 79760,
+          "type": "mcp_tool_call",
+          "tool": "calculate_repeated_cost",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "unit": "year",
+              "unit_cost": 900000,
+              "quantity": 5
+            }
+          },
+          "result": {
+            "inputs": {
+              "unit_cost": "900000",
+              "quantity": "5",
+              "unit": "year",
+              "currency": "KRW"
+            },
+            "formula": "total_cost = unit_cost * quantity",
+            "intermediate": {
+              "quantity": "5"
+            },
+            "result": {
+              "total_cost": "4500000.00",
+              "currency": "KRW"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 79760,
+          "type": "mcp_tool_call",
+          "tool": "calculate_repeated_cost",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "unit": "year",
+              "unit_cost": 500000,
+              "quantity": 5
+            }
+          },
+          "result": {
+            "inputs": {
+              "unit_cost": "500000",
+              "quantity": "5",
+              "unit": "year",
+              "currency": "KRW"
+            },
+            "formula": "total_cost = unit_cost * quantity",
+            "intermediate": {
+              "quantity": "5"
+            },
+            "result": {
+              "total_cost": "2500000.00",
+              "currency": "KRW"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 79760,
+          "type": "mcp_tool_call",
+          "tool": "calculate_repeated_cost",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "unit": "year",
+              "unit_cost": 500000,
+              "quantity": 5
+            }
+          },
+          "result": {
+            "inputs": {
+              "unit_cost": "500000",
+              "quantity": "5",
+              "unit": "year",
+              "currency": "KRW"
+            },
+            "formula": "total_cost = unit_cost * quantity",
+            "intermediate": {
+              "quantity": "5"
+            },
+            "result": {
+              "total_cost": "2500000.00",
+              "currency": "KRW"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 79761,
+          "type": "mcp_tool_call",
+          "tool": "calculate_repeated_cost",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "unit": "fraction",
+              "unit_cost": 23980000,
+              "quantity": 0.6
+            }
+          },
+          "result": {
+            "inputs": {
+              "unit_cost": "23980000",
+              "quantity": "0.6",
+              "unit": "fraction",
+              "currency": "KRW"
+            },
+            "formula": "total_cost = unit_cost * quantity",
+            "intermediate": {
+              "quantity": "0.6"
+            },
+            "result": {
+              "total_cost": "14388000.00",
+              "currency": "KRW"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 86403,
+          "type": "mcp_tool_call",
+          "tool": "sum_costs",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "items": [
+                {
+                  "name": "신차 가격",
+                  "amount": 23980000
+                },
+                {
+                  "name": "5년 후 매각대금",
+                  "amount": -14388000
+                },
+                {
+                  "name": "취득 및 등록비 가정",
+                  "amount": 1500000
+                },
+                {
+                  "name": "5년 주유비",
+                  "amount": 9744892.5
+                },
+                {
+                  "name": "5년 보험료 가정",
+                  "amount": 4500000
+                },
+                {
+                  "name": "5년 소모품 정비비 가정",
+                  "amount": 2500000
+                },
+                {
+                  "name": "5년 자동차세 가정",
+                  "amount": 2500000
+                }
+              ]
+            }
+          },
+          "result": null,
+          "status": "failed",
+          "error": null
+        },
+        {
+          "at_ms": 92271,
+          "type": "mcp_tool_call",
+          "tool": "calculate_repeated_cost",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "unit": "fraction",
+              "unit_cost": 23980000,
+              "quantity": 0.4
+            }
+          },
+          "result": {
+            "inputs": {
+              "unit_cost": "23980000",
+              "quantity": "0.4",
+              "unit": "fraction",
+              "currency": "KRW"
+            },
+            "formula": "total_cost = unit_cost * quantity",
+            "intermediate": {
+              "quantity": "0.4"
+            },
+            "result": {
+              "total_cost": "9592000.00",
+              "currency": "KRW"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 96319,
+          "type": "mcp_tool_call",
+          "tool": "sum_costs",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "items": [
+                {
+                  "name": "5년 감가상각 가정",
+                  "amount": 9592000
+                },
+                {
+                  "name": "취득 및 등록비 가정",
+                  "amount": 1500000
+                },
+                {
+                  "name": "5년 주유비",
+                  "amount": 9744892.5
+                },
+                {
+                  "name": "5년 보험료 가정",
+                  "amount": 4500000
+                },
+                {
+                  "name": "5년 소모품 정비비 가정",
+                  "amount": 2500000
+                },
+                {
+                  "name": "5년 자동차세 가정",
+                  "amount": 2500000
+                }
+              ]
+            }
+          },
+          "result": {
+            "inputs": {
+              "items": [
+                {
+                  "name": "5년 감가상각 가정",
+                  "amount": "9592000"
+                },
+                {
+                  "name": "취득 및 등록비 가정",
+                  "amount": "1500000"
+                },
+                {
+                  "name": "5년 주유비",
+                  "amount": "9744892.5"
+                },
+                {
+                  "name": "5년 보험료 가정",
+                  "amount": "4500000"
+                },
+                {
+                  "name": "5년 소모품 정비비 가정",
+                  "amount": "2500000"
+                },
+                {
+                  "name": "5년 자동차세 가정",
+                  "amount": "2500000"
+                }
+              ],
+              "budget": null,
+              "currency": "KRW"
+            },
+            "formula": "total_cost = sum(item.amount); budget_remaining = budget - total_cost",
+            "intermediate": {
+              "5년 감가상각 가정": "9592000",
+              "취득 및 등록비 가정": "1500000",
+              "5년 주유비": "9744892.5",
+              "5년 보험료 가정": "4500000",
+              "5년 소모품 정비비 가정": "2500000",
+              "5년 자동차세 가정": "2500000"
+            },
+            "result": {
+              "total_cost": "30336892.50",
+              "currency": "KRW"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 111102,
+          "type": "mcp_tool_call",
+          "tool": "calculate_repeated_cost",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "unit": "L",
+              "unit_cost": 1856.17,
+              "quantity": 1050
+            }
+          },
+          "result": {
+            "inputs": {
+              "unit_cost": "1856.17",
+              "quantity": "1050",
+              "unit": "L",
+              "currency": "KRW"
+            },
+            "formula": "total_cost = unit_cost * quantity",
+            "intermediate": {
+              "quantity": "1050"
+            },
+            "result": {
+              "total_cost": "1948978.50",
+              "currency": "KRW"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 123247,
+          "type": "mcp_tool_call",
+          "tool": "sum_costs",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "items": [
+                {
+                  "name": "주유비",
+                  "amount": 9744892.5
+                },
+                {
+                  "name": "보험료",
+                  "amount": 4500000
+                },
+                {
+                  "name": "정비 소모품",
+                  "amount": 2500000
+                },
+                {
+                  "name": "자동차세",
+                  "amount": 2500000
+                }
+              ]
+            }
+          },
+          "result": {
+            "inputs": {
+              "items": [
+                {
+                  "name": "주유비",
+                  "amount": "9744892.5"
+                },
+                {
+                  "name": "보험료",
+                  "amount": "4500000"
+                },
+                {
+                  "name": "정비 소모품",
+                  "amount": "2500000"
+                },
+                {
+                  "name": "자동차세",
+                  "amount": "2500000"
+                }
+              ],
+              "budget": null,
+              "currency": "KRW"
+            },
+            "formula": "total_cost = sum(item.amount); budget_remaining = budget - total_cost",
+            "intermediate": {
+              "주유비": "9744892.5",
+              "보험료": "4500000",
+              "정비 소모품": "2500000",
+              "자동차세": "2500000"
+            },
+            "result": {
+              "total_cost": "19244892.50",
+              "currency": "KRW"
+            }
+          },
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "error": null,
+      "exit_diagnostic": null,
+      "e2e_latency_ms": 147463,
+      "attempts": 1
+    },
+    {
+      "case_id": "installment-001",
+      "http_status": 200,
+      "status": "ready",
+      "answer": "**24개월 무이자 할부가 확실하다면 할부가 유리합니다.** 사용자가 제시한 가격 120만 원을 기준으로 월 5만 원씩 내고, 총액은 일시불과 같은 120만 원입니다. 목돈을 한 번에 쓰지 않아도 되기 때문입니다.\n\n다만 **할부 수수료가 붙거나 일시불 할인·적립 혜택이 있다면** 결론이 달라집니다. 두 방식의 실제 최종 결제액을 비교해 더 적은 쪽을 고르세요. 현재 알려진 것은 노트북 가격뿐이라, 카드의 무이자 적용 여부와 일시불 혜택을 확인해야 확정할 수 있습니다.",
+      "metadata": {
+        "mode": "jev",
+        "latency_ms": 25502,
+        "codex_runs": 1,
+        "search_calls": 0,
+        "search_sources": [],
+        "mcp_calls": [
+          {
+            "tool": "calculate_installment",
+            "arguments": {
+              "data": {
+                "annual_interest_rate_pct": 0,
+                "currency": "KRW",
+                "principal": 1200000,
+                "term_months": 24
+              }
+            },
+            "result": {
+              "inputs": {
+                "principal": "1200000",
+                "annual_interest_rate_pct": "0",
+                "term_months": 24,
+                "currency": "KRW"
+              },
+              "formula": "monthly_payment = P*r*(1+r)^n / ((1+r)^n-1); r = annual_rate / 1200",
+              "intermediate": {
+                "monthly_rate": "0",
+                "term_months": "24"
+              },
+              "result": {
+                "monthly_payment": "50000.00",
+                "total_payment": "1200000.00",
+                "total_interest": "0.00",
+                "currency": "KRW"
+              }
+            },
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "jev_calls": 0,
+        "jev_judgment": null
+      },
+      "trace": [
+        {
+          "at_ms": 14882,
+          "type": "mcp_tool_call",
+          "tool": "calculate_installment",
+          "arguments": {
+            "data": {
+              "annual_interest_rate_pct": 0,
+              "currency": "KRW",
+              "principal": 1200000,
+              "term_months": 24
+            }
+          },
+          "result": {
+            "inputs": {
+              "principal": "1200000",
+              "annual_interest_rate_pct": "0",
+              "term_months": 24,
+              "currency": "KRW"
+            },
+            "formula": "monthly_payment = P*r*(1+r)^n / ((1+r)^n-1); r = annual_rate / 1200",
+            "intermediate": {
+              "monthly_rate": "0",
+              "term_months": "24"
+            },
+            "result": {
+              "monthly_payment": "50000.00",
+              "total_payment": "1200000.00",
+              "total_interest": "0.00",
+              "currency": "KRW"
+            }
+          },
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "error": null,
+      "exit_diagnostic": null,
+      "e2e_latency_ms": 25505,
+      "attempts": 1
+    },
+    {
+      "case_id": "refinance-001",
+      "http_status": 200,
+      "status": "ready",
+      "answer": "**대체로 이득일 가능성이 큽니다.** 제시한 금리는 6.2%에서 4.7%로 1.5%포인트 낮아집니다. 다만 실제 이득은 **남은 기간 동안 줄어드는 이자**가 중도상환수수료와 새 대출의 부대비용보다 클 때 확정됩니다.\n\n갈아타면서 상환기간이 늘어나면 월 납입액은 줄어도 총이자는 늘 수 있습니다. 4.7%가 우대조건을 충족해야 받는 금리인지도 확인하세요.\n\n현재 대출잔액, 남은 상환기간, 상환방식, 중도상환수수료와 새 대출 비용을 알려주시면 실제 절감액을 비교할 수 있습니다.",
+      "metadata": {
+        "mode": "jev",
+        "latency_ms": 24375,
+        "codex_runs": 1,
+        "search_calls": 0,
+        "search_sources": [],
+        "mcp_calls": [],
+        "jev_calls": 0,
+        "jev_judgment": null
+      },
+      "trace": [],
+      "error": null,
+      "exit_diagnostic": null,
+      "e2e_latency_ms": 24378,
+      "attempts": 1
+    },
+    {
+      "case_id": "quote-audit-001",
+      "http_status": 200,
+      "status": "ready",
+      "answer": "**가장 먼저 확인할 항목은 타공 8만원입니다.** 일반 벽체 타공 1회라면 공개된 제조사 기준보다 높습니다. LG는 신규 설치 시 단품 2회·2in1 3회까지 무상이고 추가 타공은 **회당 1만원**입니다. 삼성의 재설치 단가표도 같은 무상 횟수 이후 **개소당 1만 5천원**입니다. 다만 견적의 8만원이 여러 구멍이나 특수 작업을 포함하는지는 확인이 필요합니다. [LG 설치 안내](https://www.lge.co.kr/story/user-guide/air-conditioners-install-guide), [삼성 이전설치 단가표](https://www.samsung.com/sec/move-out-simulator/) (2026년 9월 24일 확인).\n\n**기본 설치 18만원**은 기종과 설치 방식에 따라 판단이 달라집니다. 비교 가능한 삼성 *재설치* 기준은 벽걸이 **13만 7천원**, 81.8㎡ 이하 스탠드 **20만원**, 2in1 **28만 5천원**입니다. 따라서 벽걸이 재설치라면 비교 견적을 받아볼 만하지만, 스탠드나 2in1이라면 18만원만으로 과하다고 보기 어렵습니다. 신규 설치 견적과 재설치 요금은 같은 조건의 가격이 아닙니다. [삼성 이전설치 단가표](https://www.samsung.com/sec/move-out-simulator/) (2026년 9월 24일 확인).\n\n**배관 1m당 3만원**은 추가 확인이 필요합니다. 공개 기준에서 일반 동배관 추가는 삼성 기준 용량별 **1m당 1만 9천~2만 7천원**, LG 기준 **1m당 1만 9천원 또는 2만 2천원**입니다. 다만 배관 재질·굵기와 포함 작업이 달라 단가만으로 확정할 수 없습니다. [삼성 이전설치 단가표](https://www.samsung.com/sec/move-out-simulator/), [LG 설치 안내](https://www.lge.co.kr/story/user-guide/air-conditioners-install-guide) (2026년 9월 24일 확인).\n\n업체에 **에어컨 기종, 신규 설치인지 재설치인지, 기본 제공 배관 길이와 실제 추가 길이, 타공 횟수·벽 재질, 8만원에 포함된 작업**을 적어 달라고 요청하세요. 특히 일반 타공 1회에 8만원을 청구한 것이라면 근거를 묻고 다른 견적과 비교하는 편이 좋겠습니다.",
+      "metadata": {
+        "mode": "jev",
+        "latency_ms": 61347,
+        "codex_runs": 1,
+        "search_calls": 1,
+        "search_sources": [
+          {
+            "url": "https://www.samsung.com/sec/move-out-simulator/",
+            "title": "Samsung 대한민국"
+          },
+          {
+            "url": "https://www.samsung.com/sec/system-air-conditioners/package-ac060cs4fbh2st-d2c/AC060CS4FBH2ST/",
+            "title": "싱글 에어컨 무풍 4Way (1등급) | AC060CS4FBH2ST | Samsung 대한민국"
+          },
+          {
+            "url": "https://www.samsung.com/sec/buying-guide/",
+            "title": "삼성 구매가이드/설치가이드 | Samsung 대한민국"
+          },
+          {
+            "url": "https://www.samsung.com/sec/air-conditioners/all-air-conditioners/",
+            "title": "에어컨 | Samsung 대한민국"
+          },
+          {
+            "url": "https://www.lge.co.kr/story/user-guide/air-conditioners-install-guide",
+            "title": "구매 전 알아두면 좋은 에어컨 설치가이드 | 설치가이드 | 가이드 | 스토리 | LG전자"
+          },
+          {
+            "url": "https://www.samsung.com/sec/system-air-conditioners/package-aj30cxs4p36ssy-d2c/",
+            "title": "가정용 무풍 시스템에어컨 114.6㎡ 4실 (Wi-Fi 외장형) | AJ30CXS4P36SSY | Samsung 대한민국"
+          },
+          {
+            "url": "https://www.samsung.com/sec/samsung-care-plus/move-out-service-da-tcmosn/DA-TCMOSN/",
+            "title": "이전설치 (이전/철거/재설치) | Samsung 대한민국"
+          },
+          {
+            "url": "https://www.samsung.com/sec/careplus/applySubscribeView/",
+            "title": "Samsung 대한민국"
+          },
+          {
+            "url": "https://www.samsung.com/sec/ir/financial-information/earnings-release/",
+            "title": "실적발표 │ 실적발표 & IR 행사 │ 투자자 정보 │ Samsung 대한민국"
+          },
+          {
+            "url": "https://www.samsung.com/sec/business/sac-solution/all-sac-solution/",
+            "title": "시스템에어컨 솔루션 | Samsung Business 대한민국"
+          },
+          {
+            "url": "https://www.samsung.com/sec/system-air-conditioners/package-aj50css6p54ssy-d2c/AJ50CSS6P54SSY/?focus=review",
+            "title": "무풍 시스템에어컨 173.1㎡ 6실 | AJ50CSS6P54SSY | Samsung 대한민국"
+          },
+          {
+            "url": "https://www.samsung.com/sec/event/system-air-conditioners-inhome/",
+            "title": "무풍 시스템에어컨 삼닷 한가위 선물 특별전 | SAMSUNG 대한민국"
+          },
+          {
+            "url": "https://www.lge.co.kr/kr/ebook/2026/may/mart/catImage/641/20260506_mart_catalogue.pdf",
+            "title": "e-Book\n대형마트"
+          },
+          {
+            "url": "https://www.lge.co.kr/upload/PDF/DRZ/22431/1108241540_MFL62399008.pdf",
+            "title": "-MF62399008-OMc00......"
+          },
+          {
+            "url": "https://images.samsung.com/is/content/samsung/p5/sec/business/insights/brochure/2018/07/cooking-appliances_Guide_180725.pdf",
+            "title": "IT_01_가로"
+          },
+          {
+            "url": "https://www.lge.co.kr/kr/ebook/2022/march/systemair/catImage/49/220208_catalogue_cac.pdf",
+            "title": "휘센 시스템에어컨 제품 안내"
+          },
+          {
+            "url": "https://images.samsung.com/kdp/ir/general-meeting/2025_SEC_Reference_Material_kor_03_00.pdf",
+            "title": "당사는 프리미엄에서 보급형까지 다양하고 경쟁력 있는 스마트폰 라인업을 활용하여 지역별 시장 상황과 경쟁 환경에 최적화된 제품 포트폴리오를 운영하고 있습니다. 특히 프리미엄 스마트폰은 생성형 AI를 적용한 검색·실시간 통번역·자동 내용 요약·사진 편집, Dynamic AMOLED 2X(120Hz) 지원, UWB(Ultra Wideband)를 활용한 디지털키 및 콘텐츠 공유, 초음파 방식의 온스크린 지문 인식, 야간 촬영·8K 동영상 특화 카메라 기능 등 고객이 필요로 하는 차별화된 기능을 지속해서 선보이고 있습니다."
+          },
+          {
+            "url": "https://www.lge.co.kr/kr/ebook/2025/november/b2b/catImage/613/20251112_b2b_catalogue.pdf",
+            "title": "에어컨 케어서비스\n\n총 2개 서비스로 구성되며, 프리미엄(분해/위생 케어)와 라이트플러스("
+          }
+        ],
+        "mcp_calls": [],
+        "jev_calls": 1,
+        "jev_judgment": {
+          "candidate": "quote_audit",
+          "item": "배관 1m당 3만원",
+          "choice": "unknown",
+          "confidence": 0.38,
+          "latency_ms": 493
+        }
+      },
+      "trace": [
+        {
+          "at_ms": 18763,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "site:samsung.com/sec 에어컨 이전설치 설치비 배관 추가 타공 비용 기본설치비 2025 2026",
+            "site:lge.co.kr 에어컨 설치 추가 비용 배관 타공 기본 설치비",
+            "site:soomgo.com 에어컨 설치 비용 배관 타공 2025"
+          ],
+          "result_count": 18
+        },
+        {
+          "at_ms": 24905,
+          "type": "web_search",
+          "action": "find_in_page",
+          "queries": [],
+          "result_count": 5
+        },
+        {
+          "at_ms": 30006,
+          "type": "web_search",
+          "action": "other",
+          "queries": [],
+          "result_count": 2
+        }
+      ],
+      "error": null,
+      "exit_diagnostic": null,
+      "e2e_latency_ms": 61351,
+      "attempts": 1
+    },
+    {
+      "case_id": "price-negotiation-001",
+      "http_status": 200,
+      "status": "ready",
+      "answer": "네, 깎아달라고 해도 됩니다. 다만 **설치비 30만 원이 적정한지는 작업 내역 없이는 판단하기 어렵습니다.** 기본 설치비와 추가 배관, 타공, 실외기 설치 등에 각각 얼마가 붙었는지 먼저 물어보세요.\n\n“설치비 30만 원의 세부 내역을 알려주실 수 있을까요? 조정 가능한 항목이 있으면 부탁드립니다”라고 말하면 자연스럽습니다. 설치 전이라면 같은 조건으로 다른 업체 견적도 받아보면 협상 기준이 생깁니다.",
+      "metadata": {
+        "mode": "jev",
+        "latency_ms": 12728,
+        "codex_runs": 1,
+        "search_calls": 0,
+        "search_sources": [],
+        "mcp_calls": [],
+        "jev_calls": 0,
+        "jev_judgment": null
+      },
+      "trace": [],
+      "error": null,
+      "exit_diagnostic": null,
+      "e2e_latency_ms": 12730,
+      "attempts": 1
+    },
+    {
+      "case_id": "annual-leaks-001",
+      "http_status": 200,
+      "status": "ready",
+      "answer": "말씀하신 **월 20만 원**을 1년 내내 쓴다고 가정하면, 줄이는 금액별 절감액은 이렇습니다.\n\n| 매달 줄이는 금액 | 1년 절감액 |\n|---:|---:|\n| 5만 원 | 60만 원 |\n| 10만 원 | 120만 원 |\n| 20만 원 전부 | 240만 원 |\n\n이는 **배달앱 지출 감소액**입니다. 대신 먹는 식사에 추가로 돈이 든다면 실제 절약액은 그 비용을 뺀 금액이에요. 배달을 얼마나 줄여도 만족도가 유지될지는 알 수 없으니, 먼저 월 5만 원만 줄여 보고 불편이 적으면 범위를 넓혀 보세요.",
+      "metadata": {
+        "mode": "jev",
+        "latency_ms": 19922,
+        "codex_runs": 1,
+        "search_calls": 0,
+        "search_sources": [],
+        "mcp_calls": [
+          {
+            "tool": "calculate_repeated_cost",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "unit_cost": 50000,
+                "quantity": 12,
+                "unit": "개월"
+              }
+            },
+            "result": {
+              "inputs": {
+                "unit_cost": "50000",
+                "quantity": "12",
+                "unit": "개월",
+                "currency": "KRW"
+              },
+              "formula": "total_cost = unit_cost * quantity",
+              "intermediate": {
+                "quantity": "12"
+              },
+              "result": {
+                "total_cost": "600000.00",
+                "currency": "KRW"
+              }
+            },
+            "status": "completed",
+            "error": null
+          },
+          {
+            "tool": "calculate_repeated_cost",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "unit_cost": 100000,
+                "quantity": 12,
+                "unit": "개월"
+              }
+            },
+            "result": {
+              "inputs": {
+                "unit_cost": "100000",
+                "quantity": "12",
+                "unit": "개월",
+                "currency": "KRW"
+              },
+              "formula": "total_cost = unit_cost * quantity",
+              "intermediate": {
+                "quantity": "12"
+              },
+              "result": {
+                "total_cost": "1200000.00",
+                "currency": "KRW"
+              }
+            },
+            "status": "completed",
+            "error": null
+          },
+          {
+            "tool": "calculate_repeated_cost",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "unit_cost": 200000,
+                "quantity": 12,
+                "unit": "개월"
+              }
+            },
+            "result": {
+              "inputs": {
+                "unit_cost": "200000",
+                "quantity": "12",
+                "unit": "개월",
+                "currency": "KRW"
+              },
+              "formula": "total_cost = unit_cost * quantity",
+              "intermediate": {
+                "quantity": "12"
+              },
+              "result": {
+                "total_cost": "2400000.00",
+                "currency": "KRW"
+              }
+            },
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "jev_calls": 1,
+        "jev_judgment": {
+          "candidate": "annual_leaks",
+          "item": "월 20만원 배달앱 지출",
+          "choice": "unknown",
+          "confidence": 0.77,
+          "latency_ms": 511
+        }
+      },
+      "trace": [
+        {
+          "at_ms": 13198,
+          "type": "mcp_tool_call",
+          "tool": "calculate_repeated_cost",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "unit_cost": 50000,
+              "quantity": 12,
+              "unit": "개월"
+            }
+          },
+          "result": {
+            "inputs": {
+              "unit_cost": "50000",
+              "quantity": "12",
+              "unit": "개월",
+              "currency": "KRW"
+            },
+            "formula": "total_cost = unit_cost * quantity",
+            "intermediate": {
+              "quantity": "12"
+            },
+            "result": {
+              "total_cost": "600000.00",
+              "currency": "KRW"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 13198,
+          "type": "mcp_tool_call",
+          "tool": "calculate_repeated_cost",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "unit_cost": 100000,
+              "quantity": 12,
+              "unit": "개월"
+            }
+          },
+          "result": {
+            "inputs": {
+              "unit_cost": "100000",
+              "quantity": "12",
+              "unit": "개월",
+              "currency": "KRW"
+            },
+            "formula": "total_cost = unit_cost * quantity",
+            "intermediate": {
+              "quantity": "12"
+            },
+            "result": {
+              "total_cost": "1200000.00",
+              "currency": "KRW"
+            }
+          },
+          "status": "completed",
+          "error": null
+        },
+        {
+          "at_ms": 13199,
+          "type": "mcp_tool_call",
+          "tool": "calculate_repeated_cost",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "unit_cost": 200000,
+              "quantity": 12,
+              "unit": "개월"
+            }
+          },
+          "result": {
+            "inputs": {
+              "unit_cost": "200000",
+              "quantity": "12",
+              "unit": "개월",
+              "currency": "KRW"
+            },
+            "formula": "total_cost = unit_cost * quantity",
+            "intermediate": {
+              "quantity": "12"
+            },
+            "result": {
+              "total_cost": "2400000.00",
+              "currency": "KRW"
+            }
+          },
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "error": null,
+      "exit_diagnostic": null,
+      "e2e_latency_ms": 19926,
+      "attempts": 1
+    },
+    {
+      "case_id": "purchase-review-001",
+      "http_status": 200,
+      "status": "ready",
+      "answer": "**나고야가 여행 목적이라면**, 제시하신 37만원이 **1인 왕복·직항·세금 포함**이고 필요한 수하물까지 포함된 가격인지 확인한 뒤 구매하는 쪽을 권합니다. 출발지와 여행 날짜, 운임 조건이 없어 37만원이 특별히 싼 가격인지, 기다리면 내려갈지는 단정할 수 없습니다.\n\n다른 도시도 괜찮다면 먼저 같은 날짜로 후쿠오카와 오사카를 비교해 보세요. **2026년 9월 24일 조회한 [대한항공 공개 운임](https://www.koreanair.com/flights/en/flights-to-japan)**에는 인천 출발 일반석 1인 왕복 기준으로 후쿠오카 **28만8,500원**(10월 27~30일), 오사카 **32만4,300원**(12월 10~17일), 도쿄 나리타 **40만9,300원**(11월 26일~12월 10일), 나고야 **42만2,300원**(11월 28~29일)부터인 사례가 있습니다. 표시 금액은 세금·유류할증료를 포함하며 선택 서비스 비용은 추가될 수 있습니다. 후쿠오카 사례는 제시하신 가격보다 **8만1,500원 낮지만**, 날짜와 항공사 조건이 달라 실제로 그만큼 절약할 수 있다는 뜻은 아닙니다.\n\n따라서 **나고야 일정이 고정돼 있고 위 조건이 맞으면 구매**, 목적지를 바꿀 수 있다면 **같은 출발일·귀국일·수하물 조건으로 후쿠오카와 오사카를 확인한 뒤 결정**하세요. 기다리는 동안의 가격 하락은 보장되지 않으며, [Google Flights의 날짜별 가격·가격 알림](https://support.google.com/travel/answer/7664728?hl=en-GB)을 활용할 수 있습니다.",
+      "metadata": {
+        "mode": "jev",
+        "latency_ms": 65774,
+        "codex_runs": 1,
+        "search_calls": 1,
+        "search_sources": [
+          {
+            "url": "https://www.google.com/travel/flights/flights-from-seoul-to-tokyo.html",
+            "title": "Find Cheap Flights from Seoul to Tokyo (SEL - TYO) - Google Flights"
+          },
+          {
+            "url": "https://blog.google/products-and-platforms/products/search/holiday-travel-trends-2025/",
+            "title": "Google offers updated holiday travel trends and insights for 2025"
+          },
+          {
+            "url": "https://support.google.com/travel/answer/7664728?hl=en-GB",
+            "title": "How to find the best fares with Google Flights - Travel Help"
+          },
+          {
+            "url": "https://blog.google/products-and-platforms/products/travel/how-to-find-the-best-deal-on-your-next-flight/",
+            "title": "How to find the best deal on your next flight"
+          },
+          {
+            "url": "https://www.ana.co.jp/guide/plan/fare/domestic/pdf/en_26s_simple_roundtrip_251112.pdf",
+            "title": "Fare Charts (Simple-Round Trip) ※Available for reservation and tickets issued on/after 2025/11/13"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=fNe3SoHQdKA",
+            "title": "How to Find the Cheapest Flights to Japan (or Anywhere) in 2025 | Google Flights Hacks That Work - YouTube"
+          },
+          {
+            "url": "https://www.smartertravel.com/what-is-the-cheapest-day-to-book-a-flight/",
+            "title": "What's the Cheapest Day to Book a Flight? Data-Backed Answer for 2026"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=2cQf9O92X7Q",
+            "title": "How to Find CHEAP FLIGHTS with GOOGLE FLIGHTS in 2026 - YouTube"
+          },
+          {
+            "url": "https://www.halfflight.co.kr/flights/to/oka",
+            "title": "오키나와 항공권 특가·최저가 — 전국 출발 | 반값비행"
+          },
+          {
+            "url": "https://www.koreanair.com/flights/en/flights-to-japan",
+            "title": "Flights to Japan with Korean Air"
+          },
+          {
+            "url": "https://travel.wizelife.ai/guide/best-time-to-book-flights",
+            "title": "Best Time to Book Flights (2026 Data) — Booking Windows by Trip | WizeTravel"
+          },
+          {
+            "url": "https://www.going.com/guides/best-time-to-book-with-google-flights",
+            "title": "Best Time to Book Flights: Google Flights Timing Tricks"
+          },
+          {
+            "url": "https://www.going.com/guides/how-to-use-google-flights",
+            "title": "How To Use Google Flights To Find Cheaper Flights (2026)"
+          },
+          {
+            "url": "https://www.flypeach.com/application/files/5417/6285/6596/EN_26S_As_of_13NOV25_int.pdf",
+            "title": "EN_FareList_International_26S(As of 13NOV'25)8路線.xlsx.xlsx"
+          },
+          {
+            "url": "https://travelhimalayanepal.com/news/cheapest-time-to-book-flights-2026",
+            "title": "The Cheapest Time to Book International Flights in 2026 (What the Data Actually Says) | Travel Himalaya Nepal"
+          },
+          {
+            "url": "https://www.shopback.com/blog/travel/cheapest-month-book-international-us-2026-europe-vs-asia-vs-caribbean",
+            "title": "Cheapest Month to Book International Flights From the US in 2026: Europe vs Asia vs Caribbean by Region"
+          },
+          {
+            "url": "https://www.reddit.com/r/JapanTravelTips/comments/1idr2fm/advice_where_to_buy_plane_tickets_to_japan/",
+            "title": "Advice where to buy plane tickets to Japan"
+          },
+          {
+            "url": "https://www.reddit.com/r/zipair/comments/1to4w4l/just_received_alerts_from_google_flights_with_the/",
+            "title": "Just received alerts from Google flights with the sale prices"
+          },
+          {
+            "url": "https://www.reddit.com/r/TravelHacks/comments/1kito9l",
+            "title": "When is the best time to buy a ticket for Japan if I’m going next February?"
+          },
+          {
+            "url": "https://www.reddit.com/r/JapanTravelTips/comments/1htm61l",
+            "title": "When to book flights"
+          },
+          {
+            "url": "https://www.reddit.com/r/TravelHacks/comments/1wgvfgn/when_to_book_flights_to_japan_spring_2027/",
+            "title": "When to book flights to Japan Spring 2027?"
+          },
+          {
+            "url": "https://www.reddit.com/r/TravelHacks/comments/1s2wqai/when_to_buy_japan_tickets/",
+            "title": "When to buy Japan tickets"
+          },
+          {
+            "url": "https://www.reddit.com/r/askTO/comments/1wnx2le/are_the_flight_prices_gonna_go_down/",
+            "title": "Are the flight prices gonna go down?"
+          },
+          {
+            "url": "https://www.reddit.com/r/Flights/comments/1lgty46",
+            "title": "Question regarding Google Flight ITA price discrepancy (to Japan)"
+          },
+          {
+            "url": "https://www.theatlantic.com/ideas/2026/06/flight-price-prediction-oil-prices/687479/?utm_source=apple_news",
+            "title": "Why This Summer's Airfares Are Unaffordable-And Unpredictable"
+          },
+          {
+            "url": "https://www.reddit.com/r/Shoestring/comments/1l2beu2",
+            "title": "First time - any way to score cheap flights to Asia from USA in December?"
+          },
+          {
+            "url": "https://www.flypeach.com/application/files/3317/6301/9209/20251113_Press-Release-E.pdf",
+            "title": "Press Release"
+          },
+          {
+            "url": "https://www.kiplinger.com/slideshow/spending/t059-s001-24-best-travel-websites-to-save-you-money/index.html",
+            "title": "23 Best Travel Websites and Apps to Find Deals and Save Money"
+          },
+          {
+            "url": "https://www.reddit.com/r/JapanTravelTips/comments/1i5f331/just_curious_those_who_are_planning_to_go_this/",
+            "title": "Just curious, those who are planning to go this summer (June), have you reserved the hotels and bought the airplane tickets? Prices seem crazy."
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/Google_Flights",
+            "title": "Google Flights"
+          },
+          {
+            "url": "https://www.reddit.com/r/japanresidents/comments/1vzg0e4/flying_homeany_tips_and_tricks_for_finding/",
+            "title": "Flying home...any tips and tricks for finding reasonably priced flights?"
+          },
+          {
+            "url": "https://mct.org/wp-content/uploads/formidable/5/gft2025.pdf",
+            "title": "🛫 Google Flight Tickets 2025 ✈️ How to"
+          },
+          {
+            "url": "https://assets.website-files.com/67546fa0539f377318e01d99/6760d3a62672aac8f203c599_xixigugekadiveb.pdf",
+            "title": "Best time frame to book flights international"
+          },
+          {
+            "url": "https://www.reddit.com/r/TravelHacks/comments/1mesefw",
+            "title": "Google Flights sent me an email that a flight I was tracking went up almost double, I quickly went to book and the airline offered the cheaper price so I booked, 2 hours later I checked again and the airline had increased the price..."
+          }
+        ],
+        "mcp_calls": [
+          {
+            "tool": "compare_costs",
+            "arguments": {
+              "data": {
+                "currency": "KRW",
+                "options": [
+                  {
+                    "name": "나고야 사용자 제시 운임",
+                    "total_cost": 370000
+                  },
+                  {
+                    "name": "후쿠오카 대한항공 예시",
+                    "total_cost": 288500
+                  },
+                  {
+                    "name": "오사카 대한항공 예시",
+                    "total_cost": 324300
+                  },
+                  {
+                    "name": "도쿄 대한항공 예시",
+                    "total_cost": 409300
+                  },
+                  {
+                    "name": "나고야 대한항공 예시",
+                    "total_cost": 422300
+                  }
+                ]
+              }
+            },
+            "result": {
+              "inputs": {
+                "options": [
+                  {
+                    "name": "나고야 사용자 제시 운임",
+                    "total_cost": "370000"
+                  },
+                  {
+                    "name": "후쿠오카 대한항공 예시",
+                    "total_cost": "288500"
+                  },
+                  {
+                    "name": "오사카 대한항공 예시",
+                    "total_cost": "324300"
+                  },
+                  {
+                    "name": "도쿄 대한항공 예시",
+                    "total_cost": "409300"
+                  },
+                  {
+                    "name": "나고야 대한항공 예시",
+                    "total_cost": "422300"
+                  }
+                ],
+                "currency": "KRW"
+              },
+              "formula": "difference_from_lowest = option_total_cost - lowest_total_cost",
+              "intermediate": {
+                "나고야 사용자 제시 운임": "370000",
+                "후쿠오카 대한항공 예시": "288500",
+                "오사카 대한항공 예시": "324300",
+                "도쿄 대한항공 예시": "409300",
+                "나고야 대한항공 예시": "422300"
+              },
+              "result": {
+                "lowest_cost_option": "후쿠오카 대한항공 예시",
+                "lowest_total_cost": "288500.00",
+                "currency": "KRW",
+                "difference_from_나고야 사용자 제시 운임": "81500.00",
+                "difference_from_후쿠오카 대한항공 예시": "0.00",
+                "difference_from_오사카 대한항공 예시": "35800.00",
+                "difference_from_도쿄 대한항공 예시": "120800.00",
+                "difference_from_나고야 대한항공 예시": "133800.00"
+              }
+            },
+            "status": "completed",
+            "error": null
+          }
+        ],
+        "jev_calls": 1,
+        "jev_judgment": {
+          "candidate": "purchase_review",
+          "item": "다른 일본 도시 항공권 대안",
+          "choice": "unknown",
+          "confidence": 0.34,
+          "latency_ms": 585
+        }
+      },
+      "trace": [
+        {
+          "at_ms": 16637,
+          "type": "web_search",
+          "action": "search",
+          "queries": [
+            "서울 나고야 오사카 후쿠오카 도쿄 왕복 항공권 2026 10월 최저가 원",
+            "Google Flights 2026 Seoul Nagoya Osaka Fukuoka Tokyo round trip flights prices",
+            "Google Flights cheapest time to book international flights Japan price tracking 2025 2026"
+          ],
+          "result_count": 34
+        },
+        {
+          "at_ms": 26816,
+          "type": "web_search",
+          "action": "other",
+          "queries": [],
+          "result_count": 3
+        },
+        {
+          "at_ms": 41456,
+          "type": "mcp_tool_call",
+          "tool": "compare_costs",
+          "arguments": {
+            "data": {
+              "currency": "KRW",
+              "options": [
+                {
+                  "name": "나고야 사용자 제시 운임",
+                  "total_cost": 370000
+                },
+                {
+                  "name": "후쿠오카 대한항공 예시",
+                  "total_cost": 288500
+                },
+                {
+                  "name": "오사카 대한항공 예시",
+                  "total_cost": 324300
+                },
+                {
+                  "name": "도쿄 대한항공 예시",
+                  "total_cost": 409300
+                },
+                {
+                  "name": "나고야 대한항공 예시",
+                  "total_cost": 422300
+                }
+              ]
+            }
+          },
+          "result": {
+            "inputs": {
+              "options": [
+                {
+                  "name": "나고야 사용자 제시 운임",
+                  "total_cost": "370000"
+                },
+                {
+                  "name": "후쿠오카 대한항공 예시",
+                  "total_cost": "288500"
+                },
+                {
+                  "name": "오사카 대한항공 예시",
+                  "total_cost": "324300"
+                },
+                {
+                  "name": "도쿄 대한항공 예시",
+                  "total_cost": "409300"
+                },
+                {
+                  "name": "나고야 대한항공 예시",
+                  "total_cost": "422300"
+                }
+              ],
+              "currency": "KRW"
+            },
+            "formula": "difference_from_lowest = option_total_cost - lowest_total_cost",
+            "intermediate": {
+              "나고야 사용자 제시 운임": "370000",
+              "후쿠오카 대한항공 예시": "288500",
+              "오사카 대한항공 예시": "324300",
+              "도쿄 대한항공 예시": "409300",
+              "나고야 대한항공 예시": "422300"
+            },
+            "result": {
+              "lowest_cost_option": "후쿠오카 대한항공 예시",
+              "lowest_total_cost": "288500.00",
+              "currency": "KRW",
+              "difference_from_나고야 사용자 제시 운임": "81500.00",
+              "difference_from_후쿠오카 대한항공 예시": "0.00",
+              "difference_from_오사카 대한항공 예시": "35800.00",
+              "difference_from_도쿄 대한항공 예시": "120800.00",
+              "difference_from_나고야 대한항공 예시": "133800.00"
+            }
+          },
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "error": null,
+      "exit_diagnostic": null,
+      "e2e_latency_ms": 65779,
+      "attempts": 1
+    }
+  ],
+  "finished_at": "2026-09-24T12:17:49.065486+00:00",
+  "repository_unchanged": true
+}

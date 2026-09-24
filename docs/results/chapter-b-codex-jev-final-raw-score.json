@@ -1,0 +1,734 @@
+{
+  "dataset_version": "chapter-b-sparse-v1",
+  "fixture_sha256": "a55ef56b9f2e5a67e671f9b1cb70c36d94251b9b537f6dbafc1b10cc325a3f24",
+  "mode": "jev",
+  "summary": {
+    "cases": 15,
+    "pass": 10,
+    "fail": 5,
+    "unreviewed": 0,
+    "not_run": 0,
+    "search_calls": 21,
+    "mcp_calls": 26,
+    "jev_calls": 4,
+    "codex_runs": 15,
+    "median_e2e_latency_ms": 40719,
+    "total_e2e_latency_ms": 758734,
+    "timeouts": 0,
+    "errors": 0,
+    "retries": 0,
+    "jev_judgments_reviewed": 4,
+    "jev_judgments_correct": 4
+  },
+  "results": [
+    {
+      "case_id": "price-comparison-001",
+      "scenario": "최저가 비교",
+      "outcome": "fail",
+      "reasons": [
+        "missing:price_difference"
+      ],
+      "metrics": {
+        "e2e_latency_ms": 55365,
+        "codex_runs": 1,
+        "search_calls": 2,
+        "mcp_calls": 1,
+        "mcp_failures": 0,
+        "jev_calls": 0,
+        "jev_judgment": null,
+        "attempts": 1,
+        "timeout": false,
+        "error": null,
+        "search_trace": [
+          {
+            "at_ms": 10501,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "맥북 에어 M5 13 16GB 512GB 가격 판매 2026",
+              "맥북 에어 M5 15 16GB 512GB 가격 판매 2026",
+              "site:apple.com/kr/shop 맥북 에어 M5 512GB 가격"
+            ],
+            "result_count": 29
+          },
+          {
+            "at_ms": 15950,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "맥북에어13 M5 16GB 512GB 가격 다나와 2026",
+              "MacBook Air 13 M5 16GB 512GB 쿠팡 가격",
+              "맥북에어 M5 13 16 512 최저가 2026 9월"
+            ],
+            "result_count": 32
+          },
+          {
+            "at_ms": 20936,
+            "type": "web_search",
+            "action": "other",
+            "queries": [],
+            "result_count": 5
+          },
+          {
+            "at_ms": 25634,
+            "type": "web_search",
+            "action": "other",
+            "queries": [],
+            "result_count": 3
+          },
+          {
+            "at_ms": 41264,
+            "type": "web_search",
+            "action": "find_in_page",
+            "queries": [],
+            "result_count": 3
+          }
+        ]
+      },
+      "quality_note": "No exact price difference in the final answer.",
+      "jev_judgment_correct": null
+    },
+    {
+      "case_id": "subscription-audit-001",
+      "scenario": "구독료 다이어트",
+      "outcome": "fail",
+      "reasons": [
+        "missing:overlap"
+      ],
+      "metrics": {
+        "e2e_latency_ms": 12909,
+        "codex_runs": 1,
+        "search_calls": 0,
+        "mcp_calls": 0,
+        "mcp_failures": 0,
+        "jev_calls": 1,
+        "jev_judgment": {
+          "candidate": "subscription_audit",
+          "item": "디즈니플러스 구독",
+          "choice": "unknown",
+          "confidence": 0.94,
+          "latency_ms": 698
+        },
+        "attempts": 1,
+        "timeout": false,
+        "error": null,
+        "search_trace": []
+      },
+      "quality_note": "Distinct value of each service was not compared.",
+      "jev_judgment_correct": true
+    },
+    {
+      "case_id": "mobile-plan-001",
+      "scenario": "통신비 점검",
+      "outcome": "pass",
+      "reasons": [],
+      "metrics": {
+        "e2e_latency_ms": 73598,
+        "codex_runs": 1,
+        "search_calls": 3,
+        "mcp_calls": 6,
+        "mcp_failures": 0,
+        "jev_calls": 0,
+        "jev_judgment": null,
+        "attempts": 1,
+        "timeout": false,
+        "error": null,
+        "search_trace": [
+          {
+            "at_ms": 14604,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "site:ktmmobile.com 10GB 요금제 월 2026",
+              "site:sk7mobile.com 10GB 요금제 월 LTE",
+              "site:uplusumobile.com 10GB 요금제 월"
+            ],
+            "result_count": 16
+          },
+          {
+            "at_ms": 20130,
+            "type": "web_search",
+            "action": "other",
+            "queries": [],
+            "result_count": 3
+          },
+          {
+            "at_ms": 26806,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "site:uplusumobile.com/product/pric/pricDetail \"LTE (10GB/100분) [더알뜰플랜]\" \"8,800원\"",
+              "site:sk7mobile.com \"[셀프] LTE 유심 (10GB/2000분)\" \"11,900원\""
+            ],
+            "result_count": 15
+          },
+          {
+            "at_ms": 39595,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "site:uplusumobile.com/product/pric/pricDetail \"10%적립 (10GB+/500분)\" \"18,500원\"",
+              "site:uplusumobile.com/product/pric/pricDetail \"데이터플러스 (10GB+/통화기본)\" \"19,900원\""
+            ],
+            "result_count": 15
+          },
+          {
+            "at_ms": 55269,
+            "type": "web_search",
+            "action": "find_in_page",
+            "queries": [],
+            "result_count": 3
+          }
+        ]
+      },
+      "quality_note": "Reviewed against the unchanged fixture and observed answer.",
+      "jev_judgment_correct": null
+    },
+    {
+      "case_id": "insurance-overlap-001",
+      "scenario": "보험 중복 찾기",
+      "outcome": "pass",
+      "reasons": [],
+      "metrics": {
+        "e2e_latency_ms": 40719,
+        "codex_runs": 1,
+        "search_calls": 2,
+        "mcp_calls": 0,
+        "mcp_failures": 0,
+        "jev_calls": 0,
+        "jev_judgment": null,
+        "attempts": 1,
+        "timeout": false,
+        "error": null,
+        "search_trace": [
+          {
+            "at_ms": 14046,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "site:fss.or.kr 실손의료보험 중복 가입 비례보상 단체 개인 중지 재개",
+              "site:knia.or.kr 실손보험 중복가입 비례보상 개인실손 단체실손 중지 재개",
+              "site:klia.or.kr 실손의료보험 중복가입 비례보상 자기부담금"
+            ],
+            "result_count": 18
+          },
+          {
+            "at_ms": 20849,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "site:fsc.go.kr 개인 단체 실손 중복가입 중지 재개 2023 2025",
+              "site:fss.or.kr 개인실손 단체실손 중지 재개 기존 상품 재개 2024",
+              "site:consumer.knia.or.kr 실손보험 중복 개인 개인 계약 해지 특약 해지"
+            ],
+            "result_count": 14
+          },
+          {
+            "at_ms": 27407,
+            "type": "web_search",
+            "action": "other",
+            "queries": [],
+            "result_count": 3
+          }
+        ]
+      },
+      "quality_note": "Reviewed against the unchanged fixture and observed answer.",
+      "jev_judgment_correct": null
+    },
+    {
+      "case_id": "card-benefits-001",
+      "scenario": "카드 혜택 최적화",
+      "outcome": "fail",
+      "reasons": [
+        "missing:current_benefits",
+        "missing:net_benefit",
+        "search_call_mismatch"
+      ],
+      "metrics": {
+        "e2e_latency_ms": 25245,
+        "codex_runs": 1,
+        "search_calls": 0,
+        "mcp_calls": 1,
+        "mcp_failures": 0,
+        "jev_calls": 0,
+        "jev_judgment": null,
+        "attempts": 1,
+        "timeout": false,
+        "error": null,
+        "search_trace": []
+      },
+      "quality_note": "No public card offer or calculated benefit was provided.",
+      "jev_judgment_correct": null
+    },
+    {
+      "case_id": "impulse-purchase-001",
+      "scenario": "충동구매 방지",
+      "outcome": "pass",
+      "reasons": [],
+      "metrics": {
+        "e2e_latency_ms": 34739,
+        "codex_runs": 1,
+        "search_calls": 1,
+        "mcp_calls": 0,
+        "mcp_failures": 0,
+        "jev_calls": 0,
+        "jev_judgment": null,
+        "attempts": 1,
+        "timeout": false,
+        "error": null,
+        "search_trace": [
+          {
+            "at_ms": 14709,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "site:apple.com/kr/shop/buy-mac/macbook-air MacBook Air 가격 1690000 2026",
+              "site:apple.com/kr/macbook-air/ MacBook Air 현재 가격 대한민국"
+            ],
+            "result_count": 16
+          },
+          {
+            "at_ms": 19131,
+            "type": "web_search",
+            "action": "other",
+            "queries": [],
+            "result_count": 2
+          },
+          {
+            "at_ms": 23339,
+            "type": "web_search",
+            "action": "other",
+            "queries": [],
+            "result_count": 1
+          }
+        ]
+      },
+      "quality_note": "Reviewed against the unchanged fixture and observed answer.",
+      "jev_judgment_correct": null
+    },
+    {
+      "case_id": "grocery-budget-001",
+      "scenario": "장보기 예산 절감",
+      "outcome": "pass",
+      "reasons": [],
+      "metrics": {
+        "e2e_latency_ms": 99587,
+        "codex_runs": 1,
+        "search_calls": 4,
+        "mcp_calls": 3,
+        "mcp_failures": 0,
+        "jev_calls": 0,
+        "jev_judgment": null,
+        "attempts": 1,
+        "timeout": false,
+        "error": null,
+        "search_trace": [
+          {
+            "at_ms": 15175,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "site:emart.ssg.com 쌀 4kg 가격 달걀 30구 두부 300g",
+              "site:emart.ssg.com 닭가슴살 1kg 양배추 감자 1kg 가격",
+              "site:homeplus.co.kr 달걀 30구 두부 300g 쌀 4kg 가격"
+            ],
+            "result_count": 12
+          },
+          {
+            "at_ms": 22279,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "site:mfront.homeplus.co.kr/item?itemNo= \"신선한 백색 달걀 30개입\" \"원\"",
+              "site:mfront.homeplus.co.kr/item?itemNo= \"쌀 4KG\" \"원\" 홈플러스",
+              "site:mfront.homeplus.co.kr/item?itemNo= \"양배추\" \"원\" 홈플러스",
+              "site:mfront.homeplus.co.kr/item?itemNo= \"감자 1.2KG\" \"원\" 홈플러스"
+            ],
+            "result_count": 12
+          },
+          {
+            "at_ms": 30201,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "홈플러스 신선한 백색 달걀 30개입 가격",
+              "site:mfront.homeplus.co.kr/item \"계란\" \"30구\" \"원\"",
+              "site:mfront.homeplus.co.kr/item \"쌀\" \"4KG\" \"원\" \"매직배송\"",
+              "site:mfront.homeplus.co.kr/item \"대파\" \"1단\" \"원\"",
+              "site:mfront.homeplus.co.kr/item \"감자 1.2KG(봉)\""
+            ],
+            "result_count": 19
+          },
+          {
+            "at_ms": 36608,
+            "type": "web_search",
+            "action": "other",
+            "queries": [],
+            "result_count": 6
+          },
+          {
+            "at_ms": 45093,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "site:mfront.homeplus.co.kr/item?itemNo= \"신선한 백색 달걀 30개입\"",
+              "site:mfront.homeplus.co.kr/item?itemNo= \"무항생제 동물복지 대란 30구\"",
+              "site:mfront.homeplus.co.kr/item?itemNo= \"감자 1.2KG(봉)\"",
+              "site:mfront.homeplus.co.kr/item?itemNo= \"오뚜기 옛날 국수\" \"원\"",
+              "site:mfront.homeplus.co.kr/item?itemNo= \"양파 1.5KG\" \"원\""
+            ],
+            "result_count": 12
+          }
+        ]
+      },
+      "quality_note": "Reviewed against the unchanged fixture and observed answer.",
+      "jev_judgment_correct": null
+    },
+    {
+      "case_id": "travel-budget-001",
+      "scenario": "여행비 최적화",
+      "outcome": "pass",
+      "reasons": [],
+      "metrics": {
+        "e2e_latency_ms": 59440,
+        "codex_runs": 1,
+        "search_calls": 4,
+        "mcp_calls": 0,
+        "mcp_failures": 0,
+        "jev_calls": 0,
+        "jev_judgment": null,
+        "attempts": 1,
+        "timeout": false,
+        "error": null,
+        "search_trace": [
+          {
+            "at_ms": 11328,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "인천 나고야 왕복 2026년 11월 항공권 가격 37만원 스카이스캐너",
+              "서울 나고야 2026 11월 왕복 항공권 가격 Expedia",
+              "부산 나고야 2026 11월 왕복 항공권 가격"
+            ],
+            "result_count": 17
+          },
+          {
+            "at_ms": 17873,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "site:expedia.co.kr/lp/flights/icn/ngo 2026년 11월 왕복 ₩ 나고야",
+              "site:traveloka.com/ko-kr/flight/route/Seoul-Nagoya.ICN.NGO 2026 11월 왕복",
+              "site:skyscanner.co.kr/routes/icn/ngo 11월 왕복 2026 나고야 인천",
+              "서울 나고야 2026년 11월 왕복 항공권 11월 20일 11월 23일 가격"
+            ],
+            "result_count": 13
+          },
+          {
+            "at_ms": 25152,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "\"인천\" \"나고야\" \"11월\" \"왕복\" \"2026\" \"₩\"",
+              "\"서울\" \"나고야\" \"11월\" \"왕복\" \"2026\" \"원\" 항공권",
+              "site:skyscanner.co.kr/routes/icn/ngo/incheon-international-to-nagoya-chubu-centrair.html \"11월\"",
+              "site:expedia.co.kr/lp/flights/icn/ngo/seoul-to-nagoya \"11월\" \"왕복\""
+            ],
+            "result_count": 12
+          },
+          {
+            "at_ms": 30146,
+            "type": "web_search",
+            "action": "open_page",
+            "queries": [],
+            "result_count": 2
+          },
+          {
+            "at_ms": 34768,
+            "type": "web_search",
+            "action": "find_in_page",
+            "queries": [],
+            "result_count": 3
+          },
+          {
+            "at_ms": 41002,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "\"11월\" \"인천\" \"나고야\" \"왕복\" \"원\" 2026 항공",
+              "\"11월\" \"서울\" \"나고야\" \"왕복\" \"₩\" 2026 항공권",
+              "\"Nov\" \"2026\" \"ICN\" \"NGO\" \"round trip\" KRW"
+            ],
+            "result_count": 15
+          },
+          {
+            "at_ms": 45451,
+            "type": "web_search",
+            "action": "other",
+            "queries": [],
+            "result_count": 2
+          }
+        ]
+      },
+      "quality_note": "Reviewed against the unchanged fixture and observed answer.",
+      "jev_judgment_correct": null
+    },
+    {
+      "case_id": "car-ownership-001",
+      "scenario": "자동차 유지비 계산",
+      "outcome": "pass",
+      "reasons": [],
+      "metrics": {
+        "e2e_latency_ms": 147463,
+        "codex_runs": 1,
+        "search_calls": 3,
+        "mcp_calls": 10,
+        "mcp_failures": 1,
+        "jev_calls": 0,
+        "jev_judgment": null,
+        "attempts": 1,
+        "timeout": false,
+        "error": null,
+        "search_trace": [
+          {
+            "at_ms": 17428,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "2026 아반떼 가격표 스마트 1.6 가솔린 복합연비 현대자동차",
+              "오피넷 전국 평균 휘발유 가격 2026 9월 24일",
+              "아반떼 1.6 자동차세 연간 1598cc 2026"
+            ],
+            "result_count": 21
+          },
+          {
+            "at_ms": 24905,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "site:hyundai.com 2026 아반떼 가격표 2062 스마트 복합연비 15.0",
+              "site:hyundai.com 2026 아반떼 가격표 pdf 가솔린 스마트 2062",
+              "site:nts.go.kr 자동차세 1600cc 이하 cc당 140원 지방교육세 30%",
+              "site:gov.kr 자동차 신규 등록 취득세 승용차 7%"
+            ],
+            "result_count": 18
+          },
+          {
+            "at_ms": 30808,
+            "type": "web_search",
+            "action": "find_in_page",
+            "queries": [],
+            "result_count": 6
+          },
+          {
+            "at_ms": 40250,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "2026 8월 디 올 뉴 아반떼 1.6 가솔린 2398만원 복합연비 현대",
+              "2026 디 올 뉴 아반떼 가솔린 1.6 연비 2398 가격 스마트",
+              "site:hyundai.com/contents/repn-car/catalog \"디 올 뉴 아반떼\" \"복합\" \"가솔린\" 2026",
+              "site:law.go.kr 지방세법 비영업용 승용자동차 1600시시 이하 140원 자동차세 30% 지방교육세"
+            ],
+            "result_count": 20
+          }
+        ]
+      },
+      "quality_note": "Reviewed against the unchanged fixture and observed answer.",
+      "jev_judgment_correct": null
+    },
+    {
+      "case_id": "installment-001",
+      "scenario": "할부 vs 일시불",
+      "outcome": "fail",
+      "reasons": [
+        "mcp_call_mismatch"
+      ],
+      "metrics": {
+        "e2e_latency_ms": 25505,
+        "codex_runs": 1,
+        "search_calls": 0,
+        "mcp_calls": 1,
+        "mcp_failures": 0,
+        "jev_calls": 0,
+        "jev_judgment": null,
+        "attempts": 1,
+        "timeout": false,
+        "error": null,
+        "search_trace": []
+      },
+      "quality_note": "Reviewed against the unchanged fixture and observed answer.",
+      "jev_judgment_correct": null
+    },
+    {
+      "case_id": "refinance-001",
+      "scenario": "대출 갈아타기 계산",
+      "outcome": "pass",
+      "reasons": [],
+      "metrics": {
+        "e2e_latency_ms": 24378,
+        "codex_runs": 1,
+        "search_calls": 0,
+        "mcp_calls": 0,
+        "mcp_failures": 0,
+        "jev_calls": 0,
+        "jev_judgment": null,
+        "attempts": 1,
+        "timeout": false,
+        "error": null,
+        "search_trace": []
+      },
+      "quality_note": "Reviewed against the unchanged fixture and observed answer.",
+      "jev_judgment_correct": null
+    },
+    {
+      "case_id": "quote-audit-001",
+      "scenario": "견적서 바가지 체크",
+      "outcome": "pass",
+      "reasons": [],
+      "metrics": {
+        "e2e_latency_ms": 61351,
+        "codex_runs": 1,
+        "search_calls": 1,
+        "mcp_calls": 0,
+        "mcp_failures": 0,
+        "jev_calls": 1,
+        "jev_judgment": {
+          "candidate": "quote_audit",
+          "item": "배관 1m당 3만원",
+          "choice": "unknown",
+          "confidence": 0.38,
+          "latency_ms": 493
+        },
+        "attempts": 1,
+        "timeout": false,
+        "error": null,
+        "search_trace": [
+          {
+            "at_ms": 18763,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "site:samsung.com/sec 에어컨 이전설치 설치비 배관 추가 타공 비용 기본설치비 2025 2026",
+              "site:lge.co.kr 에어컨 설치 추가 비용 배관 타공 기본 설치비",
+              "site:soomgo.com 에어컨 설치 비용 배관 타공 2025"
+            ],
+            "result_count": 18
+          },
+          {
+            "at_ms": 24905,
+            "type": "web_search",
+            "action": "find_in_page",
+            "queries": [],
+            "result_count": 5
+          },
+          {
+            "at_ms": 30006,
+            "type": "web_search",
+            "action": "other",
+            "queries": [],
+            "result_count": 2
+          }
+        ]
+      },
+      "quality_note": "Reviewed against the unchanged fixture and observed answer.",
+      "jev_judgment_correct": true
+    },
+    {
+      "case_id": "price-negotiation-001",
+      "scenario": "가격 협상 준비",
+      "outcome": "fail",
+      "reasons": [
+        "search_call_mismatch"
+      ],
+      "metrics": {
+        "e2e_latency_ms": 12730,
+        "codex_runs": 1,
+        "search_calls": 0,
+        "mcp_calls": 0,
+        "mcp_failures": 0,
+        "jev_calls": 0,
+        "jev_judgment": null,
+        "attempts": 1,
+        "timeout": false,
+        "error": null,
+        "search_trace": []
+      },
+      "quality_note": "Reviewed against the unchanged fixture and observed answer.",
+      "jev_judgment_correct": null
+    },
+    {
+      "case_id": "annual-leaks-001",
+      "scenario": "연간 새는 돈 찾기",
+      "outcome": "pass",
+      "reasons": [],
+      "metrics": {
+        "e2e_latency_ms": 19926,
+        "codex_runs": 1,
+        "search_calls": 0,
+        "mcp_calls": 3,
+        "mcp_failures": 0,
+        "jev_calls": 1,
+        "jev_judgment": {
+          "candidate": "annual_leaks",
+          "item": "월 20만원 배달앱 지출",
+          "choice": "unknown",
+          "confidence": 0.77,
+          "latency_ms": 511
+        },
+        "attempts": 1,
+        "timeout": false,
+        "error": null,
+        "search_trace": []
+      },
+      "quality_note": "Reviewed against the unchanged fixture and observed answer.",
+      "jev_judgment_correct": true
+    },
+    {
+      "case_id": "purchase-review-001",
+      "scenario": "구매 전 최종 심사",
+      "outcome": "pass",
+      "reasons": [],
+      "metrics": {
+        "e2e_latency_ms": 65779,
+        "codex_runs": 1,
+        "search_calls": 1,
+        "mcp_calls": 1,
+        "mcp_failures": 0,
+        "jev_calls": 1,
+        "jev_judgment": {
+          "candidate": "purchase_review",
+          "item": "다른 일본 도시 항공권 대안",
+          "choice": "unknown",
+          "confidence": 0.34,
+          "latency_ms": 585
+        },
+        "attempts": 1,
+        "timeout": false,
+        "error": null,
+        "search_trace": [
+          {
+            "at_ms": 16637,
+            "type": "web_search",
+            "action": "search",
+            "queries": [
+              "서울 나고야 오사카 후쿠오카 도쿄 왕복 항공권 2026 10월 최저가 원",
+              "Google Flights 2026 Seoul Nagoya Osaka Fukuoka Tokyo round trip flights prices",
+              "Google Flights cheapest time to book international flights Japan price tracking 2025 2026"
+            ],
+            "result_count": 34
+          },
+          {
+            "at_ms": 26816,
+            "type": "web_search",
+            "action": "other",
+            "queries": [],
+            "result_count": 3
+          }
+        ]
+      },
+      "quality_note": "Reviewed against the unchanged fixture and observed answer.",
+      "jev_judgment_correct": true
+    }
+  ]
+}

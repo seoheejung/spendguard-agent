@@ -1,5 +1,7 @@
 # Consumer Decision UI Reimagining 결과
 
+> 과거 UI 실험 결과입니다. 현재 제품 화면은 단일 답변 카드이며 아래 Inspector와 Required Data 설명은 현행 동작이 아닙니다. 현재 구현·검증은 [Codex 런타임 결과](chapter-b-codex-runtime-mvp.md)를 참고합니다.
+
 ## 구현 방향
 
 기존 관리형 화면 구조를 유지하지 않고, SpendGuard를 “돈 쓰기 전에 비교하고 계산하는 소비 판단 도구”로 다시 구성했다.
@@ -33,8 +35,33 @@
 - `missing_fields` 기반의 동적 추가 입력
 - 실제 계산 결과가 있을 때만 핵심 숫자를 표시하는 규칙
 
+## Purchase Required Data 회귀 수정
+
+### 원인
+
+기존 `/api/decisions` 경로는 질문의 키워드만 보고 `OpenAIAnalyzer.analyze()` 안에서 intake와 Web Search를 한 번에 수행했다. 그 뒤 Decision Pack이 별도 문자열 `missing_fields`와 폼 payload만 검사했기 때문에 Agent의 `known_facts`에 있던 “나고야 항공권”과 “37만원”을 Code-owned 필수 필드 검사에서 재사용하지 못했다. Purchase 공통 규칙은 실제 시나리오와 무관하게 `purpose`도 요구했고, OR 조건 전체를 단일 필드명으로 반환했다. Required Data가 부족해도 검색은 이미 끝난 뒤였다.
+
+분리 경로를 처음 추가했을 때는 `known_data`를 `dict[str, Any]`로 선언해 OpenAI Agents SDK의 strict output schema가 이를 거부했다. 예외가 “The agent could not analyze this question.”로 일반화되어 화면에 표시됐다.
+
+### 수정
+
+- Decision workflow intake는 Web Search를 비활성화한 별도 Agent 실행으로 분리하고, 고정된 typed `KnownDecisionData` schema로 canonical `known_data` 값을 반환하도록 했다. SDK strict JSON Schema 생성 검증을 추가했다.
+- Code는 Agent `known_data`와 사용자가 보완한 값들을 canonical field ID로 합친 뒤 Required Data를 검사한다. display 문구나 `known_facts` 문자열 매칭은 사용하지 않는다.
+- Purchase 공통 필수값에서 generic `purpose`를 제거했다. `price` / `price_confirmation_needed` OR 조건은 `price`라는 canonical 입력만 반환하므로 UI에 OR 문구나 내부 field ID를 노출하지 않는다.
+- 항공권의 최신 가격 비교는 목적지·가격 외에 출발지, 여행 날짜, 편도/왕복이 명시되기 전까지 `needs_input`으로 반환한다. 이 단계의 Web Search/MCP 호출은 0회이며 `sources`와 `calculations`는 빈 배열이다.
+- 모든 필수값이 준비된 다음에만 Web Search를 실행하며, 검색 입력에는 정규화된 사용자 제공 조건만 전달한다. 사용자 미제공 출발지·날짜·경로는 보충하거나 추정하지 않는다.
+- UI는 사전 keyword check만으로 “정보 조사 중”을 표시하지 않으며, 서버가 반환한 canonical missing field에 해당하는 한국어 질문만 표시한다. 기존 시나리오 숨김 및 Required Data 위치 동작은 유지한다.
+
+Phase 7 고정 fixture와 expected label은 변경하지 않았다. Phase 7 평가 경로의 기존 규칙도 그대로 유지해 완료 결과의 재현성을 보존했다. 새 canonical Required Data 동작은 production Decision API 경로에 한정했다.
+
 ## 검증
 
+- Purchase Required Data 통합 회귀: 입력된 `target`·`price`는 재요청하지 않고, 부족한 출발지·날짜·편도/왕복만 반환했다. 이 상태에서 Web Search callback 0회, MCP 호출 0회, `sources=[]`, `calculations=[]`를 확인했다.
+- 같은 질문에 명시적 출발지·날짜·편도/왕복을 보완하면 연구 callback 1회로 진입했고, 검색 입력에 정규화된 명시 조건만 전달되는 것을 확인했다.
+- `uv run pytest --basetemp=.tmp-pytest-flight-final -p no:cacheprovider`: 101 passed.
+- Phase 7 fixed workflow 평가 경로는 수정하지 않았고 고정 평가 결과 테스트가 계속 통과했다.
+- `tests/test_workspace_ui.py`: 5 passed. UI JavaScript 구문 검사와 `uv lock --check`, `git diff --check` 통과.
+- Chrome DevTools remote-debugging 포트가 실행 환경에서 열리지 않아 브라우저 자동화 스크립트는 실행하지 못했다.
 - `node --check src/spendguard/static/app.js` 성공
 - `uv run pytest tests/test_workspace_ui.py -q`: 5 passed
 - 1440×1100, 1280×1100, 1024×1000, 390×844, 320×720에서 초기 화면을 확인했다.

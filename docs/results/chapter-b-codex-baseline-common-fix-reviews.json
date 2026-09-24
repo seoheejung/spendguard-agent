@@ -1,0 +1,58 @@
+{
+  "fixture_sha256": "a55ef56b9f2e5a67e671f9b1cb70c36d94251b9b537f6dbafc1b10cc325a3f24",
+  "runtime_artifact": "chapter-b-codex-baseline-common-fix.json",
+  "reviews": [
+    {
+      "case_id": "price-comparison-001",
+      "must_include_checks": {
+        "current_offers": true,
+        "price_difference": true
+      },
+      "failure_condition_checks": {
+        "required_data_block": false,
+        "unsupported_offer": false
+      },
+      "quality_note": "Reviewed against the unchanged fixture and observed answer.",
+      "jev_judgment_correct": null
+    },
+    {
+      "case_id": "subscription-audit-001",
+      "must_include_checks": {
+        "overlap": true,
+        "conditional_choice": true
+      },
+      "failure_condition_checks": {
+        "required_data_block": false,
+        "invented_usage": false
+      },
+      "quality_note": "Reviewed against the unchanged fixture and observed answer.",
+      "jev_judgment_correct": null
+    },
+    {
+      "case_id": "card-benefits-001",
+      "must_include_checks": {
+        "current_benefits": true,
+        "net_benefit": true
+      },
+      "failure_condition_checks": {
+        "required_data_block": false,
+        "uncapped_benefit": false
+      },
+      "quality_note": "Reviewed against the unchanged fixture and observed answer.",
+      "jev_judgment_correct": null
+    },
+    {
+      "case_id": "price-negotiation-001",
+      "must_include_checks": {
+        "negotiation_basis": true,
+        "usable_phrase": true
+      },
+      "failure_condition_checks": {
+        "required_data_block": false,
+        "unsupported_discount": false
+      },
+      "quality_note": "Reviewed against the unchanged fixture and observed answer.",
+      "jev_judgment_correct": null
+    }
+  ]
+}
