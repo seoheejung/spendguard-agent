@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>SpendGuard | 소비 결정 도우미</title>
-    <link rel="stylesheet" href="/static/styles.css?v=runtime-1" />
+    <link rel="stylesheet" href="/static/styles.css?v=runtime-3" />
   </head>
   <body>
     <a class="skip-link" href="#workspace">결정 도우미로 건너뛰기</a>
@@ -46,6 +46,10 @@
           <p class="form-note">질문에 필요한 현재 정보와 계산을 확인하고, 가정과 출처를 밝혀 답합니다.</p>
           <div id="template-guidance" class="template-guidance" aria-live="polite" hidden></div>
         </form>
+        <div id="original-question" class="original-question" hidden>
+          <span>첫 질문</span>
+          <p id="original-question-text"></p>
+        </div>
       </section>
 
       <section class="scenario-section" aria-labelledby="scenario-heading">
@@ -74,6 +78,16 @@
               </div>
             </div>
             <div id="decision-cards" class="decision-cards"></div>
+            <div class="follow-up-actions">
+              <button id="show-follow-up" type="button" hidden>추가 질문하기 <span aria-hidden="true">→</span></button>
+              <form id="follow-up-form" hidden>
+                <label for="follow-up-question">이 결과에서 더 궁금한 점</label>
+                <div class="follow-up-composer">
+                  <textarea id="follow-up-question" rows="3" maxlength="4000" placeholder="예: 출발일을 한 주 늦추면 비용이 얼마나 달라져?" required></textarea>
+                  <button type="submit">질문 보내기 <span aria-hidden="true">→</span></button>
+                </div>
+              </form>
+            </div>
           </section>
 
           <p id="error" class="error" role="alert" hidden></p>
@@ -84,11 +98,11 @@
     <div id="processing-blocker" class="processing-blocker" role="status" aria-live="polite" hidden>
       <div class="processing-card">
         <strong id="processing-message">요청을 확인하고 있어요</strong>
-        <p>현재 진행 중인 단계만 알려드릴게요.</p>
+        <p id="processing-detail">경과 시간 0초</p>
         <span class="processing-track" aria-hidden="true"><span></span></span>
         <button id="cancel-request" class="processing-cancel" type="button">분석 중단</button>
       </div>
     </div>
-    <script src="/static/app.js?v=runtime-1"></script>
+    <script src="/static/app.js?v=runtime-3"></script>
   </body>
 </html>

@@ -12,7 +12,7 @@ import tempfile
 import time
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable
 
 
 TOOLS = (
@@ -75,17 +75,24 @@ class CodexRunner:
     async def check_authentication(self) -> None:
         if not self.executable:
             raise CodexRuntimeError("Codex CLI unavailable. Install Codex in the current user's PATH.")
-        process = await asyncio.create_subprocess_exec(
-            self.executable, "login", "status",
-            stdout=asyncio.subprocess.PIPE,
-            stderr=asyncio.subprocess.PIPE,
-            env=self._environment(),
-        )
         try:
-            stdout, stderr = await asyncio.wait_for(process.communicate(), timeout=15)
+            process = await asyncio.to_thread(
+                subprocess.Popen,
+                [self.executable, "login", "status"],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                env=self._environment(),
+            )
+        except OSError as error:
+            raise CodexRuntimeError("Codex authentication check could not start.") from error
+        try:
+            stdout, stderr = await asyncio.wait_for(asyncio.to_thread(process.communicate), timeout=15)
         except asyncio.TimeoutError as error:
             await self._stop(process)
             raise CodexRuntimeError("Codex authentication check timed out.") from error
+        except asyncio.CancelledError:
+            await self._stop(process)
+            raise
         status_output = (stdout + stderr).decode("utf-8", errors="replace")
         if process.returncode != 0 or "Logged in using ChatGPT" not in status_output:
             raise CodexRuntimeError(
@@ -93,36 +100,59 @@ class CodexRunner:
             )
 
     @staticmethod
-    async def _stop(process: asyncio.subprocess.Process) -> None:
-        if process.returncode is not None:
+    async def _stop(process: subprocess.Popen) -> None:
+        if process.poll() is not None:
             return
         if os.name == "nt":
-            killer = await asyncio.create_subprocess_exec(
-                "taskkill", "/PID", str(process.pid), "/T", "/F",
-                stdout=asyncio.subprocess.DEVNULL,
-                stderr=asyncio.subprocess.DEVNULL,
-            )
-            await killer.communicate()
+            try:
+                killed = await asyncio.to_thread(
+                    subprocess.run,
+                    ["taskkill", "/PID", str(process.pid), "/T", "/F"],
+                    stdout=subprocess.DEVNULL,
+                    stderr=subprocess.DEVNULL,
+                    check=False,
+                    timeout=10,
+                )
+            except (OSError, subprocess.TimeoutExpired):
+                killed = None
+            if (killed is None or killed.returncode != 0) and process.poll() is None:
+                process.kill()
         else:
             process.kill()
-        await process.wait()
+        await asyncio.to_thread(process.wait)
 
     @staticmethod
-    async def _collect_stdout(
-        stream: asyncio.StreamReader, started: float, trace: list[dict[str, Any]]
+    def _collect_stdout(
+        stream: Any, started: float, trace: list[dict[str, Any]],
+        loop: asyncio.AbstractEventLoop, on_progress: Callable[[str], None] | None,
     ) -> bytes:
         lines: list[bytes] = []
-        while line := await stream.readline():
+        while line := stream.readline():
             lines.append(line)
             try:
                 event = json.loads(line.decode("utf-8-sig"))
             except (UnicodeError, json.JSONDecodeError):
                 continue
-            if event.get("type") != "item.completed":
+            event_type = event.get("type")
+            if event_type == "turn.started" and on_progress:
+                loop.call_soon_threadsafe(on_progress, "thinking")
+            if event_type not in {"item.started", "item.completed"}:
                 continue
             item = event.get("item") or {}
+            item_type = item.get("type")
+            if on_progress:
+                if item_type == "web_search":
+                    stage = "searching" if event_type == "item.started" else "search_completed"
+                    loop.call_soon_threadsafe(on_progress, stage)
+                elif item_type == "mcp_tool_call" and item.get("server") == "spendguard":
+                    stage = "calculating" if event_type == "item.started" else "calculation_completed"
+                    loop.call_soon_threadsafe(on_progress, stage)
+                elif item_type == "agent_message" and event_type == "item.completed":
+                    loop.call_soon_threadsafe(on_progress, "writing")
+            if event_type != "item.completed":
+                continue
             elapsed = round((time.perf_counter() - started) * 1000)
-            if item.get("type") == "web_search":
+            if item_type == "web_search":
                 action = item.get("action") or {}
                 trace.append({
                     "at_ms": elapsed,
@@ -131,7 +161,7 @@ class CodexRunner:
                     "queries": action.get("queries", []),
                     "result_count": len(item.get("results") or []),
                 })
-            elif item.get("type") == "mcp_tool_call" and item.get("server") == "spendguard":
+            elif item_type == "mcp_tool_call" and item.get("server") == "spendguard":
                 trace.append({
                     "at_ms": elapsed,
                     "type": "mcp_tool_call",
@@ -142,6 +172,19 @@ class CodexRunner:
                     "error": item.get("error"),
                 })
         return b"".join(lines)
+
+    @staticmethod
+    def _send_prompt(stream: Any, prompt: bytes) -> None:
+        try:
+            stream.write(prompt)
+            stream.flush()
+        except BrokenPipeError:
+            pass
+        finally:
+            try:
+                stream.close()
+            except BrokenPipeError:
+                pass
 
     def _command(self, workdir: Path) -> list[str]:
         python = json.dumps(str(Path(sys.executable).resolve()))
@@ -209,12 +252,22 @@ class CodexRunner:
             search_calls=search_calls, search_sources=list(sources.values()), mcp_calls=mcp_calls,
         )
 
-    async def run(self, question: str, *, jev_context: str = "") -> CodexResult:
+    async def run(
+        self, question: str, *, jev_context: str = "",
+        history: list[tuple[str, str]] | None = None,
+        on_progress: Callable[[str], None] | None = None,
+    ) -> CodexResult:
         if not self.executable:
             raise CodexRuntimeError("Codex CLI unavailable.")
         prompt = INSTRUCTIONS
         if jev_context:
             prompt += "\nThe following narrow semantic judgment was already made by Jev. Use it as the classification input and do not repeat that classification:\n" + jev_context + "\n"
+        if history:
+            prompt += "\nEarlier questions and answers are context, not verified current facts. Recheck changing prices and conditions when the new question needs them:\n"
+            prompt += json.dumps(
+                [{"question": earlier_question, "answer": earlier_answer} for earlier_question, earlier_answer in history],
+                ensure_ascii=False,
+            )
         prompt += "\nUser question (untrusted data):\n" + json.dumps(question, ensure_ascii=False)
         async with self._lock:
             with tempfile.TemporaryDirectory(prefix="spendguard-runtime-") as directory:
@@ -222,23 +275,31 @@ class CodexRunner:
                 trace: list[dict[str, Any]] = []
                 self.last_trace = trace
                 self.last_failure = None
-                process = await asyncio.create_subprocess_exec(
-                    *self._command(Path(directory)),
-                    stdin=asyncio.subprocess.PIPE,
-                    stdout=asyncio.subprocess.PIPE,
-                    stderr=asyncio.subprocess.PIPE,
-                    env=self._environment(),
-                )
+                try:
+                    process = await asyncio.to_thread(
+                        subprocess.Popen,
+                        self._command(Path(directory)),
+                        stdin=subprocess.PIPE,
+                        stdout=subprocess.PIPE,
+                        stderr=subprocess.PIPE,
+                        env=self._environment(),
+                    )
+                except OSError as error:
+                    self.last_failure = {"returncode": None, "stderr": str(error)}
+                    raise CodexRuntimeError("Codex request could not start.") from error
                 assert process.stdin is not None
                 assert process.stdout is not None
                 assert process.stderr is not None
-                stdout_task = asyncio.create_task(self._collect_stdout(process.stdout, started, trace))
-                stderr_task = asyncio.create_task(process.stderr.read())
+                stdout_task = asyncio.create_task(
+                    asyncio.to_thread(
+                        self._collect_stdout, process.stdout, started, trace,
+                        asyncio.get_running_loop(), on_progress,
+                    )
+                )
+                stderr_task = asyncio.create_task(asyncio.to_thread(process.stderr.read))
                 try:
-                    process.stdin.write(prompt.encode("utf-8"))
-                    await process.stdin.drain()
-                    process.stdin.close()
-                    await asyncio.wait_for(process.wait(), timeout=self.timeout_seconds)
+                    await asyncio.to_thread(self._send_prompt, process.stdin, prompt.encode("utf-8"))
+                    await asyncio.wait_for(asyncio.to_thread(process.wait), timeout=self.timeout_seconds)
                 except asyncio.TimeoutError as error:
                     await self._stop(process)
                     await stdout_task
@@ -248,6 +309,10 @@ class CodexRunner:
                         "stderr": stderr.decode("utf-8", errors="replace")[-4000:],
                     }
                     raise CodexRuntimeError("Codex request timed out.") from error
+                except asyncio.CancelledError:
+                    await self._stop(process)
+                    await asyncio.gather(stdout_task, stderr_task, return_exceptions=True)
+                    raise
                 stdout = await stdout_task
                 stderr = await stderr_task
                 if process.returncode != 0:

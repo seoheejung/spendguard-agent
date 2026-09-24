@@ -1,4 +1,4 @@
-const state = { question: "", decision: null, scenarioId: null, activeScenarioGroup: "사기 전에", requestInFlight: false };
+const state = { question: "", decision: null, turns: [], scenarioId: null, activeScenarioGroup: "사기 전에", requestInFlight: false };
 
 const scenarioDefinitions = [
   { id: "price-comparison", group: "사기 전에", label: "최저가 비교", promptTemplate: "[제품명]을 사려고 해. 같은 제품뿐 아니라 비슷한 대안까지 찾아서 가격과 조건을 비교해줘.", inputHints: ["제품명"], guidance: "[제품명]을 먼저 고치세요.", icon: "tag" },
@@ -35,8 +35,22 @@ const siteHeader = document.querySelector(".site-header");
 const processingBlocker = document.querySelector("#processing-blocker");
 const processingMessage = document.querySelector("#processing-message");
 const cancelRequest = document.querySelector("#cancel-request");
+const processingDetail = document.querySelector("#processing-detail");
+const originalQuestion = document.querySelector("#original-question");
+const originalQuestionText = document.querySelector("#original-question-text");
+const showFollowUp = document.querySelector("#show-follow-up");
+const followUpForm = document.querySelector("#follow-up-form");
+const followUpQuestion = document.querySelector("#follow-up-question");
 const REQUEST_WAIT_LIMIT_MS = 250_000;
 let activeRequestController = null;
+
+const progressMessages = {
+  queued: "답변을 준비하고 있어요.",
+  thinking: "질문을 살펴보고 있어요.",
+  searching: "현재 정보를 확인하고 있어요.",
+  calculating: "비용을 계산하고 있어요.",
+  writing: "답변을 정리하고 있어요.",
+};
 
 function setStatus(value, name) {
   status.querySelector(".status-label").textContent = value;
@@ -300,50 +314,95 @@ function renderAnswer(text) {
   return body;
 }
 
-function renderDecisionResult(decision) {
-  decisionCards.replaceChildren();
+function renderDecisionResult(decision, askedQuestion, isFollowUp) {
+  if (!isFollowUp) decisionCards.replaceChildren();
+  if (isFollowUp) {
+    const followUpCard = document.createElement("div");
+    followUpCard.className = "follow-up-question-card";
+    followUpCard.append(
+      Object.assign(document.createElement("span"), { textContent: "추가 질문" }),
+      Object.assign(document.createElement("p"), { textContent: askedQuestion }),
+    );
+    decisionCards.append(followUpCard);
+  }
   const conclusion = document.createElement("article");
-  conclusion.className = "result-card solid-panel conclusion-card";
+  conclusion.className = `result-card solid-panel conclusion-card${isFollowUp ? " follow-up-answer" : ""}`;
   conclusion.append(renderAnswer(decision.answer));
   decisionCards.append(conclusion);
   resultSection.hidden = false;
+  showFollowUp.hidden = false;
   document.body.classList.add("has-decision", "has-active-decision");
 }
 
-async function requestDecision() {
+async function requestDecision(askedQuestion, isFollowUp = false) {
   if (state.requestInFlight) return;
   state.requestInFlight = true;
   const controller = new AbortController();
   activeRequestController = controller;
+  const requestId = crypto.randomUUID();
+  const startedAt = performance.now();
+  let progressInFlight = false;
   let timedOut = false;
   const timer = window.setTimeout(() => {
     timedOut = true;
     controller.abort();
   }, REQUEST_WAIT_LIMIT_MS);
-  const submit = questionForm.querySelector("button[type=submit]");
+  const elapsedTimer = window.setInterval(() => {
+    processingDetail.textContent = `경과 시간 ${Math.floor((performance.now() - startedAt) / 1000)}초`;
+  }, 1000);
+  const progressTimer = window.setInterval(async () => {
+    if (progressInFlight || controller.signal.aborted) return;
+    progressInFlight = true;
+    try {
+      const response = await fetch(`/api/decisions/progress/${requestId}`, { signal: controller.signal, cache: "no-store" });
+      if (response.ok) {
+        const progress = await response.json();
+        if (progressMessages[progress.stage]) setProgress(progressMessages[progress.stage]);
+      }
+    } catch {
+      // The decision request handles connection errors.
+    } finally {
+      progressInFlight = false;
+    }
+  }, 3000);
+  const submit = isFollowUp ? followUpForm.querySelector("button[type=submit]") : questionForm.querySelector("button[type=submit]");
   submit.disabled = true;
-  questionForm.setAttribute("aria-busy", "true");
+  (isFollowUp ? followUpForm : questionForm).setAttribute("aria-busy", "true");
   setRequestLock(true);
-  resultSection.hidden = true;
-  document.body.classList.remove("has-decision");
+  if (!isFollowUp) {
+    resultSection.hidden = true;
+    document.body.classList.remove("has-decision");
+  }
   document.body.classList.add("has-active-decision");
   setError("");
   setStatus("분석 중", "checking");
   setProgress("질문을 분석하고 있어요.");
+  processingDetail.textContent = "경과 시간 0초";
   try {
+    const history = state.turns.length <= 6
+      ? state.turns
+      : [state.turns[0], ...state.turns.slice(-5)];
     const response = await fetch("/api/decisions", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ question: state.question }),
+      body: JSON.stringify({ question: askedQuestion, history: isFollowUp ? history : [], request_id: requestId }),
       signal: controller.signal,
     });
     if (!response.ok) throw new Error("Decision request failed");
     const decision = await response.json();
     if (decision.status !== "ready" || !decision.answer) throw new Error("Decision answer missing");
     state.decision = decision;
-    renderDecisionResult(decision);
+    state.turns.push({ question: askedQuestion, answer: decision.answer });
+    if (!isFollowUp) {
+      originalQuestionText.textContent = askedQuestion;
+      originalQuestion.hidden = false;
+    } else {
+      followUpQuestion.value = "";
+      followUpForm.hidden = true;
+    }
+    renderDecisionResult(decision, askedQuestion, isFollowUp);
     setStatus("준비됨", "ready");
-    resultSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    (isFollowUp ? decisionCards.lastElementChild : resultSection).scrollIntoView({ behavior: "smooth", block: "start" });
   } catch {
     setError(controller.signal.aborted
       ? (timedOut ? "분석 시간이 길어져 요청을 종료했어요. 다시 시도해 주세요." : "분석을 중단했어요.")
@@ -351,11 +410,13 @@ async function requestDecision() {
     setStatus("분석을 완료하지 못했어요", "error");
   } finally {
     window.clearTimeout(timer);
+    window.clearInterval(elapsedTimer);
+    window.clearInterval(progressTimer);
     if (activeRequestController === controller) activeRequestController = null;
     state.requestInFlight = false;
     setRequestLock(false);
     submit.disabled = false;
-    questionForm.removeAttribute("aria-busy");
+    (isFollowUp ? followUpForm : questionForm).removeAttribute("aria-busy");
   }
 }
 
@@ -363,7 +424,18 @@ cancelRequest.addEventListener("click", () => activeRequestController?.abort());
 questionForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   state.question = question.value.trim();
-  if (state.question) await requestDecision();
+  if (state.question) await requestDecision(state.question);
+});
+showFollowUp.addEventListener("click", () => {
+  showFollowUp.hidden = true;
+  followUpForm.hidden = false;
+  followUpQuestion.focus();
+  followUpForm.scrollIntoView({ behavior: "smooth", block: "nearest" });
+});
+followUpForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const nextQuestion = followUpQuestion.value.trim();
+  if (nextQuestion) await requestDecision(nextQuestion, true);
 });
 
 renderScenarioGroups();
@@ -389,12 +461,18 @@ question.addEventListener("keydown", (event) => {
 document.querySelector("[data-new-decision]").addEventListener("click", () => {
   state.question = "";
   state.decision = null;
+  state.turns = [];
   state.scenarioId = null;
   activePlaceholderIndex = -1;
   question.value = "";
   templateGuidance.hidden = true;
   setScenarioSelection("");
   resultSection.hidden = true;
+  originalQuestion.hidden = true;
+  showFollowUp.hidden = true;
+  followUpForm.hidden = true;
+  followUpQuestion.value = "";
+  decisionCards.replaceChildren();
   document.body.classList.remove("has-decision", "has-active-decision");
   setError("");
   setStatus("준비됨", "ready");

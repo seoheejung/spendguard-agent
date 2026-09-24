@@ -1,14 +1,18 @@
 """FastAPI application for SpendGuard decisions and deterministic tools."""
 
+import asyncio
+import logging
+import time
 from contextlib import asynccontextmanager
 from pathlib import Path
 from typing import Callable, Literal
+from uuid import UUID, uuid4
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel, ValidationError
+from pydantic import BaseModel, Field, ValidationError
 
 from spendguard.codex_runtime import CodexRunner, CodexRuntimeError
 from spendguard.calculations import (
@@ -35,11 +39,18 @@ from spendguard.mcp_client import call_calculation_tool
 from spendguard.models import CalculationExecutionResult, CalculationRequest, CalculationToolName
 
 
+class DecisionTurn(BaseModel):
+    question: str = Field(max_length=4000)
+    answer: str = Field(max_length=12000)
+
+
 class DecisionRequest(BaseModel):
-    question: str
+    question: str = Field(max_length=4000)
     mode: Literal["baseline", "jev"] = "baseline"
     jev_candidate: Literal["subscription_audit", "quote_audit", "annual_leaks", "purchase_review"] | None = None
     candidate_text: str | None = None
+    history: list[DecisionTurn] = Field(default_factory=list, max_length=6)
+    request_id: UUID | None = None
 
 
 class DecisionResponse(BaseModel):
@@ -49,6 +60,20 @@ class DecisionResponse(BaseModel):
 
 
 STATIC_DIR = Path(__file__).parent / "static"
+logger = logging.getLogger("uvicorn.error")
+
+
+class ProgressAccessFilter(logging.Filter):
+    def filter(self, record: logging.LogRecord) -> bool:
+        args = record.args
+        return not (
+            isinstance(args, tuple)
+            and len(args) >= 3
+            and str(args[2]).startswith("/api/decisions/progress/")
+        )
+
+
+progress_access_filter = ProgressAccessFilter()
 
 Calculator = Callable[[BaseModel], CalculationResult]
 
@@ -69,7 +94,13 @@ async def lifespan(app: FastAPI):
     runner = CodexRunner()
     await runner.check_authentication()
     app.state.codex_runner = runner
-    yield
+    app.state.decision_progress = {}
+    access_logger = logging.getLogger("uvicorn.access")
+    access_logger.addFilter(progress_access_filter)
+    try:
+        yield
+    finally:
+        access_logger.removeFilter(progress_access_filter)
 
 
 app = FastAPI(title="SpendGuard", version="0.1.0", lifespan=lifespan)
@@ -83,6 +114,24 @@ async def index() -> FileResponse:
     return FileResponse(STATIC_DIR / "index.html", headers={"Cache-Control": "no-store"})
 
 
+@app.get("/api/decisions/progress/{request_id}")
+async def decision_progress(request_id: UUID, request: Request) -> dict:
+    """Return a small, user-facing progress snapshot for one request."""
+
+    progress = request.app.state.decision_progress.get(str(request_id))
+    if progress is None:
+        raise HTTPException(status_code=404, detail="Decision progress unavailable.")
+    return {
+        "stage": progress["stage"],
+        "elapsed_seconds": round(time.perf_counter() - progress["started_at"], 1),
+    }
+
+
+async def wait_for_disconnect(request: Request) -> None:
+    while not await request.is_disconnected():
+        await asyncio.sleep(0.5)
+
+
 @app.post("/api/decisions", response_model=DecisionResponse)
 async def decide(payload: DecisionRequest, request: Request) -> DecisionResponse:
     """Answer a question in one isolated Codex turn."""
@@ -91,19 +140,68 @@ async def decide(payload: DecisionRequest, request: Request) -> DecisionResponse
         raise HTTPException(status_code=422, detail="Question is required.")
     if payload.jev_candidate and payload.jev_candidate not in JUDGMENTS:
         raise HTTPException(status_code=422, detail="Unknown Jev candidate.")
+    request_id = str(payload.request_id or uuid4())
+    started = time.perf_counter()
+    progress = {"stage": "queued", "started_at": started, "search_calls": 0, "mcp_calls": 0}
+    request.app.state.decision_progress[request_id] = progress
+    logger.info("Decision %s received mode=%s history=%d", request_id, payload.mode, len(payload.history))
+
+    def update_progress(stage: str) -> None:
+        if stage == "search_completed":
+            progress["search_calls"] += 1
+            stage = "thinking"
+        elif stage == "calculation_completed":
+            progress["mcp_calls"] += 1
+            stage = "thinking"
+        if stage != progress["stage"] or stage == "thinking":
+            progress["stage"] = stage
+            logger.info(
+                "Decision %s stage=%s elapsed=%.1fs search=%d mcp=%d",
+                request_id, stage, time.perf_counter() - started,
+                progress["search_calls"], progress["mcp_calls"],
+            )
+
+    async def log_heartbeat() -> None:
+        while True:
+            await asyncio.sleep(15)
+            logger.info(
+                "Decision %s running stage=%s elapsed=%.1fs search=%d mcp=%d",
+                request_id, progress["stage"], time.perf_counter() - started,
+                progress["search_calls"], progress["mcp_calls"],
+            )
+
+    heartbeat_task = asyncio.create_task(log_heartbeat())
+    outcome = "failed"
     try:
         jev = None
         if payload.mode == "jev" and payload.jev_candidate:
+            update_progress("thinking")
             jev = await judge_candidate(
                 payload.jev_candidate, payload.question, payload.candidate_text or payload.question
             )
-        result = await request.app.state.codex_runner.run(
+        codex_task = asyncio.create_task(request.app.state.codex_runner.run(
             payload.question,
             jev_context=jev.as_prompt() if jev else "",
-        )
+            history=[(turn.question, turn.answer) for turn in payload.history],
+            on_progress=update_progress,
+        ))
+        disconnect_task = asyncio.create_task(wait_for_disconnect(request))
+        try:
+            done, _ = await asyncio.wait({codex_task, disconnect_task}, return_when=asyncio.FIRST_COMPLETED)
+            if disconnect_task in done and codex_task not in done:
+                outcome = "cancelled"
+                raise HTTPException(status_code=499, detail="Decision request cancelled.")
+            result = await codex_task
+        finally:
+            disconnect_task.cancel()
+            if not codex_task.done():
+                codex_task.cancel()
+            await asyncio.gather(codex_task, disconnect_task, return_exceptions=True)
+        outcome = "completed"
         return DecisionResponse(
             answer=result.answer,
             metadata={
+                "request_id": request_id,
                 "mode": payload.mode,
                 "latency_ms": result.latency_ms + (jev.latency_ms if jev else 0),
                 "codex_runs": result.codex_runs,
@@ -118,6 +216,18 @@ async def decide(payload: DecisionRequest, request: Request) -> DecisionResponse
         raise HTTPException(status_code=502, detail=str(error)) from error
     except CodexRuntimeError as error:
         raise HTTPException(status_code=502, detail=str(error)) from error
+    finally:
+        heartbeat_task.cancel()
+        await asyncio.gather(heartbeat_task, return_exceptions=True)
+        progress["stage"] = outcome
+        logger.info(
+            "Decision %s %s elapsed=%.1fs search=%d mcp=%d",
+            request_id, outcome, time.perf_counter() - started,
+            progress["search_calls"], progress["mcp_calls"],
+        )
+        asyncio.get_running_loop().call_later(
+            60, request.app.state.decision_progress.pop, request_id, None
+        )
 
 
 def run_calculation(payload: CalculationRequest) -> CalculationResult:
