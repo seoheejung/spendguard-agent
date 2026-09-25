@@ -17,14 +17,15 @@ SpendGuard Web
    ├─ 사용자 사실 추출
    ├─ 필요한 현재 정보 Search
    ├─ MCP deterministic calculation
-   └─ SpendGuard state 구성
-→ Jev Decision Bundle
-→ Code가 판단 결과 조합
-→ Codex가 최종 설명 작성
+   ├─ SpendGuard state 구성
+   ├─ Jev가 필요한 경우 판단별 최소 입력으로 Decision Bundle 실행
+   └─ FastAPI가 Jev 결과를 세션 state에 저장하고 Code로 판단 조합
+→ Codex가 결과를 반영해 최종 설명 작성
+→ FastAPI가 확정 계산값과 답변의 금액 일치 확인
 → 자연스러운 최종 답변
 ```
 
-Jev는 단순한 yes/no gate가 아니라, **SpendGuard state를 입력으로 여러 작은 semantic judgment를 한 번에 수행하는 decision layer**로 사용합니다.
+Jev는 단순한 yes/no gate가 아니라, **SpendGuard 서버가 보관한 state에서 각 판단에 필요한 최소 사실만 받아 작은 semantic judgment를 수행하는 decision layer**로 사용합니다. 현재 첫 요청의 Search·MCP 사용과 최종 작성은 Codex 실행 안에서 진행합니다.
 
 현재 제품 런타임에서는 OpenAI Platform API를 사용하지 않습니다.
 
@@ -116,6 +117,8 @@ Codex runtime은 개발 작업용 Codex 세션과 역할을 구분합니다.
 
 사용자 요청 처리 중 저장소 수정, Git 변경, 임의 개발 작업을 제품 기능으로 사용하지 않습니다.
 
+제품 요청용 Codex는 별도 최소 runtime 작업 디렉터리에서 실행하며, 기본 모델은 `gpt-6-luna`, reasoning effort는 `low`입니다. 후속 질문은 서버에 살아 있는 thread가 있으면 `codex exec resume`을 사용합니다. 최종 응답은 `answer`, 최대 3개의 `suggested_followups`, `sources`로 전달하고 실행 지표는 별도 metadata에 둡니다. 추천 질문 생성에 별도 실행이나 도구 호출을 추가하지 않습니다.
+
 ### Search
 
 현재 가격, 요금, 혜택, 항공권, 숙박, 견적, 정책처럼 최신 정보가 필요한 경우에만 사용합니다.
@@ -124,6 +127,8 @@ Codex runtime은 개발 작업용 Codex 세션과 역할을 구분합니다.
 - 값·단위·조건·출처·확인 시점 유지
 - 검색 결과를 SpendGuard state와 최종 비교에 실제 사용
 - 검색 실패를 일반론 답변으로 숨기지 않음
+- 사용자 요청의 live Search는 최대 4회 또는 Search 단계 60초 중 먼저 도달한 상한에서 멈춤
+- 기존 근거로 답할 수 있는 후속 질문은 Search를 다시 실행하지 않음
 
 ### MCP
 
@@ -138,13 +143,13 @@ Codex runtime은 개발 작업용 Codex 세션과 역할을 구분합니다.
 - `calculate_repeated_cost`
 - `sum_costs`
 
-계산 결과는 SpendGuard state에 확정값으로 저장하고, Codex나 Jev가 임의로 다시 계산하거나 변경하지 않습니다.
+계산 결과는 확정값으로 사용하며, FastAPI는 MCP 계산 trace를 다시 검증합니다. 최종 답변의 결정론적 금액 불일치는 공통 숫자 검증 경로에서 보정하거나 답변을 반환하지 않습니다. Codex와 Jev는 확정값을 임의로 변경하지 않습니다.
 
 ### SpendGuard state
 
 Jev 호출 전에 사용자 사실·검색 결과·계산 결과를 하나의 판단 상태로 구성합니다.
 
-개념 구조:
+현재 세션 state의 주요 필드:
 
 ```text
 SpendGuard state
@@ -153,13 +158,20 @@ SpendGuard state
 ├─ current_facts
 ├─ alternatives
 ├─ calculations
-├─ constraints
-└─ uncertainty
+├─ judgment_facts
+├─ jev_results
+└─ sources
 ```
 
 state는 사용자에게 노출하는 공통 answer schema가 아닙니다.
 
-Jev와 Code가 동일한 근거를 사용하기 위한 내부 판단 입력입니다.
+후속 질문에서 기존 judgment 입력과 새 사실을 비교하는 내부 상태입니다. FastAPI는 명시적으로 표시된 금액 사실을 결정론적으로 추출해 변경 판단만 갱신하고, 그 밖의 새 관련 사실은 Codex의 판단 도구 입력으로 받을 수 있습니다. TypeSafe Jev에는 전체 state나 원문 질문·대화·출처 URL을 보내지 않고, 판단별로 허용된 숫자·불리언·범주 값만 보냅니다.
+
+### 최근 소비 판단 기록
+
+성공적으로 표시된 결과만 브라우저 `localStorage`에 최대 30건 저장합니다. 기록에는 첫 질문·답변, 최근 후속 질문·답변, 출처와 추천 질문 등 화면 복원에 필요한 값만 남깁니다. `#history`에서 목록, `#history/<record-id>`에서 상세를 열고 개별·전체 삭제를 지원합니다.
+
+기록 조회는 서버의 Codex thread 복원이 아닙니다. 저장된 기록에서 후속 질문을 시작하면 브라우저가 저장된 질문·답변을 문맥으로 보내 새 서버 대화를 시작하고, 같은 소비 판단 기록을 갱신합니다. 서버에 살아 있는 활성 대화의 후속 질문만 기존 thread를 resume합니다. 별도 서버 영구 저장소나 로그인은 없습니다.
 
 ---
 
@@ -181,7 +193,7 @@ Jev가 새로운 제품 선택지나 금액을 임의로 생성하게 하지 않
 
 ### 구매 판단 Decision Bundle
 
-구매 관련 질문에서는 한 번의 Jev 요청으로 여러 판단을 묶어 수행합니다.
+구매 관련 질문에서 판단 가능한 입력이 있으면 필요한 판단들을 한 번의 Jev 요청으로 묶어 수행합니다. 각 judgment의 입력은 서로 분리된 최소 사실만 포함하며, 근거가 부족한 판단은 `unknown`으로 둡니다.
 
 ```text
 Codex / Code
@@ -190,7 +202,7 @@ Codex / Code
 → MCP 계산
 → SpendGuard state 구성
 
-Jev 한 번 호출
+필요한 judgment만 한 Jev 요청으로 호출
 ├─ Noul: 지금 교체 필요성이 충분한가?
 ├─ Noul: 현재 구매가 생활비 여유를 훼손하는가?
 ├─ Noul: 구매를 미뤄도 사용상 손실이 작은가?
@@ -205,11 +217,11 @@ Jev 한 번 호출
 → Codex는 설명 작성
 ```
 
-Jev가 내린 각 판단은 독립적으로 기록하고, Code가 최종 판단 흐름을 조합합니다.
+Jev 도구는 read-only 평가 결과만 반환합니다. FastAPI가 그 결과를 세션 state에 저장하고, Code가 최종 판단 흐름을 조합합니다. 후속 질문에서 판단 입력이 같으면 결과를 재사용하고, 달라진 입력에 영향을 받는 judgment만 다시 요청합니다. 새 평가가 없으면 Jev 요청은 0회입니다.
 
 Codex는 Jev가 이미 수행한 동일 semantic judgment를 다시 처음부터 수행하지 않도록 합니다.
 
-### 재사용 가능한 Jev 판단
+### 재사용 가능한 Jev 판단과 확장 후보
 
 Jev는 시나리오 이름보다 **판단 종류**를 기준으로 재사용합니다.
 
@@ -230,7 +242,7 @@ Jev는 시나리오 이름보다 **판단 종류**를 기준으로 재사용합�
 
 시나리오마다 새로운 Jev 모델 구조를 만들지 않습니다.
 
-동일한 판단을 여러 시나리오에서 재사용합니다.
+현재 구매·교체 Decision Bundle을 구현했습니다. 나머지 판단 종류는 동일한 방식으로 확장할 후보이며, 구현 완료로 간주하지 않습니다.
 
 ### Jev가 맡지 않는 역할
 
@@ -392,6 +404,8 @@ Jev 자체 평가는 판단 가능한 정보가 포함된 fixture를 별도로 �
 - 후속 질문
 - 사용 한도 오류 처리
 - 사용자 결과 렌더링
+- 결정론적 금액 계산 trace와 최종 답변의 숫자 일치
+- 최근 소비 판단 기록의 저장·조회·삭제·새 대화 후속 질문
 
 원칙:
 
@@ -458,6 +472,7 @@ Track A에서 확인된 실패를 그대로 반복하지 않습니다.
 | Validation | Pydantic |
 | Test | pytest / E2E |
 | Frontend | HTML / CSS / JavaScript |
+| Client history | Browser localStorage |
 
 현재 제품 설정과 예제 환경 변수에서 `OPENAI_API_KEY`, `OPENAI_MODEL`을 사용하지 않습니다.
 
@@ -465,44 +480,20 @@ SpendGuard runtime은 별도 Codex 실행 설정을 사용할 수 있지만 사�
 
 ---
 
-## 11. 현재 작업
+## 11. 현재 구현 상태와 남은 검증
 
-현재 MVP runtime과 UI는 동작합니다.
+현재 `/api/decisions`는 baseline과 Jev 모드를 유지합니다. 웹 UI는 Jev 모드를 요청하며, 제품 요청용 Codex CLI가 필요한 Search와 MCP 계산을 수행하고 최종 답변을 작성합니다. 별도 `render` 실험 코드가 있어도 현재 웹 요청 경로는 render-only 구조가 아닙니다.
 
-다음 작업의 중심은 Jev를 평가 모드의 단일 후보 필터가 아니라 **실제 decision layer**로 재구성하는 것입니다.
+구현된 공통 경로:
 
-1. 기존 사용자 사실·Search·MCP 결과를 SpendGuard state로 구성
-2. Jev `Noul` / `Score` / `Choice` 기반 Decision Bundle 정의
-3. 구매·교체 판단부터 실제 Jev bundle 적용
-4. Code에서 Jev 결과와 확정 계산값 조합
-5. Codex는 최종 설명과 사용자-facing 답변에 집중
-6. 기존 baseline 경로 유지
-7. 동일 질문으로 baseline / Jev 실제 비교
-8. Jev가 Codex 판단을 실제로 대체하는지 확인
-9. latency·품질·실패율 측정
-10. 구독·견적·연간 지출 판단으로 재사용 범위 확대
+1. 최소 runtime 작업 디렉터리에서 `gpt-6-luna` / low reasoning으로 Codex 실행, Search 4회·60초 상한 적용
+2. 구매·교체 판단에서 허용된 최소 사실로 Jev `Noul` / `Score` / `Choice` bundle 평가, FastAPI가 결과를 세션 state에 저장
+3. 후속 질문의 명시적 금액 사실을 FastAPI에서 비교해 변경된 judgment만 재평가하고, 동일한 판단은 재사용
+4. 살아 있는 Codex thread는 `exec resume`으로 이어받고 기존 근거와 출처를 재사용
+5. MCP 계산 trace 검증과 최종 답변의 공통 금액 일치 보정, `answer`·`suggested_followups`·`sources` 반환
+6. Codex 사용 한도는 HTTP 429와 `codex_usage_limit`로 전달
+7. 성공한 소비 판단을 브라우저 `localStorage`에 최근 30건까지 저장하고 URL로 조회·삭제·새 대화 후속 질문 시작
 
-완료 기준:
+남은 검증은 동일 질문의 baseline/Jev 비교에서 판단 품질, Codex 실행량, 응답 시간과 실패율을 실제로 확인하는 것입니다. 구독·견적·연간 지출 등으로 Jev 판단을 확대하는 일은 현재 구현 범위와 구분합니다. 측정하지 않은 개선 수치나 완료 여부는 결과로 기록하지 않습니다.
 
-```text
-사용자 사실 추출
-+ 실제 Search
-+ MCP deterministic calculation
-→ SpendGuard state
-→ Jev Decision Bundle
-→ Code decision composition
-→ Codex explanation
-→ 자연스러운 최종 답변
-
-그리고
-
-baseline 대비
-- 품질 유지
-- 동일 semantic judgment 반복 제거
-- latency 또는 Codex 실행량 개선 여부 확인
-- 실패·재시도 증가 여부 확인
-```
-
-기능 단위로 구현·검증 후 커밋합니다.
-
-서로 다른 기능을 하나의 커밋에 섞지 않으며, 사용자의 명시적 지시 없이 push하지 않습니다.
+기능 단위로 구현·검증 후 커밋하며, 서로 다른 기능을 한 커밋에 섞거나 사용자 지시 없이 push하지 않습니다.
