@@ -42,6 +42,7 @@ from spendguard.calculations import (
 from spendguard.jev_judgments import JUDGMENTS
 from spendguard.mcp_client import call_calculation_tool
 from spendguard.models import CalculationExecutionResult, CalculationRequest, CalculationToolName
+from spendguard.numeric_consistency import correct_numeric_answer
 
 
 class DecisionTurn(BaseModel):
@@ -323,6 +324,12 @@ async def decide(payload: DecisionRequest, request: Request) -> DecisionResponse
             completed_decision["result"].get("composition")
             if completed_decision and isinstance(completed_decision.get("result"), dict) else None,
         )
+        try:
+            result.answer, numeric_corrections = correct_numeric_answer(
+                result.answer, result.mcp_calls,
+            )
+        except ValueError as error:
+            raise CodexRuntimeError("Final monetary claims could not be reconciled.") from error
         if state_path and result.decision_delta and completed_decision and isinstance(completed_decision["result"], dict):
             persist_decision_result(
                 state_path, DecisionDelta.model_validate(result.decision_delta), completed_decision["result"],
@@ -363,6 +370,7 @@ async def decide(payload: DecisionRequest, request: Request) -> DecisionResponse
                 "mcp_calls": result.mcp_calls,
                 "verified_calculations": verified_calculations,
                 "cashflow_corrected": cashflow_corrected,
+                "numeric_corrections": numeric_corrections,
                 "jev_calls": jev_update.get("jev_calls", 0),
                 "jev_judgment_count": sum(bool(item.get("evaluated")) for item in jev_results.values()),
                 "jev_new_judgments": jev_update.get("new_judgments", []),
