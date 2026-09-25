@@ -8,23 +8,62 @@ SpendGuard는 구매·구독·계약·생활비처럼 자주 발생하는 소비
 
 사용자가 모든 조건을 완성해서 입력하지 않아도 현재 정보, 합리적인 가정, 검색 결과, 결정론적 계산을 조합해 가능한 범위까지 한 번에 답합니다.
 
-현재 구조:
+### 전체 런타임 흐름
 
-```text
-SpendGuard Web
-→ FastAPI
-→ Codex / Code
-   ├─ 사용자 사실 추출
-   ├─ 필요한 현재 정보 Search
-   ├─ MCP deterministic calculation
-   └─ SpendGuard state 구성
-→ Jev Decision Bundle
-→ Code가 판단 결과 조합
-→ Codex가 최종 설명 작성
-→ 자연스러운 최종 답변
+```mermaid
+flowchart TD
+    Q["사용자 질문"] --> UI["Web UI"]
+    UI --> API["FastAPI"]
+    API --> CX["Codex / Code"]
+    CX -->|현재 정보가 필요할 때| S["Search"]
+    CX -->|금액 계산이 필요할 때| M["MCP"]
+    CX --> ST["SpendGuard state"]
+    S --> ST
+    M --> ST
+    ST -->|필요한 판단만| J["Jev Decision Bundle"]
+    J --> C["Code decision composition"]
+    ST -->|확정 사실과 계산| C
+    C --> E["Codex explanation"]
+    E --> A["최종 답변"]
+    E --> F["suggested followups"]
+    A --> UI
+    F --> UI
+    UI -->|성공한 결과만| H["localStorage 최근 기록 저장"]
 ```
 
-Jev는 단순한 yes/no gate가 아니라, **SpendGuard state를 입력으로 여러 작은 semantic judgment를 한 번에 수행하는 decision layer**로 사용합니다.
+현재 웹 요청에서는 Codex가 필요한 Search·MCP 실행과 최종 설명을 담당합니다. Jev는 판단 가능한 작은 semantic judgment만 수행하고, FastAPI가 결과를 세션 state에 저장합니다.
+
+### Jev 판단과 후속 질문
+
+```mermaid
+flowchart TD
+    FIRST["첫 질문"] --> ST["SpendGuard state"]
+    ST --> MIN["판단별 최소 사실 입력"]
+    MIN --> J["Jev Noul / Score / Choice"]
+    J --> C["Code decision composition"]
+    C --> E["Codex explanation"]
+    E --> NEXT["후속 질문"]
+    ST -.-> DIFF["기존 judgment input과 새 사실 비교"]
+    NEXT --> DIFF
+    DIFF -->|동일| REUSE["기존 Jev 결과 재사용"]
+    DIFF -->|변경| PART["바뀐 판단만 partial reevaluation"]
+    REUSE --> C
+    PART --> C
+```
+
+후속 질문의 명시적인 금액 사실은 FastAPI가 먼저 비교합니다. 입력이 같은 판단은 재사용하고, 변경된 판단만 다시 평가합니다.
+
+### 화면 미리보기
+
+| 질문 입력 | 분석 진행 |
+| --- | --- |
+| <img src="docs/images/Screenshot_1.png" width="300" alt="여행비 비교 질문을 입력하는 SpendGuard 시작 화면"> | <img src="docs/images/Screenshot_2.png" width="300" alt="답변을 정리하는 동안 진행 상태와 중단 버튼을 보여주는 화면"> |
+| 상황별 질문 템플릿에서 여행비 비교를 시작합니다. | 분석 중 경과 시간과 중단 동작을 확인할 수 있습니다. |
+
+| 첫 결과와 추천 질문 | 후속 답변 |
+| --- | --- |
+| <img src="docs/images/Screenshot_3.png" width="300" alt="여행 예산 비교 결과와 추가 질문 추천 화면"> | <img src="docs/images/Screenshot_4.png" width="300" alt="기존 여행 결과에 이어 예비비를 반영한 후속 답변 화면"> |
+| 근거와 계산을 표로 보고, 추천 질문을 입력에 활용합니다. | 이전 결과를 참고해 새 조건을 반영한 답변을 확인합니다. |
 
 브라우저 localStorage 기반 최근 소비 판단 기록 저장 및 다시 보기를 지원합니다.
 
@@ -35,6 +74,27 @@ Jev는 단순한 yes/no gate가 아니라, **SpendGuard state를 입력으로 �
 - OpenAI Responses API 직접 호출 없음
 - OpenAI Agents SDK 사용자 요청 처리 없음
 - SpendGuard 실행 중 자동 로그인·OAuth·브라우저 인증 없음
+
+### 사용 조건
+
+SpendGuard는 로컬 실행을 기본으로 합니다.
+
+필수:
+- Python 3.13
+- Codex CLI
+- ChatGPT 계정으로 로그인된 Codex 환경
+
+Jev Decision Layer 사용 시:
+- TypeSafe Jev API key
+
+OpenAI Platform API key는 필요하지 않습니다.
+
+사용자는 자신의 Codex 인증과 사용 한도를 사용합니다.
+SpendGuard는 실행 중 Codex 로그인이나 OAuth를 대신 수행하지 않습니다.
+
+TypeSafe Jev API key가 없으면 baseline 실행 경로는 사용할 수 있습니다.
+현재 Web UI의 기본 제품 경로는 Jev 모드를 사용하므로,
+전체 UI 기능을 그대로 사용하려면 TypeSafe Jev API key가 필요합니다.
 
 ---
 
@@ -131,8 +191,9 @@ SpendGuard state
 ├─ current_facts
 ├─ alternatives
 ├─ calculations
-├─ constraints
-└─ uncertainty
+├─ judgment_facts
+├─ jev_results
+└─ sources
 ```
 
 이 state는 사용자에게 노출하는 결과 schema가 아니라 Codex·Code·Jev가 같은 근거를 공유하기 위한 내부 판단 입력입니다.
@@ -184,6 +245,8 @@ Codex는 Jev가 이미 수행한 동일 semantic judgment를 다시 처음부터
 ### 재사용 가능한 판단
 
 Jev는 시나리오보다 **판단 종류**를 기준으로 재사용합니다.
+
+현재는 구매·교체 Decision Bundle을 구현했습니다. 나머지 판단은 동일한 구조로 확장할 후보이며 아직 구현 완료 범위에 포함하지 않습니다.
 
 | 판단 | Primitive | 활용 |
 | --- | --- | --- |
