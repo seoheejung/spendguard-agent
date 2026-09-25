@@ -8,6 +8,8 @@ SpendGuard는 구매·구독·계약·생활비처럼 자주 발생하는 소비
 
 사용자가 모든 조건을 완성해서 입력하지 않아도 현재 정보, 합리적인 가정, 검색 결과, 결정론적 계산을 조합해 가능한 범위까지 한 번에 답합니다.
 
+본인의 ChatGPT Codex 사용 권한과 TypeSafe Jev API를 연결해 로컬에서 실행하는 개인 소비 의사결정 도구입니다.
+
 ### 전체 런타임 흐름
 
 ```mermaid
@@ -242,6 +244,10 @@ Jev 한 번 호출
 
 Codex는 Jev가 이미 수행한 동일 semantic judgment를 다시 처음부터 반복하지 않도록 합니다.
 
+후속 질문에서는 FastAPI가 기존 judgment input과 새 사용자 사실을 비교합니다.
+
+입력이 같으면 기존 Jev 결과를 재사용하고, 새 사실이 특정 판단에 영향을 주는 경우에만 해당 judgment를 다시 평가합니다.
+
 ### 재사용 가능한 판단
 
 Jev는 시나리오보다 **판단 종류**를 기준으로 재사용합니다.
@@ -271,6 +277,50 @@ Jev가 맡지 않는 역할:
 - 전체 scenario routing
 - 자동 결제·계약·해지
 - 최종 자연어 답변 작성
+
+---
+
+## 최근 소비 판단 기록
+
+성공한 소비 판단 결과는 브라우저 `localStorage`에 저장합니다.
+
+일반 챗봇 대화 기록보다 **이전에 내렸던 소비 판단을 다시 확인하는 기능**에 초점을 둡니다.
+
+```text
+최근 기록
+├─ 나고야 가을 명소 투어
+├─ 에어팟 4 구매 고민
+└─ S26 구매 비교
+```
+
+저장 원칙:
+
+- 최대 30건 저장
+- 성공한 응답만 저장
+- 실패·timeout·사용 한도 오류·취소된 분석은 저장하지 않음
+- 같은 활성 대화의 후속 질문은 새 기록을 추가하지 않고 기존 기록 갱신
+- 첫 질문·최종 답변·출처·추천 질문·최근 후속 질문 저장
+- 기록 조회만으로 API 요청을 발생시키지 않음
+- 기록 조회만으로 과거 Codex session을 `exec resume`하지 않음
+- DB·로그인·persistent session store 사용 없음
+
+기록 목록:
+
+```text
+http://127.0.0.1:8000/#history
+```
+
+개별 기록:
+
+```text
+http://127.0.0.1:8000/#history/<record-id>
+```
+
+기록 목록과 상세 화면은 새로고침과 브라우저 뒤로 가기를 지원합니다.
+
+`localStorage` 기반이므로 기록은 해당 브라우저에만 존재합니다. 다른 브라우저나 기기에서는 같은 기록 URL을 열어도 해당 데이터가 복원되지 않습니다.
+
+저장된 기록을 다시 보는 기능과 서버가 유지 중인 활성 Codex 대화 세션은 별개의 기능입니다.
 
 ---
 
@@ -332,6 +382,7 @@ Jev Decision Bundle
 후속 질문
 사용 한도 오류 처리
 사용자 결과 렌더링
+최근 소비 판단 기록
 ```
 
 원칙:
@@ -340,6 +391,7 @@ Jev Decision Bundle
 - 선택 정보 부족만으로 흐름 중단 금지
 - 근거 없는 숫자·가격·조건 생성 금지
 - Search / MCP 결과의 최종 답변 반영 확인
+- 결정론적 금액 계산은 Code/MCP의 확정값 사용
 - 실패를 기록만 하고 종료하지 않고 공통 원인을 수정 후 재검증
 - 실행하지 않은 테스트나 측정값 기록 금지
 
@@ -370,15 +422,24 @@ Jev에 유리하도록 Search나 계산 결과를 다르게 주지 않습니다.
 - 기존 Codex CLI 인증 재사용
 - `gpt-6-luna` + low reasoning runtime
 - Search 최대 4회 / 60초 budget
+- 질문 문장 없이 상품명·예약일·금액만 입력해도 소비 내역으로 해석
 - FastMCP 기반 결정론적 계산
+- 금액 차액·할인액·잔액 등 결정론적 숫자 일관성 검증
+- Jev Decision Bundle 기반 semantic judgment
+- 후속 질문의 Jev judgment delta 재평가 및 기존 판단 재사용
 - Codex session resume 기반 후속 질문
 - Codex usage limit 429 처리
+- 현재 답변 기반 suggested follow-up 생성 및 UI chip 표시
+- 브라우저 localStorage 기반 최근 소비 판단 기록 최대 30건 저장
+- `#history`, `#history/<record-id>` 기반 기록 목록·상세 조회
+- 기록 조회 중 추가 API 요청 없음
+- 과거 기록 조회와 Codex session resume 분리
 - 진행 단계·경과 시간·Search/MCP 호출 수 표시
 - 분석 중단 시 서버 Codex 작업 취소
 - 320px / 390px 모바일 가로 넘침 검증
 - pytest / E2E 검증
 
-현재 다음 작업은 Jev를 단일 후보 필터가 아니라 **실제 Decision Bundle**로 재구성하는 것입니다.
+현재 MVP는 질문 입력부터 Search·계산·Jev 판단·후속 질문·소비 판단 기록 조회까지 하나의 사용자 흐름으로 동작합니다.
 
 ---
 
@@ -392,6 +453,7 @@ Jev에 유리하도록 Search나 계산 결과를 다르게 주지 않습니다.
 | Current information | Codex Search |
 | Calculation | FastMCP 4.0.0 |
 | Decision layer | TypeSafe Jev |
+| Client history | Browser localStorage |
 | Validation | Pydantic |
 | Test | pytest / E2E |
 | Frontend | HTML / CSS / JavaScript |
@@ -446,6 +508,9 @@ SpendGuard는 비교·계산·정보 정리와 소비 판단을 중심으로 합
 - 자동 계약
 - 자동 구독 해지
 - 은행·카드 계정 직접 연동
+- 사용자 계정 기반 기록 동기화
+- 서버 DB 기반 대화 기록
+- persistent Codex session 복원
 - 투자 자문
 - 보험 상품 가입 결정
 - 대출 상품 가입 결정
