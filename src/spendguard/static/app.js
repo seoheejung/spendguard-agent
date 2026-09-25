@@ -1,4 +1,4 @@
-const state = { question: "", decision: null, turns: [], conversationId: null, scenarioId: null, activeScenarioGroup: "사기 전에", requestInFlight: false };
+const state = { question: "", decision: null, turns: [], conversationId: null, activeRecordId: null, viewingHistoryId: null, historyDisabled: false, scenarioId: null, activeScenarioGroup: "사기 전에", requestInFlight: false };
 
 const scenarioDefinitions = [
   { id: "price-comparison", group: "사기 전에", label: "최저가 비교", promptTemplate: "[제품명]을 사려고 해. 같은 제품뿐 아니라 비슷한 대안까지 찾아서 가격과 조건을 비교해줘.", inputHints: ["제품명"], guidance: "[제품명]을 먼저 고치세요.", icon: "tag" },
@@ -46,8 +46,100 @@ const showFollowUp = document.querySelector("#show-follow-up");
 const followUpForm = document.querySelector("#follow-up-form");
 const followUpQuestion = document.querySelector("#follow-up-question");
 const followUpSuggestions = document.querySelector("#follow-up-suggestions");
+const historyPanel = document.querySelector("#history-panel");
+const historyList = document.querySelector("#history-list");
+const historyEmpty = document.querySelector("#history-empty");
+const historyTrigger = document.querySelector("#open-history");
+const clearHistoryButton = document.querySelector("#clear-history");
+const historyDetail = document.querySelector("#history-detail");
+const historyDetailDate = document.querySelector("#history-detail-date");
+const returnActiveDecision = document.querySelector("#return-active-decision");
+const historySources = document.querySelector("#history-sources");
+const historySuggestions = document.querySelector("#history-suggestions");
+const HISTORY_KEY = "spendguard:decision-history:v1";
+const HISTORY_LIMIT = 30;
 const REQUEST_WAIT_LIMIT_MS = 250_000;
 let activeRequestController = null;
+
+function readDecisionHistory() {
+  try {
+    const records = JSON.parse(localStorage.getItem(HISTORY_KEY) || "[]");
+    return Array.isArray(records)
+      ? records.filter((record) => record && typeof record.id === "string"
+        && typeof record.firstQuestion === "string" && typeof record.answer === "string")
+        .slice(0, HISTORY_LIMIT)
+      : [];
+  } catch {
+    return [];
+  }
+}
+
+function writeDecisionHistory(records) {
+  const retained = records.slice(0, HISTORY_LIMIT);
+  if (!retained.length) {
+    try {
+      localStorage.setItem(HISTORY_KEY, "[]");
+      return true;
+    } catch {
+      return false;
+    }
+  }
+  while (retained.length) {
+    try {
+      localStorage.setItem(HISTORY_KEY, JSON.stringify(retained));
+      return true;
+    } catch {
+      retained.pop();
+    }
+  }
+  return false;
+}
+
+function historyTitle(questionText) {
+  const line = questionText.split(/\r?\n/).map((item) => item.trim()).find(Boolean) || "소비 판단";
+  const characters = Array.from(line);
+  return characters.length > 52 ? `${characters.slice(0, 52).join("")}…` : line;
+}
+
+function historyDate(value) {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "";
+  return `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, "0")}.${String(date.getDate()).padStart(2, "0")}`;
+}
+
+function historySourcesFrom(decision) {
+  return Array.isArray(decision.sources)
+    ? decision.sources.filter((source) => source && typeof source.url === "string" && /^https?:\/\//.test(source.url))
+      .slice(0, 12).map((source) => ({ title: String(source.title || source.url), url: source.url }))
+    : [];
+}
+
+function saveDecisionRecord(decision, askedQuestion, isFollowUp) {
+  if (state.historyDisabled) return;
+  const now = new Date().toISOString();
+  const records = readDecisionHistory();
+  const index = records.findIndex((record) => record.id === state.activeRecordId);
+  const firstTurn = state.turns[0];
+  const record = index >= 0 ? records.splice(index, 1)[0] : {
+    id: crypto.randomUUID(),
+    title: historyTitle(firstTurn?.question || askedQuestion),
+    firstQuestion: firstTurn?.question || askedQuestion,
+    answer: firstTurn?.answer || decision.answer,
+    suggestedFollowups: [],
+    sources: [],
+    latestFollowup: null,
+    createdAt: now,
+    updatedAt: now,
+  };
+  if (isFollowUp) record.latestFollowup = { question: askedQuestion, answer: decision.answer };
+  record.suggestedFollowups = Array.isArray(decision.suggested_followups)
+    ? decision.suggested_followups.filter((item) => typeof item === "string" && item.trim()).slice(0, 3)
+    : [];
+  const sources = historySourcesFrom(decision);
+  if (sources.length) record.sources = sources;
+  record.updatedAt = now;
+  if (writeDecisionHistory([record, ...records])) state.activeRecordId = record.id;
+}
 
 function fitQuestionHeight() {
   question.style.height = "auto";
@@ -363,8 +455,109 @@ function renderDecisionResult(decision, askedQuestion, isFollowUp) {
   document.body.classList.add("has-decision", "has-active-decision");
 }
 
+function renderDecisionHistory() {
+  const records = readDecisionHistory();
+  historyEmpty.hidden = records.length > 0;
+  clearHistoryButton.hidden = records.length === 0;
+  historyList.replaceChildren(...records.map((record) => {
+    const item = document.createElement("article");
+    item.className = "history-item";
+    const open = document.createElement("button");
+    open.type = "button";
+    open.className = "history-item-open";
+    open.dataset.historyId = record.id;
+    const heading = document.createElement("span");
+    heading.className = "history-item-heading";
+    heading.append(
+      Object.assign(document.createElement("strong"), { textContent: record.title || historyTitle(record.firstQuestion) }),
+      Object.assign(document.createElement("time"), { textContent: historyDate(record.updatedAt || record.createdAt), dateTime: record.updatedAt || record.createdAt }),
+    );
+    const preview = document.createElement("span");
+    preview.className = "history-item-preview";
+    const summary = typeof record.latestFollowup?.answer === "string" ? record.latestFollowup.answer : record.answer;
+    preview.textContent = summary.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1").replace(/[#*|]/g, "").trim().slice(0, 130);
+    open.append(heading, preview);
+    const remove = document.createElement("button");
+    remove.type = "button";
+    remove.className = "history-item-delete";
+    remove.dataset.deleteHistoryId = record.id;
+    remove.textContent = "삭제";
+    remove.setAttribute("aria-label", `${record.title || historyTitle(record.firstQuestion)} 기록 삭제`);
+    item.append(open, remove);
+    return item;
+  }));
+}
+
+function setHistoryOpen(open) {
+  if (open && state.requestInFlight) return;
+  historyPanel.hidden = !open;
+  historyTrigger.setAttribute("aria-expanded", String(open));
+  document.body.classList.toggle("history-open", open);
+  if (open) {
+    renderDecisionHistory();
+    historyPanel.scrollIntoView({ block: "start" });
+  }
+}
+
+function showDecisionRecord(record) {
+  setHistoryOpen(false);
+  state.viewingHistoryId = record.id;
+  document.body.classList.add("viewing-history");
+  originalQuestionText.textContent = record.firstQuestion;
+  originalQuestion.hidden = false;
+  renderDecisionResult({ answer: record.answer, suggested_followups: [] }, record.firstQuestion, false);
+  if (record.latestFollowup?.question && record.latestFollowup?.answer) {
+    renderDecisionResult({ answer: record.latestFollowup.answer, suggested_followups: [] }, record.latestFollowup.question, true);
+  }
+  followUpActions.hidden = true;
+  followUpForm.hidden = true;
+  showFollowUp.hidden = true;
+  workflowPanel.hidden = true;
+  historyDetailDate.textContent = `처음 저장 ${historyDate(record.createdAt)} · 최근 수정 ${historyDate(record.updatedAt)}`;
+  returnActiveDecision.hidden = !state.turns.length;
+  historySources.replaceChildren();
+  for (const source of Array.isArray(record.sources) ? record.sources : []) {
+    if (!source || typeof source.url !== "string" || !/^https?:\/\//.test(source.url)) continue;
+    const link = document.createElement("a");
+    link.href = source.url;
+    link.target = "_blank";
+    link.rel = "noreferrer noopener";
+    link.textContent = typeof source.title === "string" && source.title ? source.title : source.url;
+    historySources.append(link);
+  }
+  historySources.hidden = !historySources.childElementCount;
+  historySuggestions.replaceChildren(...(Array.isArray(record.suggestedFollowups)
+    ? record.suggestedFollowups.filter((item) => typeof item === "string" && item.trim()).slice(0, 3)
+    : []).map((suggestion) => Object.assign(document.createElement("span"), { className: "suggestion-chip", textContent: suggestion })));
+  historySuggestions.hidden = !historySuggestions.childElementCount;
+  historyDetail.hidden = false;
+  setError("");
+  setStatus("서비스 정상 운영 중", "ready");
+  originalQuestion.scrollIntoView({ block: "start" });
+}
+
+function restoreActiveDecision() {
+  if (!state.turns.length) return;
+  state.viewingHistoryId = null;
+  document.body.classList.remove("viewing-history");
+  originalQuestionText.textContent = state.turns[0].question;
+  originalQuestion.hidden = false;
+  for (const [index, turn] of state.turns.entries()) {
+    renderDecisionResult({
+      answer: turn.answer,
+      suggested_followups: index === state.turns.length - 1 ? state.decision?.suggested_followups : [],
+    }, turn.question, index > 0);
+  }
+  historyDetail.hidden = true;
+  followUpActions.hidden = false;
+  followUpForm.hidden = false;
+  showFollowUp.hidden = true;
+  workflowPanel.hidden = false;
+  originalQuestion.scrollIntoView({ block: "start" });
+}
+
 async function requestDecision(askedQuestion, isFollowUp = false) {
-  if (state.requestInFlight) return;
+  if (state.requestInFlight || state.viewingHistoryId) return;
   state.requestInFlight = true;
   const controller = new AbortController();
   activeRequestController = controller;
@@ -451,6 +644,7 @@ async function requestDecision(askedQuestion, isFollowUp = false) {
     followUpForm.hidden = false;
     showFollowUp.hidden = true;
     setStatus("서비스 정상 운영 중", "ready");
+    saveDecisionRecord(decision, askedQuestion, isFollowUp);
     (isFollowUp ? decisionCards.lastElementChild : resultSection).scrollIntoView({ behavior: "smooth", block: "start" });
   } catch (requestError) {
     setError(controller.signal.aborted
@@ -512,11 +706,14 @@ question.addEventListener("keydown", (event) => {
   event.preventDefault();
   selectPlaceholder(nextIndex);
 });
-document.querySelector("[data-new-decision]").addEventListener("click", () => {
+function resetDecision() {
   state.question = "";
   state.decision = null;
   state.turns = [];
   state.conversationId = null;
+  state.activeRecordId = null;
+  state.viewingHistoryId = null;
+  state.historyDisabled = false;
   state.scenarioId = null;
   activePlaceholderIndex = -1;
   question.value = "";
@@ -531,7 +728,52 @@ document.querySelector("[data-new-decision]").addEventListener("click", () => {
   followUpForm.hidden = true;
   followUpQuestion.value = "";
   decisionCards.replaceChildren();
-  document.body.classList.remove("has-decision", "has-active-decision");
+  historyDetail.hidden = true;
+  document.body.classList.remove("has-decision", "has-active-decision", "viewing-history");
   setError("");
   setStatus("서비스 정상 운영 중", "ready");
+}
+
+historyTrigger.addEventListener("click", () => setHistoryOpen(historyPanel.hidden));
+document.querySelector("#close-history").addEventListener("click", () => setHistoryOpen(false));
+returnActiveDecision.addEventListener("click", restoreActiveDecision);
+historyList.addEventListener("click", (event) => {
+  const remove = event.target.closest("[data-delete-history-id]");
+  if (remove) {
+    const id = remove.dataset.deleteHistoryId;
+    writeDecisionHistory(readDecisionHistory().filter((record) => record.id !== id));
+    if (state.activeRecordId === id) {
+      state.activeRecordId = null;
+      state.historyDisabled = true;
+    }
+    if (state.viewingHistoryId === id) {
+      if (state.turns.length) restoreActiveDecision();
+      else resetDecision();
+    }
+    renderDecisionHistory();
+    return;
+  }
+  const open = event.target.closest("[data-history-id]");
+  if (!open) return;
+  const record = readDecisionHistory().find((item) => item.id === open.dataset.historyId);
+  if (record) showDecisionRecord(record);
+});
+clearHistoryButton.addEventListener("click", () => {
+  if (!window.confirm("최근 소비 판단 기록을 모두 삭제할까요?")) return;
+  try {
+    localStorage.removeItem(HISTORY_KEY);
+  } catch {
+    return;
+  }
+  if (state.activeRecordId) state.historyDisabled = true;
+  state.activeRecordId = null;
+  if (state.viewingHistoryId) {
+    if (state.turns.length) restoreActiveDecision();
+    else resetDecision();
+  }
+  renderDecisionHistory();
+});
+document.querySelector("[data-new-decision]").addEventListener("click", () => {
+  setHistoryOpen(false);
+  resetDecision();
 });

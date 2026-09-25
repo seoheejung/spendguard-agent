@@ -26,6 +26,8 @@ SpendGuard Web
 
 Jev는 단순한 yes/no gate가 아니라, **SpendGuard state를 입력으로 여러 작은 semantic judgment를 한 번에 수행하는 decision layer**로 사용합니다.
 
+브라우저 localStorage 기반 최근 소비 판단 기록 저장 및 다시 보기를 지원합니다.
+
 현재 사용자 요청 경로에서는 OpenAI Platform API를 직접 사용하지 않습니다.
 
 - 기존 Codex CLI의 ChatGPT 계정 인증 상태 재사용

@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>SpendGuard | 소비 결정 도우미</title>
-    <link rel="stylesheet" href="/static/styles.css?v=runtime-4" />
+    <link rel="stylesheet" href="/static/styles.css?v=history-2" />
   </head>
   <body>
     <a class="skip-link" href="#workspace">결정 도우미로 건너뛰기</a>
@@ -21,12 +21,24 @@
             <span class="status-dot" aria-hidden="true"></span>
             <span class="status-label">서비스 정상 운영 중</span>
           </p>
+          <button id="open-history" class="new-decision history-trigger" type="button" aria-controls="history-panel" aria-expanded="false">최근 기록</button>
           <a class="new-decision" href="#question" data-new-decision>새 질문</a>
         </div>
       </div>
     </header>
 
     <main id="workspace" class="workspace" tabindex="-1">
+      <section id="history-panel" class="history-panel" aria-labelledby="history-heading" hidden>
+        <div class="section-heading history-heading">
+          <div><p class="eyebrow">소비 결정 기록</p><h1 id="history-heading">최근 기록</h1></div>
+          <div class="history-heading-actions">
+            <button id="clear-history" class="quiet-button" type="button" hidden>전체 삭제</button>
+            <button id="close-history" class="quiet-button" type="button">닫기</button>
+          </div>
+        </div>
+        <p id="history-empty" class="history-empty" hidden>저장된 소비 판단 기록이 없습니다. 답변이 완료되면 여기에 표시됩니다.</p>
+        <div id="history-list" class="history-list"></div>
+      </section>
       <section id="question-panel" class="question-panel" aria-labelledby="question-heading">
         <div class="question-copy">
           <p class="eyebrow">돈 쓰기 전에</p>
@@ -95,6 +107,13 @@
               </div>
             </div>
             <div id="decision-cards" class="decision-cards"></div>
+            <div id="history-detail" class="history-detail" hidden>
+              <p id="history-detail-date"></p>
+              <p>저장된 소비 판단 기록입니다. 이 기록에서는 추가 질문을 이어갈 수 없습니다.</p>
+              <button id="return-active-decision" class="quiet-button" type="button" hidden>현재 결정으로 돌아가기</button>
+              <div id="history-sources" class="history-sources" hidden></div>
+              <div id="history-suggestions" class="history-suggestions" hidden></div>
+            </div>
           </section>
             <div id="follow-up-actions" class="follow-up-actions" hidden>
               <button id="show-follow-up" type="button" hidden>추가 질문하기 <span aria-hidden="true">→</span></button>
@@ -121,6 +140,6 @@
         <button id="cancel-request" class="processing-cancel" type="button">분석 중단</button>
       </div>
     </div>
-    <script src="/static/app.js?v=runtime-4"></script>
+    <script src="/static/app.js?v=history-2"></script>
   </body>
 </html>
