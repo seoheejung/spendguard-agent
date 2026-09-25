@@ -49,6 +49,13 @@ const followUpSuggestions = document.querySelector("#follow-up-suggestions");
 const REQUEST_WAIT_LIMIT_MS = 250_000;
 let activeRequestController = null;
 
+function fitQuestionHeight() {
+  question.style.height = "auto";
+  const height = Math.min(320, Math.max(44, question.scrollHeight));
+  question.style.height = `${height}px`;
+  question.style.overflowY = question.scrollHeight > 320 ? "auto" : "hidden";
+}
+
 const progressMessages = {
   queued: "답변을 준비하고 있어요.",
   thinking: "질문을 살펴보고 있어요.",
@@ -189,6 +196,7 @@ function renderTemplateGuidance(scenario, preserveCurrentQuestion = false) {
 function applyScenarioTemplate(scenario) {
   state.scenarioId = scenario.id;
   question.value = scenario.promptTemplate;
+  fitQuestionHeight();
   setScenarioSelection(scenario.id);
   renderTemplateGuidance(scenario);
   activePlaceholderIndex = -1;
@@ -483,6 +491,9 @@ followUpForm.addEventListener("submit", async (event) => {
 
 renderScenarioGroups();
 question.placeholder = scenarioDefinitions[new Date().getDate() % scenarioDefinitions.length].promptTemplate;
+fitQuestionHeight();
+question.addEventListener("input", fitQuestionHeight);
+window.addEventListener("resize", fitQuestionHeight);
 scenarioGroupsContainer.addEventListener("click", (event) => {
   const tab = event.target.closest("[data-scenario-group]");
   if (tab) {
@@ -509,6 +520,7 @@ document.querySelector("[data-new-decision]").addEventListener("click", () => {
   state.scenarioId = null;
   activePlaceholderIndex = -1;
   question.value = "";
+  fitQuestionHeight();
   templateGuidance.hidden = true;
   setScenarioSelection("");
   resultSection.hidden = true;
