@@ -108,7 +108,12 @@ def test_search_budget_resumes_without_search_and_follow_up_reuses_thread(tmp_pa
         "        if index < 3:\n"
         "            print(json.dumps({'type': 'item.completed', 'item': {'type': 'web_search', 'action': {'type': 'search'}, 'results': []}}), flush=True)\n"
         "    time.sleep(20)\n"
+        "elif sys.argv[2] == 'no-search' and 'refresh current price' in prompt:\n"
+        "    print(json.dumps({'type': 'item.completed', 'item': {'type': 'agent_message', 'text': 'SPENDGUARD_NEEDS_FRESH_SEARCH'}}), flush=True)\n"
+        "    print(json.dumps({'type': 'turn.completed'}), flush=True)\n"
         "else:\n"
+        "    if sys.argv[2] == 'search':\n"
+        "        print(json.dumps({'type': 'item.completed', 'item': {'type': 'web_search', 'action': {'type': 'search'}, 'results': []}}), flush=True)\n"
         "    print(json.dumps({'type': 'item.completed', 'item': {'type': 'agent_message', 'text': '최종 답변'}}), flush=True)\n"
         "    print(json.dumps({'type': 'turn.completed'}), flush=True)\n",
         encoding="utf-8",
@@ -116,16 +121,19 @@ def test_search_budget_resumes_without_search_and_follow_up_reuses_thread(tmp_pa
 
     class FakeRunner(CodexRunner):
         def _command(self, _workdir, *, thread_id=None, search=True):
+            self.commands.append((thread_id, search))
             return [sys.executable, str(cli), thread_id or "new", "search" if search else "no-search"]
 
     async def call():
         runner = FakeRunner(timeout_seconds=10)
         runner.executable = sys.executable
+        runner.commands = []
         first = await runner.run("삼성 S26 비교")
         follow_up = await runner.run("S25와 차이", thread_id=first.thread_id)
-        return first, follow_up
+        refreshed = await runner.run("refresh current price", thread_id=first.thread_id)
+        return first, follow_up, refreshed, runner.commands
 
-    first, follow_up = asyncio.run(call())
+    first, follow_up, refreshed, commands = asyncio.run(call())
     assert first.search_calls <= 4
     assert first.codex_runs == 2
     assert first.thread_id == "saved-thread"
@@ -133,6 +141,9 @@ def test_search_budget_resumes_without_search_and_follow_up_reuses_thread(tmp_pa
     assert follow_up.search_calls == 0
     assert follow_up.codex_runs == 1
     assert follow_up.resumed is True
+    assert commands[-3:] == [("saved-thread", False), ("saved-thread", False), ("saved-thread", True)]
+    assert refreshed.search_calls == 1
+    assert refreshed.codex_runs == 2
 
 
 def test_cli_usage_limit_is_detected_without_retry(tmp_path):
