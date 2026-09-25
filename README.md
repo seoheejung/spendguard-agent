@@ -1,59 +1,40 @@
 # SpendGuard
 
-> 15개의 소비 문제를 실제 질문으로 해결하고, 필요한 경우에만 Search·MCP·Jev를 사용하는 소비 절감형 웹 애플리케이션
+> 15개의 소비 문제를 실제 질문으로 해결하고, Codex·Search·MCP·Jev를 역할별로 분리해 검증하는 소비 절감형 웹 애플리케이션
 
 ## 개요
 
-SpendGuard는 범용 의사결정 플랫폼이 아닙니다.
+SpendGuard는 구매·구독·계약·생활비처럼 자주 발생하는 소비 문제를 실제 질문 단위로 해결하는 프로젝트입니다.
 
-사용자가 자주 겪는 구매·구독·계약·생활비 문제 15가지를 대상으로, 질문 한 건에 대해 가능한 범위까지 한 번에 비교·계산·조사하고 자연스러운 답변을 제공하는 프로젝트입니다.
+사용자가 모든 조건을 완성해서 입력하지 않아도 현재 정보, 합리적인 가정, 검색 결과, 결정론적 계산을 조합해 가능한 범위까지 한 번에 답합니다.
 
-목표 런타임:
+현재 구조:
 
 ```text
 SpendGuard Web
 → FastAPI
-→ Codex runtime
-   ├─ 자연어 이해 및 복합 추론
-   ├─ 현재 정보 조사
-   ├─ SpendGuard MCP deterministic tools
-   └─ optional Jev narrow judgment
+→ Codex / Code
+   ├─ 사용자 사실 추출
+   ├─ 필요한 현재 정보 Search
+   ├─ MCP deterministic calculation
+   └─ SpendGuard state 구성
+→ Jev Decision Bundle
+→ Code가 판단 결과 조합
+→ Codex가 최종 설명 작성
 → 자연스러운 최종 답변
 ```
 
-현재 전환 목표에서는 OpenAI Platform API를 제품 런타임에 사용하지 않습니다.
+Jev는 단순한 yes/no gate가 아니라, **SpendGuard state를 입력으로 여러 작은 semantic judgment를 한 번에 수행하는 decision layer**로 사용합니다.
 
-- `OPENAI_API_KEY` 미사용
-- `OPENAI_MODEL` 미사용
-- OpenAI Responses API 직접 호출 미사용
-- OpenAI Agents SDK 사용자 요청 처리 미사용
-- Platform API Web Search 미사용
-- OpenAI Platform API fallback 미사용
-- 기존 Codex CLI 인증 상태 재사용
-- SpendGuard 실행 중 자동 로그인·OAuth·브라우저 인증 금지
+현재 사용자 요청 경로에서는 OpenAI Platform API를 직접 사용하지 않습니다.
 
-## 제품 원칙
+- 기존 Codex CLI의 ChatGPT 계정 인증 상태 재사용
+- `OPENAI_API_KEY`, `OPENAI_MODEL` 불필요
+- OpenAI Responses API 직접 호출 없음
+- OpenAI Agents SDK 사용자 요청 처리 없음
+- SpendGuard 실행 중 자동 로그인·OAuth·브라우저 인증 없음
 
-- 사용자가 이미 준 값을 다시 묻지 않음
-- 정보가 일부 부족해도 합리적인 가정으로 유용한 답을 만들 수 있으면 중단하지 않음
-- 사용자 사실과 시스템 가정을 구분
-- 현재 가격·정책·혜택은 실제 조사 결과만 사용
-- 결정적인 계산은 MCP 또는 코드로 처리
-- Search·MCP 결과를 최종 답변의 실제 숫자와 비교에 반영
-- 내부 routing, tool 이름, field id, raw JSON, diagnostic 비노출
-- 자동 구매·결제·계약·해지·대출·보험 가입 실행 금지
-- 테스트 하나를 맞추기 위한 scenario별 regex·if·하드코딩 금지
-
-사용자에게 필요한 것은 내부 architecture가 아니라 결과입니다.
-
-```text
-판단
-→ 중요한 숫자
-→ 실제 비교
-→ 절감 가능액
-→ 가정과 불확실성
-→ 필요한 경우 출처
-```
+---
 
 ## 돈 아껴주는 15개 시나리오
 
@@ -77,29 +58,31 @@ SpendGuard Web
 
 15개는 제품 기능 목록입니다.
 
-시나리오별 독립 pipeline, 복잡한 typed result schema, generic `DecisionAnswer` 중심 구조로 확장하지 않습니다.
+시나리오별 독립 pipeline이나 복잡한 공통 answer schema로 확장하지 않습니다.
 
-## 런타임 역할
+---
 
-### Codex
+## 핵심 구성
 
-- 사용자 질문 해석
-- 복합 비교와 추론
-- Search / MCP / Jev 사용 판단
-- 결과 통합
-- 최종 사용자 답변 생성
+### Codex / Code
 
-Codex runtime은 기존 Windows 사용자 환경에 저장된 ChatGPT 계정 인증을 재사용합니다.
+Codex와 Code는 사용자 질문을 해석하고 Jev가 판단할 수 있는 상태를 만듭니다.
 
-SpendGuard가 `codex login`, OAuth, 브라우저 로그인을 실행하지 않습니다.
+- 사용자 사실 추출
+- 수정 가능한 가정 구성
+- Search / MCP 사용 판단
+- Search / MCP 실행
+- SpendGuard state 구성
+- Jev 판단 결과와 확정 계산값 조합
+- 최종 사용자 답변 작성
 
-SpendGuard 사용자 요청의 Codex 실행은 기본적으로 `gpt-6-luna`와 low reasoning을 사용합니다. 이 설정은 `SPENDGUARD_CODEX_MODEL`, `SPENDGUARD_CODEX_REASONING_EFFORT` 환경 변수로 SpendGuard 프로세스에서만 변경할 수 있습니다. 개발용 Codex 설정은 변경하지 않습니다.
+SpendGuard 사용자 요청의 Codex 실행은 기본적으로 `gpt-6-luna`와 low reasoning을 사용합니다.
 
-한 요청의 라이브 Search는 최대 4회 또는 Search 시작 후 60초로 제한합니다. 필요한 근거가 먼저 확보되면 바로 답변하며, 한도에 도달하면 기존 근거와 불확실성을 바탕으로 검색 없이 마무리합니다. 후속 질문은 서버가 보관한 Codex 세션을 `exec resume`으로 이어갑니다. 먼저 기존 근거만으로 답변하고, 새 현재 정보가 꼭 필요한 경우에만 Search를 켜서 같은 세션을 다시 이어갑니다. 요청 전체 제한은 120초입니다. 서버를 재시작하면 메모리의 대화 식별자도 초기화됩니다.
+이 설정은 SpendGuard 프로세스에만 적용하며 개발용 Codex 설정은 변경하지 않습니다.
 
-Codex 사용 한도 오류는 HTTP 429와 `codex_usage_limit` 코드로 전달하고, 화면에는 재시도 안내만 표시합니다.
+후속 질문은 서버가 보관한 Codex 세션을 `exec resume`으로 이어가며, 기존 근거로 먼저 답하고 새로운 현재 정보가 필요한 경우에만 Search를 다시 사용합니다.
 
-사용자 요청 처리 중 저장소 수정, Git 변경, 임의 개발 작업을 제품 기능으로 수행하지 않습니다.
+Codex 사용 한도 오류는 HTTP 429와 `codex_usage_limit` 코드로 처리합니다.
 
 ### Search
 
@@ -114,16 +97,15 @@ Codex 사용 한도 오류는 HTTP 429와 `codex_usage_limit` 코드로 전달�
 - 제품 사양
 - 공식 정책
 
-원칙:
+검색하지 않은 최신 정보를 생성하지 않고, 값·조건·출처·확인 시점을 실제 비교에 사용합니다.
 
-- 검색하지 않은 최신 정보 생성 금지
-- 값·단위·조건·출처·확인 시점 유지
-- 검색 결과를 최종 비교에 실제 사용
-- 검색 실패를 일반적인 조언으로 숨기지 않음
+한 요청의 live Search는 최대 4회 또는 Search 시작 후 60초로 제한합니다.
+
+필요한 근거가 먼저 확보되면 즉시 답변하고, 상한에 도달하면 현재 근거와 불확실성을 바탕으로 마무리합니다.
 
 ### MCP / Calculation
 
-재현 가능한 계산은 기존 FastMCP 도구를 사용합니다.
+재현 가능한 계산은 FastMCP 도구로 처리합니다.
 
 - `calculate_installment`
 - `calculate_refinance`
@@ -131,97 +113,209 @@ Codex 사용 한도 오류는 HTTP 429와 `codex_usage_limit` 코드로 전달�
 - `annualize_expense`
 - `calculate_tco`
 - `compare_costs`
+- `calculate_repeated_cost`
+- `sum_costs`
 
-계산 결과를 LLM이 임의로 다시 계산하거나 변경하지 않습니다.
+계산 결과는 SpendGuard state의 확정값으로 사용하며 Codex나 Jev가 임의로 다시 계산하지 않습니다.
 
-### Jev
+### SpendGuard state
 
-Jev는 workflow gate나 router가 아닙니다.
+Jev 호출 전에 사용자 사실·검색 결과·계산 결과를 하나의 내부 상태로 구성합니다.
 
-반복되는 좁은 semantic if/else 후보에만 사용합니다.
+```text
+SpendGuard state
+├─ user_facts
+├─ assumptions
+├─ current_facts
+├─ alternatives
+├─ calculations
+├─ constraints
+└─ uncertainty
+```
 
-| 시나리오 | Jev 판단 |
-| --- | --- |
-| 구독료 다이어트 | 중복·저활용 절감 후보인가 |
-| 견적서 바가지 체크 | 추가 검토가 필요한 항목인가 |
-| 연간 새는 돈 찾기 | 만족도 영향이 낮은 절감 후보인가 |
-| 구매 전 최종 심사 | 상세 비교할 가치가 있는 대안인가 |
+이 state는 사용자에게 노출하는 결과 schema가 아니라 Codex·Code·Jev가 같은 근거를 공유하기 위한 내부 판단 입력입니다.
+
+---
+
+## Jev Decision Layer
+
+Jev는 전체 workflow를 통과시키는 gate나 scenario router가 아닙니다.
+
+계산이나 사실 조회로 확정할 수 없는 **작은 semantic judgment를 여러 개 묶어 빠르게 판단하는 decision layer**로 사용합니다.
+
+### Jev primitive
+
+- `Noul` — yes/no 성격의 판단
+- `Score` — 필요도·부담·가치·중복도 같은 정도 평가
+- `Choice` — 코드에서 미리 정의한 선택지 중 하나 선택
+
+Jev가 가격, 계산값, 새로운 제품 선택지를 임의로 생성하게 하지 않습니다.
+
+### 구매 판단 Decision Bundle
+
+구매·교체 질문에서는 한 번의 Jev 요청으로 여러 판단을 묶어 수행합니다.
+
+```text
+Codex / Code
+→ 사용자 사실 추출
+→ 필요한 현재 가격 Search
+→ MCP 계산
+→ SpendGuard state 구성
+
+Jev 한 번 호출
+├─ Noul: 지금 교체 필요성이 충분한가?
+├─ Noul: 현재 구매가 생활비 여유를 훼손하는가?
+├─ Noul: 구매를 미뤄도 사용상 손실이 작은가?
+├─ Score: 현재 기기의 교체 필요도
+├─ Score: 구매 부담 수준
+├─ Score: 기존 제품 대비 업그레이드 가치
+├─ Choice: buy_now / wait / buy_cheaper_variant
+└─ Choice: 가장 중요한 판단 요인
+       price / replacement_need / feature_gain / cashflow
+
+→ Code가 결정 조합
+→ Codex는 설명 작성
+```
+
+Codex는 Jev가 이미 수행한 동일 semantic judgment를 다시 처음부터 반복하지 않도록 합니다.
+
+### 재사용 가능한 판단
+
+Jev는 시나리오보다 **판단 종류**를 기준으로 재사용합니다.
+
+| 판단 | Primitive | 활용 |
+| --- | --- | --- |
+| 지출 필요성이 높은가 | Score / Noul | 충동구매, 구매 전 최종 심사 |
+| 현재 현금흐름 부담이 큰가 | Score / Noul | 구매, 여행, 구독, 카드 |
+| 미뤄도 손실이 작은가 | Noul | 구매, 교체, 계약 |
+| 대체 가능성이 높은가 | Score | 구매, 구독, 장보기 |
+| 가격 대비 효용이 높은가 | Score | 구매, 카드, 통신 |
+| 기존 대비 업그레이드 가치가 높은가 | Score | 제품 교체 |
+| 기능 중복도가 높은가 | Score | 구독, 보험 |
+| 저활용 상태인가 | Noul / Score | 구독, 반복 지출 |
+| 만족도 손실이 낮은 절감인가 | Score / Noul | 연간 새는 돈, 장보기 |
+| 추가 검토가 필요한 항목인가 | Noul | 견적 |
+| 어느 대안이 더 적합한가 | Choice | 구매, 여행, 카드 |
+| 가장 중요한 결정 요인은 무엇인가 | Choice | 구매, 계약, 비교 |
 
 Jev가 맡지 않는 역할:
 
+- 현재 가격 검색
+- 사실 검증
+- 금액·이자·단위 계산
 - 전체 scenario routing
-- Search 필요 여부
-- 추가 질문 여부
-- 금액 계산
-- 최종 사용자 결론
+- 자동 결제·계약·해지
+- 최종 자연어 답변 작성
+
+---
 
 ## Baseline / Jev 비교
 
-두 실행 모드를 동일한 15개 fixture에서 비교합니다.
+제품에서 Jev를 실제로 활용하되, 효과를 검증하기 위해 baseline을 유지합니다.
 
 ```text
 baseline
 = Codex + Search + MCP
+  → Codex가 semantic judgment와 설명을 모두 수행
 
 jev
-= Codex + Search + MCP
-+ 지정된 4개 narrow judgment의 Jev
+= Codex / Code + Search + MCP
+  → SpendGuard state
+  → Jev Decision Bundle
+  → Code decision composition
+  → Codex explanation
 ```
 
-Jev 모드에서도 최종 답변은 Codex가 생성합니다.
-
-Jev가 담당한 판단을 Codex가 다시 반복하지 않도록 구성합니다.
+비교의 핵심은 Jev 호출 자체가 아니라 **Codex가 수행하던 semantic judgment를 Jev가 실제로 대체하는지**입니다.
 
 측정:
 
 - scenario success
 - 최종 답변 품질
-- Search 사용 여부
-- MCP 사용 여부
-- Jev 사용 여부와 판단 결과
+- Jev judgment 정확도
+- Jev abstain / unknown
 - Codex 실행 횟수
 - Jev 요청 횟수
+- Search / MCP 사용 횟수
 - E2E latency
 - failure / timeout / retry
 
 측정할 수 없는 ChatGPT 내부 token, model cost, Web Chat quota는 추정하지 않습니다.
 
-Jev 적용 조건:
+Jev 적용 기준:
 
-- 사전 정의한 judgment 기준 충족
-- 최종 scenario success 저하 없음
-- Codex 호출 수 또는 E2E latency 개선
+- judgment 품질이 사전 정의 기준 충족
+- 최종 답변 품질 저하 없음
+- Codex가 동일 judgment를 반복하지 않음
+- Codex 실행량 또는 E2E latency 개선
 - failure / retry 증가 없음
 
-조건을 충족하지 못한 후보는 제품 경로에 적용하지 않습니다.
+---
 
 ## 검증
 
-주 검증 데이터는 `chapter_b_sparse_v1`의 정보가 적은 자연어 질문 15개입니다.
+### 제품 검증
 
-검증 원칙:
-
-- 실제 `/api/decisions` 경로 사용
-- Search 필요 질문은 실제 조사와 출처 반영 확인
-- 계산 질문은 실제 MCP 호출과 결과 확인
-- Jev 모드는 실제 Jev 호출 확인
-- 이미 제공한 값 재질문 여부 확인
-- 선택 정보 부족만으로 흐름 중단 금지
-- 근거 없는 숫자·가격·조건 생성 금지
-- 실패를 기록만 하고 종료하지 않고 공통 원인을 수정한 뒤 재검증
-- 평가 criterion을 결과에 맞춰 변경하지 않음
-- 실행하지 않은 테스트나 측정값 기록 금지
-
-대표 기능 검증:
+실제 `/api/decisions` 경로로 확인합니다.
 
 ```text
 일반 추론
 Search
 MCP
 Search + MCP
-Jev 후보
-→ 15개 sparse 전체
+Jev Decision Bundle
+후속 질문
+사용 한도 오류 처리
+사용자 결과 렌더링
 ```
+
+원칙:
+
+- 이미 제공한 값 재질문 금지
+- 선택 정보 부족만으로 흐름 중단 금지
+- 근거 없는 숫자·가격·조건 생성 금지
+- Search / MCP 결과의 최종 답변 반영 확인
+- 실패를 기록만 하고 종료하지 않고 공통 원인을 수정 후 재검증
+- 실행하지 않은 테스트나 측정값 기록 금지
+
+### Jev 검증
+
+기존 `chapter_b_sparse_v1`은 사용자 UX와 전체 답변 검증에 유지합니다.
+
+Jev 자체 평가는 판단에 필요한 정보가 포함된 fixture를 별도로 사용합니다.
+
+```text
+동일 user facts
+동일 Search facts
+동일 MCP results
+동일 alternatives
+→ baseline
+vs
+→ Jev Decision Bundle
+```
+
+Jev에 유리하도록 Search나 계산 결과를 다르게 주지 않습니다.
+
+---
+
+## 현재 구현 상태
+
+- Web UI → FastAPI → Codex CLI 사용자 요청 경로
+- OpenAI Platform API 없는 사용자 요청 처리
+- 기존 Codex CLI 인증 재사용
+- `gpt-6-luna` + low reasoning runtime
+- Search 최대 4회 / 60초 budget
+- FastMCP 기반 결정론적 계산
+- Codex session resume 기반 후속 질문
+- Codex usage limit 429 처리
+- 진행 단계·경과 시간·Search/MCP 호출 수 표시
+- 분석 중단 시 서버 Codex 작업 취소
+- 320px / 390px 모바일 가로 넘침 검증
+- pytest / E2E 검증
+
+현재 다음 작업은 Jev를 단일 후보 필터가 아니라 **실제 Decision Bundle**로 재구성하는 것입니다.
+
+---
 
 ## 기술 구성
 
@@ -230,11 +324,14 @@ Jev 후보
 | Language | Python 3.13 |
 | API | FastAPI |
 | Runtime reasoning | Codex CLI authenticated with ChatGPT account |
+| Current information | Codex Search |
 | Calculation | FastMCP 4.0.0 |
-| Decision model evaluation | TypeSafe Jev |
+| Decision layer | TypeSafe Jev |
 | Validation | Pydantic |
 | Test | pytest / E2E |
 | Frontend | HTML / CSS / JavaScript |
+
+---
 
 ## 실행
 
@@ -251,45 +348,46 @@ uv run uvicorn spendguard.main:app --reload
 http://127.0.0.1:8000
 ```
 
-목표 런타임에서는 `.env`와 `.env.example`에서 아래 변수를 사용하지 않습니다.
+현재 사용자 요청 경로에는 `OPENAI_API_KEY`, `OPENAI_MODEL`이 필요하지 않습니다.
 
-```text
-OPENAI_API_KEY
-OPENAI_MODEL
-```
+Jev를 사용하는 경우 TypeSafe 설정이 별도로 필요합니다.
 
-Jev를 사용하는 경우 필요한 TypeSafe 설정만 별도로 유지합니다.
+---
 
 ## 기존 이력
 
 Phase 0~7, Chapter A, Track A 결과는 historical result로 보존합니다.
 
-과거 OpenAI Agents SDK / Responses API 기반 측정은 당시 실제 구현 결과이며, 현재 목표 런타임의 근거로 재해석하지 않습니다.
+과거 OpenAI Agents SDK / Responses API 기반 측정은 당시 실제 구현 결과이며 현재 Codex runtime 결과와 구분합니다.
 
-Track A에서 확인된 방향:
+Track A에서 확인된 실패를 반복하지 않습니다.
 
 - broad Intent router로 Jev 사용하지 않음
 - 추가 정보 필요 여부를 Jev에 맡기지 않음
 - Search 필요 여부를 Jev에 맡기지 않음
-- Jev는 좁은 semantic judgment만 재평가
+- Jev 호출 때문에 Codex 실행 횟수를 늘리지 않음
+- 질문 전체를 근거 없이 한 번 분류해 `unknown`만 만드는 구조를 기본 Jev 활용으로 사용하지 않음
 
-## 범위 제외
+---
 
-- 범용 AI 의사결정 플랫폼
-- scenario별 독립 workflow
-- scenario별 복잡한 typed result schema
-- generic `DecisionAnswer` 중심 재구성
-- blocking-field engine 중심 설계
-- 모든 요청에 Jev gate 적용
+## 범위
+
+SpendGuard는 비교·계산·정보 정리와 소비 판단을 중심으로 합니다.
+
+제품 범위에서 제외하는 기능:
+
 - 자동 구매
 - 자동 결제
 - 자동 계약
 - 자동 구독 해지
 - 은행·카드 계정 직접 연동
 - 투자 자문
-- 보험·대출 상품 가입 결정
+- 보험 상품 가입 결정
+- 대출 상품 가입 결정
 
 보험·대출 영역은 비용 비교와 정보 정리에 한정합니다.
+
+---
 
 ## 프로젝트 구조
 
@@ -311,16 +409,12 @@ spendguard-agent/
 └── uv.lock
 ```
 
-## 문서 역할
+## 문서
 
 | 문서 | 역할 |
 | --- | --- |
 | `.project/plan.md` | 프로젝트 전체 기획 기준 |
 | `AGENTS.md` | 저장소 공통 작업 규칙 |
 | `DESIGN.md` | Web UI 디자인 기준 |
-| `docs/instructions/*` | 현재 작업 범위와 완료 기준 |
+| `docs/instructions/*` | 작업 범위와 완료 기준 |
 | `docs/results/*` | 실제 구현·검증 결과 |
-
-구현과 검증은 기능 단위로 완료한 뒤 커밋합니다.
-
-서로 다른 기능을 하나의 커밋에 섞지 않으며, 사용자의 명시적 지시 없이 push하지 않습니다.
