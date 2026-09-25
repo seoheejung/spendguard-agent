@@ -93,6 +93,12 @@ Codex runtime은 기존 Windows 사용자 환경에 저장된 ChatGPT 계정 인
 
 SpendGuard가 `codex login`, OAuth, 브라우저 로그인을 실행하지 않습니다.
 
+SpendGuard 사용자 요청의 Codex 실행은 기본적으로 `gpt-6-luna`와 low reasoning을 사용합니다. 이 설정은 `SPENDGUARD_CODEX_MODEL`, `SPENDGUARD_CODEX_REASONING_EFFORT` 환경 변수로 SpendGuard 프로세스에서만 변경할 수 있습니다. 개발용 Codex 설정은 변경하지 않습니다.
+
+한 요청의 라이브 Search는 최대 4회 또는 Search 시작 후 60초로 제한합니다. 필요한 근거가 먼저 확보되면 바로 답변하며, 한도에 도달하면 기존 근거와 불확실성을 바탕으로 검색 없이 마무리합니다. 후속 질문은 서버가 보관한 Codex 세션을 `exec resume`으로 이어갑니다. 서버를 재시작하면 메모리의 대화 식별자도 초기화됩니다.
+
+Codex 사용 한도 오류는 HTTP 429와 `codex_usage_limit` 코드로 전달하고, 화면에는 재시도 안내만 표시합니다.
+
 사용자 요청 처리 중 저장소 수정, Git 변경, 임의 개발 작업을 제품 기능으로 수행하지 않습니다.
 
 ### Search

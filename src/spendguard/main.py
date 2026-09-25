@@ -14,7 +14,7 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field, ValidationError
 
-from spendguard.codex_runtime import CodexRunner, CodexRuntimeError
+from spendguard.codex_runtime import CodexRunner, CodexRuntimeError, CodexUsageLimitError
 from spendguard.calculations import (
     AnnualizedExpenseInput,
     CalculationResult,
@@ -51,6 +51,7 @@ class DecisionRequest(BaseModel):
     candidate_text: str | None = None
     history: list[DecisionTurn] = Field(default_factory=list, max_length=6)
     request_id: UUID | None = None
+    conversation_id: UUID | None = None
 
 
 class DecisionResponse(BaseModel):
@@ -95,6 +96,7 @@ async def lifespan(app: FastAPI):
     await runner.check_authentication()
     app.state.codex_runner = runner
     app.state.decision_progress = {}
+    app.state.decision_sessions = {}
     access_logger = logging.getLogger("uvicorn.access")
     access_logger.addFilter(progress_access_filter)
     try:
@@ -124,6 +126,8 @@ async def decision_progress(request_id: UUID, request: Request) -> dict:
     return {
         "stage": progress["stage"],
         "elapsed_seconds": round(time.perf_counter() - progress["started_at"], 1),
+        "search_calls": progress["search_calls"],
+        "mcp_calls": progress["mcp_calls"],
     }
 
 
@@ -134,13 +138,18 @@ async def wait_for_disconnect(request: Request) -> None:
 
 @app.post("/api/decisions", response_model=DecisionResponse)
 async def decide(payload: DecisionRequest, request: Request) -> DecisionResponse:
-    """Answer a question in one isolated Codex turn."""
+    """Answer a question or continue a previous decision."""
 
     if not payload.question.strip():
         raise HTTPException(status_code=422, detail="Question is required.")
     if payload.jev_candidate and payload.jev_candidate not in JUDGMENTS:
         raise HTTPException(status_code=422, detail="Unknown Jev candidate.")
     request_id = str(payload.request_id or uuid4())
+    conversation_id = str(payload.conversation_id) if payload.conversation_id else None
+    sessions = request.app.state.decision_sessions
+    if conversation_id and conversation_id not in sessions:
+        raise HTTPException(status_code=404, detail="Decision conversation unavailable.")
+    previous_thread = sessions.get(conversation_id) if conversation_id else None
     started = time.perf_counter()
     progress = {"stage": "queued", "started_at": started, "search_calls": 0, "mcp_calls": 0}
     request.app.state.decision_progress[request_id] = progress
@@ -183,6 +192,7 @@ async def decide(payload: DecisionRequest, request: Request) -> DecisionResponse
             payload.question,
             jev_context=jev.as_prompt() if jev else "",
             history=[(turn.question, turn.answer) for turn in payload.history],
+            thread_id=previous_thread,
             on_progress=update_progress,
         ))
         disconnect_task = asyncio.create_task(wait_for_disconnect(request))
@@ -198,10 +208,15 @@ async def decide(payload: DecisionRequest, request: Request) -> DecisionResponse
                 codex_task.cancel()
             await asyncio.gather(codex_task, disconnect_task, return_exceptions=True)
         outcome = "completed"
+        if result.thread_id:
+            conversation_id = conversation_id or str(uuid4())
+            sessions[conversation_id] = result.thread_id
         return DecisionResponse(
             answer=result.answer,
             metadata={
                 "request_id": request_id,
+                "conversation_id": conversation_id,
+                "resumed": result.resumed,
                 "mode": payload.mode,
                 "latency_ms": result.latency_ms + (jev.latency_ms if jev else 0),
                 "codex_runs": result.codex_runs,
@@ -214,6 +229,11 @@ async def decide(payload: DecisionRequest, request: Request) -> DecisionResponse
         )
     except JevError as error:
         raise HTTPException(status_code=502, detail=str(error)) from error
+    except CodexUsageLimitError as error:
+        detail = {"code": "codex_usage_limit", "message": "현재 Codex 사용 한도에 도달했습니다. 초기화 후 다시 시도해 주세요."}
+        if error.reset_at:
+            detail["reset_at"] = error.reset_at
+        raise HTTPException(status_code=429, detail=detail) from error
     except CodexRuntimeError as error:
         raise HTTPException(status_code=502, detail=str(error)) from error
     finally:
