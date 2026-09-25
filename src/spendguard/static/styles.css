@@ -102,7 +102,7 @@ body.history-open .workspace > :not(.history-panel) { display: none !important; 
 .history-empty { margin-top: 22px; padding: 28px; border: 1px solid var(--line); border-radius: 13px; color: var(--muted); background: var(--surface-soft); }
 .history-list { display: grid; gap: 10px; margin-top: 20px; }
 .history-item { display: flex; align-items: center; min-width: 0; padding: 10px; border: 1px solid var(--line); border-radius: 13px; background: var(--surface-soft); }
-.history-item-open { display: block; flex: 1; min-width: 0; padding: 8px 10px; border: 0; color: var(--text); background: transparent; text-align: left; }
+.history-item-open { display: block; flex: 1; min-width: 0; padding: 8px 10px; border: 0; color: var(--text); background: transparent; text-align: left; text-decoration: none; }
 .history-item-open:hover .history-item-heading strong { color: var(--blue-soft); }
 .history-item-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; min-width: 0; }
 .history-item-heading strong { min-width: 0; overflow: hidden; font-size: .95rem; text-overflow: ellipsis; white-space: nowrap; }
@@ -218,7 +218,7 @@ body.has-decision .decision-form { display: none; }
 .form-footer button { min-height: 44px; padding: 10px 15px; }
 
 .result-heading { align-items: end; }
-.quiet-button { display: inline-flex; align-items: center; gap: 8px; padding: 9px 11px; border: 1px solid var(--line); border-radius: 9px; color: var(--blue-soft); background: transparent; font-size: .82rem; font-weight: 700; white-space: nowrap; }
+.quiet-button { display: inline-flex; align-items: center; gap: 8px; padding: 9px 11px; border: 1px solid var(--line); border-radius: 9px; color: var(--blue-soft); background: transparent; font-size: .82rem; font-weight: 700; text-decoration: none; white-space: nowrap; }
 .quiet-button:hover { border-color: var(--line-strong); background: rgba(113, 184, 255, .08); }
 .decision-cards { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 13px; margin-top: 17px; }
 .result-card { min-width: 0; padding: 20px; }

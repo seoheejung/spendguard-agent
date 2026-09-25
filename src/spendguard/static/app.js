@@ -462,10 +462,10 @@ function renderDecisionHistory() {
   historyList.replaceChildren(...records.map((record) => {
     const item = document.createElement("article");
     item.className = "history-item";
-    const open = document.createElement("button");
-    open.type = "button";
+    const open = document.createElement("a");
     open.className = "history-item-open";
     open.dataset.historyId = record.id;
+    open.href = `#history/${encodeURIComponent(record.id)}`;
     const heading = document.createElement("span");
     heading.className = "history-item-heading";
     heading.append(
@@ -496,6 +496,34 @@ function setHistoryOpen(open) {
   if (open) {
     renderDecisionHistory();
     historyPanel.scrollIntoView({ block: "start" });
+  }
+}
+
+function syncHistoryLocation() {
+  let route;
+  try {
+    route = decodeURIComponent(window.location.hash.slice(1));
+  } catch {
+    route = "";
+  }
+  if (route === "history") {
+    setHistoryOpen(true);
+    return;
+  }
+  if (route.startsWith("history/")) {
+    const record = readDecisionHistory().find((item) => item.id === route.slice(8));
+    if (record) {
+      showDecisionRecord(record);
+      return;
+    }
+    window.history.replaceState(null, "", "#history");
+    setHistoryOpen(true);
+    return;
+  }
+  setHistoryOpen(false);
+  if (state.viewingHistoryId) {
+    if (state.turns.length) restoreActiveDecision();
+    else resetDecision();
   }
 }
 
@@ -734,9 +762,8 @@ function resetDecision() {
   setStatus("서비스 정상 운영 중", "ready");
 }
 
-historyTrigger.addEventListener("click", () => setHistoryOpen(historyPanel.hidden));
-document.querySelector("#close-history").addEventListener("click", () => setHistoryOpen(false));
-returnActiveDecision.addEventListener("click", restoreActiveDecision);
+window.addEventListener("hashchange", syncHistoryLocation);
+returnActiveDecision.addEventListener("click", () => { window.location.hash = "question"; });
 historyList.addEventListener("click", (event) => {
   const remove = event.target.closest("[data-delete-history-id]");
   if (remove) {
@@ -753,10 +780,6 @@ historyList.addEventListener("click", (event) => {
     renderDecisionHistory();
     return;
   }
-  const open = event.target.closest("[data-history-id]");
-  if (!open) return;
-  const record = readDecisionHistory().find((item) => item.id === open.dataset.historyId);
-  if (record) showDecisionRecord(record);
 });
 clearHistoryButton.addEventListener("click", () => {
   if (!window.confirm("최근 소비 판단 기록을 모두 삭제할까요?")) return;
@@ -777,3 +800,4 @@ document.querySelector("[data-new-decision]").addEventListener("click", () => {
   setHistoryOpen(false);
   resetDecision();
 });
+syncHistoryLocation();

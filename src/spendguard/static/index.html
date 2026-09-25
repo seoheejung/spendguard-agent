@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>SpendGuard | 소비 결정 도우미</title>
-    <link rel="stylesheet" href="/static/styles.css?v=history-2" />
+    <link rel="stylesheet" href="/static/styles.css?v=history-3" />
   </head>
   <body>
     <a class="skip-link" href="#workspace">결정 도우미로 건너뛰기</a>
@@ -21,7 +21,7 @@
             <span class="status-dot" aria-hidden="true"></span>
             <span class="status-label">서비스 정상 운영 중</span>
           </p>
-          <button id="open-history" class="new-decision history-trigger" type="button" aria-controls="history-panel" aria-expanded="false">최근 기록</button>
+          <a id="open-history" class="new-decision history-trigger" href="#history" aria-controls="history-panel" aria-expanded="false">최근 기록</a>
           <a class="new-decision" href="#question" data-new-decision>새 질문</a>
         </div>
       </div>
@@ -33,7 +33,7 @@
           <div><p class="eyebrow">소비 결정 기록</p><h1 id="history-heading">최근 기록</h1></div>
           <div class="history-heading-actions">
             <button id="clear-history" class="quiet-button" type="button" hidden>전체 삭제</button>
-            <button id="close-history" class="quiet-button" type="button">닫기</button>
+            <a id="close-history" class="quiet-button" href="#question">닫기</a>
           </div>
         </div>
         <p id="history-empty" class="history-empty" hidden>저장된 소비 판단 기록이 없습니다. 답변이 완료되면 여기에 표시됩니다.</p>
@@ -140,6 +140,6 @@
         <button id="cancel-request" class="processing-cancel" type="button">분석 중단</button>
       </div>
     </div>
-    <script src="/static/app.js?v=history-2"></script>
+    <script src="/static/app.js?v=history-3"></script>
   </body>
 </html>
