@@ -53,6 +53,7 @@ const historyTrigger = document.querySelector("#open-history");
 const clearHistoryButton = document.querySelector("#clear-history");
 const historyDetail = document.querySelector("#history-detail");
 const historyDetailDate = document.querySelector("#history-detail-date");
+const continueHistory = document.querySelector("#continue-history");
 const returnActiveDecision = document.querySelector("#return-active-decision");
 const historySources = document.querySelector("#history-sources");
 const historySuggestions = document.querySelector("#history-suggestions");
@@ -556,7 +557,14 @@ function showDecisionRecord(record) {
   historySources.hidden = !historySources.childElementCount;
   historySuggestions.replaceChildren(...(Array.isArray(record.suggestedFollowups)
     ? record.suggestedFollowups.filter((item) => typeof item === "string" && item.trim()).slice(0, 3)
-    : []).map((suggestion) => Object.assign(document.createElement("span"), { className: "suggestion-chip", textContent: suggestion })));
+    : []).map((suggestion) => {
+      const chip = document.createElement("button");
+      chip.type = "button";
+      chip.className = "suggestion-chip";
+      chip.textContent = suggestion;
+      chip.addEventListener("click", () => continueFromHistory(record, suggestion));
+      return chip;
+    }));
   historySuggestions.hidden = !historySuggestions.childElementCount;
   historyDetail.hidden = false;
   setError("");
@@ -580,8 +588,31 @@ function restoreActiveDecision() {
   followUpActions.hidden = false;
   followUpForm.hidden = false;
   showFollowUp.hidden = true;
-  workflowPanel.hidden = false;
+  workflowPanel.hidden = !state.decision?.metadata;
   originalQuestion.scrollIntoView({ block: "start" });
+}
+
+function continueFromHistory(record, suggestion = "") {
+  state.question = record.firstQuestion;
+  state.turns = [{ question: record.firstQuestion, answer: record.answer }];
+  if (record.latestFollowup?.question && record.latestFollowup?.answer) {
+    state.turns.push({ question: record.latestFollowup.question, answer: record.latestFollowup.answer });
+  }
+  state.decision = {
+    answer: state.turns.at(-1).answer,
+    suggested_followups: Array.isArray(record.suggestedFollowups) ? record.suggestedFollowups : [],
+    sources: Array.isArray(record.sources) ? record.sources : [],
+  };
+  state.conversationId = null;
+  state.activeRecordId = record.id;
+  state.historyDisabled = false;
+  state.scenarioId = null;
+  followUpQuestion.value = suggestion;
+  window.addEventListener("hashchange", () => {
+    followUpQuestion.focus();
+    followUpQuestion.scrollIntoView({ block: "nearest" });
+  }, { once: true });
+  window.location.hash = "question";
 }
 
 async function requestDecision(askedQuestion, isFollowUp = false) {
@@ -763,6 +794,10 @@ function resetDecision() {
 }
 
 window.addEventListener("hashchange", syncHistoryLocation);
+continueHistory.addEventListener("click", () => {
+  const record = readDecisionHistory().find((item) => item.id === state.viewingHistoryId);
+  if (record) continueFromHistory(record);
+});
 returnActiveDecision.addEventListener("click", () => { window.location.hash = "question"; });
 historyList.addEventListener("click", (event) => {
   const remove = event.target.closest("[data-delete-history-id]");

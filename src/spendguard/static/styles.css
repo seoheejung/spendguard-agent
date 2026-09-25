@@ -112,9 +112,10 @@ body.history-open .workspace > :not(.history-panel) { display: none !important; 
 .history-item-delete:hover { border-color: var(--orange); color: var(--orange); }
 .history-detail { margin-top: 15px; padding: 16px 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface-soft); }
 .history-detail p { margin: 0 0 7px; color: var(--muted); font-size: .8rem; }
+.history-continue { margin: 7px 8px 0 0; padding: 9px 12px; border: 0; border-radius: 9px; color: #08121b; background: var(--lime); font-size: .82rem; font-weight: 800; }
+.history-continue:hover { background: #dcff9b; }
 .history-sources, .history-suggestions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
 .history-sources a { color: var(--blue-soft); font-size: .8rem; overflow-wrap: anywhere; }
-.history-suggestions .suggestion-chip { cursor: default; }
 body.viewing-history .question-again { display: none; }
 .question-panel { display: block; max-width: 1120px; }
 .eyebrow { margin: 0 0 9px; color: var(--blue); font: 700 .69rem ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .13em; }
