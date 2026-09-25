@@ -209,7 +209,11 @@ def _compose(results: dict[str, dict[str, Any]], facts: dict[str, Any]) -> dict[
     elif (isinstance(values.get("replacement_needed"), (int, float)) and values["replacement_needed"] <= 0.3
           and isinstance(values.get("waiting_low_loss"), (int, float)) and values["waiting_low_loss"] >= 0.7):
         action = "wait"
+    elif action == "unknown" and facts.get("current_product_functional") is True and facts.get("purchase_price") is not None and not {"available_cash", "budget"} & facts.keys():
+        action = "wait"
     composed: dict[str, Any] = {"action": action, "key_factor": values.get("key_factor", "unknown")}
+    if action == "wait" and values.get("purchase_choice") == "unknown" and not {"available_cash", "budget"} & facts.keys():
+        composed["reason"] = "affordability_unknown"
     cash = facts.get("available_cash")
     fixed = facts.get("upcoming_fixed_expense")
     if cash is not None and fixed is not None:

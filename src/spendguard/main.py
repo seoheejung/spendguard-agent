@@ -357,6 +357,7 @@ async def decide(payload: DecisionRequest, request: Request) -> DecisionResponse
                 if result.first_visible_event_ms is not None else None,
                 "codex_thinking_ms": result.thinking_ms,
                 "codex_runs": result.codex_runs,
+                "codex_model_turns": result.model_turns,
                 "search_calls": result.search_calls,
                 "search_sources": result.search_sources,
                 "mcp_calls": result.mcp_calls,

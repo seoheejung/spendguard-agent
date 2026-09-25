@@ -10,6 +10,15 @@ from spendguard.codex_runtime import CodexResult
 from spendguard import main as main_module
 
 
+def test_code_defers_purchase_when_affordability_is_unknown():
+    composed = decision_state._compose(
+        {"purchase_choice": {"value": "unknown"}},
+        {"current_product_functional": True, "purchase_price": 199000},
+    )
+    assert composed["action"] == "wait"
+    assert composed["reason"] == "affordability_unknown"
+
+
 def test_minimum_judgment_payload_and_incremental_reuse(tmp_path, monkeypatch):
     transmitted = []
 
