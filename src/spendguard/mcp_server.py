@@ -1,6 +1,11 @@
 """Stdio MCP server for deterministic SpendGuard calculations."""
 
+import os
+from pathlib import Path
+
 from fastmcp import FastMCP
+
+from spendguard.decision_state import DecisionDelta, update_state
 
 from spendguard.calculations import (
     AnnualizedExpenseInput,
@@ -80,6 +85,16 @@ def compare_costs(data: CostComparisonInput) -> CalculationResult:
     """Cost-option comparison."""
 
     return compare_costs_calculation(data)
+
+
+@mcp.tool(annotations={"readOnlyHint": True})
+def update_decision_state(delta: DecisionDelta) -> dict:
+    """Evaluate a purchase decision from this turn's evidence and prior local state. For judgment_facts use only explicit normalized values: age in months, functional status, approved problem and feature tags, cash amounts, prices, budget, and wait duration. Return judgments only; FastAPI stores session state."""
+
+    path = os.environ.get("SPENDGUARD_STATE_PATH")
+    if not path:
+        raise RuntimeError("Decision state unavailable.")
+    return update_state(Path(path), delta)
 
 
 if __name__ == "__main__":

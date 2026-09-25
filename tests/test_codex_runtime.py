@@ -10,6 +10,7 @@ import pytest
 from spendguard.codex_runtime import CodexResult, CodexRunner, CodexUsageLimitError
 from spendguard import main as main_module
 from spendguard.main import app
+from spendguard.calculations import CostComparisonInput, compare_costs
 
 
 def test_cli_overrides_are_scoped_to_spendguard(monkeypatch):
@@ -165,3 +166,68 @@ def test_cli_usage_limit_is_detected_without_retry(tmp_path):
     with pytest.raises(CodexUsageLimitError) as captured:
         asyncio.run(runner.run("추가 질문"))
     assert captured.value.reset_at.startswith("2026-09-25T01:50:00")
+
+
+def test_fresh_and_resumed_processes_use_runtime_workspace(tmp_path):
+    cli = tmp_path / "cwd.py"
+    cli.write_text(
+        "import json, os, sys\n"
+        "sys.stdin.read()\n"
+        "print(json.dumps({'type': 'thread.started', 'thread_id': 'fixture-thread'}), flush=True)\n"
+        "print(json.dumps({'type': 'item.completed', 'item': {'type': 'agent_message', 'text': json.dumps({'answer': os.getcwd(), 'suggested_followups': ['한 번 더 알려줘'], 'sources': []})}}), flush=True)\n"
+        "print(json.dumps({'type': 'turn.completed'}), flush=True)\n",
+        encoding="utf-8",
+    )
+
+    class FakeRunner(CodexRunner):
+        def _command(self, _workdir, *, thread_id=None, search=True):
+            return [sys.executable, str(cli)]
+
+    async def call():
+        runner = FakeRunner(timeout_seconds=5)
+        runner.executable = sys.executable
+        first = await runner.run("fixture question")
+        second = await runner.run("fixture follow-up", thread_id=first.thread_id)
+        return first, second
+
+    first, second = asyncio.run(call())
+    assert first.answer == second.answer
+    assert first.answer.endswith("spendguard-codex-runtime")
+    assert first.suggested_followups == ["한 번 더 알려줘"]
+    assert second.resumed is True
+
+
+def test_suggestions_are_separate_from_answer():
+    import json
+
+    response = {"answer": "구매는 미루세요.\n\n**이어서 물어볼 만한 질문**\n- 여행비를 먼저 계산해볼까?",
+                "suggested_followups": ["여행비를 먼저 계산해볼까?"], "sources": []}
+    events = b"\n".join(json.dumps(item, ensure_ascii=False).encode("utf-8") for item in [
+        {"type": "item.completed", "item": {"type": "agent_message", "text": json.dumps(response, ensure_ascii=False)}},
+        {"type": "turn.completed"},
+    ])
+    result = CodexRunner._parse_events(events, 100)
+    assert result.answer == "구매는 미루세요."
+    assert result.suggested_followups == ["여행비를 먼저 계산해볼까?"]
+
+
+def test_calculation_trace_rejects_changed_mcp_amount():
+    data = {"currency": "KRW", "options": [
+        {"name": "기본", "total_cost": 154230}, {"name": "추가 기능", "total_cost": 193030},
+    ]}
+    observed = compare_costs(CostComparisonInput.model_validate(data)).model_dump(mode="json")
+    call = {"tool": "compare_costs", "status": "completed", "arguments": {"data": data}, "result": observed}
+    assert main_module.verify_calculation_trace([call]) == 1
+    observed["result"]["difference_from_추가 기능"] = "38801.00"
+    with pytest.raises(main_module.CodexRuntimeError):
+        main_module.verify_calculation_trace([call])
+
+
+def test_cashflow_claim_uses_signed_code_result():
+    answer = "수입 130,000원이 들어와도 월세를 내고 나면 0원입니다. 구매를 미루세요."
+    checked, corrected = main_module.align_cashflow_claim(
+        answer, {"cashflow_after_fixed_expenses": "-40000"},
+    )
+    assert corrected is True
+    assert "40,000원이 부족합니다" in checked
+    assert "0원입니다" not in checked
