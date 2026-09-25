@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>SpendGuard | 소비 결정 도우미</title>
-    <link rel="stylesheet" href="/static/styles.css?v=runtime-3" />
+    <link rel="stylesheet" href="/static/styles.css?v=runtime-4" />
   </head>
   <body>
     <a class="skip-link" href="#workspace">결정 도우미로 건너뛰기</a>
@@ -19,7 +19,7 @@
         <div class="topbar-actions">
           <p id="decision-status" class="decision-status" data-status="ready" aria-live="polite">
             <span class="status-dot" aria-hidden="true"></span>
-            <span class="status-label">준비됨</span>
+            <span class="status-label">서비스 정상 운영 중</span>
           </p>
           <a class="new-decision" href="#question" data-new-decision>새 질문</a>
         </div>
@@ -47,8 +47,25 @@
           <div id="template-guidance" class="template-guidance" aria-live="polite" hidden></div>
         </form>
         <div id="original-question" class="original-question" hidden>
-          <span>첫 질문</span>
+          <div class="original-question-icon" aria-hidden="true">⌕</div>
+          <div class="original-question-content">
+            <div class="original-question-title"><strong>첫 질문</strong><span>▣ 이전 질문 (고정됨)</span></div>
           <p id="original-question-text"></p>
+          </div>
+          <a class="question-again" href="#follow-up-question">다른 질문하기</a>
+        </div>
+      </section>
+
+      <section id="workflow-panel" class="workflow-panel" aria-labelledby="workflow-heading" hidden>
+        <div class="workflow-heading"><span class="workflow-symbol" aria-hidden="true">▥</span><h2 id="workflow-heading">진행 상태</h2><p>요청을 분석하고 여러 정보를 검색·비교하여 답변을 준비합니다.</p></div>
+        <div class="workflow-content">
+          <ol class="workflow-steps">
+            <li><span class="workflow-step-icon">✓</span><span><strong>질문 이해</strong><small>요청 내용을 분석했어요.</small></span></li>
+            <li><span class="workflow-step-icon">⌕</span><span><strong>정보 검색</strong><small>필요한 정보를 확인했어요.</small></span></li>
+            <li><span class="workflow-step-icon">▦</span><span><strong>가격·조건 계산</strong><small>비용과 조건을 비교했어요.</small></span></li>
+            <li><span class="workflow-step-icon">▤</span><span><strong>답변 정리</strong><small>핵심만 보기 좋게 정리했어요.</small></span></li>
+          </ol>
+          <div class="workflow-summary"><strong id="workflow-state">완료</strong><p id="workflow-metrics">요청 결과를 확인해 주세요.</p></div>
         </div>
       </section>
 
@@ -78,17 +95,17 @@
               </div>
             </div>
             <div id="decision-cards" class="decision-cards"></div>
-            <div class="follow-up-actions">
+          </section>
+            <div id="follow-up-actions" class="follow-up-actions" hidden>
               <button id="show-follow-up" type="button" hidden>추가 질문하기 <span aria-hidden="true">→</span></button>
               <form id="follow-up-form" hidden>
-                <label for="follow-up-question">이 결과에서 더 궁금한 점</label>
+                <div class="follow-up-heading"><label for="follow-up-question">▣ 추가 질문</label><span>이전 결과를 이어서 다시 검색·비교합니다.</span></div>
                 <div class="follow-up-composer">
-                  <textarea id="follow-up-question" rows="3" maxlength="4000" placeholder="예: 출발일을 한 주 늦추면 비용이 얼마나 달라져?" required></textarea>
-                  <button type="submit">질문 보내기 <span aria-hidden="true">→</span></button>
+                  <textarea id="follow-up-question" rows="2" maxlength="4000" placeholder="예) S26 말고 S25와 어떤 차이가 있는지 더 자세히 비교해줘." required></textarea>
+                  <button type="submit">➤ &nbsp; 추가 질문하기</button>
                 </div>
               </form>
             </div>
-          </section>
 
           <p id="error" class="error" role="alert" hidden></p>
         </div>
@@ -103,6 +120,6 @@
         <button id="cancel-request" class="processing-cancel" type="button">분석 중단</button>
       </div>
     </div>
-    <script src="/static/app.js?v=runtime-3"></script>
+    <script src="/static/app.js?v=runtime-4"></script>
   </body>
 </html>

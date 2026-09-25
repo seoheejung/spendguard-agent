@@ -1,4 +1,4 @@
-const state = { question: "", decision: null, turns: [], scenarioId: null, activeScenarioGroup: "사기 전에", requestInFlight: false };
+const state = { question: "", decision: null, turns: [], conversationId: null, scenarioId: null, activeScenarioGroup: "사기 전에", requestInFlight: false };
 
 const scenarioDefinitions = [
   { id: "price-comparison", group: "사기 전에", label: "최저가 비교", promptTemplate: "[제품명]을 사려고 해. 같은 제품뿐 아니라 비슷한 대안까지 찾아서 가격과 조건을 비교해줘.", inputHints: ["제품명"], guidance: "[제품명]을 먼저 고치세요.", icon: "tag" },
@@ -25,6 +25,10 @@ let activePlaceholderIndex = -1;
 const questionForm = document.querySelector("#decision-form");
 const question = document.querySelector("#question");
 const resultSection = document.querySelector("#decision-result");
+const followUpActions = document.querySelector("#follow-up-actions");
+const workflowPanel = document.querySelector("#workflow-panel");
+const workflowState = document.querySelector("#workflow-state");
+const workflowMetrics = document.querySelector("#workflow-metrics");
 const decisionCards = document.querySelector("#decision-cards");
 const status = document.querySelector("#decision-status");
 const error = document.querySelector("#error");
@@ -330,6 +334,7 @@ function renderDecisionResult(decision, askedQuestion, isFollowUp) {
   conclusion.append(renderAnswer(decision.answer));
   decisionCards.append(conclusion);
   resultSection.hidden = false;
+  followUpActions.hidden = false;
   showFollowUp.hidden = false;
   document.body.classList.add("has-decision", "has-active-decision");
 }
@@ -371,6 +376,8 @@ async function requestDecision(askedQuestion, isFollowUp = false) {
   setRequestLock(true);
   if (!isFollowUp) {
     resultSection.hidden = true;
+    followUpActions.hidden = true;
+    workflowPanel.hidden = true;
     document.body.classList.remove("has-decision");
   }
   document.body.classList.add("has-active-decision");
@@ -385,13 +392,20 @@ async function requestDecision(askedQuestion, isFollowUp = false) {
     const response = await fetch("/api/decisions", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ question: askedQuestion, history: isFollowUp ? history : [], request_id: requestId }),
+      body: JSON.stringify({ question: askedQuestion, history: isFollowUp ? history : [], conversation_id: isFollowUp ? state.conversationId : null, request_id: requestId }),
       signal: controller.signal,
     });
-    if (!response.ok) throw new Error("Decision request failed");
+    if (!response.ok) {
+      const failure = await response.json().catch(() => ({}));
+      if (response.status === 429 && failure.detail?.code === "codex_usage_limit") {
+        throw new Error("codex_usage_limit");
+      }
+      throw new Error("Decision request failed");
+    }
     const decision = await response.json();
     if (decision.status !== "ready" || !decision.answer) throw new Error("Decision answer missing");
     state.decision = decision;
+    state.conversationId = decision.metadata?.conversation_id || state.conversationId;
     state.turns.push({ question: askedQuestion, answer: decision.answer });
     if (!isFollowUp) {
       originalQuestionText.textContent = askedQuestion;
@@ -401,11 +415,24 @@ async function requestDecision(askedQuestion, isFollowUp = false) {
       followUpForm.hidden = true;
     }
     renderDecisionResult(decision, askedQuestion, isFollowUp);
-    setStatus("준비됨", "ready");
+    workflowPanel.hidden = false;
+    workflowState.textContent = "✓ 완료";
+    const metrics = decision.metadata || {};
+    const searchCount = metrics.search_calls ?? 0;
+    const calculationCount = metrics.mcp_calls?.length ?? 0;
+    const steps = workflowPanel.querySelectorAll(".workflow-steps li");
+    steps[1].querySelector("small").textContent = searchCount ? `${searchCount}회 검색했어요.` : "이번 질문은 검색이 필요하지 않았어요.";
+    steps[2].querySelector("small").textContent = calculationCount ? `${calculationCount}회 계산했어요.` : "별도 금액 계산이 필요하지 않았어요.";
+    workflowMetrics.textContent = `검색 ${searchCount}회 · 계산 ${calculationCount}회 · 총 ${Math.round((metrics.latency_ms || 0) / 1000)}초`;
+    followUpForm.hidden = false;
+    showFollowUp.hidden = true;
+    setStatus("서비스 정상 운영 중", "ready");
     (isFollowUp ? decisionCards.lastElementChild : resultSection).scrollIntoView({ behavior: "smooth", block: "start" });
-  } catch {
+  } catch (requestError) {
     setError(controller.signal.aborted
       ? (timedOut ? "분석 시간이 길어져 요청을 종료했어요. 다시 시도해 주세요." : "분석을 중단했어요.")
+      : requestError.message === "codex_usage_limit"
+        ? "현재 Codex 사용 한도에 도달했습니다. 초기화 후 다시 시도해 주세요."
       : "분석 중 문제가 생겼어요. 잠시 후 다시 시도해 주세요.");
     setStatus("분석을 완료하지 못했어요", "error");
   } finally {
@@ -462,12 +489,15 @@ document.querySelector("[data-new-decision]").addEventListener("click", () => {
   state.question = "";
   state.decision = null;
   state.turns = [];
+  state.conversationId = null;
   state.scenarioId = null;
   activePlaceholderIndex = -1;
   question.value = "";
   templateGuidance.hidden = true;
   setScenarioSelection("");
   resultSection.hidden = true;
+  followUpActions.hidden = true;
+  workflowPanel.hidden = true;
   originalQuestion.hidden = true;
   showFollowUp.hidden = true;
   followUpForm.hidden = true;
@@ -475,5 +505,5 @@ document.querySelector("[data-new-decision]").addEventListener("click", () => {
   decisionCards.replaceChildren();
   document.body.classList.remove("has-decision", "has-active-decision");
   setError("");
-  setStatus("준비됨", "ready");
+  setStatus("서비스 정상 운영 중", "ready");
 });
