@@ -1,0 +1,47 @@
+{
+  "render_only": {
+    "first": {
+      "total_ms": 16762,
+      "search_ms": 1035,
+      "mcp_ms": 3306,
+      "jev_ms": 724,
+      "codex_ms": 11687,
+      "first_visible_event_ms": 1463,
+      "search_calls": 0,
+      "web_source_fetches": 2,
+      "mcp_calls": 1,
+      "jev_requests": 1,
+      "jev_judgments": 6,
+      "model_turns": 1,
+      "answer": "현재 AirPods는 3년 넘게 사용했고 기능은 작동하지만 배터리가 저하됐으며, 다음 달 여행을 앞두고 있습니다. 결정은 **당장은 기다리기**입니다. 여행 예산을 알 수 없어 구매 부담을 판단할 수 없고, AirPods 4 ANC의 기능 이득이 핵심 비교 요소입니다.\n\n| 선택지 | 확인된 차이 | 출시 가격 |\n|---|---|---:|\n| AirPods 4 | 액티브 노이즈 캔슬링 없음, USB-C 케이스 | 199,000원 ([Apple 발표](https://www.apple.com/kr/newsroom/2024/09/apple-introduces-all-new-airpods-4-with-industry-defining-audio-and-design/)) |\n| AirPods 4 ANC | 액티브 노이즈 캔슬링, 무선 충전 케이스 | 269,000원 ([Apple 발표](https://www.apple.com/kr/newsroom/2024/09/apple-introduces-all-new-airpods-4-with-industry-defining-audio-and-design/)) |\n\n두 모델의 가격 차이는 70,000원입니다. 가격은 2024년 출시 가격이며 현재 결제 가격이 아닙니다. 여행 예산과 현재 판매가는 확인되지 않았으므로, 이를 확인한 뒤 구매 여부를 정하는 편이 좋습니다.",
+      "suggested_followups": [
+        "여행 예산을 고려하면 지금 구매해도 괜찮을까?",
+        "AirPods 4와 ANC 중 내게 맞는 모델은 뭘까?"
+      ]
+    },
+    "followup": {
+      "total_ms": 8563,
+      "jev_ms": 491,
+      "codex_ms": 8063,
+      "first_visible_event_ms": 507,
+      "search_calls": 0,
+      "mcp_calls": 0,
+      "jev_requests": 1,
+      "jev_judgments": 4,
+      "reused_judgments": 4,
+      "model_turns": 1,
+      "answer": "지금 구매는 업데이트된 현금흐름에 맞지 않아 기다리는 편이 좋습니다. 현재 현금 430,000원에 예정 수입 130,000원을 더하고 고정 지출 600,000원을 빼면, 고정 지출 후 잔액은 -40,000원입니다. AirPods 4의 출시가는 199,000원, AirPods 4 ANC의 출시가는 269,000원이며, 두 제품의 가격 차이는 70,000원입니다. 이 금액은 2024년 출시 가격이며 현재 결제 가격은 아닙니다. [Apple AirPods 4 출시 안내](https://www.apple.com/kr/newsroom/2024/09/apple-introduces-all-new-airpods-4-with-industry-defining-audio-and-design/)",
+      "suggested_followups": []
+    },
+    "sources": [
+      {
+        "title": "Apple AirPods 4 launch announcement (2024-09-09)",
+        "url": "https://www.apple.com/kr/newsroom/2024/09/apple-introduces-all-new-airpods-4-with-industry-defining-audio-and-design/"
+      },
+      {
+        "title": "Apple AirPods model comparison",
+        "url": "https://www.apple.com/kr/airpods/compare/"
+      }
+    ]
+  }
+}
