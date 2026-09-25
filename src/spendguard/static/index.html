@@ -99,11 +99,12 @@
             <div id="follow-up-actions" class="follow-up-actions" hidden>
               <button id="show-follow-up" type="button" hidden>추가 질문하기 <span aria-hidden="true">→</span></button>
               <form id="follow-up-form" hidden>
-                <div class="follow-up-heading"><label for="follow-up-question">▣ 추가 질문</label><span>이전 결과를 이어서 다시 검색·비교합니다.</span></div>
+                <div class="follow-up-heading"><label for="follow-up-question">▣ 추가 질문</label><span>이전 결과를 바탕으로 답합니다. 필요한 경우에만 새 정보를 확인합니다.</span></div>
                 <div class="follow-up-composer">
-                  <textarea id="follow-up-question" rows="2" maxlength="4000" placeholder="예) S26 말고 S25와 어떤 차이가 있는지 더 자세히 비교해줘." required></textarea>
+                  <textarea id="follow-up-question" rows="2" maxlength="4000" placeholder="이 결과에서 더 궁금한 점을 물어보세요." required></textarea>
                   <button type="submit">➤ &nbsp; 추가 질문하기</button>
                 </div>
+                <div id="follow-up-suggestions" class="follow-up-suggestions" aria-label="추천 추가 질문"></div>
               </form>
             </div>
 

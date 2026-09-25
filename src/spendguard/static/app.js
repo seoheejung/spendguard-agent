@@ -45,6 +45,7 @@ const originalQuestionText = document.querySelector("#original-question-text");
 const showFollowUp = document.querySelector("#show-follow-up");
 const followUpForm = document.querySelector("#follow-up-form");
 const followUpQuestion = document.querySelector("#follow-up-question");
+const followUpSuggestions = document.querySelector("#follow-up-suggestions");
 const REQUEST_WAIT_LIMIT_MS = 250_000;
 let activeRequestController = null;
 
@@ -335,6 +336,21 @@ function renderDecisionResult(decision, askedQuestion, isFollowUp) {
   decisionCards.append(conclusion);
   resultSection.hidden = false;
   followUpActions.hidden = false;
+  const suggestions = Array.isArray(decision.suggested_followups)
+    ? decision.suggested_followups.filter((item) => typeof item === "string" && item.trim()).slice(0, 3)
+    : [];
+  followUpSuggestions.replaceChildren(...suggestions.map((suggestion) => {
+    const chip = document.createElement("button");
+    chip.type = "button";
+    chip.className = "suggestion-chip";
+    chip.textContent = suggestion;
+    chip.addEventListener("click", () => {
+      followUpQuestion.value = suggestion;
+      followUpQuestion.focus();
+    });
+    return chip;
+  }));
+  followUpQuestion.placeholder = suggestions[0] || "이 결과에서 더 궁금한 점을 물어보세요.";
   showFollowUp.hidden = false;
   document.body.classList.add("has-decision", "has-active-decision");
 }
@@ -392,7 +408,7 @@ async function requestDecision(askedQuestion, isFollowUp = false) {
     const response = await fetch("/api/decisions", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ question: askedQuestion, history: isFollowUp ? history : [], conversation_id: isFollowUp ? state.conversationId : null, request_id: requestId }),
+      body: JSON.stringify({ question: askedQuestion, mode: "jev", history: isFollowUp ? history : [], conversation_id: isFollowUp ? state.conversationId : null, request_id: requestId }),
       signal: controller.signal,
     });
     if (!response.ok) {
@@ -419,7 +435,7 @@ async function requestDecision(askedQuestion, isFollowUp = false) {
     workflowState.textContent = "✓ 완료";
     const metrics = decision.metadata || {};
     const searchCount = metrics.search_calls ?? 0;
-    const calculationCount = metrics.mcp_calls?.length ?? 0;
+    const calculationCount = metrics.mcp_calls?.filter((call) => call.tool !== "update_decision_state").length ?? 0;
     const steps = workflowPanel.querySelectorAll(".workflow-steps li");
     steps[1].querySelector("small").textContent = searchCount ? `${searchCount}회 검색했어요.` : "이번 질문은 검색이 필요하지 않았어요.";
     steps[2].querySelector("small").textContent = calculationCount ? `${calculationCount}회 계산했어요.` : "별도 금액 계산이 필요하지 않았어요.";
